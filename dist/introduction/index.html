@@ -129,6 +129,32 @@
             
         </li>
     
+        <li class="chapter " data-level="1.2.2" data-path="GLOSSARY.html">
+            
+                <a href="GLOSSARY.html">
+            
+                    
+                    Glossary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="CONVENTIONS.html">
+            
+                <a href="CONVENTIONS.html">
+            
+                    
+                    Conventions Used
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -212,6 +238,39 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="introduction">Introduction</h1>
+<p>The OCFL initiative is an effort to define a shared approach to file hierarchy for long-term preservation.
+It is targeted specifically at &quot;memory institutions&quot; -- libraries, archives, museums, and other cultural 
+heritage organizations -- who are engaged with storing and preserving digital content for the long term.</p>
+<p>This effort is an attempt to decouple the structure of the files-on-disk from the software
+that might manage it by creating an expectation of file and folder hierarchy to which software applications
+must conform -- effectively making the file and folder structure function as an Application Programming Interface (API).</p>
+<p>The need for this can be expressed in three broad themes:</p>
+<h2 id="1-software-is-inherently-more-unstable-than-the-content-it-manages">1. Software is inherently more unstable than the content it manages.</h2>
+<p>Software upgrades, or transitions between different platforms, often require
+a complete shift from one file hierarchy to another to make them compatible. This poses significant risk as
+files need to be moved around and placed in hierarchies that conform to the target
+platform, placing them at risk of corruption through network transfers, or loss of context
+from renaming.</p>
+<h2 id="2-enumerate-and-address-risk-vectors-for-digital-content-storage">2. Enumerate and address risk vectors for digital content storage.</h2>
+<p>OCFL attempts to address the need for &apos;rebuildability&apos; -- that is, the ability to rebuild a digital
+collection with only files on disk. This ability is rooted in several assumptions:</p>
+<ol>
+<li>File storage is, perhaps, the most well-understood, cross-compatible, and stable computing concept.
+There is a broad need to have files read across operating systems, and legacy compatibility is extremely
+robust.</li>
+<li>The number of software systems required to make sense of the content should be minimized. Contrast with
+content stored in relational databases or &apos;proprietary&apos; folder hierarchies, which impose additional
+requirements above the ability to inspect and understand the content and its contexts.</li>
+</ol>
+<p>While content considerations are fairly well understood (i.e., 
+the risk of storing content in proprietary formats), how those files are written to disk, managed, and
+secured are not. The OCFL initiative is an attempt at addressing a constrained set of risk
+vectors, with a view towards enabling long-term digital preservation. </p>
+<h2 id="3-there-is-no-common-approach-to-digital-object-versioning">3. There is no common approach to digital object versioning.</h2>
+<p>This specification takes a broad, but opinionated, definition of what constitutes a &quot;digital object&quot;. 
+It further defines a method for tracking the history and provenance of that digital object. There
+are currently no commonly-held approaches to techniques for implementing this, leaving it to indidvidual
+institutions to implement this in bespoke ways, or to disregard it altogether.</p>
 
                                 
                                 </section>
@@ -255,7 +314,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.2","depth":1,"next":{"title":"Scope","level":"1.2.1","depth":2,"path":"introduction/SCOPE.md","ref":"introduction/SCOPE.md","articles":[]},"previous":{"title":"Front matter","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"introduction/README.md","mtime":"2018-02-27T16:50:52.483Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-29T22:33:49.609Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.2","depth":1,"next":{"title":"Scope","level":"1.2.1","depth":2,"path":"introduction/SCOPE.md","ref":"introduction/SCOPE.md","articles":[]},"previous":{"title":"Front matter","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchorjs"],"pluginsConfig":{"anchorjs":{"selector":"h2,h3,h4,h5","placement":"right","visible":"hover","truncate":64,"ariaLabel":"Anchor"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"introduction/README.md","mtime":"2018-03-30T14:00:07.557Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-30T14:03:39.168Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -263,6 +322,14 @@
         
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-anchorjs/anchor-style.js"></script>
+        
     
         
         <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
