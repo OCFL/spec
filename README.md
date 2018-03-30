@@ -15,6 +15,10 @@
  - Simeon Warner, Cornell University
  - Andrew Woods, DuraSpace
  
+## Latest editors draft
+
+[https://ocfl.github.io/spec/](https://ocfl.github.io/spec/)
+ 
 ## Communication Channels
 
 ### Mailing Lists
