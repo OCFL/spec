@@ -1,0 +1,12 @@
+{
+  "plugins": ["anchorjs"],
+  "pluginsConfig": {
+    "anchorjs": {
+      "selector": "h2,h3,h4,h5",
+      "placement": "right",
+      "visible": "hover",
+      "truncate": 64,
+      "ariaLabel": "Anchor"
+    }
+  }
+}
