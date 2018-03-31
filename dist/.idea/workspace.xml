@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5b81801-f38b-401f-bb24-6d2a488f4263" name="Default" comment="Fixed: Add new scop§">
-      <change afterPath="$PROJECT_DIR$/appendices/APPENDIX-A.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/website.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DEPLOYING.md" beforeDir="false" afterPath="$PROJECT_DIR$/CONTRIBUTING.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SUMMARY.md" beforeDir="false" afterPath="$PROJECT_DIR$/SUMMARY.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/introduction/GLOSSARY.md" beforeDir="false" afterPath="$PROJECT_DIR$/GLOSSARY.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/introduction/SCOPE.md" beforeDir="false" afterPath="$PROJECT_DIR$/introduction/SCOPE.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dist/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/introduction/SCOPE.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/introduction/SCOPE.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/introduction/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/introduction/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/priorart/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/priorart/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/priorart/moab.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/priorart/moab.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -68,15 +68,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="book.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/book.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="GLOSSARY.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GLOSSARY.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
@@ -89,7 +80,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CONTRIBUTING.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CONTRIBUTING.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CONTRIBUTING.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
@@ -101,11 +92,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="website.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UD-watermark.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/styles/UD-watermark.png">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file leaf-file-name="website.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/styles/website.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+            <state relative-caret-position="22">
+              <caret line="1" column="21" lean-forward="true" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -446,13 +442,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/styles/website.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/introduction/SCOPE.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -480,6 +469,16 @@
             <caret line="58" column="55" selection-start-line="58" selection-start-column="55" selection-end-line="58" selection-end-column="55" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/styles/UD-watermark.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/styles/website.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="21" lean-forward="true" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
         </state>
       </provider>
     </entry>
