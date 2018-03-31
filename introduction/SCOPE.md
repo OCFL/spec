@@ -24,7 +24,7 @@ as the filesystem follows a hierarchical storage metaphor.
 ### Formats
 
 To be useful to the broadest audiences, there will be no effort at standardizing
-the contents of a [digital object](Link to Glossary) beyond the administrative metadata
+the contents of a Digital Object beyond the administrative metadata
 required to enable OCFL functionality. There will be no efforts at specifying a required metadata format
 (e.g., METS or Dublin Core), or binary formats (e.g., PDF/A, TIFF) that form the contents
 of an OCFL object.
@@ -39,6 +39,6 @@ from software implementations.
 
 The OCFL specification may refer to existing, complementary specifications that can 
 enhance or enable extended functionality, but for which their functionality is not core. These
-might include other folder hierarchy practices (e.g., [PairTree](https://confluence.ucop.edu/display/Curation/PairTree)),
-digital preservation event logging (e.g., [PREMIS](http://www.loc.gov/standards/premis/)), or standards
-for digital object transfer (e.g., [BagIt](https://tools.ietf.org/html/draft-kunze-bagit-14)). 
+might include other folder hierarchy practices (e.g., PairTree),
+digital preservation event logging (e.g., PREMIS), or standards
+for digital object transfer (e.g., BagIt). 
