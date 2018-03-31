@@ -7,5 +7,5 @@
     * [Conventions Used](introduction/CONVENTIONS.md)
 * [Prior Art](priorart/README.md)
     * [MOAB](priorart/moab.md)
-* [Appendices]()
+* [Appendices](appendices/README.md)
     * [Appendix A: Examples](appendices/APPENDIX-A.md)
