@@ -4,7 +4,7 @@
 
 **This version**: 0.1
 
-**Latest stable version**: 0.1
+**Latest stable version**: N/A
 
 **Editors**
 

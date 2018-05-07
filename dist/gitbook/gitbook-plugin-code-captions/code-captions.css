@@ -1,0 +1,12 @@
+div.code-caption {
+  /* Page break management */
+  page-break-inside: avoid;
+}
+
+div.code-caption > span.code-caption-text {
+  background-color: rgba(0,0,0,0.07);
+  padding: 2px 8px;
+	display: inline-block;
+  font-size: .85em;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
