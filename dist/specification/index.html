@@ -193,6 +193,12 @@
 <p>By providing a specification for the file-and-folder layout on disk, the <a href="../GLOSSARY.html#ocfl" class="glossary-term" title="The Oxford Common File Layout.">OCFL</a> is an attempt at reducing, or even eliminating, the need for these transitions. As an application-independent specification, conforming applications will natively &apos;understand&apos; the underlying file structure without needing to first transition these contents to their own format.</p>
 <h2 id="13-scope">1.3 Scope</h2>
 <h2 id="14-terminology">1.4 Terminology</h2>
+<p>Consult the glossary for further definitions.</p>
+<dl>
+    <dt>base directory</dt>
+    <dd>The root directory of an <a href="../GLOSSARY.html#ocfl" class="glossary-term" title="The Oxford Common File Layout.">OCFL</a> Object.</dd>
+</dl>
+
 <h1 id="2-structure">2. Structure</h1>
 <h2 id="21-the-ocfl-object">2.1 The OCFL Object</h2>
 <p>An <a href="../GLOSSARY.html#ocfl" class="glossary-term" title="The Oxford Common File Layout.">OCFL</a> Object is a base directory that contains a set of required and optional files and folders.</p>
@@ -210,7 +216,13 @@
 <p>The version declaration MUST be an empty file in the base directory of the object giving the <a href="../GLOSSARY.html#ocfl" class="glossary-term" title="The Oxford Common File Layout.">OCFL</a> object version in the filename. This MUST be formatted with a leading zero-equals (0=), &apos;ocfl_object&apos;, and the version number. A regular expression intended to validate this name is provided below.</p>
 <div class="code-caption"><span class="code-caption-text">Example filename as version declaration</span><pre><code>0=ocfl_object_1.0
 </code></pre></div><div class="code-caption"><span class="code-caption-text"><a href="../GLOSSARY.html#ocfl" class="glossary-term" title="The Oxford Common File Layout.">OCFL</a> Version File Regex for validation</span><pre><code>^0=ocfl_object_[\d]+.[\d]+$
-</code></pre></div><h2 id="24-object-versioning">2.4 Object Versioning</h2>
+</code></pre></div><h2 id="2x-object-identity">2.X Object Identity</h2>
+<p>An <a href="../GLOSSARY.html#ocfl" class="glossary-term" title="The Oxford Common File Layout.">OCFL</a> Object MUST have a unique ID. The scope of this &quot;uniqueness&quot; can be either global, or local The <a href="../GLOSSARY.html#ocfl" class="glossary-term" title="The Oxford Common File Layout.">OCFL</a> Object MUST also &quot;wear&quot; this identifier by using it as the name of the base directory of the object.</p>
+<p>When choosing an object identity scheme, consideration should be given to the likelihood of identifier collision in the near, or distant, future. Some identifier schemes, such as accession numbering (object-1, object-2, etc.) have a very high probability of identifier collision, while others, such as UUIDs, have an extremely low probability.</p>
+<h3 id="2xx-special-characters-in-identifiers">2.X.X Special Characters in Identifiers</h3>
+<p>Some identifier schemes (e.g., ARKs and DOIs) have characters in them that are reserved as special characters on some filesystems. This includes colons (&quot;:&quot;) and both forward (&quot;/&quot;) and back (&quot;\&quot;) slashes.</p>
+<p><a href="../GLOSSARY.html#ocfl" class="glossary-term" title="The Oxford Common File Layout.">OCFL</a> Objects MUST NOT contain these reserved characters in their base directory name, but MAY contain them in their &quot;@id&quot; property in the <code>inventory.jsonld</code> file.</p>
+<h2 id="2x-object-versioning">2.X Object Versioning</h2>
 <p><a href="../GLOSSARY.html#ocfl" class="glossary-term" title="The Oxford Common File Layout.">OCFL</a> Objects are versioned. They provide object versioning through a combination of version directories and an <code>inventory.jsonld</code> file, which describes the contents of each version.</p>
 <p><a href="../GLOSSARY.html#ocfl" class="glossary-term" title="The Oxford Common File Layout.">OCFL</a> Objects are &apos;forward-delta&apos; versioned [REF]. The original structure of the object is contained in the first version. Later versions of the object will store only the content that is changed from the previous versions. Reconstructing the latest version of the object means constructing the current contents of the object through all previous versions.</p>
 <p>The <code>inventory.jsonld</code> tracks all known files in the <a href="../GLOSSARY.html#ocfl" class="glossary-term" title="The Oxford Common File Layout.">OCFL</a> Object, along with a SHA512 digest of that object&apos;s contents. Version information is tracked in the <code>inventory.jsonld</code> file in a list of digests for the files that are part of a given version. </p>
@@ -222,9 +234,10 @@
 </ol>
 <p>The most recent version of an object may be referred to as the &apos;HEAD&apos;, following the conventions of version control software.</p>
 <h3 id="xxx-version-immutability">X.X.X Version Immutability</h3>
-<p>An <a href="../GLOSSARY.html#ocfl" class="glossary-term" title="The Oxford Common File Layout.">OCFL</a> Object Version is immutable.</p>
+<p>An <a href="../GLOSSARY.html#ocfl" class="glossary-term" title="The Oxford Common File Layout.">OCFL</a> Object Version is immutable. This immutability means that once content has been accessioned and inventoried, content in the version folders MUST NOT change, except in exceptional circumstances.</p>
+<p>The one exception to this is the addition of the <code>inventory.jsonld</code> file to a version folder when a new version is created. See section X.X.X.X for further information about this.</p>
 <h4 id="xxxx-exceptional-circumstances">X.X.X.X Exceptional Circumstances</h4>
-<p>In some exceptional circumstances, digital content may need to be deaccessioned from an <a href="../GLOSSARY.html#ocfl" class="glossary-term" title="The Oxford Common File Layout.">OCFL</a> object. This should be considered an act of destruction, and should not be part of day-to-date operations. Cases where this may be permissible include exposure of sensitive personal information (e.g., medical records), or hosting contents for which the institution has no rights (e.g., copyright infringement).</p>
+<p>In some exceptional circumstances, digital content may need to be deaccessioned from an <a href="../GLOSSARY.html#ocfl" class="glossary-term" title="The Oxford Common File Layout.">OCFL</a> object. This should be considered an act of destruction, and should not be part of day-to-day operations. Cases where this may be permissible include exposure of sensitive personal information (e.g., medical records), or hosting contents for which the institution has no rights (e.g., copyright infringement).</p>
 <p>The forward-versioning scheme used in <a href="../GLOSSARY.html#ocfl" class="glossary-term" title="The Oxford Common File Layout.">OCFL</a> makes file deletion difficult, as the most recent version of the object depends on all previous versions. Permanently removing files from previous versions may cause problems in ensuring the object&apos;s integrity.</p>
 <p>In the case where only some files within the object are being deaccessioned, a full version history rewrite should be performed. This might consist of:</p>
 <ol>
@@ -233,7 +246,7 @@
 <li>Copy only the non-offending files back to the version 1 folder.</li>
 <li>Proceed as if the object were newly accessioned (e.g., populate inventory files with SHA512 digests, etc.)</li>
 </ol>
-<p>Depending on when in the object&apos;s history the offending content was accessioned, it may also be possible to &apos;roll back&apos; an object&apos;s history to the version prior, and reconstruct the object from there. But implementers should be aware that this would still mean losing the object&apos;s history past that point.</p>
+<p>Depending on when in the object&apos;s history the offending content was accessioned, it may also be possible to &apos;roll back&apos; an object&apos;s history to the version prior, and reconstruct the object from there. Implementers should be aware that this would still mean losing the object&apos;s history past that point.</p>
 <p>It is NOT permissible for an <a href="../GLOSSARY.html#ocfl" class="glossary-term" title="The Oxford Common File Layout.">OCFL</a> Client to provide support for &apos;excising&apos; files from an object, as this may have unintended consequences. For example, excising a file from a version folder containing only that file would lead to an empty version folder, which is not permitted.</p>
 <h3 id="xxx-version-folders">X.X.X Version Folders</h3>
 <h4 id="xxxx-version-folder-naming">X.X.X.X Version Folder Naming</h4>
@@ -243,6 +256,8 @@
 <p>The only exception to this is that a copy of the <code>inventory.jsonld</code> file MUST be placed in the root of a version folder as a record of the state of the object at that version. This only applies when that folder no longer represents the most recent version of the object.</p>
 <h4 id="xxxx-empty-version-folders">X.X.X.X Empty Version Folders</h4>
 <p>Empty version folders are not permitted. This implies, also, that an <a href="../GLOSSARY.html#ocfl" class="glossary-term" title="The Oxford Common File Layout.">OCFL</a> Object is non-conformant to the specification if it does not at least have one version.</p>
+<h4 id="xxxx-symbolic-links-and-aliases">X.X.X.X Symbolic links and aliases</h4>
+<p>An <a href="../GLOSSARY.html#ocfl" class="glossary-term" title="The Oxford Common File Layout.">OCFL</a> Object MUST NOT contain any symbolic links or file aliases. Links will invalidate the digest and versioning mechanisms.</p>
 <h3 id="242-inventory">2.4.2 Inventory</h3>
 <h4 id="xxxx-inventoryjsonld">X.X.X.X inventory.jsonld</h4>
 <p>An <a href="../GLOSSARY.html#ocfl" class="glossary-term" title="The Oxford Common File Layout.">OCFL</a> Object MUST have a file called <code>inventory.jsonld</code> in the base directory.</p>
@@ -283,6 +298,25 @@
 <p>No particular log file format is specified. Implementers may wish to consider complementary specifications like <a href="../GLOSSARY.html#premis" class="glossary-term" title="PREMIS definition and specification. See: PREMIS Specification">PREMIS</a> or PROV-O for capturing loggable events.</p>
 <h3 id="2xx-logs-and-versions">2.X.X Logs and Versions</h3>
 <p>Additions to the logs directory are NOT versionable events. A version of the object MUST NOT be created if the only action is to add a record to the logs directory.</p>
+<h1 id="25-ocfl-object-collections">2.5 OCFL Object Collections</h1>
+<p>Collections of <a href="../GLOSSARY.html#ocfl" class="glossary-term" title="The Oxford Common File Layout.">OCFL</a> Objects will be stored on filesystem, or filesystem-like, storage environments. This might include a direct-attached disk (e.g., an internal hard-drive) or a network disk (e.g., shared over NFS or SMB), but can also include newer object storage platforms (e.g., cloud services such as Amazon S3 or self-hosted, such as Minio).</p>
+<h2 id="25x-collection-root">2.5.X Collection Root</h2>
+<p>An <a href="../GLOSSARY.html#ocfl" class="glossary-term" title="The Oxford Common File Layout.">OCFL</a> Object Collection MUST have a single root directory. This may be in the top-level directory of a filesystem (e.g, &quot;/&quot; or &quot;D:\&quot;), or it may be in a sub-directory of a filesystem.</p>
+<h3 id="25xx-collection-root-basic-structure">2.5.X.X Collection Root Basic Structure</h3>
+<p>collection-root
+&#x2514;&#x2500;&#x2500; 0=ocfl_1.0</p>
+<h3 id="25xx-self-description-of-ocfl-object-collection-roots">2.5.X.X Self-description of OCFL Object Collection Roots</h3>
+<p>An <a href="../GLOSSARY.html#ocfl" class="glossary-term" title="The Oxford Common File Layout.">OCFL</a> Object Collection Root MUST contain a <a href="../GLOSSARY.html#namaste" class="glossary-term" title="&quot;Name-as-text&quot;. A file-naming convention that supports primitive directory-level metadata, exposed directly as a filename. See: NAMASTE Specification">Namaste</a> file signifying it is an <a href="../GLOSSARY.html#ocfl" class="glossary-term" title="The Oxford Common File Layout.">OCFL</a> Object Collection. This MUST be formatted with a leading zero-equals (0=), &apos;<a href="../GLOSSARY.html#ocfl" class="glossary-term" title="The Oxford Common File Layout.">ocfl</a>&apos;, and the version number. A regular expression intended to validate this name is provided below.</p>
+<div class="code-caption"><span class="code-caption-text">Example filename as version declaration</span><pre><code>0=ocfl_1.0
+</code></pre></div><div class="code-caption"><span class="code-caption-text"><a href="../GLOSSARY.html#ocfl" class="glossary-term" title="The Oxford Common File Layout.">OCFL</a> Version File Regex for validation</span><pre><code>^0=ocfl_[\d]+.[\d]+$
+</code></pre></div><p>It is important to recognize that <a href="../GLOSSARY.html#ocfl" class="glossary-term" title="The Oxford Common File Layout.">OCFL</a> Objects MAY have self-described versions (Section 2.X.X) that differ from the version expressed in the <a href="../GLOSSARY.html#ocfl" class="glossary-term" title="The Oxford Common File Layout.">OCFL</a> Collection Root.</p>
+<h2 id="25x-object-storage-within-collections">2.5.X Object Storage within Collections</h2>
+<p>An <a href="../GLOSSARY.html#ocfl" class="glossary-term" title="The Oxford Common File Layout.">OCFL</a> Object MUST have a unique identifier (See Section 2.X.X)</p>
+<h2 id="25x-content-organization-within-collection-roots">2.5.X Content Organization within Collection Roots</h2>
+<p>Content organization within collection roots is largely outside of the scope of these specifications, as they will be governed by choices on storage technology and local practices. This section should therefore be read as non-normative, intended to provide clarification and best-practices, rather than specification.</p>
+<h3 id="25xx-pairtree-implementations">2.5.X.X PairTree Implementations</h3>
+<p>A common pattern in disk storage implementation is to use &quot;<a href="../GLOSSARY.html#pairtree" class="glossary-term" title="The PairTree specification. See: PairTree Specification">PairTree</a>&quot; to ensure a distributed weighting of directories so that no single folder has too many child folders. </p>
+<h3 id="25xx-object-storage-platforms">2.5.X.X Object Storage Platforms</h3>
 <h1 id="3-client-behaviours">3. Client Behaviours</h1>
 
                                 
@@ -327,7 +361,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Specification","level":"1.2","depth":1,"next":{"title":"References","level":"1.3","depth":1,"path":"REFERENCES.md","ref":"REFERENCES.md","articles":[]},"previous":{"title":"Front matter","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchorjs","code-captions"],"pluginsConfig":{"anchorjs":{"selector":"h2,h3,h4,h5","placement":"right","visible":"hover","truncate":64,"ariaLabel":"Anchor"},"code-captions":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"specification/README.md","mtime":"2018-05-07T17:51:04.452Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-07T17:52:36.083Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Specification","level":"1.2","depth":1,"next":{"title":"References","level":"1.3","depth":1,"path":"REFERENCES.md","ref":"REFERENCES.md","articles":[]},"previous":{"title":"Front matter","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchorjs","code-captions"],"pluginsConfig":{"anchorjs":{"selector":"h2,h3,h4,h5","placement":"right","visible":"hover","truncate":64,"ariaLabel":"Anchor"},"code-captions":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"specification/README.md","mtime":"2018-05-08T10:32:36.712Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-08T11:24:56.438Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
