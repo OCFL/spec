@@ -112,7 +112,7 @@ In the case where only some files within the object are being deaccessioned, a f
 3. Copy only the non-offending files back to the version 1 folder.
 4. Proceed as if the object were newly accessioned (e.g., populate inventory files with SHA512 digests, etc.)
 
-Depending on when in the object's history the offending content was accessioned, it may also be possible to 'roll back' an object's history to the version prior, and reconstruct the object from there. But implementers should be aware that this would still mean losing the object's history past that point.
+Depending on when in the object's history the offending content was accessioned, it may also be possible to 'roll back' an object's history to the version prior, and reconstruct the object from there. Implementers should be aware that this would still mean losing the object's history past that point.
 
 It is NOT permissible for an OCFL Client to provide support for 'excising' files from an object, as this may have unintended consequences. For example, excising a file from a version folder containing only that file would lead to an empty version folder, which is not permitted.
 
