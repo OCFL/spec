@@ -21,6 +21,13 @@ By providing a specification for the file-and-folder layout on disk, the OCFL is
 
 ## 1.4 Terminology
 
+Consult the glossary for further definitions.
+
+<dl>
+    <dt>base directory</dt>
+    <dd>The root directory of an OCFL Object.</dd>
+</dl>
+
 # 2. Structure
 
 ## 2.1 The OCFL Object
