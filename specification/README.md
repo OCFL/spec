@@ -197,4 +197,52 @@ No particular log file format is specified. Implementers may wish to consider co
 
 Additions to the logs directory are NOT versionable events. A version of the object MUST NOT be created if the only action is to add a record to the logs directory.
 
+# 2.5 OCFL Object Collections
+
+Collections of OCFL Objects will be stored on filesystem, or filesystem-like, storage environments. This might include a direct-attached disk (e.g., an internal hard-drive) or a network disk (e.g., shared over NFS or SMB), but can also include newer object storage platforms (e.g., cloud services such as Amazon S3 or self-hosted, such as Minio).
+
+## 2.5.X Collection Root
+
+An OCFL Object Collection MUST have a single root directory. This may be in the top-level directory of a filesystem (e.g, "/" or "D:\"), or it may be in a sub-directory of a filesystem.
+
+### 2.5.X.X Collection Root Basic Structure
+
+collection-root
+└── 0=ocfl_1.0
+
+### 2.5.X.X Self-description of OCFL Object Collection Roots
+
+An OCFL Object Collection Root MUST contain a Namaste file signifying it is an OCFL Object Collection. This MUST be formatted with a leading zero-equals (0=), 'ocfl', and the version number. A regular expression intended to validate this name is provided below.
+
+!CAPTION Example filename as version declaration
+```
+0=ocfl_1.0
+```
+
+!CAPTION OCFL Version File Regex for validation
+```
+^0=ocfl_[\d]+.[\d]+$
+```
+
+It is important to recognize that OCFL Objects MAY have self-described versions (Section 2.X.X) that differ from the version expressed in the OCFL Collection Root.
+
+## 2.5.X Object Storage within Collections
+
+An OCFL Object MUST have a unique identifier (See Section 2.X.X)
+
+## 2.5.X Content Organization within Collection Roots
+
+Content organization within collection roots is largely outside of the scope of these specifications, as they will be governed by choices on storage technology and local practices. This section should therefore be read as non-normative, intended to provide clarification and best-practices, rather than specification.
+
+### 2.5.X.X PairTree Implementations
+
+A common pattern in disk storage implementation is to use "PairTree" to ensure a distributed weighting of directories so that no single folder has too many child folders. 
+
+### 2.5.X.X Object Storage Platforms
+
+
+
+
 # 3. Client Behaviours
+
+
