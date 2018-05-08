@@ -65,7 +65,19 @@ The version declaration MUST be an empty file in the base directory of the objec
 ^0=ocfl_object_[\d]+.[\d]+$
 ```
 
-## 2.4 Object Versioning
+## 2.X Object Identity
+
+An OCFL Object MUST have a unique ID. The scope of this "uniqueness" can be either global, or local The OCFL Object MUST also "wear" this identifier by using it as the name of the base directory of the object.
+
+When choosing an object identity scheme, consideration should be given to the likelihood of identifier collision in the near, or distant, future. Some identifier schemes, such as accession numbering (object-1, object-2, etc.) have a very high probability of identifier collision, while others, such as UUIDs, have an extremely low probability.
+
+### 2.X.X Special Characters in Identifiers
+
+Some identifier schemes (e.g., ARKs and DOIs) have characters in them that are reserved as special characters on some filesystems. This includes colons (":") and both forward ("/") and back ("\") slashes.
+
+OCFL Objects MUST NOT contain these reserved characters in their base directory name, but MAY contain them in their "@id" property in the `inventory.jsonld` file.
+
+## 2.X Object Versioning
 
 OCFL Objects are versioned. They provide object versioning through a combination of version directories and an `inventory.jsonld` file, which describes the contents of each version.
 
