@@ -76,11 +76,13 @@ The most recent version of an object may be referred to as the 'HEAD', following
 
 ### X.X.X Version Immutability
 
-An OCFL Object Version is immutable.
+An OCFL Object Version is immutable. This immutability means that once content has been accessioned and inventoried, content in the version folders MUST NOT change, except in exceptional circumstances.
+
+The one exception to this is the addition of the `inventory.jsonld` file to a version folder when a new version is created. See section X.X.X.X for further information about this.
 
 #### X.X.X.X Exceptional Circumstances
 
-In some exceptional circumstances, digital content may need to be deaccessioned from an OCFL object. This should be considered an act of destruction, and should not be part of day-to-date operations. Cases where this may be permissible include exposure of sensitive personal information (e.g., medical records), or hosting contents for which the institution has no rights (e.g., copyright infringement).
+In some exceptional circumstances, digital content may need to be deaccessioned from an OCFL object. This should be considered an act of destruction, and should not be part of day-to-day operations. Cases where this may be permissible include exposure of sensitive personal information (e.g., medical records), or hosting contents for which the institution has no rights (e.g., copyright infringement).
 
 The forward-versioning scheme used in OCFL makes file deletion difficult, as the most recent version of the object depends on all previous versions. Permanently removing files from previous versions may cause problems in ensuring the object's integrity.
 
