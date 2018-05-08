@@ -132,6 +132,10 @@ The only exception to this is that a copy of the `inventory.jsonld` file MUST be
 
 Empty version folders are not permitted. This implies, also, that an OCFL Object is non-conformant to the specification if it does not at least have one version.
 
+#### X.X.X.X Symbolic links and aliases
+
+An OCFL Object MUST NOT contain any symbolic links or file aliases. Links will invalidate the digest and versioning mechanisms.
+
 ### 2.4.2 Inventory
 
 #### X.X.X.X inventory.jsonld
