@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Fedora API Specification</title>
+    <title>Oxford Common File Layout Specification</title>
     <meta charset='utf-8'>
     <meta name="description" content="Oxford Common File Layout Specification">
-    <script src='https://www.w3.org/Tools/respec/respec-w3c-common'
+    <script src='./respec-w3c-common.js'
             async class='remove'></script>
     <script class='remove'>
         var respecConfig = {
@@ -85,8 +85,22 @@
     <section id="abstract" class="informative">
         <h2>Introduction</h2>
         <p>
-            Introduction
+            The Oxford Common File Layout (OCFL) is a file-and-folder hierarchy designed to promote long-term, application-independent file management best practices within digital repositories.
         </p>
+        <p>
+            This specification covers two principle areas:
+        </p>
+        <ol>
+            <li>Structure. A normative specification of the nature of an OCFL Object (the "object-at-rest");</li>
+            <li>2. Client Behaviours. A set of recommendations for how OCFL Objects should be acted upon (the "object-in-motion")</li>
+        </ol>
+
+        <section id="need">
+            <h2>Need</h2>
+            <p>The OCFL initiative arose from a need to have well-defined application-independent file management within digital repositories.</p>
+            <p>A general observation is that the contents of a digital repository -- that is, the digital files and metadata that an institution might wish to manage -- are largely stable. Once content has been accessioned, it is unlikely to change significantly over its lifetime. This is in contrast to the software applications that manage these contents, which are ephemeral, requiring constant updating and replacement. Thus, transitions between application-specific methods of file management to support software upgrades and replacement cycles can be seen as unnecessary and risky change, changing the long-term stable objects to support the short-term, ephemeral software.</p>
+            <p>By providing a specification for the file-and-folder layout on disk, the OCFL is an attempt at reducing, or even eliminating, the need for these transitions. As an application-independent specification, conforming applications will natively 'understand' the underlying file structure without needing to first transition these contents to their own format.</p>
+        </section>
     </section>
     <section id='sotd'>
         <p>
