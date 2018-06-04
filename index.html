@@ -145,8 +145,20 @@
     <section id='basic-structure'>
         <h2>Basic Structure</h2>
         <p>
-            A basic OCFL Object Structure
+            The basic OCFL Object structure has a minimal set of files and folders necessary to support data storage
+            and object validation. The minimum required is shown in the following figure:
         </p>
+        <pre>
+[object_root]
+    ├── 0=ocfl_object_1.0
+    ├── inventory.jsonld
+    ├── inventory.jsonld.sha512
+    ├── logs
+    │   └── .keep
+    └── v1
+        ├── inventory.jsonld
+        └── inventory.jsonld.sha512
+        </pre>
     </section>
 
     <section id='version-declaration'>
