@@ -17,7 +17,7 @@
  
 ## Latest editors draft
 
-[https://ocfl.github.io/spec/](https://ocfl.github.io/spec/)
+[https://ocfl.io/](https://ocfl.io/)
  
 ## Communication Channels
 
