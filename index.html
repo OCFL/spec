@@ -207,6 +207,47 @@
 
   <section id='digest-algorithm-choice'>
     <h2>Digest Algorithm Choice</h2>
+    <p>
+        Hashing plays two roles in an OCFL Object. The first is that it allows for 
+        content-addressable storage; that is, for a file to be addressed by its contents,
+        rather than its filename. The second is that it provides for fixity checks to determine whether a file has become corrupt through hardware degradation or malicious actors.
+    </p>
+    <p>
+        The default, and RECOMMENDED choice for hashing algorithm choice in OCFL is SHA512.
+        The choice of SHA512 recognizes that it has no known collision vulnerabilities and
+        is less computationally intensive to compute than SHA256.
+    </p>
+    <p>
+        However, it is acknowledged that this may be a significant barrier for legacy content migration and consistency. Implementors may thus choose from the following list of hashing algorithms:
+    </p>
+    <p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Algorithm</th>
+                    <th>Note</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>md5</td>
+                    <td>Insecure. Use only for legacy content.</td>
+                </tr>
+                <tr>
+                    <td>sha1</td>
+                    <td>Insecure. Use only for legacy content.</td>
+                </tr>
+                <tr>
+                    <td>sha256</td>
+                    <td>Non-truncated only; note performance implications.</td>
+                </tr>
+            </tbody>
+        </table>
+    </p>
+    <p>
+        Implementers MAY wish to store their file hashes in a system external to their OCFL
+        object stores at the point of ingest, to further safeguard against the possibility of malicious manipulation of file contents and checksums.
+    </p>
   </section>
 
   <section id='object-manifest'>
