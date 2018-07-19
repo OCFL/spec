@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <title>Oxford Common File Layout Specification</title>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta name="description" content="Oxford Common File Layout Specification">
-    <script src='./respec-w3c-common.js'
-            async class='remove'></script>
-    <script class='remove'>
+    <script src="./respec-w3c-common.js"
+            async class="remove"></script>
+    <script class="remove">
         var respecConfig = {
             specStatus: "unofficial",
             shortName: "ocfl-spec",
@@ -34,7 +34,7 @@
                 },
                 {
                     name: "Simeon Warner",
-	            url: "https://orcid.org/0000-0002-7970-7855", 
+                    url: "https://orcid.org/0000-0002-7970-7855",
                     company: "Cornell University",
                     companyURL: "https://www.library.cornell.edu/"
                 },
@@ -83,7 +83,7 @@
                 width: 307,
                 height: 307
             }],
-            overrideCopyright: "<p class='copyright'>This document is licensed under a <a class='subfoot' href='https://creativecommons.org/licenses/by/4.0/' rel='license'>Creative Commons Attribution 4.0 License</a>.</p>"
+            overrideCopyright: '<p class="copyright">This document is licensed under a <a class="subfoot" href="https://creativecommons.org/licenses/by/4.0/" rel="license">Creative Commons Attribution 4.0 License</a>.</p>'
         };
     </script>
     <style>
@@ -99,9 +99,9 @@
 <section id="abstract" class="informative">
     <h2>Introduction</h2>
     <p>
-      This Oxford Common File Layout (OCFL) specification describes an application-independent approach to the
-      storage of digital information in a structured, transparent, and predictable manner. It is designed to
-      promote long-term object management best practices within digital repositories.
+        This Oxford Common File Layout (OCFL) specification describes an application-independent approach to the storage
+        of digital information in a structured, transparent, and predictable manner. It is designed to promote long-term
+        object management best practices within digital repositories.
     </p>
     <p>
         This specification covers two principle areas:
@@ -115,25 +115,25 @@
     <section id="need">
         <h2>Need</h2>
         <p>The OCFL initiative arose from a need to have well-defined application-independent file management within
-            digital repositories.</p>
+           digital repositories.</p>
         <p>A general observation is that the contents of a digital repository -- that is, the digital files and metadata
-            that an institution might wish to manage -- are largely stable. Once content has been accessioned, it is
-            unlikely to change significantly over its lifetime. This is in contrast to the software applications that
-            manage these contents, which are ephemeral, requiring constant updating and replacement. Thus, transitions
-            between application-specific methods of file management to support software upgrades and replacement cycles
-            can be seen as unnecessary and risky change, changing the long-term stable objects to support the
-            short-term, ephemeral software.</p>
+           that an institution might wish to manage -- are largely stable. Once content has been accessioned, it is
+           unlikely to change significantly over its lifetime. This is in contrast to the software applications that
+           manage these contents, which are ephemeral, requiring constant updating and replacement. Thus, transitions
+           between application-specific methods of file management to support software upgrades and replacement cycles
+           can be seen as unnecessary and risky change, changing the long-term stable objects to support the short-term,
+           ephemeral software.</p>
         <p>By providing a specification for the file-and-folder layout on disk, the OCFL is an attempt at reducing, or
-            even eliminating, the need for these transitions. As an application-independent specification, conforming
-            applications will natively 'understand' the underlying file structure without needing to first transition
-            these contents to their own format.</p>
+           even eliminating, the need for these transitions. As an application-independent specification, conforming
+           applications will natively 'understand' the underlying file structure without needing to first transition
+           these contents to their own format.</p>
     </section>
 </section>
 
-<section id='sotd'>
+<section id="sotd">
 </section>
 
-<section id='conformance'>
+<section id="conformance">
     <p></p>
 </section>
 
@@ -144,16 +144,16 @@
 <section id="object-spec">
     <h2>Object Specification</h2>
     <p>
-      An OCFL Object is a group of one or more content bitstreams (data and metadata), and their administrative
-      information that are together identified by a URI. The object may contain a sequence of versions of the
-      bitstreams that represent the evolution of the object's contents.
+        An OCFL Object is a group of one or more content bitstreams (data and metadata), and their administrative
+        information that are together identified by a URI. The object may contain a sequence of versions of the
+        bitstreams that represent the evolution of the object's contents.
     </p>
 
-    <section id='basic-structure'>
+    <section id="basic-structure">
         <h2>Basic Structure</h2>
         <p>
-            The basic OCFL Object structure has a minimal set of files and folders necessary to support data storage
-            and object validation. The minimum required is shown in the following figure:
+            The basic OCFL Object structure has a minimal set of files and folders necessary to support data storage and
+            object validation. The minimum required is shown in the following figure:
         </p>
         <pre>
 [object_root]
@@ -168,157 +168,161 @@
         </pre>
     </section>
 
-    <section id='object-conformance-declaration'>
-      <h2>Object Conformance Declaration</h2>
-      <p>
-        The version declaration MUST be an empty file in the base directory of the object giving the OCFL object
-        version in the filename. The filename MUST be constructed with a leading zero-equals (<code>0=</code>)
-        string, the string <code>ocfl_object_</code>, followed by the OCFL specification version number. For
-        example <code>0=ocfl_object_1.0</code> for version 1.0 of this specification.
-      </p>
+    <section id="object-conformance-declaration">
+        <h2>Object Conformance Declaration</h2>
+        <p>
+            The version declaration MUST be an empty file in the base directory of the object giving the OCFL object
+            version in the filename. The filename MUST be constructed with a leading zero-equals (<code>0=</code>)
+            string, the string <code>ocfl_object_</code>, followed by the OCFL specification version number. For example
+            <code>0=ocfl_object_1.0</code> for version 1.0 of this specification.
+        </p>
     </section>
 
-    <section id='logs-directory'>
-      <h2>Logs Directory</h2>
+    <section id="logs-directory">
+        <h2>Logs Directory</h2>
     </section>
 
-    <section id='top-level-inventory'>
-      <h2>Top-level Inventory</h2>
+    <section id="top-level-inventory">
+        <h2>Top-level Inventory</h2>
 
-      <section id='top-level-inventory-checksum'>
-        <h2>Top-level Inventory Checksum</h2>
-      </section>
+        <section id="top-level-inventory-checksum">
+            <h2>Top-level Inventory Checksum</h2>
+        </section>
     </section>
 
-    <section id='versions-directories'>
-      <h2>Versions Directories</h2>
-      <p>
-	OCFL object content is stored as a sequence of one or more versions. Each object version is stored in a version
-	directory under the object root. The sequence of version numbers is the sequence of positive integers: 1, 2, 3, etc.,
-	and the version directory name is constructed by adding the prefix <code>v</code>.
-      </p>
-      <p>
-	It is RECOMMENDED that implementations use version directory names constructed without zero-padding the version
-	number, ie. <code>v1</code>, <code>v2</code>, <code>v3</code>, etc..
-      </p>
-      <p>
-	For compatibility with existing filesystem conventions, implementations MAY use zero-padded version numbers,
-	with the following restriction: If zero-padded version numbers are used then they MUST start with a zero. For example,
-	in an implementation that uses five digits the version directory names <code>v00001</code> to <code>v09999</code> are
-	allowed, <code>v10000</code> is not allowed.
-      </p>
-      <p>
-	The first version of an object defines the naming convention for all versions of the object. All versions of an object
-	MUST use the same naming convention: either a non-padded version number, or a zero-padded version number of consistent
-	length. Operations that add a new version to an object MUST follow the directory naming convention established by earlier
-	versions. In all cases, references to files inside version directories from inventory files MUST use the actual version
-	directory names.
-      </p>
+    <section id="versions-directories">
+        <h2>Versions Directories</h2>
+        <p>
+            OCFL object content is stored as a sequence of one or more versions. Each object version is stored in a
+            version directory under the object root. The sequence of version numbers is the sequence of positive
+            integers: 1, 2, 3, etc., and the version directory name is constructed by adding the prefix <code>v</code>.
+        </p>
+        <p>
+            It is RECOMMENDED that implementations use version directory names constructed without zero-padding the
+            version number, ie. <code>v1</code>, <code>v2</code>, <code>v3</code>, etc..
+        </p>
+        <p>
+            For compatibility with existing filesystem conventions, implementations MAY use zero-padded version numbers,
+            with the following restriction: If zero-padded version numbers are used then they MUST start with a zero.
+            For example, in an implementation that uses five digits the version directory names <code>v00001</code> to
+            <code>v09999</code> are allowed, <code>v10000</code> is not allowed.
+        </p>
+        <p>
+            The first version of an object defines the naming convention for all versions of the object. All versions of
+            an object MUST use the same naming convention: either a non-padded version number, or a zero-padded version
+            number of consistent length. Operations that add a new version to an object MUST follow the directory naming
+            convention established by earlier versions. In all cases, references to files inside version directories
+            from inventory files MUST use the actual version directory names.
+        </p>
     </section>
 </section>
 
-<section id='inventory'>
-  <h2>OCFL Object Inventory</h2>
+<section id="inventory">
+    <h2>OCFL Object Inventory</h2>
 
-  <section id='inventory-structure'>
-    <h2>Basic Structure</h2>
-  </section>
+    <section id="inventory-structure">
+        <h2>Basic Structure</h2>
+    </section>
 
-  <section id='digest-algorithm-choice'>
-    <h2>Digest Algorithm Choice</h2>
-    <p>
-        Hashing plays two roles in an OCFL Object. The first is that it allows for 
-        content-addressable storage; that is, for a file to be addressed by its contents,
-        rather than its filename. The second is that it provides for fixity checks to determine whether a file has become corrupt through hardware degradation or malicious actors.
-    </p>
-    <p>
-        OCFL Objects SHOULD use SHA512 by default. The choice of SHA512 recognizes that it has no known collision vulnerabilities and is less computationally intensive to compute than SHA256.
-    </p>
-    <p>
-        However, it is acknowledged that this may be a significant barrier for legacy content migration and consistency. Implementors may thus choose from the following list of hashing algorithms:
-    </p>
-    <p>
+    <section id="digest-algorithm-choice">
+        <h2>Digest Algorithm Choice</h2>
+        <p>
+            Hashing plays two roles in an OCFL Object. The first is that it allows for content-addressable storage; that
+            is, for a file to be addressed by its contents, rather than its filename. The second is that it provides for
+            fixity checks to determine whether a file has become corrupt through hardware degradation or malicious
+            actors.
+        </p>
+        <p>
+            OCFL Objects SHOULD use SHA512 by default. The choice of SHA512 recognizes that it has no known collision
+            vulnerabilities and is less computationally intensive to compute than SHA256.
+        </p>
+        <p>
+            However, it is acknowledged that this may be a significant barrier for legacy content migration and
+            consistency. Implementors may thus choose from the following list of hashing algorithms:
+        </p>
         <table>
             <thead>
-                <tr>
-                    <th>Algorithm</th>
-                    <th>Note</th>
-                </tr>
+            <tr>
+                <th>Algorithm</th>
+                <th>Note</th>
+            </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>md5</td>
-                    <td>Insecure. Use only for legacy content.</td>
-                </tr>
-                <tr>
-                    <td>sha1</td>
-                    <td>Insecure. Use only for legacy content.</td>
-                </tr>
-                <tr>
-                    <td>sha256</td>
-                    <td>Non-truncated only; note performance implications.</td>
-                </tr>
-                <tr>
-                    <td>sha512</td>
-                    <td>Default choice. Non-truncated forms only.</td>
-                </tr>
+            <tr>
+                <td>md5</td>
+                <td>Insecure. Use only for legacy content.</td>
+            </tr>
+            <tr>
+                <td>sha1</td>
+                <td>Insecure. Use only for legacy content.</td>
+            </tr>
+            <tr>
+                <td>sha256</td>
+                <td>Non-truncated only; note performance implications.</td>
+            </tr>
+            <tr>
+                <td>sha512</td>
+                <td>Default choice. Non-truncated forms only.</td>
+            </tr>
             </tbody>
         </table>
-    </p>
-    <p>
-        Implementers MAY wish to store their file hashes in a system external to their OCFL
-        object stores at the point of ingest, to further safeguard against the possibility of malicious manipulation of file contents and checksums.
-    </p>
-  </section>
+        <p>
+            Implementers MAY wish to store their file hashes in a system external to their OCFL object stores at the point
+            of ingest, to further safeguard against the possibility of malicious manipulation of file contents and
+            checksums.
+        </p>
+    </section>
 
-  <section id='digest-sidecar-file'>
-    <h2>Digest Sidecar File</h2>
-    <p>
-        Every occurrence of an inventory file MUST have an accompanying sidecar file stating its checksum. This sidecar file must be of the form <pre>inventory.jsonld.HASHALG</pre>, where <pre>HASHALG</pre> follows the chosen hashing
-        algorithm for the object. An example might be <pre>inventory.jsonld.sha512</pre>.
-    </p>
-    <p>
-        The digest sidecar file MUST contain the hash of the inventory file. This MUST follow the format <pre>CHECKSUM inventory.jsonld</pre>; that is, the hash of the inventory file, a single space, and the name of the file being checksummed.
-    </p>
-    <p>
-        The hash of the inventory MUST be computed only after all changes to the inventory 
-        have been made, so this sidecar file SHOULD be created as the last step in the versioning process.
-    </p>
-  </section>
+    <section id="digest-sidecar-file">
+        <h2>Digest Sidecar File</h2>
+        <p>
+            Every occurrence of an inventory file MUST have an accompanying sidecar file stating its checksum. This
+            sidecar file must be of the form <code>inventory.jsonld.HASHALG</code>, where <code>HASHALG</code> follows
+            the chosen hashing algorithm for the object. An example might be <code>inventory.jsonld.sha512</code>.
+        </p>
+        <p>
+            The digest sidecar file MUST contain the hash of the inventory file. This MUST follow the format
+            <code>CHECKSUM inventory.jsonld</code>; that is, the hash of the inventory file, a single space, and the
+            name of the file being checksummed.
+        </p>
+        <p>
+            The hash of the inventory MUST be computed only after all changes to the inventory have been made, so this
+            sidecar file SHOULD be created as the last step in the versioning process.
+        </p>
+    </section>
 
-  <section id='object-manifest'>
-    <h2>Object Manifest</h2>
-  </section>
+    <section id="object-manifest">
+        <h2>Object Manifest</h2>
+    </section>
 
-  <section id='object-versions'>
-    <h2>Object Versions</h2>
-  </section>
+    <section id="object-versions">
+        <h2>Object Versions</h2>
+    </section>
 </section>
 
-<section id='storage-root'>
-  <h2>Storage Root</h2>
+<section id="storage-root">
+    <h2>Storage Root</h2>
 
-  <section id='root-conformance-declaration'>
-    <h2>Root Conformance Declaration</h2>
-  </section>
+    <section id="root-conformance-declaration">
+        <h2>Root Conformance Declaration</h2>
+    </section>
 </section>
 
-<section id='examples' class="informative">
-  <h2>Examples</h2>
+<section id="examples" class="informative">
+    <h2>Examples</h2>
 
-  <section id='example-minimal-object'>
-    <h2>Minimal Object</h2>
-  </section>
+    <section id="example-minimal-object">
+        <h2>Minimal Object</h2>
+    </section>
 
-  <section id='example-moab-in-ocfl'>
-    <h2>Moab in OCFL Object</h2>
-  </section>
+    <section id="example-moab-in-ocfl">
+        <h2>Moab in OCFL Object</h2>
+    </section>
 </section>
 
 <section id="implementation">
     <h2>Implementation Considerations</h2>
 </section>
-
 
 
 </body>
