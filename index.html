@@ -180,6 +180,17 @@
 
     <section id="logs-directory">
         <h2>Logs Directory</h2>
+        <p>
+            The base directory of the object MUST contain a logs directory, which MAY be empty. Implementers SHOULD use
+            this for storing files that log any actions taken on the object. Since these logs may be subject to local
+            standards adherence needs, the format of these logs is considered out-of-scope for the OCFL Object. However,
+            clients operating on the object SHOULD log actions here that are not otherwise captured.
+        </p>
+        <p>
+            The purpose of the logs directory is to provide implementers with a location for storing local information
+            about the object that may not necessarily be part of the object itself, and to expand on the processable
+            information that can be found in the object's inventory.
+        </p>
     </section>
 
     <section id="top-level-inventory">
