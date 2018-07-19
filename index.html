@@ -144,10 +144,29 @@
 <section id="object-spec">
     <h2>Object Specification</h2>
     <p>
-        An OCFL Object is a group of one or more content bitstreams (data and metadata), and their administrative
-        information that are together identified by a URI. The object may contain a sequence of versions of the
-        bitstreams that represent the evolution of the object's contents.
+        An OCFL Object is a group of one or more files, directories, and administrative
+        information, that are together identified by a URI. The object may contain a sequence of versions of the
+        files that represent the evolution of the object's contents.
     </p>
+    <p>
+        A file is defined as a content bitstream that can be stored and transmitted. Directories (also called "folders")
+        allow for the organization of files into tree-like hierarchies. The content of an OCFL Object is the files and
+        directories that are stored <i>within</i> the hierarchy layout provided as part of the spec.
+    </p>
+    <p>
+        The administrative information is specific to OCFL Objects. Implementers of OCFL are strongly encouraged to
+        store their own metadata serializations as files in an OCFL Object, but, in the context of the OCFL Specification
+        these are considered to be part of the contents of an OCFL Object.
+    </p>
+    <p>
+        An OCFL Object is therefore:
+    </p>
+    <ol>
+        <li>A conceptual gathering of all files (data and metadata), folders, and their changes over time which together
+            form the digital representation of a complete intellectual endeavour (i.e., content); and</li>
+        <li>A file and folder layout and administrative information on a storage medium that provides a defined structure
+            for the storage of this content, and through which these files and their changes may be understood (i.e., structure).</li>
+    </ol>
 
     <section id="basic-structure">
         <h2>Basic Structure</h2>
