@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <title>Oxford Common File Layout Specification</title>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta name="description" content="Oxford Common File Layout Specification">
-    <script src='./respec-w3c-common.js'
-            async class='remove'></script>
-    <script class='remove'>
+    <script src="./respec-w3c-common.js"
+            async class="remove"></script>
+    <script class="remove">
         var respecConfig = {
             specStatus: "unofficial",
             shortName: "ocfl-spec",
@@ -34,7 +34,7 @@
                 },
                 {
                     name: "Simeon Warner",
-	            url: "https://orcid.org/0000-0002-7970-7855", 
+                    url: "https://orcid.org/0000-0002-7970-7855",
                     company: "Cornell University",
                     companyURL: "https://www.library.cornell.edu/"
                 },
@@ -99,9 +99,9 @@
 <section id="abstract" class="informative">
     <h2>Introduction</h2>
     <p>
-      This Oxford Common File Layout (OCFL) specification describes an application-independent approach to the
-      storage of digital information in a structured, transparent, and predictable manner. It is designed to
-      promote long-term object management best practices within digital repositories.
+        This Oxford Common File Layout (OCFL) specification describes an application-independent approach to the storage
+        of digital information in a structured, transparent, and predictable manner. It is designed to promote long-term
+        object management best practices within digital repositories.
     </p>
     <p>
         This specification covers two principle areas:
@@ -130,10 +130,10 @@
     </section>
 </section>
 
-<section id='sotd'>
+<section id="sotd">
 </section>
 
-<section id='conformance'>
+<section id="conformance">
     <p></p>
 </section>
 
@@ -144,16 +144,16 @@
 <section id="object-spec">
     <h2>Object Specification</h2>
     <p>
-      An OCFL Object is a group of one or more content bitstreams (data and metadata), and their administrative
-      information that are together identified by a URI. The object may contain a sequence of versions of the
-      bitstreams that represent the evolution of the object's contents.
+        An OCFL Object is a group of one or more content bitstreams (data and metadata), and their administrative
+        information that are together identified by a URI. The object may contain a sequence of versions of the
+        bitstreams that represent the evolution of the object's contents.
     </p>
 
-    <section id='basic-structure'>
+    <section id="basic-structure">
         <h2>Basic Structure</h2>
         <p>
-            The basic OCFL Object structure has a minimal set of files and folders necessary to support data storage
-            and object validation. The minimum required is shown in the following figure:
+            The basic OCFL Object structure has a minimal set of files and folders necessary to support data storage and
+            object validation. The minimum required is shown in the following figure:
         </p>
         <pre>
 [object_root]
@@ -168,100 +168,98 @@
         </pre>
     </section>
 
-    <section id='object-conformance-declaration'>
-      <h2>Object Conformance Declaration</h2>
-      <p>
-        The version declaration MUST be an empty file in the base directory of the object giving the OCFL object
-        version in the filename. The filename MUST be constructed with a leading zero-equals (<code>0=</code>)
-        string, the string <code>ocfl_object_</code>, followed by the OCFL specification version number. For
-        example <code>0=ocfl_object_1.0</code> for version 1.0 of this specification.
-      </p>
+    <section id="object-conformance-declaration">
+        <h2>Object Conformance Declaration</h2>
+        <p>
+            The version declaration MUST be an empty file in the base directory of the object giving the OCFL object
+            version in the filename. The filename MUST be constructed with a leading zero-equals (<code>0=</code>)
+            string, the string <code>ocfl_object_</code>, followed by the OCFL specification version number. For example
+            <code>0=ocfl_object_1.0</code> for version 1.0 of this specification.
+        </p>
     </section>
 
-    <section id='logs-directory'>
-      <h2>Logs Directory</h2>
+    <section id="logs-directory">
+        <h2>Logs Directory</h2>
     </section>
 
-    <section id='top-level-inventory'>
-      <h2>Top-level Inventory</h2>
+    <section id="top-level-inventory">
+        <h2>Top-level Inventory</h2>
 
-      <section id='top-level-inventory-checksum'>
-        <h2>Top-level Inventory Checksum</h2>
-      </section>
+        <section id="top-level-inventory-checksum">
+            <h2>Top-level Inventory Checksum</h2>
+        </section>
     </section>
 
-    <section id='versions-directories'>
-      <h2>Versions Directories</h2>
-      <p>
-	OCFL object content is stored as a sequence of one or more versions. Each object version is stored in a version
-	directory under the object root. The sequence of version numbers is the sequence of positive integers: 1, 2, 3, etc.,
-	and the version directory name is constructed by adding the prefix <code>v</code>.
-      </p>
-      <p>
-	It is RECOMMENDED that implementations use version directory names constructed without zero-padding the version
-	number, ie. <code>v1</code>, <code>v2</code>, <code>v3</code>, etc..
-      </p>
-      <p>
-	For compatibility with existing filesystem conventions, implementations MAY use zero-padded version numbers,
-	with the following restriction: If zero-padded version numbers are used then they MUST start with a zero. For example,
-	in an implementation that uses five digits the version directory names <code>v00001</code> to <code>v09999</code> are
-	allowed, <code>v10000</code> is not allowed.
-      </p>
-      <p>
-	The first version of an object defines the naming convention for all versions of the object. All versions of an object
-	MUST use the same naming convention: either a non-padded version number, or a zero-padded version number of consistent
-	length. Operations that add a new version to an object MUST follow the directory naming convention established by earlier
-	versions. In all cases, references to files inside version directories from inventory files MUST use the actual version
-	directory names.
-      </p>
+    <section id="versions-directories">
+        <h2>Versions Directories</h2>
+        <p>
+            OCFL object content is stored as a sequence of one or more versions. Each object version is stored in a
+            version directory under the object root. The sequence of version numbers is the sequence of positive
+            integers: 1, 2, 3, etc., and the version directory name is constructed by adding the prefix <code>v</code>.
+        </p>
+        <p>
+            Implementations SHOULD use version directory names constructed without zero-padding the
+            version number, ie. <code>v1</code>, <code>v2</code>, <code>v3</code>, etc..
+        </p>
+        <p>
+            For compatibility with existing filesystem conventions, implementations MAY use zero-padded version numbers,
+            with the following restriction: If zero-padded version numbers are used then they MUST start with a zero.
+            For example, in an implementation that uses five digits the version directory names <code>v00001</code> to
+            <code>v09999</code> are allowed, <code>v10000</code> is not allowed.
+        </p>
+        <p>
+            The first version of an object defines the naming convention for all versions of the object. All versions of
+            an object MUST use the same naming convention: either a non-padded version number, or a zero-padded version
+            number of consistent length. Operations that add a new version to an object MUST follow the directory naming
+            convention established by earlier versions. In all cases, references to files inside version directories
+            from inventory files MUST use the actual version directory names.
+        </p>
     </section>
 </section>
 
-<section id='inventory'>
-  <h2>OCFL Object Inventory</h2>
+<section id="inventory">
+    <h2>OCFL Object Inventory</h2>
 
-  <section id='inventory-structure'>
-    <h2>Basic Structure</h2>
-  </section>
+    <section id="inventory-structure">
+        <h2>Basic Structure</h2>
+    </section>
 
-  <section id='digest-algorithm-choice'>
-    <h2>Digest Algorithm Choice</h2>
-  </section>
+    <section id="digest-algorithm-choice">
+        <h2>Digest Algorithm Choice</h2>
+    </section>
 
-  <section id='object-manifest'>
-    <h2>Object Manifest</h2>
-  </section>
+    <section id="object-manifest">
+        <h2>Object Manifest</h2>
+    </section>
 
-  <section id='object-versions'>
-    <h2>Object Versions</h2>
-  </section>
+    <section id="object-versions">
+        <h2>Object Versions</h2>
+    </section>
 </section>
 
-<section id='storage-root'>
-  <h2>Storage Root</h2>
+<section id="storage-root">
+    <h2>Storage Root</h2>
 
-  <section id='root-conformance-declaration'>
-    <h2>Root Conformance Declaration</h2>
-  </section>
+    <section id="root-conformance-declaration">
+        <h2>Root Conformance Declaration</h2>
+    </section>
 </section>
 
-<section id='examples' class="informative">
-  <h2>Examples</h2>
+<section id="examples" class="informative">
+    <h2>Examples</h2>
 
-  <section id='example-minimal-object'>
-    <h2>Minimal Object</h2>
-  </section>
+    <section id="example-minimal-object">
+        <h2>Minimal Object</h2>
+    </section>
 
-  <section id='example-moab-in-ocfl'>
-    <h2>Moab in OCFL Object</h2>
-  </section>
+    <section id="example-moab-in-ocfl">
+        <h2>Moab in OCFL Object</h2>
+    </section>
 </section>
 
 <section id="implementation">
     <h2>Implementation Considerations</h2>
 </section>
-
-
 
 </body>
 </html>
