@@ -170,6 +170,12 @@
 
     <section id='object-conformance-declaration'>
       <h2>Object Conformance Declaration</h2>
+      <p>
+        The version declaration MUST be an empty file in the base directory of the object giving the OCFL object
+        version in the filename. The filename MUST be constructed with a leading zero-equals (<code>0=</code>)
+        string, the string <code>ocfl_object_</code>, followed by the OCFL specification version number. For
+        example <code>0=ocfl_object_1.0</code> for version 1.0 of this specification.
+      </p>
     </section>
 
     <section id='logs-directory'>
@@ -187,14 +193,6 @@
     <section id='versions-directories'>
       <h2>Versions Directories</h2>
 
-      <section id='version-declaration'>
-          <h2>Version declaration</h2>
-          <p>
-              The version declaration MUST be an empty file in the base directory of the object giving the OCFL object
-              version in the filename. This MUST be formatted with a leading zero-equals (0=), 'ocfl_object', and the version number.
-              A regular expression intended to validate this name is provided below.
-          </p>
-      </section>
     </section>
 </section>
 
