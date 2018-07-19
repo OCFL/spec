@@ -213,9 +213,7 @@
         rather than its filename. The second is that it provides for fixity checks to determine whether a file has become corrupt through hardware degradation or malicious actors.
     </p>
     <p>
-        The default, and RECOMMENDED choice for hashing algorithm choice in OCFL is SHA512.
-        The choice of SHA512 recognizes that it has no known collision vulnerabilities and
-        is less computationally intensive to compute than SHA256.
+        OCFL Objects SHOULD use SHA512 by default. The choice of SHA512 recognizes that it has no known collision vulnerabilities and is less computationally intensive to compute than SHA256.
     </p>
     <p>
         However, it is acknowledged that this may be a significant barrier for legacy content migration and consistency. Implementors may thus choose from the following list of hashing algorithms:
