@@ -228,6 +228,21 @@
     <h2>Digest Algorithm Choice</h2>
   </section>
 
+  <section id='digest-sidecar-file'>
+    <h2>Digest Sidecar File</h2>
+    <p>
+        Every occurrence of an inventory file MUST have an accompanying sidecar file stating its checksum. This sidecar file must be of the form <pre>inventory.jsonld.HASHALG</pre>, where <pre>HASHALG</pre> follows the chosen hashing
+        algorithm for the object. An example might be <pre>inventory.jsonld.sha512</pre>.
+    </p>
+    <p>
+        The digest sidecar file MUST contain the hash of the inventory file. This MUST follow the format <pre>CHECKSUM inventory.jsonld</pre>; that is, the hash of the inventory file, a single space, and the name of the file being checksummed.
+    </p>
+    <p>
+        The hash of the inventory MUST be computed only after all changes to the inventory 
+        have been made, so this sidecar file SHOULD be created as the last step in the versioning process.
+    </p>
+  </section>
+
   <section id='object-manifest'>
     <h2>Object Manifest</h2>
   </section>
