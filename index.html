@@ -83,7 +83,17 @@
                 width: 307,
                 height: 307
             }],
-            overrideCopyright: '<p class="copyright">This document is licensed under a <a class="subfoot" href="https://creativecommons.org/licenses/by/4.0/" rel="license">Creative Commons Attribution 4.0 License</a>.</p>'
+            overrideCopyright: '<p class="copyright">This document is licensed under a <a class="subfoot" href="https://creativecommons.org/licenses/by/4.0/" rel="license">Creative Commons Attribution 4.0 License</a>.</p>',
+            localBiblio: {
+                "NAMASTE": {
+                    title: "Directory Description with Namaste Tags",
+                    href: "https://confluence.ucop.edu/download/attachments/14254149/NamasteSpec.pdf",
+                    authors: [
+                        "J. Kunze"
+                    ],
+                    date: "9 November 2009"
+                }
+            }
         };
     </script>
     <style>
@@ -171,10 +181,11 @@
     <section id="object-conformance-declaration">
         <h2>Object Conformance Declaration</h2>
         <p>
-            The version declaration MUST be an empty file in the base directory of the object giving the OCFL object
-            version in the filename. The filename MUST be constructed with a leading zero-equals (<code>0=</code>)
-            string, the string <code>ocfl_object_</code>, followed by the OCFL specification version number. For example
-            <code>0=ocfl_object_1.0</code> for version 1.0 of this specification.
+            The version declaration MUST be formatted according to the [[!NAMASTE]] specification. It MUST be an empty
+            file in the base directory of the object giving the OCFL object version in the filename. The filename MUST
+            be constructed with a leading zero-equals (<code>0=</code>) string, the string <code>ocfl_object_</code>,
+            followed by the OCFL specification version number. For example <code>0=ocfl_object_1.0</code> for version
+            1.0 of this specification.
         </p>
     </section>
 
