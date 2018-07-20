@@ -1,0 +1,10 @@
+language: java
+jdk:
+  - oraclejdk8
+
+install:
+ - pip install --user html5validator
+
+script:
+ - html5validator --ignore "Section lacks heading"
+ - test `cut -c121- index.html | grep -vx "^$" | wc -l` -lt 2
