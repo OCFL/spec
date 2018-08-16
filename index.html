@@ -196,8 +196,8 @@
     <section id="top-level-inventory">
         <h2>Top-level Inventory</h2>
 
-        <section id="top-level-inventory-checksum">
-            <h2>Top-level Inventory Checksum</h2>
+        <section id="top-level-inventory-digest">
+            <h2>Top-level Inventory Digest</h2>
         </section>
     </section>
 
@@ -238,10 +238,10 @@
     <section id="digest-algorithm-choice">
         <h2>Digest Algorithm Choice</h2>
         <p>
-            Hashing plays two roles in an OCFL Object. The first is that it allows for content-addressable storage; that
-            is, for a file to be addressed by its contents, rather than its filename. The second is that it provides for
-            fixity checks to determine whether a file has become corrupt through hardware degradation or malicious
-            actors.
+            Digests play two roles in an OCFL Object. The first is that digests allow for content-addressable storage;
+            that is, for a file to be addressed by the digest of its contents, rather than its filename. The second is
+            that digests provide for fixity checks to determine whether a file has become corrupt through hardware
+            degradation or malicious actors.
         </p>
         <p>
             OCFL Objects SHOULD use SHA512 by default. The choice of SHA512 recognizes that it has no known collision
@@ -249,12 +249,12 @@
         </p>
         <p>
             However, it is acknowledged that this may be a significant barrier for legacy content migration and
-            consistency. Implementors may thus choose from the following list of hashing algorithms:
+            consistency. Implementors may thus choose from the following list of digest algorithms:
         </p>
         <table>
             <thead>
             <tr>
-                <th>Algorithm</th>
+                <th>Digest Algorithm</th>
                 <th>Note</th>
             </tr>
             </thead>
@@ -278,26 +278,26 @@
             </tbody>
         </table>
         <p>
-            Implementers MAY wish to store their file hashes in a system external to their OCFL object stores at the
+            Implementers MAY wish to store their file digests in a system external to their OCFL object stores at the
             point of ingest, to further safeguard against the possibility of malicious manipulation of file contents and
-            checksums.
+            digests.
         </p>
     </section>
 
     <section id="digest-sidecar-file">
         <h2>Digest Sidecar File</h2>
         <p>
-            Every occurrence of an inventory file MUST have an accompanying sidecar file stating its checksum. This
-            sidecar file must be of the form <code>inventory.jsonld.HASHALG</code>, where <code>HASHALG</code> follows
-            the chosen hashing algorithm for the object. An example might be <code>inventory.jsonld.sha512</code>.
+            Every occurrence of an inventory file MUST have an accompanying sidecar file stating its digest. This
+            sidecar file must be of the form <code>inventory.jsonld.ALGORITHM</code>, where <code>ALGORITHM</code> is
+            the chosen digest algorithm for the object. An example might be <code>inventory.jsonld.sha512</code>.
         </p>
         <p>
-            The digest sidecar file MUST contain the hash of the inventory file. This MUST follow the format
-            <code>CHECKSUM inventory.jsonld</code>; that is, the hash of the inventory file, a single space, and the
-            name of the file being checksummed.
+            The digest sidecar file MUST contain the digest of the inventory file. This MUST follow the format
+            <code>DIGEST inventory.jsonld</code>; that is, the digest of the inventory file, a single space, and the
+            name of the inventory file.
         </p>
         <p>
-            The hash of the inventory MUST be computed only after all changes to the inventory have been made, so this
+            The digest of the inventory MUST be computed only after all changes to the inventory have been made, so this
             sidecar file SHOULD be created as the last step in the versioning process.
         </p>
     </section>
