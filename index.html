@@ -83,7 +83,9 @@
                 width: 307,
                 height: 307
             }],
-            overrideCopyright: '<p class="copyright">This document is licensed under a <a class="subfoot" href="https://creativecommons.org/licenses/by/4.0/" rel="license">Creative Commons Attribution 4.0 License</a>.</p>',
+            overrideCopyright: '<p class="copyright">This document is licensed under a ' +
+                '<a class="subfoot" href="https://creativecommons.org/licenses/by/4.0/" rel="license">' +
+                'Creative Commons Attribution 4.0 License</a>.</p>',
             localBiblio: {
                 "NAMASTE": {
                     title: "Directory Description with Namaste Tags",
@@ -191,6 +193,24 @@
 
     <section id="logs-directory">
         <h2>Logs Directory</h2>
+        <p>
+            The base directory of the object MAY contain a logs directory, which MAY be empty. Implementers SHOULD use
+            this for storing files that contain a record of actions taken on the object. Since these logs may be subject
+            to local standards requirements, the format of these logs is considered out-of-scope for the OCFL Object.
+            Clients operating on the object MAY log actions here that are not otherwise captured.
+        </p>
+        <div class="note">
+            <p>
+                The purpose of the logs directory is to provide implementers with a location for storing local
+                information about actions to the object that may not necessarily be part of the object itself.
+            </p>
+            <p>
+                As an example, implementers may have different local requirements to store audit information for their
+                digital objects. Some may wish to store a log entry indicating that an audit was conducted, and
+                nothing was wrong, while others may wish to only store a log entry if an intervention was required.
+            </p>
+        </div>
+
     </section>
 
     <section id="top-level-inventory">
