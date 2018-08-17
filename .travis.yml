@@ -7,4 +7,4 @@ install:
 
 script:
  - html5validator --ignore "Section lacks heading"
- - test `cut -c121- index.html | grep -vx "^$" | wc -l` -lt 2
+ - test `cut -c121- index.html | grep -vx "^$" | wc -l` -eq 0
