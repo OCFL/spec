@@ -276,14 +276,15 @@
                 through hardware degradation or malicious actors.
             </p>
             <p>
-                OCFL Objects SHOULD use SHA512 by default. The choice of SHA512 recognizes that it has no known
-                collision vulnerabilities and is less computationally intensive to compute than SHA256.
+                OCFL Objects SHOULD use <code>sha512</code> by default. The choice of <code>sha512</code> recognizes
+                that it has no known collision vulnerabilities and is less computationally intensive to compute than
+                <code>sha256</code>.
             </p>
             <p>
                 However, it is acknowledged that this may be a significant barrier for legacy content migration and
                 consistency. Implementers may thus choose from the following list of digest algorithms:
             </p>
-            <table>
+            <table class="simple">
                 <thead>
                 <tr>
                     <th>Digest Algorithm</th>
@@ -292,20 +293,24 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>md5</td>
-                    <td>Insecure. Use only for legacy content.</td>
+                    <td><code>md5</code></td>
+                    <td>Insecure. Use only for legacy content. MD5 algorithm and encoding defined by
+                        [[!RFC1321]].</td>
                 </tr>
                 <tr>
-                    <td>sha1</td>
-                    <td>Insecure. Use only for legacy content.</td>
+                    <td><code>sha1</code></td>
+                    <td>Insecure. Use only for legacy content. SHA-1 algorithm defined by [[!FIPS-180-4]] and MUST
+                        be encoded using base64 encoding [[!RFC4648]].</td>
                 </tr>
                 <tr>
-                    <td>sha256</td>
-                    <td>Non-truncated only; note performance implications.</td>
+                    <td><code>sha256</code></td>
+                    <td>Non-truncated only; note performance implications. SHA-256 algorithm defined by
+                        [[!FIPS-180-4]] and MUST be encoded using base64 encoding [[!RFC4648]].</td>
                 </tr>
                 <tr>
-                    <td>sha512</td>
-                    <td>Default choice. Non-truncated forms only.</td>
+                    <td><code>sha512</code></td>
+                    <td>Default choice. Non-truncated forms only. SHA-512 algorithm defined by [[!FIPS-180-4]] and
+                        MUST be encoded using base64 encoding [[!RFC4648]].</td>
                 </tr>
                 </tbody>
             </table>
