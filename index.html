@@ -174,8 +174,8 @@
     </p>
     <p>
         The administrative information is specific to OCFL Objects. Implementers of OCFL are strongly encouraged to
-        store their own metadata serializations as files in an OCFL Object, but, in the context of the OCFL Specification
-        these are considered to be part of the contents of an OCFL Object.
+        store their own metadata serializations as files in an OCFL Object, but, in the context of the OCFL
+        Specification these are considered to be part of the contents of an OCFL Object.
     </p>
     <p>
         An OCFL Object is therefore:
@@ -183,8 +183,9 @@
     <ol>
         <li>A conceptual gathering of all files (data and metadata), folders, and their changes over time which together
             form the digital representation of a complete intellectual endeavour (i.e., content); and</li>
-        <li>A file and folder layout and administrative information on a storage medium that provides a defined structure
-            for the storage of this content, and through which these files and their changes may be understood (i.e., structure).</li>
+        <li>A file and folder layout and administrative information on a storage medium that provides a defined
+            structure for the storage of this content, and through which these files and their changes may be understood
+            (i.e., structure).</li>
     </ol>
 
     <section id="basic-structure">
@@ -253,9 +254,9 @@
             <a href="context.jsonld"><code>https://ocfl.io/context.jsonld</code></a>.
         </p>
         <blockquote class="informative">
-            Non-normative note: The use of JSON-LD for inventory files means that they can be generated from and interpreted
-            as RDF, and provides some self-documentation. The fixed JSON structure means that they can also be generated and
-            read without requiring RDF and JSON-LD support.
+            Non-normative note: The use of JSON-LD for inventory files means that they can be generated from and
+            interpreted as RDF, and provides some self-documentation. The fixed JSON structure means that they can
+            also be generated and read without requiring RDF and JSON-LD support.
         </blockquote>
 
         <section id="inventory-structure">
@@ -265,14 +266,14 @@
         <section id="digest">
             <h2>Digest</h2>
             <p>
-                Digests play two roles in an OCFL Object. The first is that digests allow for content-addressable storage;
-                that is, for a file to be addressed by the digest of its contents, rather than its filename. The second is
-                that digests provide for fixity checks to determine whether a file has become corrupt through hardware
-                degradation or malicious actors.
+                Digests play two roles in an OCFL Object. The first is that digests allow for content-addressable
+                storage; that is, for a file to be addressed by the digest of its contents, rather than its filename.
+                The second is that digests provide for fixity checks to determine whether a file has become corrupt
+                through hardware degradation or malicious actors.
             </p>
             <p>
-                OCFL Objects SHOULD use SHA512 by default. The choice of SHA512 recognizes that it has no known collision
-                vulnerabilities and is less computationally intensive to compute than SHA256.
+                OCFL Objects SHOULD use SHA512 by default. The choice of SHA512 recognizes that it has no known
+                collision vulnerabilities and is less computationally intensive to compute than SHA256.
             </p>
             <p>
                 However, it is acknowledged that this may be a significant barrier for legacy content migration and
@@ -305,9 +306,9 @@
                 </tbody>
             </table>
             <p>
-                Implementers MAY wish to store their file digests in a system external to their OCFL object stores at the
-                point of ingest, to further safeguard against the possibility of malicious manipulation of file contents and
-                digests.
+                Implementers MAY wish to store their file digests in a system external to their OCFL object stores at
+                the point of ingest, to further safeguard against the possibility of malicious manipulation of file
+                contents and digests.
             </p>
         </section>
 
