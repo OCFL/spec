@@ -102,6 +102,14 @@
                         "Manu Sporny", "Dave Longley", "Gregg Kellogg", "Markus Lanthaler", "Niklas Lindström"
                    ],
                    date: "7 June 2018"
+                },
+                "Stop-Using-SHA-256": {
+                  title: "Stop Using SHA-256",
+                  href: "https://medium.com/@davidtstrauss/stop-using-sha-256-6adbb55c608",
+                  authors: [
+                    "David Timothy Strauss"
+                  ],
+                  date: "6 October 2017"
                 }
             }
         };
@@ -278,7 +286,7 @@
             <p>
                 OCFL Objects SHOULD use <code>sha512</code> by default. The choice of <code>sha512</code> recognizes
                 that it has no known collision vulnerabilities and is less computationally intensive to compute than
-                <code>sha256</code>.
+                <code>sha256</code>, [[Stop-Using-SHA-256]].
             </p>
             <p>
                 However, it is acknowledged that this may be a significant barrier for legacy content migration and
