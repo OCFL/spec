@@ -330,11 +330,13 @@
                 </tr>
                 </tbody>
             </table>
-            <p>
-                Implementers MAY also store copies of their file digests in a system external to their OCFL object
-                stores at the point of ingest, to further safeguard against the possibility of malicious manipulation
-                of file contents and digests.
-            </p>
+            <blockquote class="informative">
+              <p>
+                Non-normative: Implementers MAY also store copies of their file digests in a system external to their
+                OCFL object stores at the point of ingest, to further safeguard against the possibility of malicious
+                manipulation of file contents and digests.
+              </p>
+            </blockquote>
         </section>
 
         <section id="manifest">
@@ -377,17 +379,18 @@
             to local standards requirements, the format of these logs is considered out-of-scope for the OCFL Object.
             Clients operating on the object MAY log actions here that are not otherwise captured.
         </p>
-        <div class="note">
+        <blockquote class="informative">
             <p>
-                The purpose of the logs directory is to provide implementers with a location for storing local
-                information about actions to the object that may not necessarily be part of the object itself.
+                Non-normative note: The purpose of the logs directory is to provide implementers with a location for
+                storing local information about actions to the object that may not necessarily be part of the object
+                itself.
             </p>
             <p>
                 As an example, implementers may have different local requirements to store audit information for their
                 digital objects. Some may wish to store a log entry indicating that an audit was conducted, and
                 nothing was wrong, while others may wish to only store a log entry if an intervention was required.
             </p>
-        </div>
+        </blockquote>
 
     </section>
 </section>
