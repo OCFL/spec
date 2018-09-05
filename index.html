@@ -94,6 +94,14 @@
                         "J. Kunze"
                     ],
                     date: "9 November 2009"
+                },
+                "JSON-LD-1.1": {
+                   title: "JSON-LD 1.1: A JSON-based Serialization for Linked Data",
+                   href: "https://json-ld.org/spec/latest/json-ld/",
+                   authors: [
+                        "Manu Sporny", "Dave Longley", "Gregg Kellogg", "Markus Lanthaler", "Niklas Lindström"
+                   ],
+                   date: "7 June 2018"
                 }
             }
         };
@@ -250,6 +258,18 @@
 
 <section id="inventory">
     <h2>OCFL Object Inventory</h2>
+
+    <p>
+        An OCFL Object Inventory MUST follow the [[!JSON]] structure described in this section and MUST be named
+        <code>inventory.jsonld</code>. Furthermore, inventory files MUST conform to [[!JSON-LD-1.1]], MUST include
+        the JSON-LD <code>@context</code> value
+        <a href="context.jsonld"><code>https://ocfl.io/context.jsonld</code></a>.
+    </p>
+    <blockquote class="informative">
+        Non-normative note: The use of JSON-LD for inventory files means that they can be generated from and interpreted
+        as RDF, and provides some self-documentation. The fixed JSON structure means that they can also be generated and
+        read without requiring RDF and JSON-LD support.
+    </blockquote>
 
     <section id="inventory-structure">
         <h2>Basic Structure</h2>
