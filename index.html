@@ -242,6 +242,10 @@
             convention established by earlier versions. In all cases, references to files inside version directories
             from inventory files MUST use the actual version directory names.
         </p>
+        <p>
+            Empty directories within a version directory are not permitted. Otherwise empty directories MAY be
+            maintained by creating a <code>.keep</code> file within that directory.
+        </p>
     </section>
 
 
@@ -318,10 +322,6 @@
 
         <section id="versions">
             <h2>Versions</h2>
-            <p>
-                Empty directories within a version directory are not permitted. Otherwise empty directories MAY be
-                maintained by creating a <code>.keep</code> file within that directory.
-            </p>
         </section>
     </section>
 
