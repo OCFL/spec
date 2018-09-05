@@ -154,7 +154,6 @@
 </section>
 
 <section id="conformance">
-    <p></p>
 </section>
 
 <section id="terminology">
@@ -162,7 +161,7 @@
 </section>
 
 <section id="object-spec">
-    <h2>Object Specification</h2>
+    <h2>OCFL Object</h2>
     <p>
         An OCFL Object is a group of one or more files, directories, and administrative
         information, that are together identified by a URI. The object may contain a sequence of versions of the
@@ -175,8 +174,8 @@
     </p>
     <p>
         The administrative information is specific to OCFL Objects. Implementers of OCFL are strongly encouraged to
-        store their own metadata serializations as files in an OCFL Object, but, in the context of the OCFL Specification
-        these are considered to be part of the contents of an OCFL Object.
+        store their own metadata serializations as files in an OCFL Object, but, in the context of the OCFL
+        Specification these are considered to be part of the contents of an OCFL Object.
     </p>
     <p>
         An OCFL Object is therefore:
@@ -184,8 +183,9 @@
     <ol>
         <li>A conceptual gathering of all files (data and metadata), folders, and their changes over time which together
             form the digital representation of a complete intellectual endeavour (i.e., content); and</li>
-        <li>A file and folder layout and administrative information on a storage medium that provides a defined structure
-            for the storage of this content, and through which these files and their changes may be understood (i.e., structure).</li>
+        <li>A file and folder layout and administrative information on a storage medium that provides a defined
+            structure for the storage of this content, and through which these files and their changes may be understood
+            (i.e., structure).</li>
     </ol>
 
     <section id="basic-structure">
@@ -218,38 +218,8 @@
         </p>
     </section>
 
-    <section id="logs-directory">
-        <h2>Logs Directory</h2>
-        <p>
-            The base directory of the object MAY contain a logs directory, which MAY be empty. Implementers SHOULD use
-            this for storing files that contain a record of actions taken on the object. Since these logs may be subject
-            to local standards requirements, the format of these logs is considered out-of-scope for the OCFL Object.
-            Clients operating on the object MAY log actions here that are not otherwise captured.
-        </p>
-        <div class="note">
-            <p>
-                The purpose of the logs directory is to provide implementers with a location for storing local
-                information about actions to the object that may not necessarily be part of the object itself.
-            </p>
-            <p>
-                As an example, implementers may have different local requirements to store audit information for their
-                digital objects. Some may wish to store a log entry indicating that an audit was conducted, and
-                nothing was wrong, while others may wish to only store a log entry if an intervention was required.
-            </p>
-        </div>
-
-    </section>
-
-    <section id="top-level-inventory">
-        <h2>Top-level Inventory</h2>
-
-        <section id="top-level-inventory-digest">
-            <h2>Top-level Inventory Digest</h2>
-        </section>
-    </section>
-
-    <section id="versions-directories">
-        <h2>Versions Directories</h2>
+    <section id="version-directories">
+        <h2>Version Directories</h2>
         <p>
             OCFL object content is stored as a sequence of one or more versions. Each object version is stored in a
             version directory under the object root. The sequence of version numbers is the sequence of positive
@@ -273,78 +243,86 @@
             from inventory files MUST use the actual version directory names.
         </p>
     </section>
-</section>
 
-<section id="inventory">
-    <h2>OCFL Object Inventory</h2>
 
-    <p>
-        An OCFL Object Inventory MUST follow the [[!JSON]] structure described in this section and MUST be named
-        <code>inventory.jsonld</code>. Furthermore, inventory files MUST conform to [[!JSON-LD-1.1]], MUST include
-        the JSON-LD <code>@context</code> value
-        <a href="context.jsonld"><code>https://ocfl.io/context.jsonld</code></a>.
-    </p>
-    <blockquote class="informative">
-        Non-normative note: The use of JSON-LD for inventory files means that they can be generated from and interpreted
-        as RDF, and provides some self-documentation. The fixed JSON structure means that they can also be generated and
-        read without requiring RDF and JSON-LD support.
-    </blockquote>
+    <section id="inventory">
+        <h2>Inventory</h2>
+        <p>
+            An OCFL Object Inventory MUST follow the [[!JSON]] structure described in this section and MUST be named
+            <code>inventory.jsonld</code>. Furthermore, inventory files MUST conform to [[!JSON-LD-1.1]], MUST include
+            the JSON-LD <code>@context</code> value
+            <a href="context.jsonld"><code>https://ocfl.io/context.jsonld</code></a>.
+        </p>
+        <blockquote class="informative">
+            Non-normative note: The use of JSON-LD for inventory files means that they can be generated from and
+            interpreted as RDF, and provides some self-documentation. The fixed JSON structure means that they can
+            also be generated and read without requiring RDF and JSON-LD support.
+        </blockquote>
 
-    <section id="inventory-structure">
-        <h2>Basic Structure</h2>
+        <section id="inventory-structure">
+            <h2>Basic Structure</h2>
+        </section>
+
+        <section id="digest">
+            <h2>Digest</h2>
+            <p>
+                Digests play two roles in an OCFL Object. The first is that digests allow for content-addressable
+                storage; that is, for a file to be addressed by the digest of its contents, rather than its filename.
+                The second is that digests provide for fixity checks to determine whether a file has become corrupt
+                through hardware degradation or malicious actors.
+            </p>
+            <p>
+                OCFL Objects SHOULD use SHA512 by default. The choice of SHA512 recognizes that it has no known
+                collision vulnerabilities and is less computationally intensive to compute than SHA256.
+            </p>
+            <p>
+                However, it is acknowledged that this may be a significant barrier for legacy content migration and
+                consistency. Implementers may thus choose from the following list of digest algorithms:
+            </p>
+            <table>
+                <thead>
+                <tr>
+                    <th>Digest Algorithm</th>
+                    <th>Note</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>md5</td>
+                    <td>Insecure. Use only for legacy content.</td>
+                </tr>
+                <tr>
+                    <td>sha1</td>
+                    <td>Insecure. Use only for legacy content.</td>
+                </tr>
+                <tr>
+                    <td>sha256</td>
+                    <td>Non-truncated only; note performance implications.</td>
+                </tr>
+                <tr>
+                    <td>sha512</td>
+                    <td>Default choice. Non-truncated forms only.</td>
+                </tr>
+                </tbody>
+            </table>
+            <p>
+                Implementers MAY wish to store their file digests in a system external to their OCFL object stores at
+                the point of ingest, to further safeguard against the possibility of malicious manipulation of file
+                contents and digests.
+            </p>
+        </section>
+
+        <section id="manifest">
+            <h2>Manifest</h2>
+        </section>
+
+        <section id="versions">
+            <h2>Versions</h2>
+        </section>
     </section>
 
-    <section id="digest-algorithm-choice">
-        <h2>Digest Algorithm Choice</h2>
-        <p>
-            Digests play two roles in an OCFL Object. The first is that digests allow for content-addressable storage;
-            that is, for a file to be addressed by the digest of its contents, rather than its filename. The second is
-            that digests provide for fixity checks to determine whether a file has become corrupt through hardware
-            degradation or malicious actors.
-        </p>
-        <p>
-            OCFL Objects SHOULD use SHA512 by default. The choice of SHA512 recognizes that it has no known collision
-            vulnerabilities and is less computationally intensive to compute than SHA256.
-        </p>
-        <p>
-            However, it is acknowledged that this may be a significant barrier for legacy content migration and
-            consistency. Implementers may thus choose from the following list of digest algorithms:
-        </p>
-        <table>
-            <thead>
-            <tr>
-                <th>Digest Algorithm</th>
-                <th>Note</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>md5</td>
-                <td>Insecure. Use only for legacy content.</td>
-            </tr>
-            <tr>
-                <td>sha1</td>
-                <td>Insecure. Use only for legacy content.</td>
-            </tr>
-            <tr>
-                <td>sha256</td>
-                <td>Non-truncated only; note performance implications.</td>
-            </tr>
-            <tr>
-                <td>sha512</td>
-                <td>Default choice. Non-truncated forms only.</td>
-            </tr>
-            </tbody>
-        </table>
-        <p>
-            Implementers MAY wish to store their file digests in a system external to their OCFL object stores at the
-            point of ingest, to further safeguard against the possibility of malicious manipulation of file contents and
-            digests.
-        </p>
-    </section>
-
-    <section id="digest-sidecar-file">
-        <h2>Digest Sidecar File</h2>
+    <section id="inventory-digest">
+        <h2>Inventory Digest</h2>
         <p>
             Every occurrence of an inventory file MUST have an accompanying sidecar file stating its digest. This
             sidecar file must be of the form <code>inventory.jsonld.ALGORITHM</code>, where <code>ALGORITHM</code> is
@@ -361,20 +339,47 @@
         </p>
     </section>
 
-    <section id="object-manifest">
-        <h2>Object Manifest</h2>
+
+    <section id="top-level-inventory">
+        <h2>Top-level Inventory and Inventory Digest</h2>
     </section>
 
-    <section id="object-versions">
-        <h2>Object Versions</h2>
+    <section id="logs-directory">
+        <h2>Logs Directory</h2>
+        <p>
+            The base directory of the object MAY contain a logs directory, which MAY be empty. Implementers SHOULD use
+            this for storing files that contain a record of actions taken on the object. Since these logs may be subject
+            to local standards requirements, the format of these logs is considered out-of-scope for the OCFL Object.
+            Clients operating on the object MAY log actions here that are not otherwise captured.
+        </p>
+        <div class="note">
+            <p>
+                The purpose of the logs directory is to provide implementers with a location for storing local
+                information about actions to the object that may not necessarily be part of the object itself.
+            </p>
+            <p>
+                As an example, implementers may have different local requirements to store audit information for their
+                digital objects. Some may wish to store a log entry indicating that an audit was conducted, and
+                nothing was wrong, while others may wish to only store a log entry if an intervention was required.
+            </p>
+        </div>
+
     </section>
 </section>
 
 <section id="storage-root">
-    <h2>Storage Root</h2>
+    <h2>OCFL Storage Root</h2>
 
     <section id="root-conformance-declaration">
         <h2>Root Conformance Declaration</h2>
+    </section>
+
+    <section id="root-structure">
+        <h2>Root Structure</h2>
+    </section>
+
+    <section id="root-extensions">
+        <h2>Extensions</h2>
     </section>
 </section>
 
@@ -385,15 +390,14 @@
         <h2>Minimal Object</h2>
     </section>
 
+    <section id="example-bagit-in-ocfl">
+        <h2>BagIt in an OCFL Object</h2>
+    </section>
+
     <section id="example-moab-in-ocfl">
-        <h2>Moab in OCFL Object</h2>
+        <h2>Moab in an OCFL Object</h2>
     </section>
 </section>
-
-<section id="implementation">
-    <h2>Implementation Considerations</h2>
-</section>
-
 
 </body>
 </html>
