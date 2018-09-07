@@ -463,9 +463,10 @@
                         <p>
                             The value of this key is a JSON object, containing a list of keys and values corresponding
                             to the <a>logical state</a> of the object at that version. The keys of this JSON object
-                            are <a>logical file path</a> names which correspond to the state of the
-                            OCFL Object at that version. The values of each key is a string containing a digest which
-                            MUST correspond to an entry in the <a href="#manifest">manifest of the inventory</a>.
+                            are digest values, each of which MUST correspond to an entry in the
+                            <a href="#manifest">manifest of the inventory</a>. The value for each key is an array
+                            containing <a>logical file path</a> names of files in the OCFL Object state that have
+                            content with the given digest.
                         </p>
                         <blockquote class="informative">
                             <p>
@@ -483,11 +484,30 @@
                                 may also, however, choose to accession a new file with a new name and same content as 
                                 a new version. See [[OCFL-Implementation-Notes]].
                             </p>
+                            <p>
+                                An example state object is shown below:
+                            </p>
+<pre>
+"state": {
+    "0f0d42...834": [ "image.tiff" ],
+    "e3b0c4...855": [ "empty.txt", "empty2.txt" ],
+    "f99d20...489": [ "metadata/foo.xml" ]
+}
+</pre>
+                            <p>
+                                This object describes a state with 4 files, two of which have the same content
+                                (<code>empty.txt</code> and <code>empty2.txt</code>), and one of which is in a
+                                sub-directory (<code>foo.xml</code>). The <a>logical state</a> shown as a tree
+                                is thus:
+                            </p>
+<pre>
+    ├── image.tiff
+    ├── empty.txt
+    ├── empty2.txt
+    └── metadata
+        └── foo.xml
+</pre>
                         </blockquote>
-                        <p>An example state object is shown below.</p>
-                        <pre>
-                            TBD
-                        </pre>
                     </dd>
                 </dl>
             </section>
