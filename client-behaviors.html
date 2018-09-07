@@ -180,7 +180,7 @@ However, this is not always possible. For example, complex objects with deep fil
 issues if they come a from fileystem that allows onger paths than are supported by the target OCFL system. In 
 this case, the decoupling between physical and logical file paths in OCFL allows the use of truncated paths 
 for storage while the full paths can be preserved in state block entries which are not length constrained.
-<p></p>
+</p><p>
 Another use case is importing content from other repository systems which renames file on ingest and stores 
 them in a flat hierarchy. These can be imported, as is, and the original paths and file names recorded through
 suitable state block entries rather than reconstructing a physical file layout. Of course, OCFL supports 
