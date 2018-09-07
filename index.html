@@ -302,6 +302,69 @@
         </p>
     </section>
 
+    <section id="digests">
+        <h2>Digests</h2>
+        <p>
+            Digests play two roles in an OCFL Object. The first is that digests allow for content-addressable
+            storage; that is, for a file to be addressed by the digest of its contents, rather than its filename.
+            The second is that digests provide for fixity checks to determine whether a file has become corrupt
+            through hardware degradation or malicious actors.
+        </p>
+        <p>
+            OCFL Objects SHOULD use <code>sha512</code> by default. The choice of <code>sha512</code> recognizes
+            that it has no known collision vulnerabilities and is less computationally intensive to compute than
+            <code>sha256</code>, [[Stop-Using-SHA-256]].
+        </p>
+        <p>
+            For content addressability OCFL Objects MUST use either <code>sha256</code> or <code>sha512</code>, to
+            reduce the likelihood of known digest collision vulnerabilities.
+        </p>
+        <p>
+            However, for legacy content migration and consistency implementers may choose from the following
+            list of digest algorithms for storing fixity values:
+        </p>
+        <table class="simple" id="digest-algorithms">
+            <thead>
+            <tr>
+                <th>Digest Algorithm</th>
+                <th>Note</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><code>md5</code></td>
+                <td>Insecure. Use only for legacy content. MD5 algorithm and encoding defined by
+                    [[!RFC1321]].</td>
+            </tr>
+            <tr>
+                <td><code>sha1</code></td>
+                <td>Insecure. Use only for legacy content. SHA-1 algorithm defined by [[!FIPS-180-4]] and MUST
+                    be encoded using base64 encoding [[!RFC4648]].</td>
+            </tr>
+            <tr>
+                <td><code>sha256</code></td>
+                <td>Non-truncated only; note performance implications. SHA-256 algorithm defined by
+                    [[!FIPS-180-4]] and MUST be encoded using base64 encoding [[!RFC4648]].</td>
+            </tr>
+            <tr>
+                <td><code>sha512</code></td>
+                <td>Default choice. Non-truncated forms only. SHA-512 algorithm defined by [[!FIPS-180-4]] and
+                    MUST be encoded using base64 encoding [[!RFC4648]].</td>
+            </tr>
+            </tbody>
+        </table>
+        <p>
+            An OCFL Inventory MAY contain a fixity section that can store one or more blocks containing fixity values
+            using multiple digest algorithms. See the <a href="#fixity">section on fixity</a> below for further details.
+        </p>
+        <blockquote class="informative">
+            <p>
+                Non-normative note: Implementers MAY also store copies of their file digests in a system external to
+                their OCFL object stores at the point of ingest, to further safeguard against the possibility of
+                malicious manipulation of file contents and digests.
+            </p>
+        </blockquote>
+    </section>
 
     <section id="inventory">
         <h2>Inventory</h2>
@@ -321,68 +384,32 @@
             <h2>Basic Structure</h2>
         </section>
 
-        <section id="digest">
-            <h2>Digest</h2>
-            <p>
-                Digests play two roles in an OCFL Object. The first is that digests allow for content-addressable
-                storage; that is, for a file to be addressed by the digest of its contents, rather than its filename.
-                The second is that digests provide for fixity checks to determine whether a file has become corrupt
-                through hardware degradation or malicious actors.
-            </p>
-            <p>
-                OCFL Objects SHOULD use <code>sha512</code> by default. The choice of <code>sha512</code> recognizes
-                that it has no known collision vulnerabilities and is less computationally intensive to compute than
-                <code>sha256</code>, [[Stop-Using-SHA-256]].
-            </p>
-            <p>
-                However, it is acknowledged that this may be a significant barrier for legacy content migration and
-                consistency. Implementers may thus choose from the following list of digest algorithms:
-            </p>
-            <table class="simple">
-                <thead>
-                <tr>
-                    <th>Digest Algorithm</th>
-                    <th>Note</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td><code>md5</code></td>
-                    <td>Insecure. Use only for legacy content. MD5 algorithm and encoding defined by
-                        [[!RFC1321]].</td>
-                </tr>
-                <tr>
-                    <td><code>sha1</code></td>
-                    <td>Insecure. Use only for legacy content. SHA-1 algorithm defined by [[!FIPS-180-4]] and MUST
-                        be encoded using base64 encoding [[!RFC4648]].</td>
-                </tr>
-                <tr>
-                    <td><code>sha256</code></td>
-                    <td>Non-truncated only; note performance implications. SHA-256 algorithm defined by
-                        [[!FIPS-180-4]] and MUST be encoded using base64 encoding [[!RFC4648]].</td>
-                </tr>
-                <tr>
-                    <td><code>sha512</code></td>
-                    <td>Default choice. Non-truncated forms only. SHA-512 algorithm defined by [[!FIPS-180-4]] and
-                        MUST be encoded using base64 encoding [[!RFC4648]].</td>
-                </tr>
-                </tbody>
-            </table>
-            <blockquote class="informative">
-              <p>
-                Non-normative note: Implementers MAY also store copies of their file digests in a system external to
-                their OCFL object stores at the point of ingest, to further safeguard against the possibility of
-                malicious manipulation of file contents and digests.
-              </p>
-            </blockquote>
-        </section>
-
         <section id="manifest">
             <h2>Manifest</h2>
         </section>
 
         <section id="versions">
             <h2>Versions</h2>
+        </section>
+
+        <section id="fixity">
+            <h2>Fixity</h2>
+            <p>
+                An OCFL Object inventory MAY include a block for storing fixity checks. This block MUST have the
+                key of <code>fixity</code> within the inventory.
+            </p>
+            <p>
+                The structure of the <code>fixity</code> section MUST contain a key corresponding to an
+                <a href="#digest-algorithms">approved digest algorithm</a>. The value of this key MUST follow the
+                structure of the <a href="#manifest"><code>manifest</code></a> section; that is, a key corresponding
+                to the digest value, and an array of file paths that match that digest.
+            </p>
+            <p>
+                An example fixity section is shown below.
+            </p>
+            <pre>
+TBD
+            </pre>
         </section>
     </section>
 
