@@ -466,12 +466,12 @@
                             </p>
                             <p>
                                 Notably, the version state can be used to provide de-duplication of content within
-                                the OCFL Object, by mapping multiple <a>logical file path</a>s to the same content 
-                                digestin the manifest. Implementers may choose to use this functionality on a 
-                                case-by-case basis. For example, they may choose to implement renaming (that is, 
-                                changes in file <i>name</i>, but not file <i>content</i>) by pointing a new logical 
+                                the OCFL Object, by mapping multiple <a>logical file path</a>s to the same content
+                                digestin the manifest. Implementers may choose to use this functionality on a
+                                case-by-case basis. For example, they may choose to implement renaming (that is,
+                                changes in file <i>name</i>, but not file <i>content</i>) by pointing a new logical
                                 file path to the digest for content that was added in a previous version. Implementers
-                                may also, however, choose to accession a new file with a new name and same content as 
+                                may also, however, choose to accession a new file with a new name and same content as
                                 a new version. See [[OCFL-Implementation-Notes]].
                             </p>
                             <p>
@@ -675,6 +675,179 @@ TBD
             OCFL inventory file. At this stage OCFL tools will be able to access all versions of the content
             originally preserved by Moab.
         </p>
+        <p>
+            Consider the following sample Moab object:
+        </p>
+<pre>
+.
+└── bj102hs9687
+    ├── v0001
+    │   ├── data
+    │   │   ├── content
+    │   │   │   ├── eric-smith-dissertation-augmented.pdf
+    │   │   │   └── eric-smith-dissertation.pdf
+    │   │   └── metadata
+    │   │       ├── contentMetadata.xml
+    │   │       ├── descMetadata.xml
+    │   │       ├── identityMetadata.xml
+    │   │       ├── provenanceMetadata.xml
+    │   │       ├── relationshipMetadata.xml
+    │   │       ├── rightsMetadata.xml
+    │   │       ├── technicalMetadata.xml
+    │   │       └── versionMetadata.xml
+    │   └── manifests
+    │       ├── fileInventoryDifference.xml
+    │       ├── manifestInventory.xml
+    │       ├── signatureCatalog.xml
+    │       ├── versionAdditions.xml
+    │       └── versionInventory.xml
+    ├── v0002
+    │   ├── data
+    │   │   └── metadata
+    │   │       ├── contentMetadata.xml
+    │   │       ├── embargoMetadata.xml
+    │   │       ├── events.xml
+    │   │       ├── identityMetadata.xml
+    │   │       ├── provenanceMetadata.xml
+    │   │       ├── relationshipMetadata.xml
+    │   │       ├── rightsMetadata.xml
+    │   │       ├── versionMetadata.xml
+    │   │       └── workflows.xml
+    │   └── manifests
+    │       ├── fileInventoryDifference.xml
+    │       ├── manifestInventory.xml
+    │       ├── signatureCatalog.xml
+    │       ├── versionAdditions.xml
+    │       └── versionInventory.xml
+    └── v0003
+        ├── data
+        │   └── metadata
+        │       ├── contentMetadata.xml
+        │       ├── descMetadata.xml
+        │       ├── embargoMetadata.xml
+        │       ├── events.xml
+        │       ├── identityMetadata.xml
+        │       ├── provenanceMetadata.xml
+        │       ├── rightsMetadata.xml
+        │       ├── technicalMetadata.xml
+        │       ├── versionMetadata.xml
+        │       └── workflows.xml
+        └── manifests
+            ├── fileInventoryDifference.xml
+            ├── manifestInventory.xml
+            ├── signatureCatalog.xml
+            ├── versionAdditions.xml
+            └── versionInventory.xml
+</pre>
+        <p>
+            An OCFL inventory that tracks the /data directory would include a manifest comprised as follows:
+        </p>
+<pre>
+"manifest": {
+	"197320...2e1":	 ["v0001/manifests/manifestInventory.xml"],
+	"a64b62...5c3":	 ["v0001/manifests/versionAdditions.xml"],
+	"794d5e...38b":	 ["v0001/manifests/signatureCatalog.xml"],
+	"a4d20f...b48":	 ["v0001/manifests/fileInventoryDifference.xml"],
+	"363785...bfb":	 ["v0001/manifests/versionInventory.xml"],
+	"98114a...588":	 ["v0001/data/content/eric-smith-dissertation-augmented.pdf"],
+	"7f3d87...15b":	 ["v0001/data/content/eric-smith-dissertation.pdf"],
+	"6d19f0...064":	 ["v0001/data/metadata/technicalMetadata.xml"],
+	"6e4be4...375":	 ["v0001/data/metadata/provenanceMetadata.xml"],
+	"d8a319...d0f":	 ["v0001/data/metadata/descMetadata.xml"],
+	"de823a...acc":	 ["v0001/data/metadata/rightsMetadata.xml"],
+	"080617...40c":	 ["v0001/data/metadata/identityMetadata.xml"],
+	"e15267...58d":	 ["v0001/data/metadata/versionMetadata.xml"],
+	"0d9e0b...9a2":	 ["v0001/data/metadata/contentMetadata.xml"],
+	"dd9289...31d":	 ["v0001/data/metadata/relationshipMetadata.xml"],
+	"f90947...11b":	 ["v0002/manifests/manifestInventory.xml"],
+	"bb3011...a58":	 ["v0002/manifests/versionAdditions.xml"],
+	"0dc4fc...f9f":	 ["v0002/manifests/signatureCatalog.xml"],
+	"2f1cf8...ea1":	 ["v0002/manifests/fileInventoryDifference.xml"],
+	"45b457...db5":	 ["v0002/manifests/versionInventory.xml"],
+	"7519c5...63f":	 ["v0002/data/metadata/provenanceMetadata.xml"],
+	"abda4c...622":	 ["v0002/data/metadata/workflows.xml"],
+	"76549e...b2b":	 ["v0002/data/metadata/rightsMetadata.xml"],
+	"bdc4d6...3b6":	 ["v0002/data/metadata/events.xml"],
+	"7b331c...f9b":	 ["v0002/data/metadata/identityMetadata.xml"],
+	"80ceac...b9c":	 ["v0002/data/metadata/versionMetadata.xml"],
+	"4853a2...fbe":	 ["v0002/data/metadata/contentMetadata.xml"],
+	"1d5090...f5f":	 ["v0002/data/metadata/relationshipMetadata.xml"],
+	"f209bf...ceb":	 ["v0002/data/metadata/embargoMetadata.xml"],
+	"04461b...5c6":	 ["v0003/manifests/manifestInventory.xml"],
+	"190103...20f":	 ["v0003/manifests/versionAdditions.xml"],
+	"24a84a...82d":	 ["v0003/manifests/signatureCatalog.xml"],
+	"5f4d52...7ef":	 ["v0003/manifests/fileInventoryDifference.xml"],
+	"2d7f8d...d67":	 ["v0003/manifests/versionInventory.xml"],
+	"dd9125...d4b":	 ["v0003/data/metadata/technicalMetadata.xml"],
+	"d9e177...477":	 ["v0003/data/metadata/provenanceMetadata.xml"],
+	"4f5908...4f5":	 ["v0003/data/metadata/workflows.xml"],
+	"e64db0...500":	 ["v0003/data/metadata/descMetadata.xml"],
+	"05fa51...818":	 ["v0003/data/metadata/rightsMetadata.xml"],
+	"d70dd8...5ad":	 ["v0003/data/metadata/events.xml"],
+	"509a2d...dc6":	 ["v0003/data/metadata/identityMetadata.xml"],
+	"548066...893":	 ["v0003/data/metadata/versionMetadata.xml"],
+	"93884e...aae":	 ["v0003/data/metadata/contentMetadata.xml"],
+	"4c5ab4...b02":	 ["v0003/data/metadata/embargoMetadata.xml"]
+}
+</pre>
+    <p>
+        The version 1 state block would look like this. Note the absence of the manifests/ directory.
+    </p>
+<pre>
+"state": {
+	"98114a...588":	 ["data/content/eric-smith-dissertation-augmented.pdf"],
+	"7f3d87...15b":	 ["data/content/eric-smith-dissertation.pdf"],
+	"6d19f0...064":	 ["data/metadata/technicalMetadata.xml"],
+	"6e4be4...375":	 ["data/metadata/provenanceMetadata.xml"],
+	"d8a319...d0f":	 ["data/metadata/descMetadata.xml"],
+	"de823a...acc":	 ["data/metadata/rightsMetadata.xml"],
+	"080617...40c":	 ["data/metadata/identityMetadata.xml"],
+	"e15267...58d":	 ["data/metadata/versionMetadata.xml"],
+	"0d9e0b...9a2":	 ["data/metadata/contentMetadata.xml"],
+	"dd9289...31d":	 ["data/metadata/relationshipMetadata.xml"]
+}
+</pre>
+    <p>
+        The version 2 state block would contain:
+    </p>
+<pre>
+"state": {
+	"98114a...588":	 ["data/content/eric-smith-dissertation-augmented.pdf"],
+	"7f3d87...15b":	 ["data/content/eric-smith-dissertation.pdf"],
+	"6d19f0...064":	 ["data/metadata/technicalMetadata.xml"],
+	"7519c5...63f":	 ["data/metadata/provenanceMetadata.xml"],
+	"d8a319...d0f":	 ["data/metadata/descMetadata.xml"],
+	"76549e...b2b":	 ["data/metadata/rightsMetadata.xml"],
+	"7b331c...f9b":	 ["data/metadata/identityMetadata.xml"],
+	"80ceac...b9c":	 ["data/metadata/versionMetadata.xml"],
+	"4853a2...fbe":	 ["data/metadata/contentMetadata.xml"],
+	"1d5090...f5f":  ["data/metadata/relationshipMetadata.xml"],
+	"abda4c...622":	 ["data/metadata/workflows.xml"],
+	"bdc4d6...3b6":	 ["data/metadata/events.xml"],
+	"f209bf...ceb":	 ["data/metadata/embargoMetadata.xml"]
+}
+</pre>
+    <p>
+        The version 3 state block would be:
+    </p>
+<pre>
+"state": {
+	"98114a...588":	 ["data/content/eric-smith-dissertation-augmented.pdf"],
+	"7f3d87...15b":	 ["data/content/eric-smith-dissertation.pdf"],
+	"dd9125...d4b":	 ["data/metadata/technicalMetadata.xml"],
+	"d9e177...477":	 ["data/metadata/provenanceMetadata.xml"],
+	"e64db0...500":	 ["data/metadata/descMetadata.xml"],
+	"05fa51...818":	 ["data/metadata/rightsMetadata.xml"],
+	"509a2d...dc6":	 ["data/metadata/identityMetadata.xml"],
+	"548066...893":	 ["data/metadata/versionMetadata.xml"],
+	"93884e...aae":	 ["data/metadata/contentMetadata.xml"],
+	"1d5090...f5f":  ["data/metadata/relationshipMetadata.xml"],
+	"4f5908...4f5":	 ["data/metadata/workflows.xml"],
+	"d70dd8...5ad":	 ["data/metadata/events.xml"],
+	"4c5ab4...b02":	 ["data/metadata/embargoMetadata.xml"]
+}
+</pre>
+
     </section>
 </section>
 
