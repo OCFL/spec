@@ -453,29 +453,29 @@
           An <a>OCFL Storage Root</a> is the base directory of an OCFL storage layout.
         </p>
         <p>
-          An <a>OCFL Storage Root</a> MUST contain a 
+          An OCFL Storage Root MUST contain a
           <a href="#root-conformance-declaration">Root Conformance Declaration</a> identifying it as such.
         </p>
         <p>
-          <a>OCFL Object</a>s within a given <a>OCFL Storage Root</a> MUST be the same as the OCFL specification
+          <a>OCFL Object</a>s within a given OCFL Storage Root MUST be the same as the OCFL specification
            version as declared in the <a href="#root-conformance-declaration">Root Conformance Declaration</a>.
         </p>
         <p>
-          An <a>OCFL Storage Root</a> SHOULD also contain the OCFL specification in human-readable plain-text format
+          An OCFL Storage Root SHOULD also contain the OCFL specification in human-readable plain-text format
           in the root.
         </p>
         <p>
-          An <a>OCFL Storage Root</a> MUST NOT contain any files or directories other than those described here.
+          An OCFL Storage Root MUST NOT contain any files or directories other than those described here.
         </p>
         <p>
-          Although implementations may require multiple <a>OCFL Storage Root</a>s; that is, several logical or
-          physical volumes, or multiple "buckets" in an object store, each <a>OCFL Storage Root</a> MUST be independent.
+          Although implementations may require multiple OCFL Storage Roots; that is, several logical or
+          physical volumes, or multiple "buckets" in an object store, each OCFL Storage Root MUST be independent.
           For example, an institution may have a "newspapers" project that standardizes on OCFL 1.0, but then may have
           a later "letters" project that wishes to use OCFL 1.2. These two projects would exist within two separate
-          <a>OCFL Storage Root</a>s.
+          OCFL Storage Roots.
         </p>
         <p>
-          The following example <a>OCFL Storage Root</a> represents the minimal set of files and folders:
+          The following example OCFL Storage Root represents the minimal set of files and folders:
         </p>
         <pre>
 [storage_root]
