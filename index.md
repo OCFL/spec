@@ -9,9 +9,10 @@ This Oxford Common File Layout (OCFL) specification describes an application-ind
 
 ## Participate
 
+  * OCFL Community Group at [https://groups.google.com/forum/#!forum/ocfl-community](https://groups.google.com/forum/#!forum/ocfl-community)
+  * Slack: Self-register at [http://slack.fcrepo.org/](http://slack.fcrepo.org/) (channel `#ocfl`)
   * [OCFL Use Cases](https://github.com/OCFL/Use-Cases/issues)
   * [OCFL Specification github](https://github.com/OCFL/spec)
   * [OCFL Specification Issues](https://github.com/OCFL/spec/issues)
-  * [OCFL Community Google Group](https://groups.google.com/forum/#!forum/ocfl-community)
 
 
