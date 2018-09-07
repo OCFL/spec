@@ -204,7 +204,9 @@
           about actions performed on the content that may not necessarily be part of the content
           itself.</dd>
         <dt><dfn>OCFL Object</dfn>:</dt>
-        <dd></dd>
+        <dd>A group of one or more content files and administrative
+          information, that are together identified by a URI. The object
+          may contain a sequence of versions of the files that represent the evolution of the object's contents.</dd>
         <dt><dfn>OCFL Object Root</dfn>:<dt>
         <dd>The base directory of an <a>OCFL Object</a> that may exist either as a
           first class directory, or in the case of a zipped OCFL Object, as the top
@@ -466,12 +468,12 @@
                             </p>
                             <p>
                                 Notably, the version state can be used to provide de-duplication of content within
-                                the OCFL Object, by mapping multiple <a>logical file path</a>s to the same content 
-                                digestin the manifest. Implementers may choose to use this functionality on a 
-                                case-by-case basis. For example, they may choose to implement renaming (that is, 
-                                changes in file <i>name</i>, but not file <i>content</i>) by pointing a new logical 
+                                the OCFL Object, by mapping multiple <a>logical file path</a>s to the same content
+                                digestin the manifest. Implementers may choose to use this functionality on a
+                                case-by-case basis. For example, they may choose to implement renaming (that is,
+                                changes in file <i>name</i>, but not file <i>content</i>) by pointing a new logical
                                 file path to the digest for content that was added in a previous version. Implementers
-                                may also, however, choose to accession a new file with a new name and same content as 
+                                may also, however, choose to accession a new file with a new name and same content as
                                 a new version. See [[OCFL-Implementation-Notes]].
                             </p>
                             <p>
