@@ -190,7 +190,10 @@
         <dt><dfn>Logical State</dfn>:</dt>
         <dd></dd>
         <dt><dfn>Logs Directory</dfn>:</dt>
-        <dd></dd>
+        <dd>The Logs Directory appears in the top level of the OCFL Object.  The purpose of the
+          Logs Directory is to provide implementers with a place for storing local information
+          about actions performed on the content that may not necessarily be part of the content
+          itself.</dd>
         <dt><dfn>OCFL Object</dfn>:</dt>
         <dd></dd>
         <dt><dfn>OCFL Object Root</dfn>:<dt>
@@ -236,7 +239,7 @@
     </ol>
     <p>
         A key goal of OCFL is the rebuildability of a repository from an OCFL storage root without additional
-        information resources. Consequently, a key implementation consideration should be to ensure that OCFL objects
+        information resources. Consequently, a key implementation consideration should be to ensure that OCFL Objects
         contain all the data and metadata required to achieve this. With reference to th OAIS model, this would include
         all the descriptive, administrative, structural, representation and preservation metadata relevant to the
         object.
@@ -265,13 +268,110 @@
         <h2>Object Conformance Declaration</h2>
         <p>
             The version declaration MUST be formatted according to the [[!NAMASTE]] specification. It MUST be an empty
-            file in the base directory of the object giving the OCFL object version in the filename. The filename MUST
+            file in the base directory of the object giving the OCFL Object version in the filename. The filename MUST
             be constructed with a leading zero-equals (<code>0=</code>) string, the string <code>ocfl_object_</code>,
             followed by the OCFL specification version number. For example <code>0=ocfl_object_1.0</code> for version
             1.0 of this specification.
         </p>
     </section>
 
+<<<<<<< HEAD
+=======
+    <section id="version-directories">
+        <h2>Version Directories</h2>
+        <p>
+            OCFL Object content is stored as a sequence of one or more versions. Each object version is stored in a
+            version directory under the object root. The sequence of version numbers is the sequence of positive
+            integers: 1, 2, 3, etc., and the version directory name is constructed by adding the prefix <code>v</code>.
+        </p>
+        <p>
+            Implementations SHOULD use version directory names constructed without zero-padding the
+            version number, ie. <code>v1</code>, <code>v2</code>, <code>v3</code>, etc..
+        </p>
+        <p>
+            For compatibility with existing filesystem conventions, implementations MAY use zero-padded version numbers,
+            with the following restriction: If zero-padded version numbers are used then they MUST start with a zero.
+            For example, in an implementation that uses five digits the version directory names <code>v00001</code> to
+            <code>v09999</code> are allowed, <code>v10000</code> is not allowed.
+        </p>
+        <p>
+            The first version of an object defines the naming convention for all versions of the object. All versions of
+            an object MUST use the same naming convention: either a non-padded version number, or a zero-padded version
+            number of consistent length. Operations that add a new version to an object MUST follow the directory naming
+            convention established by earlier versions. In all cases, references to files inside version directories
+            from inventory files MUST use the actual version directory names.
+        </p>
+        <p>
+            Empty directories within a version directory are not permitted. Otherwise empty directories MAY be
+            maintained by creating a <code>.keep</code> file within that directory.
+        </p>
+    </section>
+
+    <section id="digests">
+        <h2>Digests</h2>
+        <p>
+            Digests play two roles in an OCFL Object. The first is that digests allow for content-addressable
+            storage; that is, for a file to be addressed by the digest of its contents, rather than its filename.
+            The second is that digests provide for fixity checks to determine whether a file has become corrupt
+            through hardware degradation or malicious actors.
+        </p>
+        <p>
+            OCFL Objects SHOULD use <code>sha512</code> by default. The choice of <code>sha512</code> recognizes
+            that it has no known collision vulnerabilities and is less computationally intensive to compute than
+            <code>sha256</code>, [[Stop-Using-SHA-256]].
+        </p>
+        <p>
+            For content addressability OCFL Objects MUST use either <code>sha256</code> or <code>sha512</code>, to
+            reduce the likelihood of known digest collision vulnerabilities.
+        </p>
+        <p>
+            However, for legacy content migration and consistency implementers may choose from the following
+            list of digest algorithms for storing fixity values:
+        </p>
+        <table class="simple" id="digest-algorithms">
+            <thead>
+            <tr>
+                <th>Digest Algorithm</th>
+                <th>Note</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><code>md5</code></td>
+                <td>Insecure. Use only for legacy content. MD5 algorithm and encoding defined by
+                    [[!RFC1321]].</td>
+            </tr>
+            <tr>
+                <td><code>sha1</code></td>
+                <td>Insecure. Use only for legacy content. SHA-1 algorithm defined by [[!FIPS-180-4]] and MUST
+                    be encoded using base64 encoding [[!RFC4648]].</td>
+            </tr>
+            <tr>
+                <td><code>sha256</code></td>
+                <td>Non-truncated only; note performance implications. SHA-256 algorithm defined by
+                    [[!FIPS-180-4]] and MUST be encoded using base64 encoding [[!RFC4648]].</td>
+            </tr>
+            <tr>
+                <td><code>sha512</code></td>
+                <td>Default choice. Non-truncated forms only. SHA-512 algorithm defined by [[!FIPS-180-4]] and
+                    MUST be encoded using base64 encoding [[!RFC4648]].</td>
+            </tr>
+            </tbody>
+        </table>
+        <p>
+            An OCFL Inventory MAY contain a fixity section that can store one or more blocks containing fixity values
+            using multiple digest algorithms. See the <a href="#fixity">section on fixity</a> below for further details.
+        </p>
+        <blockquote class="informative">
+            <p>
+                Non-normative note: Implementers MAY also store copies of their file digests in a system external to
+                their OCFL Object stores at the point of ingest, to further safeguard against the possibility of
+                malicious manipulation of file contents and digests.
+            </p>
+        </blockquote>
+    </section>
+
+>>>>>>> master
     <section id="inventory">
         <h2>Inventory</h2>
         <p>
@@ -290,68 +390,32 @@
             <h2>Basic Structure</h2>
         </section>
 
-        <section id="digest">
-            <h2>Digest</h2>
-            <p>
-                Digests play two roles in an OCFL Object. The first is that digests allow for content-addressable
-                storage; that is, for a file to be addressed by the digest of its contents, rather than its filename.
-                The second is that digests provide for fixity checks to determine whether a file has become corrupt
-                through hardware degradation or malicious actors.
-            </p>
-            <p>
-                OCFL Objects SHOULD use <code>sha512</code> by default. The choice of <code>sha512</code> recognizes
-                that it has no known collision vulnerabilities and is less computationally intensive to compute than
-                <code>sha256</code>, [[Stop-Using-SHA-256]].
-            </p>
-            <p>
-                However, it is acknowledged that this may be a significant barrier for legacy content migration and
-                consistency. Implementers may thus choose from the following list of digest algorithms:
-            </p>
-            <table class="simple">
-                <thead>
-                <tr>
-                    <th>Digest Algorithm</th>
-                    <th>Note</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td><code>md5</code></td>
-                    <td>Insecure. Use only for legacy content. MD5 algorithm and encoding defined by
-                        [[!RFC1321]].</td>
-                </tr>
-                <tr>
-                    <td><code>sha1</code></td>
-                    <td>Insecure. Use only for legacy content. SHA-1 algorithm defined by [[!FIPS-180-4]] and MUST
-                        be encoded using base64 encoding [[!RFC4648]].</td>
-                </tr>
-                <tr>
-                    <td><code>sha256</code></td>
-                    <td>Non-truncated only; note performance implications. SHA-256 algorithm defined by
-                        [[!FIPS-180-4]] and MUST be encoded using base64 encoding [[!RFC4648]].</td>
-                </tr>
-                <tr>
-                    <td><code>sha512</code></td>
-                    <td>Default choice. Non-truncated forms only. SHA-512 algorithm defined by [[!FIPS-180-4]] and
-                        MUST be encoded using base64 encoding [[!RFC4648]].</td>
-                </tr>
-                </tbody>
-            </table>
-            <blockquote class="informative">
-              <p>
-                Non-normative note: Implementers MAY also store copies of their file digests in a system external to
-                their OCFL object stores at the point of ingest, to further safeguard against the possibility of
-                malicious manipulation of file contents and digests.
-              </p>
-            </blockquote>
-        </section>
-
         <section id="manifest">
             <h2>Manifest</h2>
         </section>
 
         <section id="versions">
             <h2>Versions</h2>
+        </section>
+
+        <section id="fixity">
+            <h2>Fixity</h2>
+            <p>
+                An OCFL Object inventory MAY include a block for storing fixity checks. This block MUST have the
+                key of <code>fixity</code> within the inventory.
+            </p>
+            <p>
+                The structure of the <code>fixity</code> section MUST contain a key corresponding to an
+                <a href="#digest-algorithms">approved digest algorithm</a>. The value of this key MUST follow the
+                structure of the <a href="#manifest"><code>manifest</code></a> section; that is, a key corresponding
+                to the digest value, and an array of file paths that match that digest.
+            </p>
+            <p>
+                An example fixity section is shown below.
+            </p>
+            <pre>
+TBD
+            </pre>
         </section>
     </section>
 
@@ -423,13 +487,13 @@
         <blockquote class="informative">
             <p>
                 Non-normative note: The purpose of the logs directory is to provide implementers with a location for
-                storing local information about actions to the object that may not necessarily be part of the object
+                storing local information about actions to the OCFL Object's content that is not part of the content
                 itself.
             </p>
             <p>
                 As an example, implementers may have different local requirements to store audit information for their
-                digital objects. Some may wish to store a log entry indicating that an audit was conducted, and
-                nothing was wrong, while others may wish to only store a log entry if an intervention was required.
+                content. Some may wish to store a log entry indicating that an audit was conducted, and nothing was
+                wrong, while others may wish to only store a log entry if an intervention was required.
             </p>
         </blockquote>
 
@@ -441,6 +505,11 @@
 
     <section id="root-conformance-declaration">
         <h2>Root Conformance Declaration</h2>
+            The OCFL version declaration MUST be formatted according to the [[!NAMASTE]] specification. It MUST be an
+            empty file in the base directory of the <a>OCFL Storage Root</a> giving the OCFL version in the filename.
+            The filename MUST be constructed with a leading zero-equals (<code>0=</code>) string, the string
+            <code>ocfl_</code>, followed by the OCFL specification version number. For example <code>0=ocfl_1.0</code>
+            for version 1.0 of this specification.
     </section>
 
     <section id="root-structure">
