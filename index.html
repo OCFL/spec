@@ -236,7 +236,7 @@
     </ol>
     <p>
         A key goal of OCFL is the rebuildability of a repository from an OCFL storage root without additional
-        information resources. Consequently, a key implementation consideration should be to ensure that OCFL objects
+        information resources. Consequently, a key implementation consideration should be to ensure that OCFL Objects
         contain all the data and metadata required to achieve this. With reference to th OAIS model, this would include
         all the descriptive, administrative, structural, representation and preservation metadata relevant to the
         object.
@@ -265,7 +265,7 @@
         <h2>Object Conformance Declaration</h2>
         <p>
             The version declaration MUST be formatted according to the [[!NAMASTE]] specification. It MUST be an empty
-            file in the base directory of the object giving the OCFL object version in the filename. The filename MUST
+            file in the base directory of the object giving the OCFL Object version in the filename. The filename MUST
             be constructed with a leading zero-equals (<code>0=</code>) string, the string <code>ocfl_object_</code>,
             followed by the OCFL specification version number. For example <code>0=ocfl_object_1.0</code> for version
             1.0 of this specification.
@@ -275,7 +275,7 @@
     <section id="version-directories">
         <h2>Version Directories</h2>
         <p>
-            OCFL object content is stored as a sequence of one or more versions. Each object version is stored in a
+            OCFL Object content is stored as a sequence of one or more versions. Each object version is stored in a
             version directory under the object root. The sequence of version numbers is the sequence of positive
             integers: 1, 2, 3, etc., and the version directory name is constructed by adding the prefix <code>v</code>.
         </p>
@@ -447,13 +447,13 @@ TBD
         <blockquote class="informative">
             <p>
                 Non-normative note: The purpose of the logs directory is to provide implementers with a location for
-                storing local information about actions to the object that may not necessarily be part of the object
+                storing local information about actions to the OCFL Object's content that is not part of the content
                 itself.
             </p>
             <p>
                 As an example, implementers may have different local requirements to store audit information for their
-                digital objects. Some may wish to store a log entry indicating that an audit was conducted, and
-                nothing was wrong, while others may wish to only store a log entry if an intervention was required.
+                content. Some may wish to store a log entry indicating that an audit was conducted, and nothing was
+                wrong, while others may wish to only store a log entry if an intervention was required.
             </p>
         </blockquote>
 
@@ -465,6 +465,11 @@ TBD
 
     <section id="root-conformance-declaration">
         <h2>Root Conformance Declaration</h2>
+            The OCFL version declaration MUST be formatted according to the [[!NAMASTE]] specification. It MUST be an
+            empty file in the base directory of the <a>OCFL Storage Root</a> giving the OCFL version in the filename.
+            The filename MUST be constructed with a leading zero-equals (<code>0=</code>) string, the string
+            <code>ocfl_</code>, followed by the OCFL specification version number. For example <code>0=ocfl_1.0</code>
+            for version 1.0 of this specification.
     </section>
 
     <section id="root-structure">
