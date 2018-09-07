@@ -87,6 +87,14 @@
                 '<a class="subfoot" href="https://creativecommons.org/licenses/by/4.0/" rel="license">' +
                 'Creative Commons Attribution 4.0 License</a>.</p>',
             localBiblio: {
+                "Moab": {
+                    title: "The Moab Design for Digital Object Versioning",
+                    href: "https://journal.code4lib.org/articles/8482",
+                    authors: [
+                        "Richard Anderson"
+                    ],
+                    date: "15 July 2013"
+                },
                 "NAMASTE": {
                     title: "Directory Description with Namaste Tags",
                     href: "https://confluence.ucop.edu/download/attachments/14254149/NamasteSpec.pdf",
@@ -592,26 +600,25 @@ TBD
     <section id="example-moab-in-ocfl">
         <h2>Moab in an OCFL Object</h2>
         <p>
-            Moab is an archive information package format developed and used by Stanford University 
-            (see: <a href="https://journal.code4lib.org/articles/8482">The Moab Design for Digital Object 
-            Versioning</a>). Many of the ideas in Moab have been refined by OLFL, and OCFL is designed to 
+            [[Moab]] is an archive information package format developed and used by Stanford University.
+            Many of the ideas in Moab have been refined by OLFL, and OCFL is designed to
             give institutions currently using Moab an easy path to adoption.
         </p>
         <p>
             Converting content preserved in a Moab object in a way that does not compromise existing Moab
             access patterns whilst allowing for the eventual use of OCFL-native workflows requires a Moab to
-            OCFL conversion tool. This tool uses the Moab-versioning gem to extract deltas and digests 
-            of the Moab data directory for each Moab version and translate those into version state blocks 
-            in an OCFL inventory file, which would be placed in the root directory of the Moab object. 
-            All extant files in the Moab version directories are tracked in the manifest block. The contents 
-            of the Moab manifests directory are not tracked in the version state blocks; they are effectively 
+            OCFL conversion tool. This tool uses the Moab-versioning gem to extract deltas and digests
+            of the Moab data directory for each Moab version and translate those into version state blocks
+            in an OCFL inventory file, which would be placed in the root directory of the Moab object.
+            All extant files in the Moab version directories are tracked in the manifest block. The contents
+            of the Moab manifests directory are not tracked in the version state blocks; they are effectively
             deleted from the OCFL object without compromising legacy access patterns.
         </p>
         <p>
-            During the transitionary period the OCFL inventory file exists only in the root of the Moab object. 
-            Once OCFL-native object creation workflows have been completed, future versions of that object will 
-            be fully OCFL compliant - new versions will no longer have a manifests directory and will contain an 
-            OCFL inventory file. At this stage OCFL tools will be able to access all versions of the content 
+            During the transitionary period the OCFL inventory file exists only in the root of the Moab object.
+            Once OCFL-native object creation workflows have been completed, future versions of that object will
+            be fully OCFL compliant - new versions will no longer have a manifests directory and will contain an
+            OCFL inventory file. At this stage OCFL tools will be able to access all versions of the content
             originally preserved by Moab.
         </p>
     </section>
