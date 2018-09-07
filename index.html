@@ -438,20 +438,60 @@
 
     <section id="root-conformance-declaration">
         <h2>Root Conformance Declaration</h2>
+        <p>
             The OCFL version declaration MUST be formatted according to the [[!NAMASTE]] specification. It MUST be an
             empty file in the base directory of the <a>OCFL Storage Root</a> giving the OCFL version in the filename.
             The filename MUST be constructed with a leading zero-equals (<code>0=</code>) string, the string
             <code>ocfl_</code>, followed by the OCFL specification version number. For example <code>0=ocfl_1.0</code>
             for version 1.0 of this specification.
+        </p>
     </section>
 
     <section id="root-structure">
         <h2>Root Structure</h2>
+        <p>
+          An <a>OCFL Storage Root</a> is the base directory of an OCFL storage layout.
+        </p>
+        <p>
+          An <a>OCFL Storage Root</a> MUST contain a 
+          <a href="#root-conformance-declaration">Root Conformance Declaration</a> identifying it as such.
+        </p>
+        <p>
+          <a>OCFL Object</a>s within a given <a>OCFL Storage Root</a> MUST be the same as the OCFL specification
+           version as declared in the <a href="#root-conformance-declaration">Root Conformance Declaration</a>.
+        </p>
+        <p>
+          An <a>OCFL Storage Root</a> SHOULD also contain the OCFL specification in human-readable plain-text format
+          in the root.
+        </p>
+        <p>
+          An <a>OCFL Storage Root</a> MUST NOT contain any files or directories other than those described here.
+        </p>
+        <p>
+          Although implementations may require multiple <a>OCFL Storage Root</a>s; that is, several logical or
+          physical volumes, or multiple "buckets" in an object store, each <a>OCFL Storage Root</a> MUST be independent.
+          For example, an institution may have a "newspapers" project that standardizes on OCFL 1.0, but then may have
+          a later "letters" project that wishes to use OCFL 1.2. These two projects would exist within two separate
+          <a>OCFL Storage Root</a>s.
+        </p>
+        <p>
+          The following example <a>OCFL Storage Root</a> represents the minimal set of files and folders:
+        </p>
+        <pre>
+[storage_root]
+    ├── 0=ocfl_1.0
+    └── ocfl_1.0.txt (optional)
+        </pre>
+    </section>
+
+    <section id="root-hierarchies">
+        <h2>Storage Hierarchies</h2>
     </section>
 
     <section id="root-extensions">
         <h2>Extensions</h2>
     </section>
+
 </section>
 
 <section id="examples" class="informative">
