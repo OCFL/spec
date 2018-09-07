@@ -466,12 +466,12 @@
                             </p>
                             <p>
                                 Notably, the version state can be used to provide de-duplication of content within
-                                the OCFL Object, by mapping multiple <a>logical file path</a>s to the same content 
-                                digestin the manifest. Implementers may choose to use this functionality on a 
-                                case-by-case basis. For example, they may choose to implement renaming (that is, 
-                                changes in file <i>name</i>, but not file <i>content</i>) by pointing a new logical 
+                                the OCFL Object, by mapping multiple <a>logical file path</a>s to the same content
+                                digestin the manifest. Implementers may choose to use this functionality on a
+                                case-by-case basis. For example, they may choose to implement renaming (that is,
+                                changes in file <i>name</i>, but not file <i>content</i>) by pointing a new logical
                                 file path to the digest for content that was added in a previous version. Implementers
-                                may also, however, choose to accession a new file with a new name and same content as 
+                                may also, however, choose to accession a new file with a new name and same content as
                                 a new version. See [[OCFL-Implementation-Notes]].
                             </p>
                             <p>
@@ -739,7 +739,6 @@ TBD
             ├── versionAdditions.xml
             └── versionInventory.xml
 </pre>
-        </p>
         <p>
             An OCFL inventory that tracks the /data directory would include a manifest comprised as follows:
         </p>
@@ -845,7 +844,7 @@ TBD
 	"1d5090...f5f":  ["data/metadata/relationshipMetadata.xml"],
 	"4f5908...4f5":	 ["data/metadata/workflows.xml"],
 	"d70dd8...5ad":	 ["data/metadata/events.xml"],
-	"4c5ab4...b02":	 ["data/metadata/embargoMetadata.xml"]        
+	"4c5ab4...b02":	 ["data/metadata/embargoMetadata.xml"]
 }
 </pre>
 
