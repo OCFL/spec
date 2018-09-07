@@ -275,8 +275,6 @@
         </p>
     </section>
 
-<<<<<<< HEAD
-=======
     <section id="version-directories">
         <h2>Version Directories</h2>
         <p>
@@ -371,7 +369,6 @@
         </blockquote>
     </section>
 
->>>>>>> master
     <section id="inventory">
         <h2>Inventory</h2>
         <p>
@@ -437,43 +434,17 @@ TBD
         </p>
     </section>
 
-    <section id="version-directories">
-        <h2>Version Directories</h2>
-        <p>
-            OCFL object content is stored as a sequence of one or more versions. Each object version is stored in a
-            version directory under the object root. The sequence of version numbers is the sequence of positive
-            integers: 1, 2, 3, etc., and the version directory name is constructed by adding the prefix <code>v</code>.
-        </p>
-        <p>
-            Implementations SHOULD use version directory names constructed without zero-padding the
-            version number, ie. <code>v1</code>, <code>v2</code>, <code>v3</code>, etc..
-        </p>
-        <p>
-            For compatibility with existing filesystem conventions, implementations MAY use zero-padded version numbers,
-            with the following restriction: If zero-padded version numbers are used then they MUST start with a zero.
-            For example, in an implementation that uses five digits the version directory names <code>v00001</code> to
-            <code>v09999</code> are allowed, <code>v10000</code> is not allowed.
-        </p>
-        <p>
-            The first version of an object defines the naming convention for all versions of the object. All versions of
-            an object MUST use the same naming convention: either a non-padded version number, or a zero-padded version
-            number of consistent length. Operations that add a new version to an object MUST follow the directory naming
-            convention established by earlier versions. In all cases, references to files inside version directories
-            from inventory files MUST use the actual version directory names.
-        </p>
-        <p>
-            Empty directories within a version directory are not permitted. Otherwise empty directories MAY be
-            maintained by creating a <code>.keep</code> file within that directory.
-        </p>
-    </section>
-
     <section id="version-inventory">
         <h2>Version Inventory and Inventory Digest</h2>
         <p>
-            Every version SHOULD have an inventory file in the version directory that is an <a>Inventory</a> of all
-            content for versions up to and including that particular version. 
-            Every inventory file MUST have a corresponding <a>Inventory Digest</a>.
+            Every version directory SHOULD include an inventory file that is an <a href="#inventory">Inventory</a>
+            of all content for versions up to and including that particular version. Every inventory file MUST have
+            a corresponding <a href="#inventory-digest">Inventory Digest</a>.
         </p>
+        <blockquote class="informative">
+            Non-normative note: Storing an inventory for every version provides redundancy for this critical
+            information in a way to is compatible with storage strategies that have immutable version directories.
+        </blockquote>
     </section>
 
     <section id="logs-directory">
