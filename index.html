@@ -397,6 +397,88 @@
 
         <section id="versions">
             <h2>Versions</h2>
+            <p>
+                An OCFL Object Inventory MUST include a block for storing versions. This block MUST have the
+                key of <code>versions</code> within the inventory, and it MUST be an array.
+            </p>
+            <p>
+                Within the <code>versions</code> array is a list of JSON objects of type <code>Version</code>.
+            </p>
+            <section id="version">
+                <h2>Version</h2>
+                <p>
+                    A JSON object of type <code>Version</code> which MUST include the following keys:
+                </p>
+                <dl>
+                    <dt>
+                        <code>type</code>
+                    </dt>
+                    <dd>
+                        The value of this key MUST be <code>Version</code>.
+                    </dd>
+                    <dt>
+                        <code>version</code>
+                    </dt>
+                    <dd>
+                        The value of this key MUST correspond to the name of a version directory within the <a>OCFL
+                        Object</a>.
+                    </dd>
+                    <dt>
+                        <code>created</code>
+                    </dt>
+                    <dd>
+                        The value of this key MUST be expressed in [[!ISO8601]], and SHOULD include a timezone value
+                        or UTC. It SHOULD also be granular to the second level.
+                    </dd>
+                    <dt>
+                        <code>message</code>
+                    </dt>
+                    <dd>
+                        The value of this key is freeform text, used to record the rationale for creating this version.
+                    </dd>
+                    <dt>
+                        <code>user</code>
+                    </dt>
+                    <dd>
+                        The value of this key is a JSON object, containing a readable user name key, <code>name</code>
+                        and an address key, <code>address</code>. The format of the address key MAY be either an
+                        e-mail address or a URI reference to a personal identifier, e.g., an ORCID iD.
+                    </dd>
+                    <dt>
+                        <code>state</code>
+                    </dt>
+                    <dd>
+                        <p>
+                            The value of this key is a JSON object, containing a list of keys and values corresponding
+                            to the <a>logical state</a> of the object at that version. The keys of this JSON object
+                            are <a>logical file path</a> names which correspond to the state of the
+                            OCFL Object at that version. The values of each key is a string containing a digest which
+                            MUST correspond to an entry in the <a href="#manifest">manifest of the inventory</a>.
+                        </p>
+                        <blockquote class="informative">
+                            <p>
+                                Non-normative note: The <a>logical state</a> of the object uses content-addressable
+                                techniques to map <a>logical file paths</a> to their bitstreams, as expressed in
+                                the manifest section of the inventory.
+                            </p>
+                            <p>
+                                Notably, the version state can be used to provide de-duplication of content within
+                                the object, by mapping multiple <a>logical file paths</a> to the same content digest
+                                in the manifest. Implementers may choose to use this functionality on an object-by-
+                                object basis. For example, they may choose to implement renaming (that is, changes
+                                in file <i>name</i>, but not file <i>content</i>) by pointing a new logical file path
+                                to the digest for content that was added in a previous version. Implementers may also,
+                                however, choose to accession a new file with a new name and same content as a new
+                                version.
+                            </p>
+                        </blockquote>
+                        <p>An example state object is shown below.</p>
+                        <pre>
+                            TBD
+                        </pre>
+                    </dd>
+                </dl>
+            </section>
         </section>
 
         <section id="fixity">
