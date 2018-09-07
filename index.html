@@ -434,9 +434,17 @@ TBD
         </p>
     </section>
 
-
-    <section id="top-level-inventory">
-        <h2>Top-level Inventory and Inventory Digest</h2>
+    <section id="version-inventory">
+        <h2>Version Inventory and Inventory Digest</h2>
+        <p>
+            Every version directory SHOULD include an inventory file that is an <a href="#inventory">Inventory</a>
+            of all content for versions up to and including that particular version. Every inventory file MUST have
+            a corresponding <a href="#inventory-digest">Inventory Digest</a>.
+        </p>
+        <blockquote class="informative">
+            Non-normative note: Storing an inventory for every version provides redundancy for this critical
+            information in a way that is compatible with storage strategies that have immutable version directories.
+        </blockquote>
     </section>
 
     <section id="logs-directory">
