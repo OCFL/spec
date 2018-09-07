@@ -118,6 +118,10 @@
                     "David Timothy Strauss"
                   ],
                   date: "6 October 2017"
+                },
+                "OCFL-Implementation-Notes": {
+                    title: "OCFL Implementation Notes",
+                    href: "implementation-notes.html"
                 }
             }
         };
@@ -466,18 +470,18 @@
                         <blockquote class="informative">
                             <p>
                                 Non-normative note: The <a>logical state</a> of the object uses content-addressable
-                                techniques to map <a>logical file paths</a> to their bitstreams, as expressed in
+                                techniques to map <a>logical file path</a>s to their bitstreams, as expressed in
                                 the manifest section of the inventory.
                             </p>
                             <p>
                                 Notably, the version state can be used to provide de-duplication of content within
-                                the OCFL Object, by mapping multiple <a>logical file paths</a> to the same content 
+                                the OCFL Object, by mapping multiple <a>logical file path</a>s to the same content 
                                 digestin the manifest. Implementers may choose to use this functionality on a 
                                 case-by-case basis. For example, they may choose to implement renaming (that is, 
                                 changes in file <i>name</i>, but not file <i>content</i>) by pointing a new logical 
                                 file path to the digest for content that was added in a previous version. Implementers
                                 may also, however, choose to accession a new file with a new name and same content as 
-                                a new version.
+                                a new version. See [[OCFL-Implementation-Notes]].
                             </p>
                         </blockquote>
                         <p>An example state object is shown below.</p>
