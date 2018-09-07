@@ -142,19 +142,25 @@
     </ol>
     <section id="need">
         <h2>Need</h2>
-        <p>The OCFL initiative arose from a need to have well-defined application-independent file management within
-           digital repositories.</p>
-        <p>A general observation is that the contents of a digital repository -- that is, the digital files and metadata
+        <p>
+           The OCFL initiative arose from a need to have well-defined application-independent file management within
+           digital repositories.
+        </p>
+        <p>
+           A general observation is that the contents of a digital repository -- that is, the digital files and metadata
            that an institution might wish to manage -- are largely stable. Once content has been accessioned, it is
            unlikely to change significantly over its lifetime. This is in contrast to the software applications that
            manage these contents, which are ephemeral, requiring constant updating and replacement. Thus, transitions
            between application-specific methods of file management to support software upgrades and replacement cycles
            can be seen as unnecessary and risky change, changing the long-term stable objects to support the short-term,
-           ephemeral software.</p>
-        <p>By providing a specification for the file-and-folder layout on disk, the OCFL is an attempt at reducing, or
-           even eliminating, the need for these transitions. As an application-independent specification, conforming
+           ephemeral software.
+        </p>
+        <p>
+           By providing a specification for the file and directory layout on disk, the OCFL is an attempt at reducing,
+           or even eliminating, the need for these transitions. As an application-independent specification, conforming
            applications will natively "understand" the underlying file structure without needing to first transition
-           these contents to their own format.</p>
+           these contents to their own format.
+         </p>
     </section>
 </section>
 
@@ -208,14 +214,15 @@
 <section id="object-spec">
     <h2>OCFL Object</h2>
     <p>
-        An OCFL Object is a group of one or more files, directories, and administrative
-        information, that are together identified by a URI. The object may contain a sequence of versions of the
-        files that represent the evolution of the object's contents.
+        An OCFL Object is a group of one or more content files and administrative information, that are together
+        identified by a URI. The object may contain a sequence of versions of the files that represent the evolution
+        of the object's contents.
     </p>
     <p>
         A file is defined as a content bitstream that can be stored and transmitted. Directories (also called "folders")
         allow for the organization of files into tree-like hierarchies. The content of an OCFL Object is the files and
-        directories that are stored <i>within</i> the hierarchy layout provided as part of the spec.
+        the directories they are organized in that are stored <i>within</i> the hierarchy layout described in this
+        specification.
     </p>
     <p>
         The administrative information is specific to OCFL Objects. Implementers of OCFL are strongly encouraged to
@@ -226,10 +233,10 @@
         An OCFL Object is therefore:
     </p>
     <ol>
-        <li>A conceptual gathering of all files (data and metadata), folders, and their changes over time which together
-            form the digital representation of an entity that need to be managed, in preservation terms, as a single
-            coherent whole (i.e., content); and</li>
-        <li>A file and folder layout and administrative information on a storage medium that provides a defined
+        <li>A conceptual gathering of all files (data and metadata), the directories they are organized in, and their
+            changes over time which together form the digital representation of an entity that need to be managed, in
+            preservation terms, as a single coherent whole (i.e., content); and</li>
+        <li>A file and directory layout and administrative information on a storage medium that provides a defined
             structure for the storage of this content, and through which these files and their changes may be understood
             (i.e., structure).</li>
     </ol>
@@ -244,8 +251,8 @@
     <section id="basic-structure">
         <h2>Basic Structure</h2>
         <p>
-            The basic OCFL Object structure has a minimal set of files and folders necessary to support data storage and
-            object validation. The minimum required is shown in the following figure:
+            The basic OCFL Object structure has a minimal set of files and directories necessary to support data
+            storage and object validation. The minimum required is shown in the following figure:
         </p>
         <pre>
 [object_root]
