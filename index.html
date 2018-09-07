@@ -526,6 +526,13 @@ TBD
             of the Moab manifests directory are not tracked in the version state blocks; they are effectively 
             deleted from the OCFL object without compromising legacy access patterns.
         </p>
+        <p>
+            During the transitionary period the OCFL inventory file exists only in the root of the Moab object. 
+            Once OCFL-native object creation workflows have been completed, future versions of that object will 
+            be fully OCFL compliant - new versions will no longer have a manifests directory and will contain an 
+            OCFL inventory file. At this stage OCFL tools will be able to access all versions of the content 
+            originally preserved by Moab.
+        </p>
     </section>
 </section>
 
