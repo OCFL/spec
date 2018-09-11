@@ -349,23 +349,30 @@
             <tbody>
             <tr>
                 <td><code>md5</code></td>
-                <td>Insecure. Use only for legacy content. MD5 algorithm and encoding defined by
-                    [[!RFC1321]].</td>
+                <td>Insecure. Use only for legacy fixity values. MD5 algorithm and hex encoding defined by
+                    [[!RFC1321]]. For example, the <code>md5</code> digest of a zero-length bitstream is
+                    <code>d41d8cd98f00b204e9800998ecf8427e</code>.</td>
             </tr>
             <tr>
                 <td><code>sha1</code></td>
-                <td>Insecure. Use only for legacy content. SHA-1 algorithm defined by [[!FIPS-180-4]] and MUST
-                    be encoded using base64 encoding [[!RFC4648]].</td>
+                <td>Insecure. Use only for legacy fixity values. SHA-1 algorithm defined by [[!FIPS-180-4]]
+                    and MUST be encoded using hex (base16) encoding [[!RFC4648]].
+                    For example, the <code>sha1</code> digest of a zero-length bitstream is
+                    <code>da39a3ee5e6b4b0d3255bfef95601890afd80709</code>.</td>
             </tr>
             <tr>
                 <td><code>sha256</code></td>
-                <td>Non-truncated only; note performance implications. SHA-256 algorithm defined by
-                    [[!FIPS-180-4]] and MUST be encoded using base64 encoding [[!RFC4648]].</td>
+                <td>Non-truncated form only; note performance implications. SHA-256 algorithm defined by
+                    [[!FIPS-180-4]] and MUST be encoded using hex (base16) encoding [[!RFC4648]].
+                    For example, the <code>sha256</code> digest of a zero-length bitstream starts
+                    <code>e3b0c44298fc1c149afbf4c8996fb92427ae41e4...</code> (64 hex digits long).</td>
             </tr>
             <tr>
                 <td><code>sha512</code></td>
-                <td>Default choice. Non-truncated forms only. SHA-512 algorithm defined by [[!FIPS-180-4]] and
-                    MUST be encoded using base64 encoding [[!RFC4648]].</td>
+                <td>Default choice. Non-truncated form only. SHA-512 algorithm defined by [[!FIPS-180-4]] and
+                    MUST be encoded using hex (base16) encoding [[!RFC4648]].
+                    For example, the <code>sha512</code> digest of a zero-length bitstream starts
+                    <code>cf83e1357eefb8bdf1542850d66d8007d620e405...</code> (128 hex digits long).</td>
             </tr>
             </tbody>
         </table>
