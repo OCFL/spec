@@ -324,7 +324,7 @@
             Digests play two roles in an OCFL Object. The first is that digests allow for content-addressable
             storage; that is, for a file to be addressed by the digest of its contents, rather than its filename.
             The second is that digests provide for fixity checks to determine whether a file has become corrupt
-            through hardware degradation or malicious actors.
+            through hardware degradation, accident or malicious actors.
         </p>
         <p>
             OCFL Objects SHOULD use <code>sha512</code> by default. The choice of <code>sha512</code> recognizes
@@ -333,10 +333,10 @@
         </p>
         <p>
             For content addressability OCFL Objects MUST use either <code>sha256</code> or <code>sha512</code>, to
-            reduce the likelihood of known digest collision vulnerabilities.
+            reduce the likelihood of digest collisions.
         </p>
         <p>
-            However, for legacy content migration and consistency implementers may choose from the following
+            However, for legacy content migration and consistency, implementers MAY choose from the following
             list of digest algorithms for storing fixity values:
         </p>
         <table class="simple" id="digest-algorithms">
