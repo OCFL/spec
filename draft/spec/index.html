@@ -493,9 +493,9 @@
                             </p>
 <pre>
 "state": {
-    "0f0d42...834": [ "image.tiff" ],
-    "e3b0c4...855": [ "empty.txt", "empty2.txt" ],
-    "f99d20...489": [ "metadata/foo.xml" ]
+    "7dcc35...c31": [ "metadata/foo.xml" ],
+    "cf83e1...a3e": [ "empty.txt", "empty2.txt" ],
+    "ffccf6...62e": [ "image.tiff" ]
 }
 </pre>
                             <p>
@@ -529,12 +529,25 @@
                 structure of the <a href="#manifest"><code>manifest</code></a> section; that is, a key corresponding
                 to the digest value, and an array of file paths that match that digest.
             </p>
-            <p>
-                An example fixity section is shown below.
-            </p>
-            <pre>
-TBD
-            </pre>
+            <blockquote class="informative">
+                <p>
+                    An example fixity section with <code>md5</code> and <code>sha1</code> digests is shown below.
+                </p>
+<pre>
+"fixity": {
+    "md5": {
+        "184f84e28cbe75e050e9c25ea7f2e939": [ "v1/metadata/foo.xml" ],
+        "c289c8ccd4bab6e385f5afdd89b5bda2": [ "v1/image.tiff" ],
+        "d41d8cd98f00b204e9800998ecf8427e": [ "v1/empty.txt" ]
+    },
+    "sha1": {
+        "66709b068a2faead97113559db78ccd44712cbf2": [ "v1/metadata/foo.xml" ],
+        "b9c7ccc6154974288132b63c15db8d2750716b49": [ "v1/image.tiff" ],
+        "da39a3ee5e6b4b0d3255bfef95601890afd80709": [ "v1/empty.txt" ]
+    }
+}
+</pre>
+            </blockquote>
         </section>
     </section>
 
