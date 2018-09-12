@@ -398,6 +398,38 @@
 
         <section id="inventory-structure">
             <h2>Basic Structure</h2>
+            <p>
+                An OCFL Object Inventory must include the following keys:
+            </p>
+            <dl>
+                <dt><code>@context</code></dt>
+                <dd>
+                    The JSON-LD context. The value MAY be a string or an array, but it MUST include the OCFL
+                    Context string `https://ocfl.io/draft/context.jsonld`.
+                </dd>
+                <dt><code>id</code></dt>
+                <dd>
+                    A unique ID for the OCFL Object. This MUST be unique in the local context, and SHOULD be either a
+                    URI or URN. There is no expectation that values given as URIs are resolveable as URLs.
+                </dd>
+                <dt><code>type</code></dt>
+                <dd>
+                    The JSON-LD type for the inventory. This MUST have the value <code>Object</code>.
+                </dd>
+                <dt><code>digestAlgorithm</code></dt>
+                <dd>
+                    The digest algorithm used for calculating digests within the OCFL Object. This SHOULD be
+                    <code>sha512</code>, however other values are permitted. See the <a href="#digests">section on
+                    Digests</a> for more information.
+                </dd>
+                <dt><code>head</code></dt>
+                <dd>
+                    A value corresponding to the ID of the most recent, or 'head,' version of the object.
+                </dd>
+            </dl>
+            <p>
+                In addition to these keys, there are two other blocks
+            </p>
         </section>
 
         <section id="manifest">
