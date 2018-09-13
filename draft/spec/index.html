@@ -379,6 +379,13 @@
                 their OCFL Object stores at the point of ingest, to further safeguard against the possibility of
                 malicious manipulation of file contents and digests.
             </p>
+            <p>
+                Implementers should be aware that base16 digests are case insensitive. Different tools will generate
+                digests in upper- or lowercase, and this may lead to case differences between references to a digest
+                and the digest itself within the inventory. If string-based methods are used to work with digests
+                and inventories (as is the case in most common JSON libraries) then extra care must be taken to ensure
+                case-insensitive comparisons are being made.
+            </p>
         </blockquote>
     </section>
 
