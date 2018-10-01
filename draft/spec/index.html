@@ -263,7 +263,7 @@
             (i.e., structure).</li>
     </ol>
     <p>
-        A key goal of OCFL is the rebuildability of a repository from an OCFL storage root without additional
+        A key goal of OCFL is the rebuildability of a repository from an OCFL Storage Root without additional
         information resources. Consequently, a key implementation consideration should be to ensure that OCFL Objects
         contain all the data and metadata required to achieve this. With reference to the [[OAIS]] model, this would
         include all the descriptive, administrative, structural, representation and preservation metadata relevant
@@ -273,7 +273,7 @@
     <section id="basic-structure">
         <h2>Basic Structure</h2>
         <p>
-            The basic OCFL Object structure has a minimal set of files and directories necessary to support data
+            The basic OCFL Object structure has a minimal set of files and directories necessary to support content
             storage and object validation. The minimum required is shown in the following figure:
         </p>
         <pre>
@@ -310,17 +310,19 @@
             version number, ie. <code>v1</code>, <code>v2</code>, <code>v3</code>, etc..
         </p>
         <p>
-            For compatibility with existing filesystem conventions, implementations MAY use zero-padded version numbers,
-            with the following restriction: If zero-padded version numbers are used then they MUST start with a zero.
-            For example, in an implementation that uses five digits the version directory names <code>v00001</code> to
-            <code>v09999</code> are allowed, <code>v10000</code> is not allowed.
+            For compatibility with existing filesystem conventions, implementations MAY use zero-padded version
+            directory numbers, with the following restriction: If zero-padded version directory numbers are used then
+            they MUST start with the prefix <code>v</code> and then a zero. For example, in an implementation that uses
+            five digits for version directory names then <code>v00001</code> to <code>v09999</code> are allowed,
+            <code>v10000</code> is not allowed.
         </p>
         <p>
-            The first version of an object defines the naming convention for all versions of the object. All versions of
-            an object MUST use the same naming convention: either a non-padded version number, or a zero-padded version
-            number of consistent length. Operations that add a new version to an object MUST follow the directory naming
-            convention established by earlier versions. In all cases, references to files inside version directories
-            from inventory files MUST use the actual version directory names.
+            The first version of an object defines the naming convention for all version directories for the object.
+            All version directories of an object MUST use the same naming convention: either a non-padded version
+            directory number, or a zero-padded version directory number of consistent length. Operations that add a new
+            version to an object MUST follow the version directory naming convention established by earlier versions.
+            In all cases, references to files inside version directories from inventory files MUST use the actual
+            version directory names.
         </p>
         <p>
             Empty directories within a version directory are not permitted. Otherwise empty directories MAY be
