@@ -255,6 +255,7 @@
             In the interests of transparency the it makes sense for an object's URI, its unique identifier and 
             its location under the OCFL Storage Root to be aligned and simply derivable from each other. Good 
             examples include:
+        </p>
             <ul>
                 <li>
                     Flat: Each object is contained in a directory or zip file that is simply named for the
@@ -360,7 +361,6 @@
                     </pre>
                 </li>
         </ul>
-        </p>
     </section>
     
     <section>
@@ -369,7 +369,8 @@
             OCFL and its inventory structure are designed to support and capture the following file operations
             that create OCFL versions, regardless of whether optional features, such as deduplication, are used.
             OCFL is not concerned with the process of creating versions but only the final outcome in terms of 
-            the differences with the previous version that need to be recorded and preserved.  
+            the differences with the previous version that need to be recorded and preserved.
+        </p>
             <ul>
                 <li>
                     Inheritance: By default a new version of an OCFL Object inherits all the filenames and file
@@ -410,7 +411,6 @@
                     is covered in a later section. 
                 </li>
             </ul>
-        </p>
     </section>
     
     <section>
@@ -458,6 +458,7 @@
             implement forward delta differencing, then the possible file operations are handled in the following 
             manner (with reference to the <code>state</code> and <code>manifest</code> blocks of the OCFL 
             object's inventory file):
+        </p>
         <ul>
             <li>
                 Inheritance: Files inherited from the previous version unchanged are referenced in the 
@@ -503,7 +504,6 @@
                 version's <code>state</code> block. 
             </li>
         </ul>
-        </p>
     </section>
 
     <section>
