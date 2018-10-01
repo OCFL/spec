@@ -171,12 +171,12 @@ management.
 
 <h2>Storage</h2>
 <p>
-OCFL separates stored file paths from the logical location of these files' content in OCFL object versions. This is a
-key feature that allows previous versions of objects to remain immutable but permitting deduplication, forward delta
-differencing, and easy file renaming. Consequently, OCFL only requires that files added to any version of an OCFL
-object must be stored somewhere within the relevant version directory, with a corresponding entry in the manifest
-block. An entry in the state block determines the path and name of the file within that version by referencing the
-manifest entry, not the actual path on disk.
+OCFL separates the existing file path of stored files from the logical file path of these files' content in OCFL
+object versions. This is a key feature that allows previous versions of objects to remain immutable but
+permitting deduplication, forward delta differencing, and easy file renaming. Consequently, OCFL only requires
+that files added to any version of an OCFL object must be stored somewhere within the relevant version
+directory, with a corresponding entry in the manifest block. An entry in the state block determines the path
+and name of the file within that version by referencing the manifest entry, not the actual path on disk.
 </p><p>
 The most transparent approach is to have the path used to store the file on disk the same as the path of the
 file within the object when accessioned. This is readily understandable in terms of visual inspection of the
@@ -184,7 +184,7 @@ physical filesystem.
 </p><p>
 However, this is not always possible. For example, complex objects with deep file hierarchies may encounter
 issues if they come from a fileystem that allows longer paths than are supported by the target OCFL system. In
-this case, the decoupling between physical and logical file paths in OCFL allows the use of truncated paths
+this case, the decoupling between existing file paths and logical file paths in OCFL allows the use of truncated paths
 for storage while the full paths can be preserved in state block entries which are not length constrained.
 </p><p>
 Another use case is importing content from other repository systems which renames files on ingest and stores
