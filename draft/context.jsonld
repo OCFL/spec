@@ -5,12 +5,17 @@
     "dcterms": "http://purl.org/dc/terms/",
     "id": "@id",
     "type": "@type",
+
+    "Object": "ocfl:Object",
+    "Version": "ocfl:Version",
+
     "digestAlgorithm": {
       "@id": "ocfl:digestAlgorithm"
     },
     "head": {
       "@id": "ocfl:head"
     },
+
     "manifest": {
       "@id": "ocfl:manifest"
     },
@@ -19,7 +24,10 @@
       "@container": "@list",
       "@type": "ocfl:Version"
     },
-    "Version": "ocfl:Version",
+    "fixity": {
+      "@id": "ocfl:fixity"
+    },
+
     "version": {
       "@id": "ocfl:version"
     },
@@ -38,9 +46,6 @@
     },
     "address": {
       "@id": "ocfl:address"
-    },
-    "fixity": {
-      "@id": "ocfl:fixity"
     }
   }
 }
