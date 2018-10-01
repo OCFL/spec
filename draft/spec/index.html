@@ -195,36 +195,41 @@
     <h2>Terminology</h2>
     <dl>
         <dt><dfn>Existing File Path</dfn>:</dt>
-        <dd>The file path as it appears on disk including the directories and the
-          filename.</dd>
+        <dd>The file path as it appears on disk including the directories and the filename.</dd>
+
         <dt><dfn>Inventory Digest</dfn>:</dt>
         <dd></dd>
+
         <dt><dfn>Inventory</dfn>:</dt>
         <dd></dd>
+
         <dt><dfn>Logical File Path</dfn>:</dt>
-        <dd>The file path relative to the version including the directories and the
-          filename.</dd>
+        <dd>The file path relative to the version including the directories and the filename.</dd>
+
         <dt><dfn>Logical State</dfn>:</dt>
-        <dd>The logical state of the object is a grouping of logical file paths
-          reflecting the state of the content for a given version.</dd>
+        <dd>The logical state of the object is a grouping of logical file paths reflecting the state of the content for
+          a given version.</dd>
+
         <dt><dfn>Logs Directory</dfn>:</dt>
-        <dd>The Logs Directory appears in the top level of the OCFL Object.  The purpose of the
-          Logs Directory is to provide implementers with a place for storing local information
-          about actions performed on the content that may not necessarily be part of the content
-          itself.</dd>
+        <dd>The Logs Directory appears in the top level of the OCFL Object.  The purpose of the Logs Directory is to
+          provide implementers with a place for storing local information about actions performed on the content that
+          may not necessarily be part of the content itself.</dd>
+
         <dt><dfn>OCFL Object</dfn>:</dt>
-        <dd>A group of one or more content files and administrative
-          information, that are together identified by a URI. The object
-          may contain a sequence of versions of the files that represent the evolution of the object's contents.</dd>
+        <dd>A group of one or more content files and administrative information, that are together identified by a URI.
+          The object may contain a sequence of versions of the files that represent the evolution of the object's
+          contents.</dd>
+
         <dt><dfn>OCFL Object Root</dfn>:<dt>
-        <dd>The base directory of an <a>OCFL Object</a> that may exist either as a
-          first class directory, or in the case of a zipped OCFL Object, as the top
-          directory in a zip file.</dd>
+        <dd>The base directory of an <a>OCFL Object</a> that may exist either as a first class directory, or in the
+          case of a zipped OCFL Object, as the top directory in a zip file.</dd>
+
         <dt><dfn>OCFL Storage Root</dfn>:</dt>
         <dd>The base directory of an OCFL storage layout.</dd>
+
         <dt><dfn>OCFL Version</dfn>:<dt>
-        <dd>The state of an <a>OCFL object</a>'s content which is constructed using the incremental
-          changes recorded in the sequence of corresponding and prior version directories.</dd>
+        <dd>The state of an <a>OCFL object</a>'s content which is constructed using the incremental changes recorded in
+          the sequence of corresponding and prior version directories.</dd>
     </dl>
 </section>
 
@@ -544,21 +549,21 @@
                         <blockquote class="informative">
                             <p>
                                 Non-normative note: The <a>logical state</a> of the object uses content-addressable
-                                techniques to map <a>logical file path</a>s to their bitstreams, as expressed in
-                                the manifest section of the inventory.
+                                techniques to map logical file paths to their bitstreams, as expressed in the manifest
+                                section of the inventory.
                             </p>
                             <p>
                                 Notably, the version state can be used to provide de-duplication of content within
-                                the OCFL Object, by mapping multiple <a>logical file path</a>s to the same content
-                                digestin the manifest. Implementers may choose to use this functionality on a
-                                case-by-case basis. For example, they may choose to implement renaming (that is,
-                                changes in file <i>name</i>, but not file <i>content</i>) by pointing a new logical
-                                file path to the digest for content that was added in a previous version. Implementers
-                                may also, however, choose to accession a new file with a new name and same content as
-                                a new version. See [[OCFL-Implementation-Notes]].
+                                the OCFL Object, by mapping multiple logical file paths to the same content digest in
+                                the manifest. Implementers may choose to use this functionality on a case-by-case
+                                basis. For example, they may choose to implement renaming (that is,changes in file
+                                <i>name</i>, but not file <i>content</i>) by pointing a new logical file path to the
+                                digest for content that was added in a previous version. Implementers may also,
+                                however, choose to accession a new file with a new name and the same content as a new
+                                version. See [[OCFL-Implementation-Notes]].
                             </p>
                             <p>
-                                An example state object is shown below:
+                                An example state block is shown below:
                             </p>
 <pre>
 "state": {
@@ -568,7 +573,7 @@
 }
 </pre>
                             <p>
-                                This object describes a state with 4 files, two of which have the same content
+                                This state block describes an object with 4 files, two of which have the same content
                                 (<code>empty.txt</code> and <code>empty2.txt</code>), and one of which is in a
                                 sub-directory (<code>foo.xml</code>). The <a>logical state</a> shown as a tree
                                 is thus:

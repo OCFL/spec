@@ -170,7 +170,7 @@ organise material but all files are treated equally for the purpose of OCFL vali
 
 <h2>Physical storage</h2>
 <p>
-OCFL separates the paths of physical stored files from the logical location of these files' content in OCFL
+OCFL separates the existing file path of stored files from the logical file path of these files' content in OCFL
 object versions. This is a key feature that allows previous versions of objects to remain immutable but
 permitting deduplication, forward delta differencing, and easy file renaming. Consequently, OCFL only requires
 that files added to any version of an OCFL object must be stored somewhere within the relevant version
@@ -183,7 +183,7 @@ physical filesystem.
 </p><p>
 However, this is not always possible. For example, complex objects with deep file hierarchies may encounter
 issues if they come a from fileystem that allows onger paths than are supported by the target OCFL system. In
-this case, the decoupling between physical and logical file paths in OCFL allows the use of truncated paths
+this case, the decoupling between existing file paths and logical file paths in OCFL allows the use of truncated paths
 for storage while the full paths can be preserved in state block entries which are not length constrained.
 </p><p>
 Another use case is importing content from other repository systems which renames file on ingest and stores
