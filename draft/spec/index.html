@@ -423,8 +423,8 @@
             <dl>
                 <dt><code>@context</code></dt>
                 <dd>
-                    The JSON-LD context. The value MAY be a string or an array, but it MUST include the OCFL
-                    Context string `https://ocfl.io/draft/context.jsonld`.
+                    The JSON-LD context. The value MAY be a string or an array of string values. It MUST include the
+                    OCFL Context value <code>https://ocfl.io/draft/context.jsonld</code>.
                 </dd>
                 <dt><code>id</code></dt>
                 <dd>
@@ -617,6 +617,17 @@
 }
 </pre>
             </blockquote>
+        </section>
+
+        <section id="inventory-extension">
+            <h2>Inventory Extension</h2>
+            <p>
+                An OCFL Object Inventory MAY contain extensions using properties in the inventory beyond those
+                defined in this specification. OCFL clients MUST ignore any extensions they do not understand.
+                Any extension properties SHOULD be mapped to RDF predicates using further [[!JSON-LD-1.1]] context
+                documents. These extension contexts SHOULD be added to the top level <code>@context</code> property,
+                and MUST be added before the OCFL context.
+            </p>
         </section>
     </section>
 
