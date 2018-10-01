@@ -1,7 +1,46 @@
 {
   "@context": {
     "@version": 1.1,
+    "ocfl": "https://ocfl.io/draft/spec#",
+    "dcterms": "http://purl.org/dc/terms/",
     "id": "@id",
-    "type": "@type"
+    "type": "@type",
+    "digestAlgorithm": {
+      "@id": "ocfl:digestAlgorithm"
+    },
+    "head": {
+      "@id": "ocfl:head"
+    },
+    "manifest": {
+      "@id": "ocfl:manifest"
+    },
+    "versions": {
+      "@id": "ocfl:versions",
+      "@container": "@list",
+      "@type": "ocfl:Version"
+    },
+    "Version": "ocfl:Version",
+    "version": {
+      "@id": "ocfl:version"
+    },
+    "created": {
+      "@id": "dcterms:created",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "message": {
+      "@id": "ocfl:message"
+    },
+    "user": {
+      "@id": "ocfl:user"
+    },
+    "name": {
+      "@id": "ocfl:name"
+    },
+    "address": {
+      "@id": "ocfl:address"
+    },
+    "fixity": {
+      "@id": "ocfl:fixity"
+    }
   }
 }
