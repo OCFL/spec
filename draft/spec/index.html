@@ -755,8 +755,8 @@
     <section id="root-hierarchies">
         <h2>Storage Hierarchies</h2>
         <p>
-          <a>OCFL Object Root</a>s MUST be stored as direct children of a containing <a>OCFL Storage Root</a> or as the
-          terminal resource at the end of a directory storage hierarchy.
+          <a>OCFL Object Root</a>s MUST be stored either as the terminal resource at the end of a directory storage
+          hierarchy or as direct children of a containing <a>OCFL Storage Root</a>.
         </p>
         <p>
           A common practice is to use a unique identifier scheme to compose this storage hierarchy, typically arranged
@@ -764,7 +764,7 @@
           hierarchies, the following restrictions apply:
         </p>
         <ol>
-          <li>Storage hierarchies MUST NOT include files within interim directories</li>
+          <li>Storage hierarchies MUST NOT include files within intermediate directories</li>
           <li>Storage hierarchies MUST be terminated by OCFL Object Roots</li>
           <li>Storage hierarchies within the same OCFL Storage Root SHOULD share the same layout pattern</li>
           <li>Storage hierarchies within the same OCFL Storage Root SHOULD NOT include mixed dispositions (zip,
@@ -772,9 +772,9 @@
           </li>
         </ol>
         <p>
-          Additionally, the directory name (or filename minus the extension for zip files) of an OCFL Object Root MUST
-          correspond to the OCFL Object's full and complete identifier. To illustrate, for an OCFL Object with the
-          identifier <code>abcd123g</code>:
+          Additionally, the directory name (or filename minus the extension for zip files) of an OCFL Object Root
+          SHOULD correspond to the OCFL Object's full and complete identifier. To illustrate, for an OCFL Object with
+          the identifier <code>abcd123g</code>:
         </p>
         <ul>
           <li>
