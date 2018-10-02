@@ -766,9 +766,9 @@
         <ol>
           <li>Storage hierarchies MUST NOT include files within intermediate directories</li>
           <li>Storage hierarchies MUST be terminated by OCFL Object Roots</li>
-          <li>Storage hierarchies within the same OCFL Storage Root SHOULD share the same layout pattern</li>
-          <li>Storage hierarchies within the same OCFL Storage Root SHOULD NOT include mixed dispositions (zip,
-             PairTree, top-level objects, etc)
+          <li>Storage hierarchies within the same OCFL Storage Root SHOULD use just one layout pattern</li>
+          <li>Storage hierarchies within the same OCFL Storage Root SHOULD consistently use either a directory
+            hierarchy of OCFL Objects, top-level OCFL Objects, or OCFL Object ZIPs
           </li>
         </ol>
         <p>
