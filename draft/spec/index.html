@@ -758,7 +758,52 @@
     <h2>Examples</h2>
 
     <section id="example-minimal-object">
-        <h2>Minimal Object</h2>
+        <h2>Minimal OCFL Object</h2>
+        <p>
+            The following example OCFL Object has content that is a single file
+            (<code>file.txt</code>), and just one version (<code>v1</code>):
+        </p>
+<pre>
+[object root]
+    ├── 0=ocfl_object_1.0
+    ├── inventory.jsonld
+    ├── inventory.jsonld.sha512
+    └── v1
+        ├── file.txt
+        ├── inventory.jsonld
+        └── inventory.jsonld.sha512
+</pre>
+        <p>
+            The inventory for this OCFL Object, the same both at the top-level and
+            in the <code>v1</code> directory, might be:
+        </p>
+<pre>
+{
+  "@context": "https://ocfl.io/draft/context.jsonld",
+  "digestAlgorithm": "sha512",
+  "head": "v1",
+  "id": "http://example.org/minimal",
+  "manifest": {
+    "7545b8...f67": [ "v1/file.txt" ]
+  },
+  "type": "Object",
+  "versions": [
+    {
+      "created": "2018-10-02T12:00:00Z",
+      "message": "One file",
+      "state": {
+        "7545b8...f67": [ "file.txt" ]
+      },
+      "type": "Version",
+      "user": {
+        "address": "alice@example.org",
+        "name": "Alice"
+      },
+      "version": "v1"
+    }
+  ]
+}
+</pre>
     </section>
 
     <section id="example-bagit-in-ocfl">
