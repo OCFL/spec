@@ -103,14 +103,6 @@
                     ],
                     date: "9 November 2009"
                 },
-                "JSON-LD-1.1": {
-                   title: "JSON-LD 1.1: A JSON-based Serialization for Linked Data",
-                   href: "https://json-ld.org/spec/latest/json-ld/",
-                   authors: [
-                        "Manu Sporny", "Dave Longley", "Gregg Kellogg", "Markus Lanthaler", "Niklas Lindström"
-                   ],
-                   date: "7 June 2018"
-                },
                 "OAIS": {
                     title: " Reference Model for an Open Archival Information System (OAIS), Issue 2",
                     href: "https://public.ccsds.org/pubs/650x0m2.pdf",
@@ -287,11 +279,11 @@
         <pre>
 [object_root]
     ├── 0=ocfl_object_1.0
-    ├── inventory.jsonld
-    ├── inventory.jsonld.sha512
+    ├── inventory.json
+    ├── inventory.json.sha512
     └── v1
-        ├── inventory.jsonld
-        └── inventory.jsonld.sha512
+        ├── inventory.json
+        └── inventory.json.sha512
         </pre>
     </section>
 
@@ -420,15 +412,8 @@
         <h2>Inventory</h2>
         <p>
             An OCFL Object Inventory MUST follow the [[!JSON]] structure described in this section and MUST be named
-            <code>inventory.jsonld</code>. Furthermore, inventory files MUST conform to [[!JSON-LD-1.1]], MUST include
-            the JSON-LD <code>@context</code> value
-            <a href="https://ocfl.io/draft/context.jsonld"><code>https://ocfl.io/draft/context.jsonld</code></a>.
+            <code>inventory.json</code>.
         </p>
-        <blockquote class="informative">
-            Non-normative note: The use of JSON-LD for inventory files means that they can be generated from and
-            interpreted as RDF, and provides some self-documentation. The fixed JSON structure means that they can
-            also be generated and read without requiring RDF and JSON-LD support.
-        </blockquote>
 
         <section id="inventory-structure">
             <h2>Basic Structure</h2>
@@ -436,11 +421,6 @@
                 An OCFL Object Inventory MUST include the following keys:
             </p>
             <dl>
-                <dt><code>@context</code></dt>
-                <dd>
-                    The JSON-LD context. The value MAY be a string or an array of string values. It MUST include the
-                    OCFL Context value <code>https://ocfl.io/draft/context.jsonld</code>.
-                </dd>
                 <dt><code>id</code></dt>
                 <dd>
                     A unique identifier for the OCFL Object. This MUST be unique in the local context, and SHOULD be
@@ -448,7 +428,7 @@
                 </dd>
                 <dt><code>type</code></dt>
                 <dd>
-                    The JSON-LD type for the inventory. This MUST have the value <code>Object</code>.
+                    A type for the inventory JSON object. This MUST have the value <code>Object</code>.
                 </dd>
                 <dt><code>digestAlgorithm</code></dt>
                 <dd>
@@ -502,19 +482,20 @@
                 key of <code>versions</code> within the inventory, and it MUST be an array.
             </p>
             <p>
-                The <code>versions</code> array MUST be a list of one or more JSON objects of type <code>Version</code>.
+                The <code>versions</code> array MUST be a list of one or more JSON objects, one for each
+                <a href="#version"></a>.
             </p>
             <section id="version">
                 <h2>Version</h2>
                 <p>
-                    A JSON object of type <code>Version</code> which MUST include the following keys:
+                    A JSON object to describe one <a>OCFL Version</a>, which MUST include the following keys:
                 </p>
                 <dl>
                     <dt>
                         <code>type</code>
                     </dt>
                     <dd>
-                        The value of this key MUST be <code>Version</code>.
+                        A type for the version JSON object. This MUST have the value <code>Version</code>.
                     </dd>
                     <dt>
                         <code>version</code>
@@ -633,29 +614,18 @@
 </pre>
             </blockquote>
         </section>
-
-        <section id="inventory-extension">
-            <h2>Inventory Extension</h2>
-            <p>
-                An OCFL Object Inventory MAY contain extensions using properties in the inventory beyond those
-                defined in this specification. OCFL clients MUST ignore any extensions they do not understand.
-                Any extension properties SHOULD be mapped to RDF predicates using further [[!JSON-LD-1.1]] context
-                documents. These extension contexts SHOULD be added to the top level <code>@context</code> property,
-                and MUST be added before the OCFL context.
-            </p>
-        </section>
     </section>
 
     <section id="inventory-digest">
         <h2>Inventory Digest</h2>
         <p>
             Every occurrence of an inventory file MUST have an accompanying sidecar file stating its digest. This
-            sidecar file must be of the form <code>inventory.jsonld.ALGORITHM</code>, where <code>ALGORITHM</code> is
-            the chosen digest algorithm for the object. An example might be <code>inventory.jsonld.sha512</code>.
+            sidecar file must be of the form <code>inventory.json.ALGORITHM</code>, where <code>ALGORITHM</code> is
+            the chosen digest algorithm for the object. An example might be <code>inventory.json.sha512</code>.
         </p>
         <p>
             The digest sidecar file MUST contain the digest of the inventory file. This MUST follow the format
-            <code>DIGEST inventory.jsonld</code>; that is, the digest of the inventory file, a single space, and the
+            <code>DIGEST inventory.json</code>; that is, the digest of the inventory file, a single space, and the
             name of the inventory file.
         </p>
         <p>
@@ -806,12 +776,12 @@
 <pre>
 [object root]
     ├── 0=ocfl_object_1.0
-    ├── inventory.jsonld
-    ├── inventory.jsonld.sha512
+    ├── inventory.json
+    ├── inventory.json.sha512
     └── v1
         ├── file.txt
-        ├── inventory.jsonld
-        └── inventory.jsonld.sha512
+        ├── inventory.json
+        └── inventory.json.sha512
 </pre>
         <p>
             The inventory for this OCFL Object, the same both at the top-level and
@@ -819,7 +789,6 @@
         </p>
 <pre>
 {
-  "@context": "https://ocfl.io/draft/context.jsonld",
   "digestAlgorithm": "sha512",
   "head": "v1",
   "id": "http://example.org/minimal",
@@ -854,23 +823,23 @@
 <pre>
 [object root]
     ├── 0=ocfl_object_1.0
-    ├── inventory.jsonld
-    ├── inventory.jsonld.sha512
+    ├── inventory.json
+    ├── inventory.json.sha512
     ├── v1
     │   ├── empty.txt
     │   ├── foo
     │   │   └── bar.xml
     │   ├── image.tiff
-    │   ├── inventory.jsonld
-    │   └── inventory.jsonld.sha512
+    │   ├── inventory.json
+    │   └── inventory.json.sha512
     ├── v2
     │   ├── foo
     │   │   └── bar.xml
-    │   ├── inventory.jsonld
-    │   └── inventory.jsonld.sha512
+    │   ├── inventory.json
+    │   └── inventory.json.sha512
     └── v3
-        ├── inventory.jsonld
-        └── inventory.jsonld.sha512
+        ├── inventory.json
+        └── inventory.json.sha512
 </pre>
         <p>
             In <code>v1</code> there are three files, <code>empty.txt</code>, <code>foo/bar.xml</code>,
@@ -884,7 +853,6 @@
         </p>
 <pre>
 {
-  "@context": "https://ocfl.io/draft/context.jsonld",
   "digestAlgorithm": "sha512",
   "fixity": {
     "md5": {
