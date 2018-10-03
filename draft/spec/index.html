@@ -278,8 +278,8 @@
         to the object.
     </p>
 
-    <section id="basic-structure">
-        <h2>Basic Structure</h2>
+    <section id="object-structure">
+        <h2>Object Structure</h2>
         <p>
             The basic OCFL Object structure has a minimal set of files and directories necessary to support content
             storage and object validation. The minimum required is shown in the following figure:
@@ -703,23 +703,12 @@
 
 <section id="storage-root">
     <h2>OCFL Storage Root</h2>
-
-    <section id="root-conformance-declaration">
-        <h2>Root Conformance Declaration</h2>
-        <p>
-            The OCFL version declaration MUST be formatted according to the [[!NAMASTE]] specification. It MUST be an
-            empty file in the base directory of the <a>OCFL Storage Root</a> giving the OCFL version in the filename.
-            The filename MUST be constructed with a leading zero-equals (<code>0=</code>) string, the string
-            <code>ocfl_</code>, followed by the OCFL specification version number. For example <code>0=ocfl_1.0</code>
-            for version 1.0 of this specification.
-        </p>
-    </section>
+    <p>
+      An <a>OCFL Storage Root</a> is the base directory of an OCFL storage layout.
+    </p>
 
     <section id="root-structure">
         <h2>Root Structure</h2>
-        <p>
-          An <a>OCFL Storage Root</a> is the base directory of an OCFL storage layout.
-        </p>
         <p>
           An OCFL Storage Root MUST contain a
           <a href="#root-conformance-declaration">Root Conformance Declaration</a> identifying it as such.
@@ -750,6 +739,17 @@
     ├── 0=ocfl_1.0
     └── ocfl_1.0.txt (optional)
         </pre>
+    </section>
+
+    <section id="root-conformance-declaration">
+        <h2>Root Conformance Declaration</h2>
+        <p>
+            The OCFL version declaration MUST be formatted according to the [[!NAMASTE]] specification. It MUST be an
+            empty file in the base directory of the <a>OCFL Storage Root</a> giving the OCFL version in the filename.
+            The filename MUST be constructed with a leading zero-equals (<code>0=</code>) string, the string
+            <code>ocfl_</code>, followed by the OCFL specification version number. For example <code>0=ocfl_1.0</code>
+            for version 1.0 of this specification.
+        </p>
     </section>
 
     <section id="root-hierarchies">
@@ -880,7 +880,7 @@
             removed, and <code>image.tiff</code> is reinstated. As a result of forward-delta versioning, the
             object tree above shows only new content added in each version. The inventory shown below details
             the other changes, includes additional fixity information using <code>md5</code> and
-            <code>sha1</code> digest algorithms, and minimal metadata for each version. 
+            <code>sha1</code> digest algorithms, and minimal metadata for each version.
         </p>
 <pre>
 {
