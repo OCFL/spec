@@ -229,8 +229,7 @@
           contents.</dd>
 
         <dt><dfn>OCFL Object Root</dfn>:<dt>
-        <dd>The base directory of an <a>OCFL Object</a> that may exist either as a first class directory, or in the
-          case of a zipped OCFL Object, as the top directory in a zip file.</dd>
+        <dd>The base directory of an <a>OCFL Object</a>.</dd>
 
         <dt><dfn>OCFL Storage Root</dfn>:</dt>
         <dd>The base directory of an OCFL storage layout.</dd>
@@ -751,24 +750,9 @@
           <li>Storage hierarchies MUST be terminated by OCFL Object Roots</li>
           <li>Storage hierarchies within the same OCFL Storage Root SHOULD use just one layout pattern</li>
           <li>Storage hierarchies within the same OCFL Storage Root SHOULD consistently use either a directory
-            hierarchy of OCFL Objects, top-level OCFL Objects, or OCFL Object ZIPs
+            hierarchy of OCFL Objects or top-level OCFL Objects
           </li>
         </ol>
-        <p>
-          Additionally, the directory name (or filename minus the extension for zip files) of an OCFL Object Root
-          SHOULD correspond to the OCFL Object's full and complete identifier. To illustrate, for an OCFL Object with
-          the identifier <code>abcd123g</code>:
-        </p>
-        <ul>
-          <li>
-            Invalid:
-            <pre>/ab/cd/12/3g/... object files here</pre>
-          </li>
-          <li>
-            Valid:
-            <pre>/ab/cd/12/3g/abcd123g/... object files here</pre>
-          </li>
-        </ul>
     </section>
 
     <section id="root-extensions">
