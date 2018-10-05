@@ -126,7 +126,7 @@
                 },
                 "OCFL-Implementation-Notes": {
                     title: "OCFL Implementation Notes",
-                    href: "implementation-notes.html"
+                    href: "../implementation-notes"
                 }
             }
         };
@@ -157,6 +157,10 @@
             "object-in-motion")
         </li>
     </ol>
+    <p>
+      See also the [[OCFL-Implementation-Notes]] for guidance on how clients should behave when
+      operating on OCFL Objects.
+    </p>
     <section id="need">
         <h2>Need</h2>
         <p>
@@ -298,7 +302,7 @@
             (i.e., structure).</li>
     </ol>
     <p>
-        A key goal of OCFL is the rebuildability of a repository from an OCFL storage root without additional
+        A key goal of OCFL is the rebuildability of a repository from an OCFL Storage Root without additional
         information resources. Consequently, a key implementation consideration should be to ensure that OCFL Objects
         contain all the data and metadata required to achieve this. With reference to the [[OAIS]] model, this would
         include all the descriptive, administrative, structural, representation and preservation metadata relevant
@@ -308,7 +312,7 @@
     <section id="basic-structure">
         <h2>Basic Structure</h2>
         <p>
-            The basic OCFL Object structure has a minimal set of files and directories necessary to support data
+            The basic OCFL Object structure has a minimal set of files and directories necessary to support content
             storage and object validation. The minimum required is shown in the following figure:
         </p>
         <pre>
@@ -345,17 +349,19 @@
             version number, ie. <code>v1</code>, <code>v2</code>, <code>v3</code>, etc..
         </p>
         <p>
-            For compatibility with existing filesystem conventions, implementations MAY use zero-padded version numbers,
-            with the following restriction: If zero-padded version numbers are used then they MUST start with a zero.
-            For example, in an implementation that uses five digits the version directory names <code>v00001</code> to
-            <code>v09999</code> are allowed, <code>v10000</code> is not allowed.
+            For compatibility with existing filesystem conventions, implementations MAY use zero-padded version
+            directory numbers, with the following restriction: If zero-padded version directory numbers are used then
+            they MUST start with the prefix <code>v</code> and then a zero. For example, in an implementation that uses
+            five digits for version directory names then <code>v00001</code> to <code>v09999</code> are allowed,
+            <code>v10000</code> is not allowed.
         </p>
         <p>
-            The first version of an object defines the naming convention for all versions of the object. All versions of
-            an object MUST use the same naming convention: either a non-padded version number, or a zero-padded version
-            number of consistent length. Operations that add a new version to an object MUST follow the directory naming
-            convention established by earlier versions. In all cases, references to files inside version directories
-            from inventory files MUST use the actual version directory names.
+            The first version of an object defines the naming convention for all version directories for the object.
+            All version directories of an object MUST use the same naming convention: either a non-padded version
+            directory number, or a zero-padded version directory number of consistent length. Operations that add a new
+            version to an object MUST follow the version directory naming convention established by earlier versions.
+            In all cases, references to files inside version directories from inventory files MUST use the actual
+            version directory names.
         </p>
         <p>
             Empty directories within a version directory are not permitted. Otherwise empty directories MAY be
@@ -458,18 +464,18 @@
         <section id="inventory-structure">
             <h2>Basic Structure</h2>
             <p>
-                An OCFL Object Inventory must include the following keys:
+                An OCFL Object Inventory MUST include the following keys:
             </p>
             <dl>
                 <dt><code>@context</code></dt>
                 <dd>
-                    The JSON-LD context. The value MAY be a string or an array, but it MUST include the OCFL
-                    Context string `https://ocfl.io/draft/context.jsonld`.
+                    The JSON-LD context. The value MAY be a string or an array of string values. It MUST include the
+                    OCFL Context value <code>https://ocfl.io/draft/context.jsonld</code>.
                 </dd>
                 <dt><code>id</code></dt>
                 <dd>
-                    A unique ID for the OCFL Object. This MUST be unique in the local context, and SHOULD be either a
-                    URI or URN. There is no expectation that values given as URIs are resolveable as URLs.
+                    A unique identifier for the OCFL Object. This MUST be unique in the local context, and SHOULD be
+                    either a URI or URN. There is no expectation that values given as URIs are resolveable as URLs.
                 </dd>
                 <dt><code>type</code></dt>
                 <dd>
@@ -483,7 +489,7 @@
                 </dd>
                 <dt><code>head</code></dt>
                 <dd>
-                    A value corresponding to the ID of the most recent, or 'head,' version of the object.
+                    A value corresponding to the identifier of the most recent, or 'head,' version of the object.
                 </dd>
             </dl>
             <p>
@@ -584,21 +590,21 @@
                         <blockquote class="informative">
                             <p>
                                 Non-normative note: The <a>logical state</a> of the object uses content-addressable
-                                techniques to map <a>logical file path</a>s to their bitstreams, as expressed in
-                                the manifest section of the inventory.
+                                techniques to map logical file paths to their bitstreams, as expressed in the manifest
+                                section of the inventory.
                             </p>
                             <p>
                                 Notably, the version state can be used to provide de-duplication of content within
-                                the OCFL Object, by mapping multiple <a>logical file path</a>s to the same content
-                                digestin the manifest. Implementers may choose to use this functionality on a
-                                case-by-case basis. For example, they may choose to implement renaming (that is,
-                                changes in file <i>name</i>, but not file <i>content</i>) by pointing a new logical
-                                file path to the digest for content that was added in a previous version. Implementers
-                                may also, however, choose to accession a new file with a new name and same content as
-                                a new version. See [[OCFL-Implementation-Notes]].
+                                the OCFL Object, by mapping multiple logical file paths to the same content digest in
+                                the manifest. Implementers may choose to use this functionality on a case-by-case
+                                basis. For example, they may choose to implement renaming (that is, changes in file
+                                <i>name</i>, but not file <i>content</i>) by pointing a new logical file path to the
+                                digest for content that was added in a previous version. Implementers may also,
+                                however, choose to accession a new file with a new name and the same content as a new
+                                version. See [[OCFL-Implementation-Notes]].
                             </p>
                             <p>
-                                An example state object is shown below:
+                                An example state block is shown below:
                             </p>
 <pre>
 "state": {
@@ -608,7 +614,7 @@
 }
 </pre>
                             <p>
-                                This object describes a state with 4 files, two of which have the same content
+                                This state block describes an object with 4 files, two of which have the same content
                                 (<code>empty.txt</code> and <code>empty2.txt</code>), and one of which is in a
                                 sub-directory (<code>foo.xml</code>). The <a>logical state</a> shown as a tree
                                 is thus:
@@ -657,6 +663,17 @@
 }
 </pre>
             </blockquote>
+        </section>
+
+        <section id="inventory-extension">
+            <h2>Inventory Extension</h2>
+            <p>
+                An OCFL Object Inventory MAY contain extensions using properties in the inventory beyond those
+                defined in this specification. OCFL clients MUST ignore any extensions they do not understand.
+                Any extension properties SHOULD be mapped to RDF predicates using further [[!JSON-LD-1.1]] context
+                documents. These extension contexts SHOULD be added to the top level <code>@context</code> property,
+                and MUST be added before the OCFL context.
+            </p>
         </section>
     </section>
 
