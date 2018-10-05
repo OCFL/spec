@@ -103,14 +103,6 @@
                     ],
                     date: "9 November 2009"
                 },
-                "JSON-LD-1.1": {
-                   title: "JSON-LD 1.1: A JSON-based Serialization for Linked Data",
-                   href: "https://json-ld.org/spec/latest/json-ld/",
-                   authors: [
-                        "Manu Sporny", "Dave Longley", "Gregg Kellogg", "Markus Lanthaler", "Niklas Lindström"
-                   ],
-                   date: "7 June 2018"
-                },
                 "OAIS": {
                     title: " Reference Model for an Open Archival Information System (OAIS), Issue 2",
                     href: "https://public.ccsds.org/pubs/650x0m2.pdf",
@@ -127,6 +119,22 @@
                 "OCFL-Implementation-Notes": {
                     title: "OCFL Implementation Notes",
                     href: "../implementation-notes"
+                },
+                "PairTree": {
+                  title: "Pairtrees for Object Storage",
+                  href: "https://confluence.ucop.edu/display/Curation/PairTree",
+                  authors: [
+                    "J. Kunze", "M. Haye", "E. Hetzner", "M. Reyes", "C. Snavely"
+                  ],
+                  date: "12 August 2008"
+                },
+                "JSON-Schema": {
+                    title: "JSON Schema Validation: A Vocabulary for Structural Validation of JSON",
+                    href: "https://json-schema.org/latest/json-schema-validation.html",
+                    authors: [
+                      "A. Wright", "H Andrews"
+                    ],
+                    date: "20 September 2018"
                 }
             }
         };
@@ -309,8 +317,8 @@
         to the object.
     </p>
 
-    <section id="basic-structure">
-        <h2>Basic Structure</h2>
+    <section id="object-structure">
+        <h2>Object Structure</h2>
         <p>
             The basic OCFL Object structure has a minimal set of files and directories necessary to support content
             storage and object validation. The minimum required is shown in the following figure:
@@ -318,11 +326,11 @@
         <pre>
 [object_root]
     ├── 0=ocfl_object_1.0
-    ├── inventory.jsonld
-    ├── inventory.jsonld.sha512
+    ├── inventory.json
+    ├── inventory.json.sha512
     └── v1
-        ├── inventory.jsonld
-        └── inventory.jsonld.sha512
+        ├── inventory.json
+        └── inventory.json.sha512
         </pre>
     </section>
 
@@ -451,27 +459,20 @@
         <h2>Inventory</h2>
         <p>
             An OCFL Object Inventory MUST follow the [[!JSON]] structure described in this section and MUST be named
-            <code>inventory.jsonld</code>. Furthermore, inventory files MUST conform to [[!JSON-LD-1.1]], MUST include
-            the JSON-LD <code>@context</code> value
-            <a href="https://ocfl.io/draft/context.jsonld"><code>https://ocfl.io/draft/context.jsonld</code></a>.
+            <code>inventory.json</code>.
         </p>
         <blockquote class="informative">
-            Non-normative note: The use of JSON-LD for inventory files means that they can be generated from and
-            interpreted as RDF, and provides some self-documentation. The fixed JSON structure means that they can
-            also be generated and read without requiring RDF and JSON-LD support.
+            <p>
+                Non-normative note: A [[JSON-Schema]] for validating OCFL Object Inventory files is provided at
+                <a href="inventory_schema.json">inventory_schema.json</a>.
+            </p>
         </blockquote>
-
         <section id="inventory-structure">
             <h2>Basic Structure</h2>
             <p>
                 An OCFL Object Inventory MUST include the following keys:
             </p>
             <dl>
-                <dt><code>@context</code></dt>
-                <dd>
-                    The JSON-LD context. The value MAY be a string or an array of string values. It MUST include the
-                    OCFL Context value <code>https://ocfl.io/draft/context.jsonld</code>.
-                </dd>
                 <dt><code>id</code></dt>
                 <dd>
                     A unique identifier for the OCFL Object. This MUST be unique in the local context, and SHOULD be
@@ -479,7 +480,7 @@
                 </dd>
                 <dt><code>type</code></dt>
                 <dd>
-                    The JSON-LD type for the inventory. This MUST have the value <code>Object</code>.
+                    A type for the inventory JSON object. This MUST have the value <code>Object</code>.
                 </dd>
                 <dt><code>digestAlgorithm</code></dt>
                 <dd>
@@ -517,11 +518,11 @@
                     An example manifest object for three logical file paths, all in version 1, is shown below:
                 </p>
 <pre>
-"manifest": {
-    "7dcc35...c31": [ "v1/metadata/foo.xml" ],
+  "manifest": {
+    "7dcc35...c31": [ "v1/foo/bar.xml" ],
     "cf83e1...a3e": [ "v1/empty.txt" ],
     "ffccf6...62e": [ "v1/image.tiff" ]
-}
+  }
 </pre>
             </blockquote>
         </section>
@@ -533,19 +534,20 @@
                 key of <code>versions</code> within the inventory, and it MUST be an array.
             </p>
             <p>
-                The <code>versions</code> array MUST be a list of one or more JSON objects of type <code>Version</code>.
+                The <code>versions</code> array MUST be a list of one or more JSON objects, one for each
+                <a href="#version"></a>.
             </p>
             <section id="version">
                 <h2>Version</h2>
                 <p>
-                    A JSON object of type <code>Version</code> which MUST include the following keys:
+                    A JSON object to describe one <a>OCFL Version</a>, which MUST include the following keys:
                 </p>
                 <dl>
                     <dt>
                         <code>type</code>
                     </dt>
                     <dd>
-                        The value of this key MUST be <code>Version</code>.
+                        A type for the version JSON object. This MUST have the value <code>Version</code>.
                     </dd>
                     <dt>
                         <code>version</code>
@@ -607,24 +609,22 @@
                                 An example state block is shown below:
                             </p>
 <pre>
-"state": {
-    "7dcc35...c31": [ "metadata/foo.xml" ],
-    "cf83e1...a3e": [ "empty.txt", "empty2.txt" ],
-    "ffccf6...62e": [ "image.tiff" ]
-}
+  "state": {
+    "4d27c8...b53": [ "foo/bar.xml" ],
+    "cf83e1...a3e": [ "empty.txt", "empty2.txt" ]
+  }
 </pre>
                             <p>
-                                This state block describes an object with 4 files, two of which have the same content
+                                This state block describes an object with 3 files, two of which have the same content
                                 (<code>empty.txt</code> and <code>empty2.txt</code>), and one of which is in a
-                                sub-directory (<code>foo.xml</code>). The <a>logical state</a> shown as a tree
+                                sub-directory (<code>bar.xml</code>). The <a>logical state</a> shown as a tree
                                 is thus:
                             </p>
 <pre>
-    ├── image.tiff
     ├── empty.txt
     ├── empty2.txt
-    └── metadata
-        └── foo.xml
+    └── foo
+        └── bar.xml
 </pre>
                         </blockquote>
                     </dd>
@@ -649,31 +649,22 @@
                     An example fixity section with <code>md5</code> and <code>sha1</code> digests is shown below.
                 </p>
 <pre>
-"fixity": {
+  "fixity": {
     "md5": {
-        "184f84e28cbe75e050e9c25ea7f2e939": [ "v1/metadata/foo.xml" ],
-        "c289c8ccd4bab6e385f5afdd89b5bda2": [ "v1/image.tiff" ],
-        "d41d8cd98f00b204e9800998ecf8427e": [ "v1/empty.txt" ]
+      "184f84e28cbe75e050e9c25ea7f2e939": [ "v1/foo/bar.xml" ],
+      "2673a7b11a70bc7ff960ad8127b4adeb": [ "v2/foo/bar.xml" ],
+      "c289c8ccd4bab6e385f5afdd89b5bda2": [ "v1/image.tiff" ],
+      "d41d8cd98f00b204e9800998ecf8427e": [ "v1/empty.txt" ]
     },
     "sha1": {
-        "66709b068a2faead97113559db78ccd44712cbf2": [ "v1/metadata/foo.xml" ],
-        "b9c7ccc6154974288132b63c15db8d2750716b49": [ "v1/image.tiff" ],
-        "da39a3ee5e6b4b0d3255bfef95601890afd80709": [ "v1/empty.txt" ]
+      "66709b068a2faead97113559db78ccd44712cbf2": [ "v1/foo/bar.xml" ],
+      "a6357c99ecc5752931e133227581e914968f3b9c": [ "v2/foo/bar.xml" ],
+      "b9c7ccc6154974288132b63c15db8d2750716b49": [ "v1/image.tiff" ],
+      "da39a3ee5e6b4b0d3255bfef95601890afd80709": [ "v1/empty.txt" ]
     }
-}
+  }
 </pre>
             </blockquote>
-        </section>
-
-        <section id="inventory-extension">
-            <h2>Inventory Extension</h2>
-            <p>
-                An OCFL Object Inventory MAY contain extensions using properties in the inventory beyond those
-                defined in this specification. OCFL clients MUST ignore any extensions they do not understand.
-                Any extension properties SHOULD be mapped to RDF predicates using further [[!JSON-LD-1.1]] context
-                documents. These extension contexts SHOULD be added to the top level <code>@context</code> property,
-                and MUST be added before the OCFL context.
-            </p>
         </section>
     </section>
 
@@ -681,12 +672,12 @@
         <h2>Inventory Digest</h2>
         <p>
             Every occurrence of an inventory file MUST have an accompanying sidecar file stating its digest. This
-            sidecar file must be of the form <code>inventory.jsonld.ALGORITHM</code>, where <code>ALGORITHM</code> is
-            the chosen digest algorithm for the object. An example might be <code>inventory.jsonld.sha512</code>.
+            sidecar file must be of the form <code>inventory.json.ALGORITHM</code>, where <code>ALGORITHM</code> is
+            the chosen digest algorithm for the object. An example might be <code>inventory.json.sha512</code>.
         </p>
         <p>
             The digest sidecar file MUST contain the digest of the inventory file. This MUST follow the format
-            <code>DIGEST inventory.jsonld</code>; that is, the digest of the inventory file, a single space, and the
+            <code>DIGEST inventory.json</code>; that is, the digest of the inventory file, a single space, and the
             name of the inventory file.
         </p>
         <p>
@@ -734,30 +725,19 @@
 
 <section id="storage-root">
     <h2>OCFL Storage Root</h2>
-
-    <section id="root-conformance-declaration">
-        <h2>Root Conformance Declaration</h2>
-        <p>
-            The OCFL version declaration MUST be formatted according to the [[!NAMASTE]] specification. It MUST be an
-            empty file in the base directory of the <a>OCFL Storage Root</a> giving the OCFL version in the filename.
-            The filename MUST be constructed with a leading zero-equals (<code>0=</code>) string, the string
-            <code>ocfl_</code>, followed by the OCFL specification version number. For example <code>0=ocfl_1.0</code>
-            for version 1.0 of this specification.
-        </p>
-    </section>
+    <p>
+      An <a>OCFL Storage Root</a> is the base directory of an OCFL storage layout.
+    </p>
 
     <section id="root-structure">
         <h2>Root Structure</h2>
-        <p>
-          An <a>OCFL Storage Root</a> is the base directory of an OCFL storage layout.
-        </p>
         <p>
           An OCFL Storage Root MUST contain a
           <a href="#root-conformance-declaration">Root Conformance Declaration</a> identifying it as such.
         </p>
         <p>
           <a>OCFL Object</a>s within a given OCFL Storage Root MUST be the same as the OCFL specification
-           version as declared in the <a href="#root-conformance-declaration">Root Conformance Declaration</a>.
+           version as declared in the Root Conformance Declaration.
         </p>
         <p>
           An OCFL Storage Root SHOULD also contain the OCFL specification in human-readable plain-text format
@@ -783,8 +763,36 @@
         </pre>
     </section>
 
+    <section id="root-conformance-declaration">
+        <h2>Root Conformance Declaration</h2>
+        <p>
+            The OCFL version declaration MUST be formatted according to the [[!NAMASTE]] specification. It MUST be an
+            empty file in the base directory of the <a>OCFL Storage Root</a> giving the OCFL version in the filename.
+            The filename MUST be constructed with a leading zero-equals (<code>0=</code>) string, the string
+            <code>ocfl_</code>, followed by the OCFL specification version number. For example <code>0=ocfl_1.0</code>
+            for version 1.0 of this specification.
+        </p>
+    </section>
+
     <section id="root-hierarchies">
         <h2>Storage Hierarchies</h2>
+        <p>
+          <a>OCFL Object Root</a>s MUST be stored either as the terminal resource at the end of a directory storage
+          hierarchy or as direct children of a containing <a>OCFL Storage Root</a>.
+        </p>
+        <p>
+          A common practice is to use a unique identifier scheme to compose this storage hierarchy, typically arranged
+          according to some form of the [[PairTree]] specification. Irrespective of the pattern chosen for the storage
+          hierarchies, the following restrictions apply:
+        </p>
+        <ol>
+          <li>Storage hierarchies MUST NOT include files within intermediate directories</li>
+          <li>Storage hierarchies MUST be terminated by OCFL Object Roots</li>
+          <li>Storage hierarchies within the same OCFL Storage Root SHOULD use just one layout pattern</li>
+          <li>Storage hierarchies within the same OCFL Storage Root SHOULD consistently use either a directory
+            hierarchy of OCFL Objects or top-level OCFL Objects
+          </li>
+        </ol>
     </section>
 
     <section id="root-extensions">
@@ -797,7 +805,163 @@
     <h2>Examples</h2>
 
     <section id="example-minimal-object">
-        <h2>Minimal Object</h2>
+        <h2>Minimal OCFL Object</h2>
+        <p>
+            The following example OCFL Object has content that is a single file
+            (<code>file.txt</code>), and just one version (<code>v1</code>):
+        </p>
+<pre>
+[object root]
+    ├── 0=ocfl_object_1.0
+    ├── inventory.json
+    ├── inventory.json.sha512
+    └── v1
+        ├── file.txt
+        ├── inventory.json
+        └── inventory.json.sha512
+</pre>
+        <p>
+            The inventory for this OCFL Object, the same both at the top-level and
+            in the <code>v1</code> directory, might be:
+        </p>
+<pre>
+{
+  "digestAlgorithm": "sha512",
+  "head": "v1",
+  "id": "http://example.org/minimal",
+  "manifest": {
+    "7545b8...f67": [ "v1/file.txt" ]
+  },
+  "type": "Object",
+  "versions": [
+    {
+      "created": "2018-10-02T12:00:00Z",
+      "message": "One file",
+      "state": {
+        "7545b8...f67": [ "file.txt" ]
+      },
+      "type": "Version",
+      "user": {
+        "address": "alice@example.org",
+        "name": "Alice"
+      },
+      "version": "v1"
+    }
+  ]
+}
+</pre>
+    </section>
+
+    <section id="example-versioned-object">
+        <h2>Versioned OCFL Object</h2>
+        <p>
+            The following example OCFL Object has three versions:
+        </p>
+<pre>
+[object root]
+    ├── 0=ocfl_object_1.0
+    ├── inventory.json
+    ├── inventory.json.sha512
+    ├── v1
+    │   ├── empty.txt
+    │   ├── foo
+    │   │   └── bar.xml
+    │   ├── image.tiff
+    │   ├── inventory.json
+    │   └── inventory.json.sha512
+    ├── v2
+    │   ├── foo
+    │   │   └── bar.xml
+    │   ├── inventory.json
+    │   └── inventory.json.sha512
+    └── v3
+        ├── inventory.json
+        └── inventory.json.sha512
+</pre>
+        <p>
+            In <code>v1</code> there are three files, <code>empty.txt</code>, <code>foo/bar.xml</code>,
+            and <code>image.tiff</code>. In <code>v2</code> the content of <code>foo/bar.xml</code> is changed,
+            <code>empty2.txt</code> is added with the same content as <code>empty.txt</code>, and
+            <code>image.tiff</code> is removed. In <code>v3</code> the file <code>empty.txt</code> is
+            removed, and <code>image.tiff</code> is reinstated. As a result of forward-delta versioning, the
+            object tree above shows only new content added in each version. The inventory shown below details
+            the other changes, includes additional fixity information using <code>md5</code> and
+            <code>sha1</code> digest algorithms, and minimal metadata for each version.
+        </p>
+<pre>
+{
+  "digestAlgorithm": "sha512",
+  "fixity": {
+    "md5": {
+      "184f84e28cbe75e050e9c25ea7f2e939": [ "v1/foo/bar.xml" ],
+      "2673a7b11a70bc7ff960ad8127b4adeb": [ "v2/foo/bar.xml" ],
+      "c289c8ccd4bab6e385f5afdd89b5bda2": [ "v1/image.tiff" ],
+      "d41d8cd98f00b204e9800998ecf8427e": [ "v1/empty.txt" ]
+    },
+    "sha1": {
+      "66709b068a2faead97113559db78ccd44712cbf2": [ "v1/foo/bar.xml" ],
+      "a6357c99ecc5752931e133227581e914968f3b9c": [ "v2/foo/bar.xml" ],
+      "b9c7ccc6154974288132b63c15db8d2750716b49": [ "v1/image.tiff" ],
+      "da39a3ee5e6b4b0d3255bfef95601890afd80709": [ "v1/empty.txt" ]
+    }
+  },
+  "head": "v3",
+  "id": "ark:/12345/bcd987",
+  "manifest": {
+    "4d27c8...b53": [ "v2/foo/bar.xml" ],
+    "7dcc35...c31": [ "v1/foo/bar.xml" ],
+    "cf83e1...a3e": [ "v1/empty.txt" ],
+    "ffccf6...62e": [ "v1/image.tiff" ]
+  },
+  "type": "Object",
+  "versions": [
+    {
+      "created": "2018-01-01T01:01:01Z",
+      "message": "Initial import",
+      "state": {
+        "7dcc35...c31": [ "foo/bar.xml" ],
+        "cf83e1...a3e": [ "empty.txt" ],
+        "ffccf6...62e": [ "image.tiff" ]
+      },
+      "type": "Version",
+      "user": {
+        "address": "alice@example.com",
+        "name": "Alice"
+      },
+      "version": "v1"
+    },
+    {
+      "created": "2018-02-02T02:02:02Z",
+      "message": "Fix bar.xml, remove image.tiff, add empty2.txt",
+      "state": {
+        "4d27c8...b53": [ "foo/bar.xml" ],
+        "cf83e1...a3e": [ "empty.txt", "empty2.txt" ]
+      },
+      "type": "Version",
+      "user": {
+        "address": "bob@example.com",
+        "name": "Bob"
+      },
+      "version": "v2"
+    },
+    {
+      "created": "2018-03-03T03:03:03Z",
+      "message": "Reinstate image.tiff, delete empty.txt",
+      "state": {
+        "4d27c8...b53": [ "foo/bar.xml" ],
+        "cf83e1...a3e": [ "empty2.txt" ],
+        "ffccf6...62e": [ "image.tiff" ]
+      },
+      "type": "Version",
+      "user": {
+        "address": "cecilia@example.com",
+        "name": "Cecilia"
+      },
+      "version": "v3"
+    }
+  ]
+}
+</pre>
     </section>
 
     <section id="example-bagit-in-ocfl">
