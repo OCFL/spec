@@ -204,78 +204,82 @@
     <dl>
         <dt><dfn>Existing File Path</dfn>:</dt>
         <dd>
-            The file path as it appears on disk including the version directories and the filename, and relative to
-            an <a>OCFL Object Root</a>. Existing file paths are used in the <a>Manifest</a> within an
-            <a>Inventory</a>.
+            The file path of a file on disk, relative to the <a>OCFL Object 
+            Root</a>. Existing file paths are used in the <a>Manifest</a> 
+            within an <a>Inventory</a>.
         </dd>
         <dt>
             <dfn>Digest</dfn>:
         </dt>
         <dd>
-            An algorithmic characterisation of the contents of a file conforming to a standard digest algorithm.
-            Digests are used for recording fixity and for content-addressable storage within an OCFL Object.
+            An algorithmic characterization of the contents of a file 
+            conforming to a standard digest algorithm.
         </dd>
         <dt>
             <dfn>Inventory</dfn>:
         </dt>
         <dd>
-            A file, expressed in JSON-LD, that tracks the history and current state of an OCFL Object.
+            A file, expressed in JSON-LD, that tracks the history and current 
+            state of an OCFL Object.
         </dd>
         <dt>
             <dfn>Logical File Path</dfn>:
         </dt>
         <dd>
-            A path that represents a file's location in the <a>logical state</a> of an object. Logical file paths
-            are used in conjunction with a digest to represent the file name for a given bitstream at a given version.
+            A path that represents a file's location in the 
+            <a>logical state</a> of an object. Logical file paths are used in 
+            conjunction with a digest to represent the file name for a given 
+            bitstream at a given version.
         </dd>
         <dt>
             <dfn>Logical State</dfn>:
         </dt>
         <dd>
-            A grouping of logical file paths reflecting the state of the content for a given version.
+            A grouping of logical file paths reflecting the state of the 
+            content for a given version.
         </dd>
         <dt>
             <dfn>Logs Directory</dfn>:
         </dt>
         <dd>
-            A directory for storing information about the content (e.g., actions performed) that may not
-            necessarily be part of the content itself.
+            A directory for storing information about the content (e.g., 
+            actions performed) that may not necessarily be part of the content 
+            itself.
         </dd>
         <dt>
             <dfn>Manifest</dfn>
         </dt>
         <dd>
-            A complete listing of all files, with their digests, within an OCFL Object and stored in the
-            <a>Inventory</a>.
+            A section of the <a>Inventory</a> listing all files and their digests within an OCFL Object.
         </dd>
         <dt>
             <dfn>OCFL Object</dfn>:
         </dt>
         <dd>
-            A group of one or more content files and administrative information, that are together identified by a
-            URI. The object may contain a sequence of versions of the files that represent the evolution of the
-            object's contents.
+            A group of one or more content files and administrative 
+            information, that are together identified by a URI. The object may 
+            contain a sequence of versions of the files that represent the 
+            evolution of the object's contents.
         </dd>
         <dt>
             <dfn>OCFL Object Root</dfn>:
         <dt>
         <dd>
-            The base directory of an <a>OCFL Object</a> that may exist either as a plain directory, or in the
-            case of a zipped OCFL Object, as the top directory in a zip file. The Object Root is identified by
-            the presence of a NamAsTe file, "0=ocfl_object_1.0".
+            The base directory of an <a>OCFL Object</a>, identified by a NamAsTe file "0=ocfl_object_1.0".
         </dd>
         <dt>
             <dfn>OCFL Storage Root</dfn>:
         </dt>
         <dd>
-            A base directory used to store OCFL Objects, identified by a NamAsTe file, "0=ocfl_1.0".
+            A base directory used to store OCFL Objects, identified by a NamAsTe file "0=ocfl_1.0".
         </dd>
         <dt>
             <dfn>OCFL Version</dfn>:
         <dt>
         <dd>
-            The state of an <a>OCFL object</a>'s content which is constructed using the incremental changes recorded
-            in the sequence of corresponding and prior version directories.
+            The state of an <a>OCFL Object</a>'s content which is constructed 
+            using the incremental changes recorded in the sequence of 
+            corresponding and prior version directories.
         </dd>
     </dl>
 </section>
