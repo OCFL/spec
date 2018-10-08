@@ -171,7 +171,7 @@
   <section>
     <h2>Data and Metadata</h2>
     <p>
-      OCFL object versions are composed of series of files/bitstreams but OCFL does not make any disctinction between
+      OCFL object versions are composed of series of files/bitstreams but OCFL does not make any distinction between
       different types of files other than those reserved for OCFL functionality: the inventory, its digest file, and
       conformance declaration files. It is possible, for example, to create separate data and metadata directories
       within each version to help organize material but all files are treated equally for the purpose of OCFL
@@ -476,7 +476,8 @@
       identical. In particular, fixity against malicious tampering requires that a digest computation is hard to
       reverse, which is not a requirement for content addressing. It is this aspect which is the most frequent target
       for cryptoanalytic attack.
-
+    </p>
+    <p>
       Consequently, it is sensible to allow additional or alternative fixity algorithms to be used. These may be made
       in a <a href="../spec/#fixity">fixity block</a> which has the same layout as a manifest block but permits a
       broader range of algorithms. OCFL will consider a fixity block valid if all the files referenced in the block
@@ -497,7 +498,7 @@
       object is created.
     </p>
     <p>  
-      The new object need not have the same identifier as the original object. In this case the deleted object can be
+      The new object need not have the same identifier as the original object. In this case, the deleted object can be
       replaced by a "stub" object with the original identifier and location in the OCFL Storage Root. This object is
       a standard OCFL object that just contains brief information that redirects users and software to the new 
       version - possibly with an indication of why the new object was created, if appropriate. OCFL does not define
