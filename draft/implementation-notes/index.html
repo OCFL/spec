@@ -494,9 +494,15 @@
       way to do this is to create a new object that excludes the offending file, with a revised version history taking
       this into account. The original object can then be deleted in its entirety. Creating the new object first is
       good practice as it avoids any risk of data loss that may occur if an object were to be deleted before the new
-      object is created. The new object may not have the same identifier as the original object so the deleted object
-      can be replaced by a "stub" object that redirects users and software to the new version. A "stub" object is just
-      a standard OCFL Object - its structure, interpretation and handling are client dependent.
+      object is created.
+    </p>
+    <p>  
+      The new object need not have the same identifier as the original object. In this case the deleted object can be
+      replaced by a "stub" object with the original identifier and location in the OCFL Storage Root. This object is
+      a standard OCFL object that just contains brief information that redirects users and software to the new 
+      version - possibly with an indication of why the new object was created, if appropriate. OCFL does not define
+      this stub object in any way - its structure, interpretation and handling are entirely client dependent, but
+      ideally some elements should be human readable for rebuildability.
     </p>
   </section>
 
