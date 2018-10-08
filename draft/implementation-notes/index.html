@@ -211,11 +211,10 @@
   <section>
       <h2>Storage Root Hierarchy</h2>
       <p>
-          Strictly speaking, OCFL only requires that an OCFL Storage Root contains OCFL Objects in zip files
-          or directories, distributed in some manner in the underlying filesystem. In turn, an OCFL object is
-          identified purely by the presence of a [[NAMASTE]] conformance file in the object root. The presence
-          and correctness of inventory files and version directories are a validation rather than an
-          identification concern.
+          Strictly speaking, OCFL only requires that an OCFL Storage Root contains OCFL Objects in directories,
+          distributed in some manner in the underlying filesystem. In turn, an OCFL object is identified purely by
+          the presence of a [[NAMASTE]] conformance file in the object root. The presence and correctness of 
+          inventory files and version directories are a validation rather than an identification concern.
       </p>
       <p>
           These definitions allow a lot of freedom as to how objects are arranged beneath an OCFL Storage
@@ -231,21 +230,13 @@
       </p>
           <ul>
               <li>
-                  Flat: Each object is contained in a directory or zip file that is simply named for the
-                  unique identifer of the object, possibly with escaping of characters that are not
+                  Flat: Each object is contained in a directory with a name that is simply derived from the
+                  unique identifer of the object, possibly with the escaping/replacement of characters that are not
                   permitted in file/directory names. While this is a very simple approach, most filesystems begin
                   to encounter performance issues when directories contain more than a few thousand files so
                   this arrangement is best suited to repositories with a small number of objects (or many
                   OCFL Storage Roots).
                   <pre>
-                  [storage_root]
-                      ├── 0=ocfl_1.0
-                      ├── ocfl_1.0.txt (optional OCFL spec)
-                      ├── d45be626e024.zip
-                      ├── d45be626e036.zip
-                      ├── 3104edf0363a.zip
-                      └── ...
-
                   [storage_root]
                       ├── 0=ocfl_1.0
                       ├── ocfl_1.0.txt (optional OCFL spec)
@@ -503,9 +494,15 @@
       way to do this is to create a new object that excludes the offending file, with a revised version history taking
       this into account. The original object can then be deleted in its entirety. Creating the new object first is
       good practice as it avoids any risk of data loss that may occur if an object were to be deleted before the new
-      object is created. The new object may not have the same identifier as the original object so the deleted object
-      can be replaced by a "stub" object that redirects users and software to the new version. A "stub" object is just
-      a standard OCFL Object - its structure, interpretation and handling are client dependent.
+      object is created.
+    </p>
+    <p>  
+      The new object need not have the same identifier as the original object. In this case the deleted object can be
+      replaced by a "stub" object with the original identifier and location in the OCFL Storage Root. This object is
+      a standard OCFL object that just contains brief information that redirects users and software to the new 
+      version - possibly with an indication of why the new object was created, if appropriate. OCFL does not define
+      this stub object in any way - its structure, interpretation and handling are entirely client dependent, but
+      ideally some elements should be human readable for rebuildability.
     </p>
   </section>
 
@@ -531,6 +528,21 @@
       is simply an integer.
     </p>
   </section>
+    
+  <section>
+    <h2>Objects with Many Small Files</h2>
+    <p>
+      Objects that contain a large number of files can pose performance problems if they are stored in a 
+      filesystem as-is. Fixity checks, object validation and version creation can require an OCFL client to 
+      process all the files in an object which can be time consuming. Additionally, most storage systems have a
+      minimum block size for allocation to files, so a large number of small files can end up occupying a volume
+      of storage significantly larger than the sum of the individual file sizes. In this case, assuming that the
+      majority of the files are relatively static data that is unlikely to change between objects versions, it 
+      is sensible to package the static files together in a single, larger file (zip is recommended). This can 
+      be parsed to extract individual files if necessary but can signficantly improve the efficiency of basic 
+      OCFL client and storage operations.  
+    </p>
+  </section>  
 
 </body>
 </html>
