@@ -522,6 +522,21 @@
       is simply an integer.
     </p>
   </section>
+    
+  <section>
+    <h2>Objects with Many Small Files</h2>
+    <p>
+      Objects that contain a large number of files can pose performance problems if they are stored in a 
+      filesystem as-is. Fixity checks, object validation and version creation can require an OCFL client to 
+      process all the files in an object which can be time consuming. Additionally, most storage systems have a
+      minimum block size for allocation to files, so a large number of small files can end up occupying a volume
+      of storage significantly larger than the sum of the individual file sizes. In this case, assuming that the
+      majority of the files are relatively static data that is unlikely to change between objects versions, it 
+      is sensible to package the static files together in a single, larger file (zip is recommended). This can 
+      be parsed to extract individual files if necessary but can signficantly improve the efficiency of basic 
+      OCFL client and storage operations.  
+    </p>
+  </section>  
 
 </body>
 </html>
