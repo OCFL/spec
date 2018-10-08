@@ -211,11 +211,10 @@
   <section>
       <h2>Storage Root Hierarchy</h2>
       <p>
-          Strictly speaking, OCFL only requires that an OCFL Storage Root contains OCFL Objects in zip files
-          or directories, distributed in some manner in the underlying filesystem. In turn, an OCFL object is
-          identified purely by the presence of a [[NAMASTE]] conformance file in the object root. The presence
-          and correctness of inventory files and version directories are a validation rather than an
-          identification concern.
+          Strictly speaking, OCFL only requires that an OCFL Storage Root contains OCFL Objects in directories,
+          distributed in some manner in the underlying filesystem. In turn, an OCFL object is identified purely by
+          the presence of a [[NAMASTE]] conformance file in the object root. The presence and correctness of 
+          inventory files and version directories are a validation rather than an identification concern.
       </p>
       <p>
           These definitions allow a lot of freedom as to how objects are arranged beneath an OCFL Storage
@@ -231,21 +230,13 @@
       </p>
           <ul>
               <li>
-                  Flat: Each object is contained in a directory or zip file that is simply named for the
-                  unique identifer of the object, possibly with escaping of characters that are not
+                  Flat: Each object is contained in a directory with a name that is simply derived from the
+                  unique identifer of the object, possibly with the escaping/replacement of characters that are not
                   permitted in file/directory names. While this is a very simple approach, most filesystems begin
                   to encounter performance issues when directories contain more than a few thousand files so
                   this arrangement is best suited to repositories with a small number of objects (or many
                   OCFL Storage Roots).
                   <pre>
-                  [storage_root]
-                      ├── 0=ocfl_1.0
-                      ├── ocfl_1.0.txt (optional OCFL spec)
-                      ├── d45be626e024.zip
-                      ├── d45be626e036.zip
-                      ├── 3104edf0363a.zip
-                      └── ...
-
                   [storage_root]
                       ├── 0=ocfl_1.0
                       ├── ocfl_1.0.txt (optional OCFL spec)
