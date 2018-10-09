@@ -87,6 +87,18 @@
                 '<a class="subfoot" href="https://creativecommons.org/licenses/by/4.0/" rel="license">' +
                 'Creative Commons Attribution 4.0 License</a>.</p>',
             localBiblio: {
+                "BagIt": {
+                    title: "The BagIt File Packaging Format (V1.0)",
+                    href: "https://tools.ietf.org/html/draft-kunze-bagit-17",
+                    authors: [
+                        "J. Kunze",
+                        "J. Littman",
+                        "E. Madden",
+                        "J. Scancella",
+                        "C. Adams"
+                    ],
+                    date: "17 September 2018"
+                },
                 "Moab": {
                     title: "The Moab Design for Digital Object Versioning",
                     href: "https://journal.code4lib.org/articles/8482",
@@ -953,6 +965,127 @@
 
     <section id="example-bagit-in-ocfl">
         <h2>BagIt in an OCFL Object</h2>
+        <p>
+            [[BagIt]] is a popular file packaging specification, but unlike OCFL it does not provide a mechanism for
+            content versioning. Using OCFL it is possible to store a BagIt structure with content versioning, such
+            that when the object state is resolved, it creates a valid BagIt 'bag'. This example will illustrate how
+            this can be accomplished, using the <a href="https://tools.ietf.org/html/draft-kunze-bagit-17#section-4.1">
+            example of a basic bag</a> given in the BagIt specification.
+        </p>
+<pre>
+[object root]
+    ├── 0=ocfl_object_1.0
+    ├── inventory.json
+    ├── inventory.json.sha512
+    └── v1
+        └── myfirstbag
+            ├── bagit.txt
+            ├── data
+            │   └── 27613-h
+            │       └── images
+            │           ├── q172.png
+            │           └── q172.txt
+            └── manifest-md5.txt
+</pre>
+
+        <p>
+            If, for example, a new directory were added in a subsequent version, the OCFL Object would look like this:
+        </p>
+<pre>
+[object root]
+    ├── 0=ocfl_object_1.0
+    ├── inventory.json
+    ├── inventory.json.sha512
+    ├── v1
+    │   └── myfirstbag
+    │       ├── bagit.txt
+    │       ├── data
+    │       │   └── 27613-h
+    │       │       └── images
+    │       │           ├── q172.png
+    │       │           └── q172.txt
+    │       └── manifest-md5.txt
+    └── v2
+        └── myfirstbag
+            ├── data
+            │   └── 27614-h
+            │       └── images
+            │           ├── q173.png
+            │           └── q173.txt
+            └── manifest-md5.txt
+</pre>
+        <p>
+            The state of the object at version 2 would resemble the following BagIt object:
+        </p>
+<pre>
+myfirstbag
+    ├── bagit.txt
+    ├── data
+    │   ├── 27613-h
+    │   │   └── images
+    │   │       ├── q172.png
+    │   │       └── q172.txt
+    │   └── 27614-h
+    │       └── images
+    │           ├── q173.png
+    │           └── q173.txt
+    └── manifest-md5.txt
+</pre>
+        <p>
+            The OCFL Inventory for this object would be as follows:
+        </p>
+<pre>
+{
+  "digestAlgorithm": "sha512",
+  "head": "v1",
+  "id": "urn:uri:example.com/myfirstbag",
+  "manifest": {
+    "cf83e1...a3e": ["v1/bagit.txt"],
+    "f15428...83f": ["v1/manifest-md5.txt"],
+    "85f2b0...007": ["v1/data/27613-h/images/q172.png"],
+    "d66d80...8bd": ["v1/data/27613-h/images/q172.txt"],
+    "2b0ff8...620": ["v2/manifest-md5.txt"],
+    "921d36...877": ["v2/data/27613-h/images/q173.png"],
+    "b8bdf1...927": ["v2/data/27613-h/images/q173.txt"]
+  },
+  "type": "Object",
+  "versions": [
+    {
+      "created": "2018-10-09T11:20:29.209164Z",
+      "message": "Initial Ingest",
+      "state": {
+        "cf83e1...a3e": ["bagit.txt"],
+        "85f2b0...007": ["data/27613-h/images/q172.png"],
+        "d66d80...8bd": ["data/27613-h/images/q172.txt"],
+        "f15428...83f": ["manifest-md5.txt"]
+      },
+      "type": "Version",
+      "user": {
+        "address": "someone@example.org",
+        "name": "Some One"
+      },
+      "version": "v1"
+    },{
+      "created": "2018-10-31T11:20:29.209164Z",
+      "message": "Added new images",
+      "state": {
+        "cf83e1...a3e": ["bagit.txt"],
+        "85f2b0...007": ["data/27613-h/images/q172.png"],
+        "d66d80...8bd": ["data/27613-h/images/q172.txt"],
+        "2b0ff8...620": ["manifest-md5.txt"],
+        "921d36...877": ["data/27613-h/images/q173.png"],
+        "b8bdf1...927": ["data/27613-h/images/q173.txt"]
+      },
+      "type": "Version",
+      "user": {
+        "address": "somebody-else@example.org",
+        "name": "Somebody Else"
+      },
+      "version": "v2"
+    }
+  ]
+}
+</pre>
     </section>
 
     <section id="example-moab-in-ocfl">
