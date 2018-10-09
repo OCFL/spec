@@ -150,25 +150,15 @@
 </head>
 <body>
 <section id="abstract" class="informative">
-    <h2>Introduction</h2>
-    <p>
-        This Oxford Common File Layout (OCFL) specification describes an application-independent approach to the storage
-        of digital information in a structured, transparent, and predictable manner. It is designed to promote long-term
-        object management best practices within digital repositories.
-    </p>
-    <p>
-        This specification covers two principle areas:
-    </p>
-    <ol>
-        <li>Structure. A normative specification of the nature of an OCFL Object (the "object-at-rest");</li>
-        <li>Client Behaviors. A set of recommendations for how OCFL Objects should be acted upon (the
-            "object-in-motion")
-        </li>
-    </ol>
-    <p>
-      See also the [[OCFL-Implementation-Notes]] for guidance on how clients should behave when
-      operating on OCFL Objects.
-    </p>
+  <h2>Introduction</h2>
+  <p>
+      This Oxford Common File Layout (OCFL) specification describes an application-independent approach to the storage
+      of digital objects in a structured, transparent, and predictable manner. It is designed to promote long-term
+      access and management of digital objects within digital repositories.
+  </p>
+  <p>
+      This specification is a normative specification which describes the nature of an OCFL Object (the "object-at-rest"). A set of recommendations for how OCFL Objects should be acted upon (the "object-in-motion") can be found in the [[OCFL-Implementation-Notes]].
+  </p>
     <section id="need">
         <h2>Need</h2>
         <p>
@@ -181,12 +171,12 @@
            unlikely to change significantly over its lifetime. This is in contrast to the software applications that
            manage these contents, which are ephemeral, requiring constant updating and replacement. Thus, transitions
            between application-specific methods of file management to support software upgrades and replacement cycles
-           can be seen as unnecessary and risky change, changing the long-term stable objects to support the short-term,
-           ephemeral software.
+           can be seen as unnecessary and risky change which affects the long-term stable objects in support of the
+           short-term, ephemeral software.
         </p>
         <p>
-           By providing a specification for the file and directory layout on disk, the OCFL is an attempt at reducing,
-           or even eliminating, the need for these transitions. As an application-independent specification, conforming
+           By providing a specification for the file and directory layout on disk, OCFL is an attempt at reducing, or
+           even eliminating, the need for these transitions. As an application-independent specification, conforming
            applications will natively "understand" the underlying file structure without needing to first transition
            these contents to their own format.
          </p>
@@ -204,47 +194,40 @@
     <dl>
         <dt><dfn>Existing File Path</dfn>:</dt>
         <dd>
-            The file path of a file on disk or in an object store, relative to 
-            the <a>OCFL Object Root</a>. Existing file paths are used in the 
-            <a>Manifest</a> within an <a>Inventory</a>.
+            The file path of a file on disk or in an object store, relative to the <a>OCFL Object Root</a>. Existing
+            file paths are used in the <a>Manifest</a> within an <a>Inventory</a>.
         </dd>
         <dt>
             <dfn>Digest</dfn>:
         </dt>
         <dd>
-            An algorithmic characterization of the contents of a file 
-            conforming to a standard digest algorithm.
+            An algorithmic characterization of the contents of a file conforming to a standard digest algorithm.
         </dd>
         <dt>
             <dfn>Inventory</dfn>:
         </dt>
         <dd>
-            A file, expressed in JSON, that tracks the history and current 
-            state of an OCFL Object.
+            A file, expressed in JSON, that tracks the history and current state of an OCFL Object.
         </dd>
         <dt>
             <dfn>Logical File Path</dfn>:
         </dt>
         <dd>
-            A path that represents a file's location in the 
-            <a>logical state</a> of an object. Logical file paths are used in 
-            conjunction with a digest to represent the file name for a given 
-            bitstream at a given version.
+            A path that represents a file's location in the <a>logical state</a> of an object. Logical file paths are
+            used in conjunction with a digest to represent the file name for a given bitstream at a given version.
         </dd>
         <dt>
             <dfn>Logical State</dfn>:
         </dt>
         <dd>
-            A grouping of logical file paths reflecting the state of the 
-            content for a given version.
+            A grouping of logical file paths reflecting the state of the content for a given version.
         </dd>
         <dt>
             <dfn>Logs Directory</dfn>:
         </dt>
         <dd>
-            A directory for storing information about the content (e.g., 
-            actions performed) that may not necessarily be part of the content 
-            itself.
+            A directory for storing information about the content (e.g., actions performed) that may not necessarily be
+            part of the content itself.
         </dd>
         <dt>
             <dfn>Manifest</dfn>
@@ -256,10 +239,9 @@
             <dfn>OCFL Object</dfn>:
         </dt>
         <dd>
-            A group of one or more content files and administrative 
-            information, that are together identified by a URI. The object may 
-            contain a sequence of versions of the files that represent the 
-            evolution of the object's contents.
+            A group of one or more content files and administrative information, that are together identified by a URI.
+            The object may contain a sequence of versions of the files that represent the evolution of the object's
+            contents.
         </dd>
         <dt>
             <dfn>OCFL Object Root</dfn>:
@@ -277,9 +259,8 @@
             <dfn>OCFL Version</dfn>:
         <dt>
         <dd>
-            The state of an <a>OCFL Object</a>'s content which is constructed 
-            using the incremental changes recorded in the sequence of 
-            corresponding and prior version directories.
+            The state of an <a>OCFL Object</a>'s content which is constructed using the incremental changes recorded in
+            the sequence of corresponding and prior version directories.
         </dd>
     </dl>
 </section>
