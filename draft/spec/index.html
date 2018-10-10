@@ -735,10 +735,6 @@
           <a href="#root-conformance-declaration">Root Conformance Declaration</a> identifying it as such.
         </p>
         <p>
-          <a>OCFL Object</a>s within a given OCFL Storage Root MUST be the same as the OCFL specification
-           version as declared in the Root Conformance Declaration.
-        </p>
-        <p>
           An OCFL Storage Root SHOULD also contain the OCFL specification in human-readable plain-text format
           in the root.
         </p>
@@ -765,11 +761,16 @@
     <section id="root-conformance-declaration">
         <h2>Root Conformance Declaration</h2>
         <p>
-            The OCFL version declaration MUST be formatted according to the [[!NAMASTE]] specification. It MUST be an
-            empty file in the base directory of the <a>OCFL Storage Root</a> giving the OCFL version in the filename.
-            The filename MUST be constructed with a leading zero-equals (<code>0=</code>) string, the string
-            <code>ocfl_</code>, followed by the OCFL specification version number. For example <code>0=ocfl_1.0</code>
-            for version 1.0 of this specification.
+          The OCFL version declaration MUST be formatted according to the [[!NAMASTE]] specification. It MUST be an
+          empty file in the base directory of the <a>OCFL Storage Root</a> giving the OCFL version in the filename.
+          The filename MUST be constructed with a leading zero-equals (<code>0=</code>) string, the string
+          <code>ocfl_</code>, followed by the OCFL specification version number. For example <code>0=ocfl_1.0</code>
+          for version 1.0 of this specification.
+        </p>
+        <p>
+          Root conformance indicates that the OCFL Storage Root conforms to this section (i.e. the OCFL Storage Root
+          section) of the specification.  OCFL Objects within the OCFL Storage Root also include a conformance
+          declaration which MUST indicate OCFL Object conformance to the same or earlier version of the specification.
         </p>
     </section>
 
