@@ -801,6 +801,18 @@
 
     <section id="root-extensions">
         <h2>Extensions</h2>
+        <p>
+            The behavior of the storage root may be extended to support features from other specifications.
+            An OCFL validator MUST ignore any files in the storage root it does not understand. Additional 
+            files MUST NOT appear in other directories under the storage root.
+        </p>
+        <blockquote class="informative">
+            <p>
+                Non-normative note: Storage extensions can be used to support additional features, such as providing
+                the storage hierarchy disposition when pairtree is in use, or additional human-readable text about the
+                nature of the storage root.
+            </p>
+        </blockquote>
     </section>
 
 </section>
