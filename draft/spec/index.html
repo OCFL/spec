@@ -348,24 +348,35 @@
                 to filesystem features. These restrictions are provided in an attempt to normalize file handling
                 behaviors and addressability of files within the Inventory.
             </p>
+            <p>
+                If use of these features are required to preserve an exact copy of the content (for example,
+                preserving a hard-drive image), implementers SHOULD consider using a packaging format,
+                such as ZIP or TAR files or ISO disk images, to preserve the content.
+            </p>
             <ul>
                 <li>
                     <strong>Symbolic links</strong> (aka 'shortcuts' or 'aliases') MUST NOT be used within an
                     OCFL Object. These are not portable and may lead to undefined behaviours in client applications
                 </li>
-                <li><strong>File paths</strong> MUST use the "forward-slash" ('/') as a path separator. Some
-                    filesystem use other characters such as the "back-slash" ('\') or "colon" (':') as a
-                    path delimiter. These MUST be normalized to the forward slash.
+                <li>References to <strong>file paths</strong> within the <a>inventory</a> MUST use the "forward-slash"
+                    ('/') as a path separator. Some filesystem use other characters such as the "back-slash" ('\')
+                    or "colon" (':') as a path delimiter.
                 </li>
                 <li>
                     <strong>File permissions</strong> MAY be applied to files in an OCFL Object; however, implementers
                     should be aware that these are not portable across filesystems, and so should not be relied on
-                    to protect sensitive content.
+                    to protect sensitive content. This is also the case for extended filesystem flags, such as
+                    Access Control Lists or Hidden files.
                 </li>
                 <li>
                     The <strong>character encoding</strong> of the filesystem and Inventory SHOULD be
                     Unicode-compatible, either UTF-8, UTF-16, or UCS-2. Implementers may experience problems
                     integrating files from filesystems that use other encodings.
+                </li>
+                <li>
+                    Some filesystems are not <strong>case sensitive</strong>, meaning two file names that differ only
+                    by their letter case would be considered to have the same name. This may cause problems if
+                    transferring files from a case-insensitive to a case-sensitive filesystem.
                 </li>
             </ul>
         </section>
