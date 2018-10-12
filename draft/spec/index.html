@@ -340,6 +340,35 @@
         ├── inventory.json
         └── inventory.json.sha512
         </pre>
+
+        <section id="object-filesystem-restrictions">
+            <h2>Filesystem Restrictions</h2>
+            <p>
+                Within an OCFL Object and its associated <a>Inventory</a>, the following restrictions are applied
+                to filesystem features. These restrictions are provided in an attempt to normalize file handling
+                behaviors and addressability of files within the Inventory.
+            </p>
+            <ul>
+                <li>
+                    <strong>Symbolic links</strong> (aka 'shortcuts' or 'aliases') MUST not be used within an
+                    OCFL Object. These are not portable and may lead to undefined behaviours in client applications
+                </li>
+                <li><strong>File paths</strong> MUST use the "forward-slash" ('/') as a path separator. Some
+                    filesystem use other characters such as the "back-slash" ('\') or "colon" (':') as a
+                    path delimiter. These MUST be normalized to the forward slash.
+                </li>
+                <li>
+                    <strong>File permissions</strong> MAY be applied to files in an OCFL Object; however, implementers
+                    should be aware that these are not portable across filesystems, and so should not be relied on
+                    to protect sensitive content.
+                </li>
+                <li>
+                    The <strong>character encoding</strong> of the filesystem and Inventory SHOULD be
+                    Unicode-compatible, either UTF-8, UTF-16, or UCS-2. Implementers may experience problems
+                    integrating files from filesystems that use other encodings.
+                </li>
+            </ul>
+        </section>
     </section>
 
     <section id="object-conformance-declaration">
