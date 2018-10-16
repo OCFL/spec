@@ -523,7 +523,7 @@
                     not entirely de-duplicated when constructing the OCFL Object.
                 </p>
                 <p>
-                    An example manifest object for three logical file paths, all in version 1, is shown below:
+                    An example manifest object for three existing file paths, all in version 1, is shown below:
                 </p>
 <pre>
   "manifest": {
@@ -539,7 +539,8 @@
             <h2>Versions</h2>
             <p>
                 An OCFL Object Inventory MUST include a block for storing versions. This block MUST have the
-                key of <code>versions</code> within the inventory, and it MUST be an array.
+                key of <code>versions</code> within the inventory, and it MUST be an array. There is no requirement
+                that the ordering of versions in this array represent a chronological or order of any kind.
             </p>
             <p>
                 The <code>versions</code> array MUST be a list of one or more JSON objects, one for each
@@ -599,8 +600,8 @@
                         </p>
                         <blockquote class="informative">
                             <p>
-                                Non-normative note: The <a>logical state</a> of the object uses content-addressable
-                                techniques to map logical file paths to their bitstreams, as expressed in the manifest
+                                Non-normative note: The <a>logical state</a> of the object uses content-addressing
+                                to map logical file paths to their bitstreams, as expressed in the manifest
                                 section of the inventory.
                             </p>
                             <p>
