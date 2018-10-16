@@ -539,12 +539,9 @@
             <h2>Versions</h2>
             <p>
                 An OCFL Object Inventory MUST include a block for storing versions. This block MUST have the
-                key of <code>versions</code> within the inventory, and it MUST be an array. There is no requirement
-                that the ordering of versions in this array represent a chronological or order of any kind.
-            </p>
-            <p>
-                The <code>versions</code> array MUST be a list of one or more JSON objects, one for each
-                <a href="#version"></a>.
+                key of <code>versions</code> within the inventory, and it MUST be a JSON object. The keys of this object
+                MUST correspond to the names of the <a href="#version-directories">version directories</a> used. The
+                values MUST be another JSON object that describes this version.
             </p>
             <section id="version">
                 <h2>Version</h2>
@@ -557,13 +554,6 @@
                     </dt>
                     <dd>
                         A type for the version JSON object. This MUST have the value <code>Version</code>.
-                    </dd>
-                    <dt>
-                        <code>version</code>
-                    </dt>
-                    <dd>
-                        The value of this key MUST correspond to the name of a version directory within the <a>OCFL
-                        Object</a>.
                     </dd>
                     <dt>
                         <code>created</code>
@@ -855,21 +845,21 @@
     "7545b8...f67": [ "v1/file.txt" ]
   },
   "type": "Object",
-  "versions": [
-    {
+  "versions": {
+    "v1": {
       "created": "2018-10-02T12:00:00Z",
       "message": "One file",
       "state": {
         "7545b8...f67": [ "file.txt" ]
       },
+    "v2": {
       "type": "Version",
       "user": {
         "address": "alice@example.org",
         "name": "Alice"
-      },
-      "version": "v1"
+      }
     }
-  ]
+  }
 }
 </pre>
     </section>
@@ -936,8 +926,8 @@
     "ffccf6...62e": [ "v1/image.tiff" ]
   },
   "type": "Object",
-  "versions": [
-    {
+  "versions": {
+    "v1": {
       "created": "2018-01-01T01:01:01Z",
       "message": "Initial import",
       "state": {
@@ -949,10 +939,9 @@
       "user": {
         "address": "alice@example.com",
         "name": "Alice"
-      },
-      "version": "v1"
+      }
     },
-    {
+    "v2": {
       "created": "2018-02-02T02:02:02Z",
       "message": "Fix bar.xml, remove image.tiff, add empty2.txt",
       "state": {
@@ -963,10 +952,9 @@
       "user": {
         "address": "bob@example.com",
         "name": "Bob"
-      },
-      "version": "v2"
+      }
     },
-    {
+    "v3": {
       "created": "2018-03-03T03:03:03Z",
       "message": "Reinstate image.tiff, delete empty.txt",
       "state": {
@@ -978,10 +966,9 @@
       "user": {
         "address": "cecilia@example.com",
         "name": "Cecilia"
-      },
-      "version": "v3"
+      }
     }
-  ]
+  }
 }
 </pre>
     </section>
@@ -1072,8 +1059,8 @@ myfirstbag
     "b8bdf1...927": ["v2/myfirstbag/data/27614-h/images/q173.txt"]
   },
   "type": "Object",
-  "versions": [
-    {
+  "versions": {
+    "v1": {
       "created": "2018-10-09T11:20:29.209164Z",
       "message": "Initial Ingest",
       "state": {
@@ -1086,9 +1073,9 @@ myfirstbag
       "user": {
         "address": "someone@example.org",
         "name": "Some One"
-      },
-      "version": "v1"
-    },{
+      }
+    },
+    "v2": {
       "created": "2018-10-31T11:20:29.209164Z",
       "message": "Added new images",
       "state": {
@@ -1103,8 +1090,7 @@ myfirstbag
       "user": {
         "address": "somebody-else@example.org",
         "name": "Somebody Else"
-      },
-      "version": "v2"
+      }
     }
   ]
 }
