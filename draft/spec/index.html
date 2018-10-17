@@ -328,8 +328,9 @@
     <section id="object-structure">
         <h2>Object Structure</h2>
         <p>
-            The basic OCFL Object structure has a minimal set of files and directories necessary to support content
-            storage and object validation. The minimum required is shown in the following figure:
+            The OCFL Object structure organizes content files and administrative information in order to support
+            content storage and object validation. The structure for an object with one version is shown in the
+            following figure:
         </p>
 <pre>
 [object_root]
@@ -338,7 +339,9 @@
     ├── inventory.json.sha512
     └── v1
         ├── inventory.json
-        └── inventory.json.sha512
+        ├── inventory.json.sha512
+        └── content
+               └── ... content files ...
 </pre>
     </section>
 
