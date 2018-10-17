@@ -328,18 +328,21 @@
     <section id="object-structure">
         <h2>Object Structure</h2>
         <p>
-            The basic OCFL Object structure has a minimal set of files and directories necessary to support content
-            storage and object validation. The minimum required is shown in the following figure:
+            The OCFL Object structure organizes content files and administrative information in order to support
+            content storage and object validation. The structure for an object with one version is shown in the
+            following figure:
         </p>
-        <pre>
+<pre>
 [object_root]
     ├── 0=ocfl_object_1.0
     ├── inventory.json
     ├── inventory.json.sha512
     └── v1
         ├── inventory.json
-        └── inventory.json.sha512
-        </pre>
+        ├── inventory.json.sha512
+        └── content
+               └── ... content files ...
+</pre>
     </section>
 
     <section id="object-conformance-declaration">
@@ -382,6 +385,12 @@
         <p>
             Empty directories within a version directory are not permitted. Otherwise empty directories MAY be
             maintained by creating a <code>.keep</code> file within that directory.
+        </p>
+        <p>
+            Version directories MUST have a sub-directory called <code>content</code> if there are files present, and
+            SHOULD NOT contain a <code>content</code> sub-directory otherwise. There MUST be no other files or
+            directories as children of a version directory, other than an <a href="#inventory">inventory file</a>,
+            an <a href="#inventory-digest">inventory digest</a>, and a <code>content</code> directory.
         </p>
     </section>
 
@@ -529,9 +538,9 @@
                 </p>
 <pre>
   "manifest": {
-    "7dcc35...c31": [ "v1/foo/bar.xml" ],
-    "cf83e1...a3e": [ "v1/empty.txt" ],
-    "ffccf6...62e": [ "v1/image.tiff" ]
+    "7dcc35...c31": [ "v1/content/foo/bar.xml" ],
+    "cf83e1...a3e": [ "v1/content/empty.txt" ],
+    "ffccf6...62e": [ "v1/content/image.tiff" ]
   }
 </pre>
             </blockquote>
@@ -652,16 +661,16 @@
 <pre>
   "fixity": {
     "md5": {
-      "184f84e28cbe75e050e9c25ea7f2e939": [ "v1/foo/bar.xml" ],
-      "2673a7b11a70bc7ff960ad8127b4adeb": [ "v2/foo/bar.xml" ],
-      "c289c8ccd4bab6e385f5afdd89b5bda2": [ "v1/image.tiff" ],
-      "d41d8cd98f00b204e9800998ecf8427e": [ "v1/empty.txt" ]
+      "184f84e28cbe75e050e9c25ea7f2e939": [ "v1/content/foo/bar.xml" ],
+      "2673a7b11a70bc7ff960ad8127b4adeb": [ "v2/content/foo/bar.xml" ],
+      "c289c8ccd4bab6e385f5afdd89b5bda2": [ "v1/content/image.tiff" ],
+      "d41d8cd98f00b204e9800998ecf8427e": [ "v1/content/empty.txt" ]
     },
     "sha1": {
-      "66709b068a2faead97113559db78ccd44712cbf2": [ "v1/foo/bar.xml" ],
-      "a6357c99ecc5752931e133227581e914968f3b9c": [ "v2/foo/bar.xml" ],
-      "b9c7ccc6154974288132b63c15db8d2750716b49": [ "v1/image.tiff" ],
-      "da39a3ee5e6b4b0d3255bfef95601890afd80709": [ "v1/empty.txt" ]
+      "66709b068a2faead97113559db78ccd44712cbf2": [ "v1/content/foo/bar.xml" ],
+      "a6357c99ecc5752931e133227581e914968f3b9c": [ "v2/content/foo/bar.xml" ],
+      "b9c7ccc6154974288132b63c15db8d2750716b49": [ "v1/content/image.tiff" ],
+      "da39a3ee5e6b4b0d3255bfef95601890afd80709": [ "v1/content/empty.txt" ]
     }
   }
 </pre>
@@ -827,9 +836,10 @@
     ├── inventory.json
     ├── inventory.json.sha512
     └── v1
-        ├── file.txt
         ├── inventory.json
-        └── inventory.json.sha512
+        ├── inventory.json.sha512
+        └── content
+            └── file.txt
 </pre>
         <p>
             The inventory for this OCFL Object, the same both at the top-level and
@@ -841,7 +851,7 @@
   "head": "v1",
   "id": "http://example.org/minimal",
   "manifest": {
-    "7545b8...f67": [ "v1/file.txt" ]
+    "7545b8...f67": [ "v1/content/file.txt" ]
   },
   "type": "Object",
   "versions": {
@@ -873,21 +883,26 @@
     ├── 0=ocfl_object_1.0
     ├── inventory.json
     ├── inventory.json.sha512
-    ├── v1
-    │   ├── empty.txt
-    │   ├── foo
-    │   │   └── bar.xml
-    │   ├── image.tiff
+    ├── v1        
     │   ├── inventory.json
-    │   └── inventory.json.sha512
-    ├── v2
-    │   ├── foo
-    │   │   └── bar.xml
+    │   ├── inventory.json.sha512
+    │   └── content
+    │       ├── empty.txt
+    │       ├── foo
+    │       │   └── bar.xml
+    │       └── image.tiff
+    ├── v2    
     │   ├── inventory.json
-    │   └── inventory.json.sha512
+    │   ├── inventory.json.sha512
+    │   └── content
+    │       ├── foo
+    │       └── bar.xml
     └── v3
         ├── inventory.json
-        └── inventory.json.sha512
+        ├── inventory.json.sha512
+        └── content
+
+
 </pre>
         <p>
             In <code>v1</code> there are three files, <code>empty.txt</code>, <code>foo/bar.xml</code>,
@@ -904,25 +919,25 @@
   "digestAlgorithm": "sha512",
   "fixity": {
     "md5": {
-      "184f84e28cbe75e050e9c25ea7f2e939": [ "v1/foo/bar.xml" ],
-      "2673a7b11a70bc7ff960ad8127b4adeb": [ "v2/foo/bar.xml" ],
-      "c289c8ccd4bab6e385f5afdd89b5bda2": [ "v1/image.tiff" ],
-      "d41d8cd98f00b204e9800998ecf8427e": [ "v1/empty.txt" ]
+      "184f84e28cbe75e050e9c25ea7f2e939": [ "v1/content/foo/bar.xml" ],
+      "2673a7b11a70bc7ff960ad8127b4adeb": [ "v2/content/foo/bar.xml" ],
+      "c289c8ccd4bab6e385f5afdd89b5bda2": [ "v1/content/image.tiff" ],
+      "d41d8cd98f00b204e9800998ecf8427e": [ "v1/content/empty.txt" ]
     },
     "sha1": {
-      "66709b068a2faead97113559db78ccd44712cbf2": [ "v1/foo/bar.xml" ],
-      "a6357c99ecc5752931e133227581e914968f3b9c": [ "v2/foo/bar.xml" ],
-      "b9c7ccc6154974288132b63c15db8d2750716b49": [ "v1/image.tiff" ],
-      "da39a3ee5e6b4b0d3255bfef95601890afd80709": [ "v1/empty.txt" ]
+      "66709b068a2faead97113559db78ccd44712cbf2": [ "v1/content/foo/bar.xml" ],
+      "a6357c99ecc5752931e133227581e914968f3b9c": [ "v2/content/foo/bar.xml" ],
+      "b9c7ccc6154974288132b63c15db8d2750716b49": [ "v1/content/image.tiff" ],
+      "da39a3ee5e6b4b0d3255bfef95601890afd80709": [ "v1/content/empty.txt" ]
     }
   },
   "head": "v3",
   "id": "ark:/12345/bcd987",
   "manifest": {
-    "4d27c8...b53": [ "v2/foo/bar.xml" ],
-    "7dcc35...c31": [ "v1/foo/bar.xml" ],
-    "cf83e1...a3e": [ "v1/empty.txt" ],
-    "ffccf6...62e": [ "v1/image.tiff" ]
+    "4d27c8...b53": [ "v2/content/foo/bar.xml" ],
+    "7dcc35...c31": [ "v1/content/foo/bar.xml" ],
+    "cf83e1...a3e": [ "v1/content/empty.txt" ],
+    "ffccf6...62e": [ "v1/content/image.tiff" ]
   },
   "type": "Object",
   "versions": {
@@ -987,14 +1002,17 @@
     ├── inventory.json
     ├── inventory.json.sha512
     └── v1
-        └── myfirstbag
-            ├── bagit.txt
-            ├── data
-            │   └── 27613-h
-            │       └── images
-            │           ├── q172.png
-            │           └── q172.txt
-            └── manifest-md5.txt
+        ├── inventory.json
+        ├── inventory.json.sha512
+        └── content
+            └── myfirstbag
+                ├── bagit.txt
+                ├── data
+                │   └── 27613-h
+                │       └── images
+                │           ├── q172.png
+                │           └── q172.txt
+                └── manifest-md5.txt
 </pre>
 
         <p>
@@ -1006,22 +1024,28 @@
     ├── inventory.json
     ├── inventory.json.sha512
     ├── v1
-    │   └── myfirstbag
-    │       ├── bagit.txt
-    │       ├── data
-    │       │   └── 27613-h
-    │       │       └── images
-    │       │           ├── q172.png
-    │       │           └── q172.txt
-    │       └── manifest-md5.txt
+    │   ├── inventory.json
+    │   ├── inventory.json.sha512
+    │   └── content
+    │       └── myfirstbag
+    │           ├── bagit.txt
+    │           ├── data
+    │           │   └── 27613-h
+    │           │       └── images
+    │           │           ├── q172.png
+    │           │           └── q172.txt
+    │           └── manifest-md5.txt
     └── v2
-        └── myfirstbag
-            ├── data
-            │   └── 27614-h
-            │       └── images
-            │           ├── q173.png
-            │           └── q173.txt
-            └── manifest-md5.txt
+        ├── inventory.json
+        ├── inventory.json.sha512
+        └── content
+            └── myfirstbag
+                ├── data
+                │   └── 27614-h
+                │       └── images
+                │           ├── q173.png
+                │           └── q173.txt
+                └── manifest-md5.txt
 </pre>
         <p>
             The state of the object at version 2 would be the following BagIt object:
@@ -1049,13 +1073,13 @@ myfirstbag
   "head": "v1",
   "id": "urn:uri:example.com/myfirstbag",
   "manifest": {
-    "cf83e1...a3e": [ "v1/myfirstbag/bagit.txt" ],
-    "f15428...83f": [ "v1/myfirstbag/manifest-md5.txt" ],
-    "85f2b0...007": [ "v1/myfirstbag/data/27613-h/images/q172.png" ],
-    "d66d80...8bd": [ "v1/myfirstbag/data/27613-h/images/q172.txt" ],
-    "2b0ff8...620": [ "v2/myfirstbag/manifest-md5.txt" ],
-    "921d36...877": [ "v2/myfirstbag/data/27614-h/images/q173.png" ],
-    "b8bdf1...927": [ "v2/myfirstbag/data/27614-h/images/q173.txt" ]
+    "cf83e1...a3e": [ "v1/content/myfirstbag/bagit.txt" ],
+    "f15428...83f": [ "v1/content/myfirstbag/manifest-md5.txt" ],
+    "85f2b0...007": [ "v1/content/myfirstbag/data/27613-h/images/q172.png" ],
+    "d66d80...8bd": [ "v1/content/myfirstbag/data/27613-h/images/q172.txt" ],
+    "2b0ff8...620": [ "v2/content/myfirstbag/manifest-md5.txt" ],
+    "921d36...877": [ "v2/content/myfirstbag/data/27614-h/images/q173.png" ],
+    "b8bdf1...927": [ "v2/content/myfirstbag/data/27614-h/images/q173.txt" ]
   },
   "type": "Object",
   "versions": {
@@ -1124,115 +1148,118 @@ myfirstbag
             Consider the following sample Moab object:
         </p>
 <pre>
-.
-└── bj102hs9687
-    ├── v0001
-    │   ├── data
-    │   │   ├── content
-    │   │   │   ├── eric-smith-dissertation-augmented.pdf
-    │   │   │   └── eric-smith-dissertation.pdf
-    │   │   └── metadata
-    │   │       ├── contentMetadata.xml
-    │   │       ├── descMetadata.xml
-    │   │       ├── identityMetadata.xml
-    │   │       ├── provenanceMetadata.xml
-    │   │       ├── relationshipMetadata.xml
-    │   │       ├── rightsMetadata.xml
-    │   │       ├── technicalMetadata.xml
-    │   │       └── versionMetadata.xml
-    │   └── manifests
-    │       ├── fileInventoryDifference.xml
-    │       ├── manifestInventory.xml
-    │       ├── signatureCatalog.xml
-    │       ├── versionAdditions.xml
-    │       └── versionInventory.xml
-    ├── v0002
-    │   ├── data
-    │   │   └── metadata
-    │   │       ├── contentMetadata.xml
-    │   │       ├── embargoMetadata.xml
-    │   │       ├── events.xml
-    │   │       ├── identityMetadata.xml
-    │   │       ├── provenanceMetadata.xml
-    │   │       ├── relationshipMetadata.xml
-    │   │       ├── rightsMetadata.xml
-    │   │       ├── versionMetadata.xml
-    │   │       └── workflows.xml
-    │   └── manifests
-    │       ├── fileInventoryDifference.xml
-    │       ├── manifestInventory.xml
-    │       ├── signatureCatalog.xml
-    │       ├── versionAdditions.xml
-    │       └── versionInventory.xml
-    └── v0003
-        ├── data
-        │   └── metadata
-        │       ├── contentMetadata.xml
-        │       ├── descMetadata.xml
-        │       ├── embargoMetadata.xml
-        │       ├── events.xml
-        │       ├── identityMetadata.xml
-        │       ├── provenanceMetadata.xml
-        │       ├── rightsMetadata.xml
-        │       ├── technicalMetadata.xml
-        │       ├── versionMetadata.xml
-        │       └── workflows.xml
-        └── manifests
-            ├── fileInventoryDifference.xml
-            ├── manifestInventory.xml
-            ├── signatureCatalog.xml
-            ├── versionAdditions.xml
-            └── versionInventory.xml
+[object root]
+    └── bj102hs9687
+        ├── v0001
+        │   └──content
+        │       ├── data
+        │       │   ├── content
+        │       │   │   ├── eric-smith-dissertation-augmented.pdf
+        │       │   │   └── eric-smith-dissertation.pdf
+        │       │   └── metadata
+        │       │       ├── contentMetadata.xml
+        │       │       ├── descMetadata.xml
+        │       │       ├── identityMetadata.xml
+        │       │       ├── provenanceMetadata.xml
+        │       │       ├── relationshipMetadata.xml
+        │       │       ├── rightsMetadata.xml
+        │       │       ├── technicalMetadata.xml
+        │       │       └── versionMetadata.xml
+        │       └── manifests
+        │           ├── fileInventoryDifference.xml
+        │           ├── manifestInventory.xml
+        │           ├── signatureCatalog.xml
+        │           ├── versionAdditions.xml
+        │           └── versionInventory.xml
+        ├── v0002
+        │   └──content
+        │       ├── data
+        │       │   └── metadata
+        │       │       ├── contentMetadata.xml
+        │       │       ├── embargoMetadata.xml
+        │       │       ├── events.xml
+        │       │       ├── identityMetadata.xml
+        │       │       ├── provenanceMetadata.xml
+        │       │       ├── relationshipMetadata.xml
+        │       │       ├── rightsMetadata.xml
+        │       │       ├── versionMetadata.xml
+        │       │       └── workflows.xml
+        │       └── manifests
+        │           ├── fileInventoryDifference.xml
+        │           ├── manifestInventory.xml
+        │           ├── signatureCatalog.xml
+        │           ├── versionAdditions.xml
+        │           └── versionInventory.xml
+        └── v0003
+            └──content
+                ├── data
+                │   └── metadata
+                │       ├── contentMetadata.xml
+                │       ├── descMetadata.xml
+                │       ├── embargoMetadata.xml
+                │       ├── events.xml
+                │       ├── identityMetadata.xml
+                │       ├── provenanceMetadata.xml
+                │       ├── rightsMetadata.xml
+                │       ├── technicalMetadata.xml
+                │       ├── versionMetadata.xml
+                │       └── workflows.xml
+                └── manifests
+                    ├── fileInventoryDifference.xml
+                    ├── manifestInventory.xml
+                    ├── signatureCatalog.xml
+                    ├── versionAdditions.xml
+                    └── versionInventory.xml
 </pre>
         <p>
             An OCFL inventory that tracks the /data directory would include a manifest comprised as follows:
         </p>
 <pre>
 "manifest": {
-    "197320...2e1": [ "v0001/manifests/manifestInventory.xml" ],
-    "a64b62...5c3": [ "v0001/manifests/versionAdditions.xml" ],
-    "794d5e...38b": [ "v0001/manifests/signatureCatalog.xml" ],
-    "a4d20f...b48": [ "v0001/manifests/fileInventoryDifference.xml" ],
-    "363785...bfb": [ "v0001/manifests/versionInventory.xml" ],
-    "98114a...588": [ "v0001/data/content/eric-smith-dissertation-augmented.pdf" ],
-    "7f3d87...15b": [ "v0001/data/content/eric-smith-dissertation.pdf" ],
-    "6d19f0...064": [ "v0001/data/metadata/technicalMetadata.xml" ],
-    "6e4be4...375": [ "v0001/data/metadata/provenanceMetadata.xml" ],
-    "d8a319...d0f": [ "v0001/data/metadata/descMetadata.xml" ],
-    "de823a...acc": [ "v0001/data/metadata/rightsMetadata.xml" ],
-    "080617...40c": [ "v0001/data/metadata/identityMetadata.xml" ],
-    "e15267...58d": [ "v0001/data/metadata/versionMetadata.xml" ],
-    "0d9e0b...9a2": [ "v0001/data/metadata/contentMetadata.xml" ],
-    "dd9289...31d": [ "v0001/data/metadata/relationshipMetadata.xml" ],
-    "f90947...11b": [ "v0002/manifests/manifestInventory.xml" ],
-    "bb3011...a58": [ "v0002/manifests/versionAdditions.xml" ],
-    "0dc4fc...f9f": [ "v0002/manifests/signatureCatalog.xml" ],
-    "2f1cf8...ea1": [ "v0002/manifests/fileInventoryDifference.xml" ],
-    "45b457...db5": [ "v0002/manifests/versionInventory.xml" ],
-    "7519c5...63f": [ "v0002/data/metadata/provenanceMetadata.xml" ],
-    "abda4c...622": [ "v0002/data/metadata/workflows.xml" ],
-    "76549e...b2b": [ "v0002/data/metadata/rightsMetadata.xml" ],
-    "bdc4d6...3b6": [ "v0002/data/metadata/events.xml" ],
-    "7b331c...f9b": [ "v0002/data/metadata/identityMetadata.xml" ],
-    "80ceac...b9c": [ "v0002/data/metadata/versionMetadata.xml" ],
-    "4853a2...fbe": [ "v0002/data/metadata/contentMetadata.xml" ],
-    "1d5090...f5f": [ "v0002/data/metadata/relationshipMetadata.xml" ],
-    "f209bf...ceb": [ "v0002/data/metadata/embargoMetadata.xml" ],
-    "04461b...5c6": [ "v0003/manifests/manifestInventory.xml" ],
-    "190103...20f": [ "v0003/manifests/versionAdditions.xml" ],
-    "24a84a...82d": [ "v0003/manifests/signatureCatalog.xml" ],
-    "5f4d52...7ef": [ "v0003/manifests/fileInventoryDifference.xml" ],
-    "2d7f8d...d67": [ "v0003/manifests/versionInventory.xml" ],
-    "dd9125...d4b": [ "v0003/data/metadata/technicalMetadata.xml" ],
-    "d9e177...477": [ "v0003/data/metadata/provenanceMetadata.xml" ],
-    "4f5908...4f5": [ "v0003/data/metadata/workflows.xml" ],
-    "e64db0...500": [ "v0003/data/metadata/descMetadata.xml" ],
-    "05fa51...818": [ "v0003/data/metadata/rightsMetadata.xml" ],
-    "d70dd8...5ad": [ "v0003/data/metadata/events.xml" ],
-    "509a2d...dc6": [ "v0003/data/metadata/identityMetadata.xml" ],
-    "548066...893": [ "v0003/data/metadata/versionMetadata.xml" ],
-    "93884e...aae": [ "v0003/data/metadata/contentMetadata.xml" ],
-    "4c5ab4...b02": [ "v0003/data/metadata/embargoMetadata.xml" ]
+    "197320...2e1": [ "v0001/content/manifests/manifestInventory.xml" ],
+    "a64b62...5c3": [ "v0001/content/manifests/versionAdditions.xml" ],
+    "794d5e...38b": [ "v0001/content/manifests/signatureCatalog.xml" ],
+    "a4d20f...b48": [ "v0001/content/manifests/fileInventoryDifference.xml" ],
+    "363785...bfb": [ "v0001/content/manifests/versionInventory.xml" ],
+    "98114a...588": [ "v0001/content/data/content/eric-smith-dissertation-augmented.pdf" ],
+    "7f3d87...15b": [ "v0001/content/data/content/eric-smith-dissertation.pdf" ],
+    "6d19f0...064": [ "v0001/content/data/metadata/technicalMetadata.xml" ],
+    "6e4be4...375": [ "v0001/content/data/metadata/provenanceMetadata.xml" ],
+    "d8a319...d0f": [ "v0001/content/data/metadata/descMetadata.xml" ],
+    "de823a...acc": [ "v0001/content/data/metadata/rightsMetadata.xml" ],
+    "080617...40c": [ "v0001/content/data/metadata/identityMetadata.xml" ],
+    "e15267...58d": [ "v0001/content/data/metadata/versionMetadata.xml" ],
+    "0d9e0b...9a2": [ "v0001/content/data/metadata/contentMetadata.xml" ],
+    "dd9289...31d": [ "v0001/content/data/metadata/relationshipMetadata.xml" ],
+    "f90947...11b": [ "v0002/content/manifests/manifestInventory.xml" ],
+    "bb3011...a58": [ "v0002/content/manifests/versionAdditions.xml" ],
+    "0dc4fc...f9f": [ "v0002/content/manifests/signatureCatalog.xml" ],
+    "2f1cf8...ea1": [ "v0002/content/manifests/fileInventoryDifference.xml" ],
+    "45b457...db5": [ "v0002/content/manifests/versionInventory.xml" ],
+    "7519c5...63f": [ "v0002/content/data/metadata/provenanceMetadata.xml" ],
+    "abda4c...622": [ "v0002/content/data/metadata/workflows.xml" ],
+    "76549e...b2b": [ "v0002/content/data/metadata/rightsMetadata.xml" ],
+    "bdc4d6...3b6": [ "v0002/content/data/metadata/events.xml" ],
+    "7b331c...f9b": [ "v0002/content/data/metadata/identityMetadata.xml" ],
+    "80ceac...b9c": [ "v0002/content/data/metadata/versionMetadata.xml" ],
+    "4853a2...fbe": [ "v0002/content/data/metadata/contentMetadata.xml" ],
+    "1d5090...f5f": [ "v0002/content/data/metadata/relationshipMetadata.xml" ],
+    "f209bf...ceb": [ "v0002/content/data/metadata/embargoMetadata.xml" ],
+    "04461b...5c6": [ "v0003/content/manifests/manifestInventory.xml" ],
+    "190103...20f": [ "v0003/content/manifests/versionAdditions.xml" ],
+    "24a84a...82d": [ "v0003/content/manifests/signatureCatalog.xml" ],
+    "5f4d52...7ef": [ "v0003/content/manifests/fileInventoryDifference.xml" ],
+    "2d7f8d...d67": [ "v0003/content/manifests/versionInventory.xml" ],
+    "dd9125...d4b": [ "v0003/content/data/metadata/technicalMetadata.xml" ],
+    "d9e177...477": [ "v0003/content/data/metadata/provenanceMetadata.xml" ],
+    "4f5908...4f5": [ "v0003/content/data/metadata/workflows.xml" ],
+    "e64db0...500": [ "v0003/content/data/metadata/descMetadata.xml" ],
+    "05fa51...818": [ "v0003/content/data/metadata/rightsMetadata.xml" ],
+    "d70dd8...5ad": [ "v0003/content/data/metadata/events.xml" ],
+    "509a2d...dc6": [ "v0003/content/data/metadata/identityMetadata.xml" ],
+    "548066...893": [ "v0003/content/data/metadata/versionMetadata.xml" ],
+    "93884e...aae": [ "v0003/content/data/metadata/contentMetadata.xml" ],
+    "4c5ab4...b02": [ "v0003/content/data/metadata/embargoMetadata.xml" ]
 }
 </pre>
     <p>
