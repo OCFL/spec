@@ -1,0 +1,15 @@
+/* ocfl modification of respec unofficial style for 
+   recommendations. Used with specStatus="ocfl-final"
+
+   2018-10-17
+*/
+
+/* Style for an "Unofficial Draft" */
+
+@import "base.css";
+
+body {
+  background-image: url(ocfl-final-logo.png); 
+  background-color: transparent;
+}
+

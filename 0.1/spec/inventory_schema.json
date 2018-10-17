@@ -1,0 +1,101 @@
+{
+    "$id": "https://ocfl.io/0.1/spec/inventory_schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "JSON Schema for OCFL Inventory files",
+    "description": "Note that this schema does not permit extension keys, only keys defined in the OCFL Specification are admitted.",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "digestAlgorithm": {
+            "enum": [ "md5", "sha1", "sha256", "sha512" ]
+        },
+        "fixity": {
+            "description": "Optional property. Keys are digest type and values are objects with digest to file mappings",
+            "type": "object",
+            "additionalProperties": false,
+            "patternProperties": {
+                "^(md5|sha1|sha256|sha512)$": {
+                    "$ref": "#/definitions/digests_to_files"
+                } 
+            }
+        },
+        "head": {
+            "$ref": "#/definitions/version_directory"
+        },
+        "id": {
+            "type": "string",
+            "pattern": ".+"
+        },
+        "manifest": {
+            "$ref": "#/definitions/digests_to_files"
+        },
+        "type": {
+            "description": "Seems that using `const` would be nicer but that doesn't seem to work with Python jsonschema",
+            "enum": [ "Object" ]
+        },
+        "versions": {
+            "type" : "array",
+            "uniqueItems": true,
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "created": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "state": {
+                        "$ref": "#/definitions/digests_to_files"
+                    },
+                    "type": {
+                        "description": "Seems that using `const` would be nicer but that doesn't seem to work with Python jsonschema",
+                        "enum": [ "Version" ]
+                    },
+                    "user": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "address": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [ "address", "name" ]
+                    },
+                    "version": {
+                        "$ref": "#/definitions/version_directory"
+                    }
+                },
+                "required": [ "created", "message", "state", "type", "user", "version" ]
+            }
+        }
+    },
+    "required": [ "digestAlgorithm", "head", "id", "manifest", "type", "versions" ],
+    "definitions": {
+        "digests_to_files": {
+            "description": "Object pattern used for `manifest`, `state` and within `fixity` objects. Keys are digests which MUST be hex strings with chars 0-9, a-f or A-F, values are arrays of file paths (non-empty strings). This pattern permits digests that are 32, 40, 64, or 128 hex digits long (matching md5, sha1, sha256, and sha512 respectively) but does not check that the length is correct for the type",
+            "type" : "object",
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([\\da-fA-F]{32}|[\\da-fA-F]{40}|[\\da-fA-F]{64}|[\\da-fA-F]{128})$": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "string",
+                        "pattern": ".+"
+                    }
+                }
+            }
+        },
+        "version_directory": {
+            "description": "String pattern to match allowed version directory names",
+            "type": "string",
+            "pattern": "^v\\d+$"
+        }
+    }
+}
