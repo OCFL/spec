@@ -34,44 +34,44 @@
             "enum": [ "Object" ]
         },
         "versions": {
-            "type" : "array",
-            "uniqueItems": true,
-            "items": {
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                    "created": {
-                        "type": "string",
-                        "format": "date-time"
-                    },
-                    "message": {
-                        "type": "string"
-                    },
-                    "state": {
-                        "$ref": "#/definitions/digests_to_files"
-                    },
-                    "type": {
-                        "description": "Seems that using `const` would be nicer but that doesn't seem to work with Python jsonschema",
-                        "enum": [ "Version" ]
-                    },
-                    "user": {
-                        "type": "object",
-                        "additionalProperties": false,
-                        "properties": {
-                            "address": {
-                                "type": "string"
-                            },
-                            "name": {
-                                "type": "string"
-                            }
+            "description": "Each key is a version directory name with version objects as values",
+            "type" : "object",
+            "additionalProperties": false,
+            "patternProperties": {
+                "^v\\d+$": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "created": {
+                            "type": "string",
+                            "format": "date-time"
                         },
-                        "required": [ "address", "name" ]
+                        "message": {
+                            "type": "string"
+                        },
+                        "state": {
+                            "$ref": "#/definitions/digests_to_files"
+                        },
+                        "type": {
+                            "description": "Seems that using `const` would be nicer but that doesn't seem to work with Python jsonschema",
+                            "enum": [ "Version" ]
+                        },
+                        "user": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "address": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [ "address", "name" ]
+                        }
                     },
-                    "version": {
-                        "$ref": "#/definitions/version_directory"
-                    }
-                },
-                "required": [ "created", "message", "state", "type", "user", "version" ]
+                    "required": [ "created", "message", "state", "type", "user" ]
+                }
             }
         }
     },
