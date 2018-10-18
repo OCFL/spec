@@ -165,7 +165,25 @@
       preserves this information, or the metadata extracted and stored explicitly in an additional file.
     </p>
   </section>
-
+    
+  <section>
+    <h2>Filesystem Features</h2>
+    <p>
+      In order to be portable across as many filesystems as possible, OCFL makes use of a subset of filesystem features 
+      that are very broadly supported. It is therefore strongly advised to not use additional features in OCFL Storage
+      Roots since OCFL clients and other filesystem tools that need to operate between different filesystems may
+      exhibit unpredictable behaviour when feature sets do not match. In particular, using features such as hard and 
+      soft (symbolic) links for deduplication can work at odds with OCFL's own mechanisms and should be avoided. 
+    </p>
+    <p>
+      Consideration should also be given to calculations of storage usage when migrating between filesystems. Many 
+      back-end filesystem features, which are essentially invisible to user-space code, can have a significant
+      impact on the actual consumption of storage space compared with the a simple sum of file sizes. Compression,
+      extents and block sub-allocation are examples of such features which, while providing benefits in terms of
+      storage efficiency, do require care when considering issues of capacity planning or migration. 
+    </p>
+  </section>
+  
   <section>
     <h2>Empty Directories</h2>
     <p>
