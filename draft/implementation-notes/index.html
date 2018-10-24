@@ -139,10 +139,11 @@
     <section>
       <h2>Rebuildability</h2>
       <p>
-        A key goal of OCFL is the rebuildability of a repository from an OCFL storage root without additional information
-        resources. Consequently, a key implementation consideration should be to ensure that OCFL objects contain all the
-        data and metadata required to achieve this. With reference to the [[OAIS]] model, this would include all the
-        descriptive, administrative, structural, representation, and preservation metadata relevant to the object.
+        A key goal of OCFL is the rebuildability of a repository from an OCFL storage root without additional
+        information resources. Consequently, a key implementation consideration should be to ensure that OCFL objects
+        contain all the data and metadata required to achieve this. With reference to the [[OAIS]] model, this would
+        include all the descriptive, administrative, structural, representation, and preservation metadata relevant to
+        the object.
       </p>
       <p>
         Additionally, as an aid to those who may need to recover OCFL objects in the future, it is recommended that a
@@ -151,9 +152,9 @@
         may be useful for recovery.
       </p>
       <p>
-        A more complete approach would be to create a specific OCFL object that contains this documentation and to have a
-        pointer to its location in the storage root. This documentation object would then be subject OCFL validation and
-        any other digital preservation processes that might be implemented without requiring special handling.
+        A more complete approach would be to create a specific OCFL object that contains this documentation and to have
+        a pointer to its location in the storage root. This documentation object would then be subject OCFL validation
+        and any other digital preservation processes that might be implemented without requiring special handling.
       </p>
     </section>
 
@@ -226,8 +227,8 @@
         <p>
           OCFL supports optional deduplication if a client ensures that all digests in the manifest block refer to a
           single file path on disk. This entry is created the first time file content is stored in an OCFL Object.
-          Subsequent references to that file content should then occur in the state block only. This can be determined by
-          computing the digests of incoming files and determining if they already exist in the manifest block.
+          Subsequent references to that file content should then occur in the state block only. This can be determined
+          by computing the digests of incoming files and determining if they already exist in the manifest block.
         </p>
         <p>
           If deduplication is carried out within an object then, for consistency, it is expected that Forward Delta
@@ -239,26 +240,28 @@
       <section>
         <h2>Empty Directories</h2>
         <p>
-          OCFL preserves files and their content, with directories serving as a useful organizational convention. An empty
-          directory consists only of filesystem metadata and therefore, as noted above, is not amenable to direct
-          preservation in OCFL. If the preservation of empty directories is considered essential then the suggested route
-          is to insert a zero length file named <code>.keep</code> into the directory which will ensure directories are
-          preserved as part of the file's path.
+          OCFL preserves files and their content, with directories serving as a useful organizational convention. An
+          empty directory consists only of filesystem metadata and therefore, as noted above, is not amenable to direct
+          preservation in OCFL. If the preservation of empty directories is considered essential then the suggested
+          route is to insert a zero length file named <code>.keep</code> into the directory which will ensure
+          directories are preserved as part of the file's path.
         </p>
         <p>
-          Note that <code>.keep</code> files are not considered special by OCFL in any way and are treated exactly the same
-          way as other files. As such, a non-zero length <code>.keep</code> file is not considered invalid.
+          Note that <code>.keep</code> files are not considered special by OCFL in any way and are treated exactly the
+          same way as other files. As such, a non-zero length <code>.keep</code> file is not considered invalid.
         </p>
       </section>
+
 
       <section>
         <h2>Filesystem metadata</h2>
         <p>
-          Filesystem metadata (e.g. permissions, access, and creation times) are not considered portable between filesystems
-          or preservable through file transfer operations. Nor can these attributes be validated in terms of fixity in a
-          consistent manner. As such, OCFL neither explicitly supports nor expects that these quanties remain consistent.
-          If retaining this metadata is important then files should either be encapsulated in a filesystem image format that
-          preserves this information, or the metadata extracted and stored explicitly in an additional file.
+          Filesystem metadata (e.g. permissions, access, and creation times) are not considered portable between
+          filesystems or preservable through file transfer operations. Nor can these attributes be validated in terms of
+          fixity in a consistent manner. As such, OCFL neither explicitly supports nor expects that these quanties
+          remain consistent. If retaining this metadata is important then files should either be encapsulated in a
+          filesystem image format that preserves this information, or the metadata extracted and stored explicitly in an
+          additional file.
         </p>
       </section>
 
@@ -281,130 +284,131 @@
     <section>
       <h2>Storage Root Hierarchy</h2>
       <p>
-          Strictly speaking, OCFL only requires that an OCFL Storage Root contains OCFL Objects in directories,
-          distributed in some manner in the underlying filesystem. In turn, an OCFL object is identified purely by
-          the presence of a [[NAMASTE]] conformance file in the object root. The presence and correctness of
-          inventory files and version directories are a validation rather than an identification concern.
+        Strictly speaking, OCFL only requires that an OCFL Storage Root contains OCFL Objects in directories,
+        distributed in some manner in the underlying filesystem. In turn, an OCFL object is identified purely by
+        the presence of a [[NAMASTE]] conformance file in the object root. The presence and correctness of
+        inventory files and version directories are a validation rather than an identification concern.
       </p>
       <p>
-          These definitions allow a lot of freedom as to how objects are arranged beneath an OCFL Storage
-          Root and, while there is no strict requirement for all OCFL Objects to be arranged according the same
-          system it is nevertheless considered good practice to do so. In addition, in the interests of
-          rebuildability, it would be prudent to include an indication of the details of this arrangement
-          alongside the OCFL specification as described in the Rebuildability section.
+        These definitions allow a lot of freedom as to how objects are arranged beneath an OCFL Storage
+        Root and, while there is no strict requirement for all OCFL Objects to be arranged according the same
+        system it is nevertheless considered good practice to do so. In addition, in the interests of
+        rebuildability, it would be prudent to include an indication of the details of this arrangement
+        alongside the OCFL specification as described in the Rebuildability section.
       </p>
       <p>
-          In the interests of transparency the it makes sense for an object's URI, its unique identifier and
-          its location under the OCFL Storage Root to be aligned and simply derivable from each other. Good
-          examples include:
+        In the interests of transparency the it makes sense for an object's URI, its unique identifier and
+        its location under the OCFL Storage Root to be aligned and simply derivable from each other. Good
+        examples include:
       </p>
-          <ul>
-              <li>
-                  Flat: Each object is contained in a directory with a name that is simply derived from the
-                  unique identifer of the object, possibly with the escaping/replacement of characters that are not
-                  permitted in file/directory names. While this is a very simple approach, most filesystems begin
-                  to encounter performance issues when directories contain more than a few thousand files so
-                  this arrangement is best suited to repositories with a small number of objects (or many
-                  OCFL Storage Roots).
-                  <pre>
-                  [storage_root]
-                      ├── 0=ocfl_1.0
-                      ├── ocfl_1.0.txt (optional OCFL spec)
-                      ├── d45be626e024
-                      |   ├── 0=ocfl_object_1.0
-                      |   ├── inventory.json
-                      |   ├── inventory.json.sha512
-                      |   └── v1...
-                      ├── d45be626e036
-                      |   ├── 0=ocfl_object_1.0
-                      |   ├── inventory.json
-                      |   ├── inventory.json.sha512
-                      |   └── v1...
-                      ├── 3104edf0363a
-                      |   ├── 0=ocfl_object_1.0
-                      |   ├── inventory.json
-                      |   ├── inventory.json.sha512
-                      |   └── v1...
-                      └── ...
-                  </pre>
-              </li>
-              <li>
-                  PairTree: [[PairTree]] is designed to overcome the limitations on the number of files in a
-                  directory that most file systems have. It creates hierarchy of directories by mapping identifier
-                  strings to directory paths two characters at a time. For numerical identifiers specified in
-                  hexadecimal this means that there are a maximum of 256 items in any directory which is well
-                  within the capacity of any modern filesystem. However, for long identifiers, pairtree creates
-                  a large number of directories which will be sparsely populated unless the number of objects
-                  is very large. Traversing all these directories during validation or rebuilding operations can
-                  be slow.
-                  <pre>
-                  [storage_root]
-                      ├── 0=ocfl_1.0
-                      ├── ocfl_1.0.txt (optional OCFL spec)
-                      ├── d4
-                      |   └── 5b
-                      |       └── e6
-                      |           └── 26
-                      |               └── e0
-                      |                   ├── 24
-                      |                   |   └──d45be626e024
-                      |                   |       ├── 0=ocfl_object_1.0
-                      |                   |       └── ...
-                      |                   └── 36
-                      |                       └──d45be626e036
-                      |                           ├── 0=ocfl_object_1.0
-                      |                           └── ...
-                      ├── 31
-                      |   └── 04
-                      |       └── ed
-                      |           └── f0
-                      |               └── 36
-                      |                   └── 3a
-                      |                       └── 3104edf0363a
-                      |                           ├── 0=ocfl_object_1.0
-                      |                           └── ...
-                      └── ...
-                  </pre>
-              </li>
-              <li>
-                  Truncated n-tuple Tree: This approach aims to achieve some of the scalability benefits of
-                  PairTree whilst limiting the depth of the resulting directory hierarchy. To achieve this,
-                  the source identifier can be split at a higher level of granularity, and only a limited
-                  number of the identifier digits are used to generate directory paths. For example, using
-                  triples and three levels with example above yields:
-                  <pre>
-                  [storage_root]
-                      ├── 0=ocfl_1.0
-                      ├── ocfl_1.0.txt (optional OCFL spec)
-                      ├── d45
-                      |   └── be6
-                      |       └── 26e
-                      |           ├──d45be626e024
-                      |           |  ├── 0=ocfl_object_1.0
-                      |           |  └── ...
-                      |           └──d45be626e036
-                      |              ├── 0=ocfl_object_1.0
-                      |              └── ...
-                      ├── 310
-                      |   └── 4ed
-                      |       └── f03
-                      |           └── 3104edf0363a
-                      |               ├── 0=ocfl_object_1.0
-                      |               └── ...
-                      └── ...
-                  </pre>
-              </li>
+        <ul>
+        <li>
+            Flat: Each object is contained in a directory with a name that is simply derived from the
+            unique identifer of the object, possibly with the escaping/replacement of characters that are not
+            permitted in file/directory names. While this is a very simple approach, most filesystems begin
+            to encounter performance issues when directories contain more than a few thousand files so
+            this arrangement is best suited to repositories with a small number of objects (or many
+            OCFL Storage Roots).
+            <pre>
+            [storage_root]
+                ├── 0=ocfl_1.0
+                ├── ocfl_1.0.txt (optional OCFL spec)
+                ├── d45be626e024
+                |   ├── 0=ocfl_object_1.0
+                |   ├── inventory.json
+                |   ├── inventory.json.sha512
+                |   └── v1...
+                ├── d45be626e036
+                |   ├── 0=ocfl_object_1.0
+                |   ├── inventory.json
+                |   ├── inventory.json.sha512
+                |   └── v1...
+                ├── 3104edf0363a
+                |   ├── 0=ocfl_object_1.0
+                |   ├── inventory.json
+                |   ├── inventory.json.sha512
+                |   └── v1...
+                └── ...
+            </pre>
+          </li>
+          <li>
+            PairTree: [[PairTree]] is designed to overcome the limitations on the number of files in a
+            directory that most file systems have. It creates hierarchy of directories by mapping identifier
+            strings to directory paths two characters at a time. For numerical identifiers specified in
+            hexadecimal this means that there are a maximum of 256 items in any directory which is well
+            within the capacity of any modern filesystem. However, for long identifiers, pairtree creates
+            a large number of directories which will be sparsely populated unless the number of objects
+            is very large. Traversing all these directories during validation or rebuilding operations can
+            be slow.
+            <pre>
+            [storage_root]
+                ├── 0=ocfl_1.0
+                ├── ocfl_1.0.txt (optional OCFL spec)
+                ├── d4
+                |   └── 5b
+                |       └── e6
+                |           └── 26
+                |               └── e0
+                |                   ├── 24
+                |                   |   └──d45be626e024
+                |                   |       ├── 0=ocfl_object_1.0
+                |                   |       └── ...
+                |                   └── 36
+                |                       └──d45be626e036
+                |                           ├── 0=ocfl_object_1.0
+                |                           └── ...
+                ├── 31
+                |   └── 04
+                |       └── ed
+                |           └── f0
+                |               └── 36
+                |                   └── 3a
+                |                       └── 3104edf0363a
+                |                           ├── 0=ocfl_object_1.0
+                |                           └── ...
+                └── ...
+            </pre>
+          </li>
+        <li>
+            Truncated n-tuple Tree: This approach aims to achieve some of the scalability benefits of
+            PairTree whilst limiting the depth of the resulting directory hierarchy. To achieve this,
+            the source identifier can be split at a higher level of granularity, and only a limited
+            number of the identifier digits are used to generate directory paths. For example, using
+            triples and three levels with example above yields:
+            <pre>
+            [storage_root]
+                ├── 0=ocfl_1.0
+                ├── ocfl_1.0.txt (optional OCFL spec)
+                ├── d45
+                |   └── be6
+                |       └── 26e
+                |           ├──d45be626e024
+                |           |  ├── 0=ocfl_object_1.0
+                |           |  └── ...
+                |           └──d45be626e036
+                |              ├── 0=ocfl_object_1.0
+                |              └── ...
+                ├── 310
+                |   └── 4ed
+                |       └── f03
+                |           └── 3104edf0363a
+                |               ├── 0=ocfl_object_1.0
+                |               └── ...
+                └── ...
+            </pre>
+          </li>
       </ul>
     </section>
 
     <section>
       <h2>Filesystem Features</h2>
       <p>
-        In order to be portable across as many filesystems as possible, OCFL makes use of a subset of filesystem features
-        that are very broadly supported. It is therefore strongly advised to not use additional features in OCFL Storage
-        Roots since OCFL clients and other filesystem tools that need to operate between different filesystems may
-        exhibit unpredictable behaviour when feature sets do not match. In particular, using features such as hard and
-        soft (symbolic) links for deduplication can work at odds with OCFL's own mechanisms and should be avoided.
+        In order to be portable across as many filesystems as possible, OCFL makes use of a subset of filesystem
+        features that are very broadly supported. It is therefore strongly advised to not use additional features in
+        OCFL Storage Roots since OCFL clients and other filesystem tools that need to operate between different
+        filesystems may exhibit unpredictable behaviour when feature sets do not match. In particular, using features
+        such as hard and soft (symbolic) links for deduplication can work at odds with OCFL's own mechanisms and should
+        be avoided.
       </p>
       <p>
         Consideration should also be given to calculations of storage usage when migrating between filesystems. Many
@@ -431,42 +435,42 @@
       </p>
       <ul>
         <li>
-            Inheritance: By default a new version of an OCFL Object inherits all the filenames and file
-            content from the previous version. This serves as the basis against which changes are applied
-            to create a new version. A newly created OCFL Object, obviously, inherits no content and is
-            populated by file additions.
+          Inheritance: By default a new version of an OCFL Object inherits all the filenames and file
+          content from the previous version. This serves as the basis against which changes are applied
+          to create a new version. A newly created OCFL Object, obviously, inherits no content and is
+          populated by file additions.
         </li>
         <li>
-            Addition: Adds a new file path and corresponding content to an OCFL Object. The path cannot
-            exist in the previous version of the object, and the content cannot have existed in any
-            earlier versions of the object.
+          Addition: Adds a new file path and corresponding content to an OCFL Object. The path cannot
+          exist in the previous version of the object, and the content cannot have existed in any
+          earlier versions of the object.
         </li>
         <li>
-            Updating: Changes the content pointed to by an exsting file path. The path must exist in
-            the previous version of the OCFL Object, and the content cannot have existed in any earlier
-            versions of the object.
+          Updating: Changes the content pointed to by an exsting file path. The path must exist in
+          the previous version of the OCFL Object, and the content cannot have existed in any earlier
+          versions of the object.
         </li>
         <li>
-            Renaming: Changes the file path of existing content. The path cannot exist in the previous
-            version of the OCFL Object, and the content cannot have existed in any earlier versions of
-            the bject.
+          Renaming: Changes the file path of existing content. The path cannot exist in the previous
+          version of the OCFL Object, and the content cannot have existed in any earlier versions of
+          the bject.
         </li>
         <li>
-            Deletion: Removes a file path and corresponding content from the current version of an OCFL
-            Object. The path and content remain available in earlier versions of the object.
+          Deletion: Removes a file path and corresponding content from the current version of an OCFL
+          Object. The path and content remain available in earlier versions of the object.
         </li>
         <li>
-            Reinstatement: Makes content from a version earlier than the previous version available in
-            the current version of an OCFL Object. The content must exist in an earlier version, and
-            not the previous version. The file path may exist in the previous version, effectively updating
-            the file path with older content, or it may not, effectively adding the older content as a new
-            file.
+          Reinstatement: Makes content from a version earlier than the previous version available in
+          the current version of an OCFL Object. The content must exist in an earlier version, and
+          not the previous version. The file path may exist in the previous version, effectively updating
+          the file path with older content, or it may not, effectively adding the older content as a new
+          file.
         </li>
         <li>
-            Purging: Purging, as distinct from deletion, covers the complete removal of a file path and
-            corresponding content from all versions of an OCFL Object. This is a special case that is
-            not supported as part of regular OCFL versioning operations. An approach to implementing this
-            is covered in a later section.
+          Purging: Purging, as distinct from deletion, covers the complete removal of a file path and
+          corresponding content from all versions of an OCFL Object. This is a special case that is
+          not supported as part of regular OCFL versioning operations. An approach to implementing this
+          is covered in a later section.
         </li>
       </ul>
     </section>
@@ -496,7 +500,8 @@
         </p>
         <p>
           One key consequence of this immutabilty is that manifest entries should never be deleted. New entries may be
-          created, and, if not deduplicating file content, additional references to copies of stored content may be added.
+          created, and, if not deduplicating file content, additional references to copies of stored content may be
+          added.
         </p>
       </section>
     </section>
@@ -546,49 +551,49 @@
         state and manifest blocks of the OCFL object's inventory file):
       </p>
       <ul>
-          <li>
-              Inheritance: Files inherited from the previous version unchanged are referenced in the
-              <code>state</code> block of the new version. These entries will be identical to the corresponding
-              entries in the previous version's <code>state</code> block. No changes to the <code>manifest</code>
-              block are required. When a new OCFL version of an OCFL Object is created, the starting point against
-              which changes are made should be to copy the entire <code>state</code> block of the previous version,
-              thus inheriting all the files and content from the previous version.
-          </li>
-          <li>
-              Addition: Newly added files appear as new entries in the <code>state</code> block of the new version.
-              The file should be stored and an entry for the new content must be made in the <code>manifest</code>
-              block of the object's inventory. The new digest from the <code>manifest</code> block can then be used
-              to create the new <code>state</code> block entry. If the file content, as determined by its digest,
-              corresponds to an existing <code>manifest</code> entry then, technically, this is a reinstatement
-              operation rather than addition and should be flagged to prevent the operation being recorded incorrectly
-              in preservation logs.
-          </li>
-          <li>
-              Updating: Files updated from the previous version appear as changed entries in the <code>state</code>
-              block of the new version - with new digests associated with existing file paths. The updated file should
-              be stored and a new entry for the updated content must be made in the <code>manifest</code> block of the
-              object's inventory. The new digest can then be used to replace the digest for the old content in
-              the relevant <code>state</code> block entry. If the file content, as determined by its digest, corresponds
-              to an existing <code>manifest</code> entry then, technically, this is a reinstatement operation rather
-              than updating and should be flagged to prevent the operation being recorded incorrectly in preservation
-              logs.
-          </li>
-          <li>
-              Renaming: Files renamed from the previous version appear as changed entries in the <code>state</code>
-              block of the new version - with existing digests associated with new file paths. No changes to the
-              <code>manifest</code> block are required.
-          </li>
-          <li>
-              Deletion: Files deleted from the previous version are simply removed from the <code>state</code>
-              block of the new version.
-          </li>
-          <li>
-              Reinstatement: Since reinstated content already exists in earlier versions of the OCFL Object,
-              no changes to the <code>manifest</code> block are required. Reinstated entries in the <code>state</code>
-              block should replace any entries with the same path inherited from the previous version. If the file
-              paths are unchanged then these entries will be identical to the corresponding entries in the earlier
-              version's <code>state</code> block.
-          </li>
+        <li>
+          Inheritance: Files inherited from the previous version unchanged are referenced in the
+          <code>state</code> block of the new version. These entries will be identical to the corresponding
+          entries in the previous version's <code>state</code> block. No changes to the <code>manifest</code>
+          block are required. When a new OCFL version of an OCFL Object is created, the starting point against
+          which changes are made should be to copy the entire <code>state</code> block of the previous version,
+          thus inheriting all the files and content from the previous version.
+        </li>
+        <li>
+          Addition: Newly added files appear as new entries in the <code>state</code> block of the new version.
+          The file should be stored and an entry for the new content must be made in the <code>manifest</code>
+          block of the object's inventory. The new digest from the <code>manifest</code> block can then be used
+          to create the new <code>state</code> block entry. If the file content, as determined by its digest,
+          corresponds to an existing <code>manifest</code> entry then, technically, this is a reinstatement
+          operation rather than addition and should be flagged to prevent the operation being recorded incorrectly
+          in preservation logs.
+        </li>
+        <li>
+          Updating: Files updated from the previous version appear as changed entries in the <code>state</code>
+          block of the new version - with new digests associated with existing file paths. The updated file should
+          be stored and a new entry for the updated content must be made in the <code>manifest</code> block of the
+          object's inventory. The new digest can then be used to replace the digest for the old content in
+          the relevant <code>state</code> block entry. If the file content, as determined by its digest, corresponds
+          to an existing <code>manifest</code> entry then, technically, this is a reinstatement operation rather
+          than updating and should be flagged to prevent the operation being recorded incorrectly in preservation
+          logs.
+        </li>
+        <li>
+          Renaming: Files renamed from the previous version appear as changed entries in the <code>state</code>
+          block of the new version - with existing digests associated with new file paths. No changes to the
+          <code>manifest</code> block are required.
+        </li>
+        <li>
+          Deletion: Files deleted from the previous version are simply removed from the <code>state</code>
+          block of the new version.
+        </li>
+        <li>
+          Reinstatement: Since reinstated content already exists in earlier versions of the OCFL Object,
+          no changes to the <code>manifest</code> block are required. Reinstated entries in the <code>state</code>
+          block should replace any entries with the same path inherited from the previous version. If the file
+          paths are unchanged then these entries will be identical to the corresponding entries in the earlier
+          version's <code>state</code> block.
+        </li>
       </ul>
     </section>
 
