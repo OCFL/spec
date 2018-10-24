@@ -134,116 +134,156 @@
   </section>
 
   <section>
-    <h2>Rebuildability</h2>
-    <p>
-      A key goal of OCFL is the rebuildability of a repository from an OCFL storage root without additional information
-      resources. Consequently, a key implementation consideration should be to ensure that OCFL objects contain all the
-      data and metadata required to achieve this. With reference to the [[OAIS]] model, this would include all the
-      descriptive, administrative, structural, representation, and preservation metadata relevant to the object.
-    </p>
-    <p>
-      Additionally, as an aid to those who may need to recover OCFL objects in the future, it is recommended that a
-      copy of the [[OCFL-Specification]] is stored in the top level of the OCFL storage root. OCFL ignores files
-      other than the conformance declaration at the top level so it is a good location to store documentation that
-      may be useful for recovery.
-    </p>
-    <p>
-      A more complete approach would be to create a specific OCFL object that contains this documentation and to have a
-      pointer to its location in the storage root. This documentation object would then be subject OCFL validation and
-      any other digital preservation processes that might be implemented without requiring special handling.
-    </p>
-  </section>
+    <h2>Digital Preservation</h2>
 
-  <section>
-    <h2>Filesystem metadata</h2>
-    <p>
-      Filesystem metadata (e.g. permissions, access, and creation times) are not considered portable between filesystems
-      or preservable through file transfer operations. Nor can these attributes be validated in terms of fixity in a
-      consistent manner. As such, OCFL neither explicitly supports nor expects that these quanties remain consistent.
-      If retaining this metadata is important then files should either be encapsulated in a filesystem image format that
-      preserves this information, or the metadata extracted and stored explicitly in an additional file.
-    </p>
-  </section>
+    <section>
+      <h2>Rebuildability</h2>
+      <p>
+        A key goal of OCFL is the rebuildability of a repository from an OCFL storage root without additional information
+        resources. Consequently, a key implementation consideration should be to ensure that OCFL objects contain all the
+        data and metadata required to achieve this. With reference to the [[OAIS]] model, this would include all the
+        descriptive, administrative, structural, representation, and preservation metadata relevant to the object.
+      </p>
+      <p>
+        Additionally, as an aid to those who may need to recover OCFL objects in the future, it is recommended that a
+        copy of the [[OCFL-Specification]] is stored in the top level of the OCFL storage root. OCFL ignores files
+        other than the conformance declaration at the top level so it is a good location to store documentation that
+        may be useful for recovery.
+      </p>
+      <p>
+        A more complete approach would be to create a specific OCFL object that contains this documentation and to have a
+        pointer to its location in the storage root. This documentation object would then be subject OCFL validation and
+        any other digital preservation processes that might be implemented without requiring special handling.
+      </p>
+    </section>
 
-  <section>
-    <h2>Empty Directories</h2>
-    <p>
-      OCFL preserves files and their content, with directories serving as a useful organizational convention. An empty
-      directory consists only of filesystem metadata and therefore, as noted above, is not amenable to direct
-      preservation in OCFL. If the preservation of empty directories is considered essential then the suggested route
-      is to insert a zero length file named <code>.keep</code> into the directory which will ensure directories are
-      preserved as part of the file's path.
-    </p>
-    <p>
-      Note that <code>.keep</code> files are not considered special by OCFL in any way and are treated exactly the same
-      way as other files. As such, a non-zero length <code>.keep</code> file is not considered invalid.
-    </p>
-  </section>
-
-  <section>
-    <h2>Data and Metadata</h2>
-    <p>
-      OCFL object versions are composed of series of files/bitstreams but OCFL does not make any distinction between
-      different types of files other than those reserved for OCFL functionality: the inventory, its digest file, and
-      conformance declaration files. It is possible, for example, to create separate data and metadata directories
-      within each version to help organize material but all files are treated equally for the purpose of OCFL
-      validation and management.
-    </p>
-  </section>
-    
-  <section>
-    <h2>Filesystem Features</h2>
-    <p>
-      In order to be portable across as many filesystems as possible, OCFL makes use of a subset of filesystem features 
-      that are very broadly supported. It is therefore strongly advised to not use additional features in OCFL Storage
-      Roots since OCFL clients and other filesystem tools that need to operate between different filesystems may
-      exhibit unpredictable behaviour when feature sets do not match. In particular, using features such as hard and 
-      soft (symbolic) links for deduplication can work at odds with OCFL's own mechanisms and should be avoided. 
-    </p>
-    <p>
-      Consideration should also be given to calculations of storage usage when migrating between filesystems. Many 
-      back-end filesystem features, which are essentially invisible to user-space code, can have a significant
-      impact on the actual consumption of storage space compared with the a simple sum of file sizes. Compression,
-      extents and block sub-allocation are examples of such features which, while providing benefits in terms of
-      storage efficiency, do require care when considering issues of capacity planning or migration. 
-    </p>
+    <section>
+      <h2>Fixity</h2>
+      <p>
+        The digests in the manifest are used by OCFL for content addressability rather than fixity but they are
+        suitable for use as part of a fixity regime, and the manifest block usefully identifies all the files in an
+        object. OCFL validation also requires that digests and files match. However, while the characteristics of digest
+        algorithms that make them suitable for fixity checking and content addressing are closely related, they are not
+        identical. In particular, fixity against malicious tampering requires that a digest computation is hard to
+        reverse, which is not a requirement for content addressing. It is this aspect which is the most frequent target
+        for cryptoanalytic attack.
+      </p>
+      <p>
+        Consequently, it is sensible to allow additional or alternative fixity algorithms to be used. These may be made
+        in a <a href="../spec/#fixity">fixity block</a> which has the same layout as a manifest block but permits a
+        broader range of algorithms. OCFL will consider a fixity block valid if all the files referenced in the block
+        exist but OCFL does not validate digests for all possible algorithms. The fixity block does not have to include
+        all the files in an object to permit legacy fixity to be imported without requiring continued use of obsolete
+        digest algorithms.
+      </p>
+    </section>
   </section>
 
   <section>
     <h2>Storage</h2>
-    <p>
-      OCFL separates the existing file path of stored files from the logical file path of these files' content in OCFL
-      object versions. This is a key feature that allows previous versions of objects to remain immutable but
-      permitting deduplication, forward delta differencing, and easy file renaming. Consequently, OCFL only requires
-      that files added to any version of an OCFL object must be stored somewhere within the relevant version
-      directory, with a corresponding entry in the manifest block. An entry in the state block determines the path
-      and name of the file within that version by referencing the manifest entry, not the actual path on disk.
-    </p>
-    <p>
-      The most transparent approach is to have the path used to store the file on disk the same as the path of the
-      file within the object when accessioned. This is readily understandable in terms of visual inspection of the
-      physical filesystem.
-    </p>
-    <p>
-      However, this is not always possible. For example, complex objects with deep file hierarchies may encounter
-      issues if they come from a fileystem that allows longer paths than are supported by the target OCFL system. In
-      this case, the decoupling between existing file paths and logical file paths in OCFL allows the use of truncated
-      paths for storage while the full paths can be preserved in state block entries which are not length constrained.
-    </p>
-    <p>
-      Another use case is importing content from other repository systems which renames files on ingest and stores
-      them in a flat hierarchy. These can be imported, as is, and the original paths and file names recorded through
-      suitable state block entries rather than reconstructing a physical file layout. Of course, OCFL supports
-      ongoing use of such a methodology.
-    </p>
-  </section>
 
-  <section>
+    <section>
+      <h2>Object Contents</h2>
+      <p>
+        OCFL separates the existing file path of stored files from the logical file path of these files' content in OCFL
+        object versions. This is a key feature that allows previous versions of objects to remain immutable but
+        permitting deduplication, forward delta differencing, and easy file renaming. Consequently, OCFL only requires
+        that files added to any version of an OCFL object must be stored somewhere within the relevant version
+        directory, with a corresponding entry in the manifest block. An entry in the state block determines the path
+        and name of the file within that version by referencing the manifest entry, not the actual path on disk.
+      </p>
+      <p>
+        The most transparent approach is to have the path used to store the file on disk the same as the path of the
+        file within the object when accessioned. This is readily understandable in terms of visual inspection of the
+        physical filesystem.
+      </p>
+      <p>
+        However, this is not always possible. For example, complex objects with deep file hierarchies may encounter
+        issues if they come from a fileystem that allows longer paths than are supported by the target OCFL system. In
+        this case, the decoupling between existing file paths and logical file paths in OCFL allows the use of truncated
+        paths for storage while the full paths can be preserved in state block entries which are not length constrained.
+      </p>
+      <p>
+        Another use case is importing content from other repository systems which renames files on ingest and stores
+        them in a flat hierarchy. These can be imported, as is, and the original paths and file names recorded through
+        suitable state block entries rather than reconstructing a physical file layout. Of course, OCFL supports
+        ongoing use of such a methodology.
+      </p>
+
+      <section>
+        <h2>Data and Metadata</h2>
+        <p>
+          OCFL object versions are composed of series of files/bitstreams but OCFL does not make any distinction between
+          different types of files other than those reserved for OCFL functionality: the inventory, its digest file, and
+          conformance declaration files. It is possible, for example, to create separate data and metadata directories
+          within each version to help organize material but all files are treated equally for the purpose of OCFL
+          validation and management.
+        </p>
+      </section>
+
+      <section>
+        <h2>Deduplication</h2>
+        <p>
+          OCFL supports optional deduplication if a client ensures that all digests in the manifest block refer to a
+          single file path on disk. This entry is created the first time file content is stored in an OCFL Object.
+          Subsequent references to that file content should then occur in the state block only. This can be determined by
+          computing the digests of incoming files and determining if they already exist in the manifest block.
+        </p>
+        <p>
+          If deduplication is carried out within an object then, for consistency, it is expected that Forward Delta
+          differencing will also be used between object versions so subsequent references to duplicated content should
+          also refer back to the original manifest entry rather than updating it to include additional references.
+        </p>
+      </section>
+
+      <section>
+        <h2>Empty Directories</h2>
+        <p>
+          OCFL preserves files and their content, with directories serving as a useful organizational convention. An empty
+          directory consists only of filesystem metadata and therefore, as noted above, is not amenable to direct
+          preservation in OCFL. If the preservation of empty directories is considered essential then the suggested route
+          is to insert a zero length file named <code>.keep</code> into the directory which will ensure directories are
+          preserved as part of the file's path.
+        </p>
+        <p>
+          Note that <code>.keep</code> files are not considered special by OCFL in any way and are treated exactly the same
+          way as other files. As such, a non-zero length <code>.keep</code> file is not considered invalid.
+        </p>
+      </section>
+
+      <section>
+        <h2>Filesystem metadata</h2>
+        <p>
+          Filesystem metadata (e.g. permissions, access, and creation times) are not considered portable between filesystems
+          or preservable through file transfer operations. Nor can these attributes be validated in terms of fixity in a
+          consistent manner. As such, OCFL neither explicitly supports nor expects that these quanties remain consistent.
+          If retaining this metadata is important then files should either be encapsulated in a filesystem image format that
+          preserves this information, or the metadata extracted and stored explicitly in an additional file.
+        </p>
+      </section>
+
+      <section>
+        <h2>Objects with Many Small Files</h2>
+        <p>
+          Objects that contain a large number of files can pose performance problems if they are stored in a
+          filesystem as-is. Fixity checks, object validation and version creation can require an OCFL client to
+          process all the files in an object which can be time consuming. Additionally, most storage systems have a
+          minimum block size for allocation to files, so a large number of small files can end up occupying a volume
+          of storage significantly larger than the sum of the individual file sizes. In this case, assuming that the
+          majority of the files are relatively static data that is unlikely to change between objects versions, it
+          is sensible to package the static files together in a single, larger file (zip is recommended). This can
+          be parsed to extract individual files if necessary but can signficantly improve the efficiency of basic
+          OCFL client and storage operations.
+        </p>
+      </section>
+    </section>
+
+    <section>
       <h2>Storage Root Hierarchy</h2>
       <p>
           Strictly speaking, OCFL only requires that an OCFL Storage Root contains OCFL Objects in directories,
           distributed in some manner in the underlying filesystem. In turn, an OCFL object is identified purely by
-          the presence of a [[NAMASTE]] conformance file in the object root. The presence and correctness of 
+          the presence of a [[NAMASTE]] conformance file in the object root. The presence and correctness of
           inventory files and version directories are a validation rather than an identification concern.
       </p>
       <p>
@@ -355,225 +395,204 @@
                   </pre>
               </li>
       </ul>
+    </section>
+
+    <section>
+      <h2>Filesystem Features</h2>
+      <p>
+        In order to be portable across as many filesystems as possible, OCFL makes use of a subset of filesystem features
+        that are very broadly supported. It is therefore strongly advised to not use additional features in OCFL Storage
+        Roots since OCFL clients and other filesystem tools that need to operate between different filesystems may
+        exhibit unpredictable behaviour when feature sets do not match. In particular, using features such as hard and
+        soft (symbolic) links for deduplication can work at odds with OCFL's own mechanisms and should be avoided.
+      </p>
+      <p>
+        Consideration should also be given to calculations of storage usage when migrating between filesystems. Many
+        back-end filesystem features, which are essentially invisible to user-space code, can have a significant
+        impact on the actual consumption of storage space compared with the a simple sum of file sizes. Compression,
+        extents and block sub-allocation are examples of such features which, while providing benefits in terms of
+        storage efficiency, do require care when considering issues of capacity planning or migration.
+      </p>
+    </section>
+
+
   </section>
 
   <section>
-    <h2>Basic File Operations</h2>
-    <p>
+    <h2>Client Behaviors</h2>
+
+    <section>
+      <h2>Basic File Operations</h2>
+      <p>
         OCFL and its inventory structure are designed to support and capture the following file operations
         that create OCFL versions, regardless of whether optional features, such as deduplication, are used.
         OCFL is not concerned with the process of creating versions but only the final outcome in terms of
         the differences with the previous version that need to be recorded and preserved.
-    </p>
-        <ul>
-            <li>
-                Inheritance: By default a new version of an OCFL Object inherits all the filenames and file
-                content from the previous version. This serves as the basis against which changes are applied
-                to create a new version. A newly created OCFL Object, obviously, inherits no content and is
-                populated by file additions.
-            </li>
-            <li>
-                Addition: Adds a new file path and corresponding content to an OCFL Object. The path cannot
-                exist in the previous version of the object, and the content cannot have existed in any
-                earlier versions of the object.
-            </li>
-            <li>
-                Updating: Changes the content pointed to by an exsting file path. The path must exist in
-                the previous version of the OCFL Object, and the content cannot have existed in any earlier
-                versions of the object.
-            </li>
-            <li>
-                Renaming: Changes the file path of existing content. The path cannot exist in the previous
-                version of the OCFL Object, and the content cannot have existed in any earlier versions of
-                the bject.
-            </li>
-            <li>
-                Deletion: Removes a file path and corresponding content from the current version of an OCFL
-                Object. The path and content remain available in earlier versions of the object.
-            </li>
-            <li>
-                Reinstatement: Makes content from a version earlier than the previous version available in
-                the current version of an OCFL Object. The content must exist in an earlier version, and
-                not the previous version. The file path may exist in the previous version, effectively updating
-                the file path with older content, or it may not, effectively adding the older content as a new
-                file.
-            </li>
-            <li>
-                Purging: Purging, as distinct from deletion, covers the complete removal of a file path and
-                corresponding content from all versions of an OCFL Object. This is a special case that is
-                not supported as part of regular OCFL versioning operations. An approach to implementing this
-                is covered in a later section.
-            </li>
-        </ul>
-</section>
-
-  <section>
-    <h2>Version Immutability</h2>
-    <p>
-      Previous versions of an object should be considered immutable since the composition of later versions of an
-      object may be dependent on them. In addition, the assumtion of immutability ensures that copies of different
-      versions of an object remain cosistent with each other, avoiding issues with identifying canonicity and
-      reconcilitation.
-    </p>
-    <p>
-      One key consequence of this immutabilty is that manifest entries should never be deleted. New entries may be
-      created, and, if not deduplicating file content, additional references to copies of stored content may be added.
-    </p>
-  </section>
-
-  <section>
-    <h2>Deduplication</h2>
-    <p>
-      OCFL supports optional deduplication if a client ensures that all digests in the manifest block refer to a
-      single file path on disk. This entry is created the first time file content is stored in an OCFL Object.
-      Subsequent references to that file content should then occur in the state block only. This can be determined by
-      computing the digests of incoming files and determining if they already exist in the manifest block.
-    </p>
-    <p>
-      If deduplication is carried out within an object then, for consistency, it is expected that Forward Delta
-      differencing will also be used between object versions so subsequent references to duplicated content should
-      also refer back to the original manifest entry rather than updating it to include additional references.
-    </p>
-  </section>
-
-  <section>
-    <h2>Forward Delta</h2>
-    <p>
-      Forward delta differencing is a key, though optional, feature of OCFL that means that parts of an OCFL object
-      version that are unchanged from a previous version are not stored again. This has the potential to signficantly
-      improve storage efficiency when objects have multiple versions, whether through ongoing curatorial action or
-      the accessioning of updated material.
-    </p>
-    <p>
-      When a new version of an OCFL Object is created from an earlier version and a client wishes to implement forward
-      delta differencing, then the possible file operations are handled in the following manner (with reference to the
-      state and manifest blocks of the OCFL object's inventory file):
-    </p>
-    <ul>
+      </p>
+      <ul>
         <li>
-            Inheritance: Files inherited from the previous version unchanged are referenced in the
-            <code>state</code> block of the new version. These entries will be identical to the corresponding
-            entries in the previous version's <code>state</code> block. No changes to the <code>manifest</code>
-            block are required. When a new OCFL version of an OCFL Object is created, the starting point against
-            which changes are made should be to copy the entire <code>state</code> block of the previous version,
-            thus inheriting all the files and content from the previous version.
+            Inheritance: By default a new version of an OCFL Object inherits all the filenames and file
+            content from the previous version. This serves as the basis against which changes are applied
+            to create a new version. A newly created OCFL Object, obviously, inherits no content and is
+            populated by file additions.
         </li>
         <li>
-            Addition: Newly added files appear as new entries in the <code>state</code> block of the new version.
-            The file should be stored and an entry for the new content must be made in the <code>manifest</code>
-            block of the object's inventory. The new digest from the <code>manifest</code> block can then be used
-            to create the new <code>state</code> block entry. If the file content, as determined by its digest,
-            corresponds to an existing <code>manifest</code> entry then, technically, this is a reinstatement
-            operation rather than addition and should be flagged to prevent the operation being recorded incorrectly
-            in preservation logs.
+            Addition: Adds a new file path and corresponding content to an OCFL Object. The path cannot
+            exist in the previous version of the object, and the content cannot have existed in any
+            earlier versions of the object.
         </li>
         <li>
-            Updating: Files updated from the previous version appear as changed entries in the <code>state</code>
-            block of the new version - with new digests associated with existing file paths. The updated file should
-            be stored and a new entry for the updated content must be made in the <code>manifest</code> block of the
-            object's inventory. The new digest can then be used to replace the digest for the old content in
-            the relevant <code>state</code> block entry. If the file content, as determined by its digest, corresponds
-            to an existing <code>manifest</code> entry then, technically, this is a reinstatement operation rather
-            than updating and should be flagged to prevent the operation being recorded incorrectly in preservation
-            logs.
+            Updating: Changes the content pointed to by an exsting file path. The path must exist in
+            the previous version of the OCFL Object, and the content cannot have existed in any earlier
+            versions of the object.
         </li>
         <li>
-            Renaming: Files renamed from the previous version appear as changed entries in the <code>state</code>
-            block of the new version - with existing digests associated with new file paths. No changes to the
-            <code>manifest</code> block are required.
+            Renaming: Changes the file path of existing content. The path cannot exist in the previous
+            version of the OCFL Object, and the content cannot have existed in any earlier versions of
+            the bject.
         </li>
         <li>
-            Deletion: Files deleted from the previous version are simply removed from the <code>state</code>
-            block of the new version.
+            Deletion: Removes a file path and corresponding content from the current version of an OCFL
+            Object. The path and content remain available in earlier versions of the object.
         </li>
         <li>
-            Reinstatement: Since reinstated content already exists in earlier versions of the OCFL Object,
-            no changes to the <code>manifest</code> block are required. Reinstated entries in the <code>state</code>
-            block should replace any entries with the same path inherited from the previous version. If the file
-            paths are unchanged then these entries will be identical to the corresponding entries in the earlier
-            version's <code>state</code> block.
+            Reinstatement: Makes content from a version earlier than the previous version available in
+            the current version of an OCFL Object. The content must exist in an earlier version, and
+            not the previous version. The file path may exist in the previous version, effectively updating
+            the file path with older content, or it may not, effectively adding the older content as a new
+            file.
         </li>
-    </ul>
-  </section>
+        <li>
+            Purging: Purging, as distinct from deletion, covers the complete removal of a file path and
+            corresponding content from all versions of an OCFL Object. This is a special case that is
+            not supported as part of regular OCFL versioning operations. An approach to implementing this
+            is covered in a later section.
+        </li>
+      </ul>
+    </section>
 
-  <section>
-    <h2>Fixity</h2>
-    <p>
-      The digests in the manifest are used by OCFL for content addressability rather than fixity but they are
-      suitable for use as part of a fixity regime, and the manifest block usefully identifies all the files in an
-      object. OCFL validation also requires that digests and files match. However, while the characteristics of digest
-      algorithms that make them suitable for fixity checking and content addressing are closely related, they are not
-      identical. In particular, fixity against malicious tampering requires that a digest computation is hard to
-      reverse, which is not a requirement for content addressing. It is this aspect which is the most frequent target
-      for cryptoanalytic attack.
-    </p>
-    <p>
-      Consequently, it is sensible to allow additional or alternative fixity algorithms to be used. These may be made
-      in a <a href="../spec/#fixity">fixity block</a> which has the same layout as a manifest block but permits a
-      broader range of algorithms. OCFL will consider a fixity block valid if all the files referenced in the block
-      exist but OCFL does not validate digests for all possible algorithms. The fixity block does not have to include
-      all the files in an object to permit legacy fixity to be imported without requiring continued use of obsolete
-      digest algorithms.
-    </p>
-  </section>
+    <section>
+      <h2>Versioning</h2>
 
-  <section>
-    <h2>File Purging</h2>
-    <p>
-      Sometimes a file needs to be deleted from all versons of an object, perhaps for legal reasons. Doing this to
-      an OCFL Object breaks the previous version immutability assumption and is not supported directly. The correct
-      way to do this is to create a new object that excludes the offending file, with a revised version history taking
-      this into account. The original object can then be deleted in its entirety. Creating the new object first is
-      good practice as it avoids any risk of data loss that may occur if an object were to be deleted before the new
-      object is created.
-    </p>
-    <p>  
-      The new object need not have the same identifier as the original object. In this case, the deleted object can be
-      replaced by a "stub" object with the original identifier and location in the OCFL Storage Root. This object is
-      a standard OCFL object that just contains brief information that redirects users and software to the new 
-      version - possibly with an indication of why the new object was created, if appropriate. OCFL does not define
-      this stub object in any way - its structure, interpretation and handling are entirely client dependent, but
-      ideally some elements should be human readable for rebuildability.
-    </p>
-  </section>
+      <section>
+        <h2>Version Numbering</h2>
+        <p>
+          Version numbering should start with 1 and be positive sequential integers. Names start with a lower case
+          <code>v</code>. The numbers may be zero padded to the left to give fixed length, but, if used, zero padded
+          numbers must always retain at least one leftmost zero. All versions in an object must use the same version
+          numbering layout which can be easily determined by looking at one existing version &#x2014; if the digit
+          following <code>v</code> is a zero then the number format is zero padded to fixed length, otherwise it
+          is simply an integer.
+        </p>
+      </section>
 
-  <section>
-    <h2>Log Information</h2>
-    <p>
-      There may be the need to record some actions on objects that do not result in changes to the object content.
-      For example, copying the object to new storage or validating fixity and finding nothing amiss. The
-      <code>log</code> directory is the location in an OCFL object where such events can be recorded. OCFL does not
-      make any assumptions about the contents of this directory but, if it exists, then its contents will not be
-      subject any validation processes.
-    </p>
-  </section>
+      <section>
+        <h2>Version Immutability</h2>
+        <p>
+          Previous versions of an object should be considered immutable since the composition of later versions of an
+          object may be dependent on them. In addition, the assumtion of immutability ensures that copies of different
+          versions of an object remain cosistent with each other, avoiding issues with identifying canonicity and
+          reconcilitation.
+        </p>
+        <p>
+          One key consequence of this immutabilty is that manifest entries should never be deleted. New entries may be
+          created, and, if not deduplicating file content, additional references to copies of stored content may be added.
+        </p>
+      </section>
+    </section>
 
-  <section>
-    <h2>Version Numbering</h2>
-    <p>
-      Version numbering should start with 1 and be positive sequential integers. Names start with a lower case
-      <code>v</code>. The numbers may be zero padded to the left to give fixed length, but, if used, zero padded
-      numbers must always retain at least one leftmost zero. All versions in an object must use the same version
-      numbering layout which can be easily determined by looking at one existing version &#x2014; if the digit
-      following <code>v</code> is a zero then the number format is zero padded to fixed length, otherwise it
-      is simply an integer.
-    </p>
+    <section>
+      <h2>File Purging</h2>
+      <p>
+        Sometimes a file needs to be deleted from all versons of an object, perhaps for legal reasons. Doing this to
+        an OCFL Object breaks the previous version immutability assumption and is not supported directly. The correct
+        way to do this is to create a new object that excludes the offending file, with a revised version history taking
+        this into account. The original object can then be deleted in its entirety. Creating the new object first is
+        good practice as it avoids any risk of data loss that may occur if an object were to be deleted before the new
+        object is created.
+      </p>
+      <p>
+        The new object need not have the same identifier as the original object. In this case, the deleted object can be
+        replaced by a "stub" object with the original identifier and location in the OCFL Storage Root. This object is
+        a standard OCFL object that just contains brief information that redirects users and software to the new
+        version - possibly with an indication of why the new object was created, if appropriate. OCFL does not define
+        this stub object in any way - its structure, interpretation and handling are entirely client dependent, but
+        ideally some elements should be human readable for rebuildability.
+      </p>
+    </section>
+
+    <section>
+      <h2>Log Information</h2>
+      <p>
+        There may be the need to record some actions on objects that do not result in changes to the object content.
+        For example, copying the object to new storage or validating fixity and finding nothing amiss. The
+        <code>log</code> directory is the location in an OCFL object where such events can be recorded. OCFL does not
+        make any assumptions about the contents of this directory but, if it exists, then its contents will not be
+        subject any validation processes.
+      </p>
+    </section>
+
+    <section>
+      <h2>Forward Delta</h2>
+      <p>
+        Forward delta differencing is a key, though optional, feature of OCFL that means that parts of an OCFL object
+        version that are unchanged from a previous version are not stored again. This has the potential to signficantly
+        improve storage efficiency when objects have multiple versions, whether through ongoing curatorial action or
+        the accessioning of updated material.
+      </p>
+      <p>
+        When a new version of an OCFL Object is created from an earlier version and a client wishes to implement forward
+        delta differencing, then the possible file operations are handled in the following manner (with reference to the
+        state and manifest blocks of the OCFL object's inventory file):
+      </p>
+      <ul>
+          <li>
+              Inheritance: Files inherited from the previous version unchanged are referenced in the
+              <code>state</code> block of the new version. These entries will be identical to the corresponding
+              entries in the previous version's <code>state</code> block. No changes to the <code>manifest</code>
+              block are required. When a new OCFL version of an OCFL Object is created, the starting point against
+              which changes are made should be to copy the entire <code>state</code> block of the previous version,
+              thus inheriting all the files and content from the previous version.
+          </li>
+          <li>
+              Addition: Newly added files appear as new entries in the <code>state</code> block of the new version.
+              The file should be stored and an entry for the new content must be made in the <code>manifest</code>
+              block of the object's inventory. The new digest from the <code>manifest</code> block can then be used
+              to create the new <code>state</code> block entry. If the file content, as determined by its digest,
+              corresponds to an existing <code>manifest</code> entry then, technically, this is a reinstatement
+              operation rather than addition and should be flagged to prevent the operation being recorded incorrectly
+              in preservation logs.
+          </li>
+          <li>
+              Updating: Files updated from the previous version appear as changed entries in the <code>state</code>
+              block of the new version - with new digests associated with existing file paths. The updated file should
+              be stored and a new entry for the updated content must be made in the <code>manifest</code> block of the
+              object's inventory. The new digest can then be used to replace the digest for the old content in
+              the relevant <code>state</code> block entry. If the file content, as determined by its digest, corresponds
+              to an existing <code>manifest</code> entry then, technically, this is a reinstatement operation rather
+              than updating and should be flagged to prevent the operation being recorded incorrectly in preservation
+              logs.
+          </li>
+          <li>
+              Renaming: Files renamed from the previous version appear as changed entries in the <code>state</code>
+              block of the new version - with existing digests associated with new file paths. No changes to the
+              <code>manifest</code> block are required.
+          </li>
+          <li>
+              Deletion: Files deleted from the previous version are simply removed from the <code>state</code>
+              block of the new version.
+          </li>
+          <li>
+              Reinstatement: Since reinstated content already exists in earlier versions of the OCFL Object,
+              no changes to the <code>manifest</code> block are required. Reinstated entries in the <code>state</code>
+              block should replace any entries with the same path inherited from the previous version. If the file
+              paths are unchanged then these entries will be identical to the corresponding entries in the earlier
+              version's <code>state</code> block.
+          </li>
+      </ul>
+    </section>
+
   </section>
-    
-  <section>
-    <h2>Objects with Many Small Files</h2>
-    <p>
-      Objects that contain a large number of files can pose performance problems if they are stored in a 
-      filesystem as-is. Fixity checks, object validation and version creation can require an OCFL client to 
-      process all the files in an object which can be time consuming. Additionally, most storage systems have a
-      minimum block size for allocation to files, so a large number of small files can end up occupying a volume
-      of storage significantly larger than the sum of the individual file sizes. In this case, assuming that the
-      majority of the files are relatively static data that is unlikely to change between objects versions, it 
-      is sensible to package the static files together in a single, larger file (zip is recommended). This can 
-      be parsed to extract individual files if necessary but can signficantly improve the efficiency of basic 
-      OCFL client and storage operations.  
-    </p>
-  </section>  
 
 </body>
 </html>
