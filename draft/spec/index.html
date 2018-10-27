@@ -403,13 +403,13 @@
             through hardware degradation, accident, or malicious actors.
         </p>
         <p>
-            OCFL Objects SHOULD use <code>sha512</code> by default. The choice of <code>sha512</code> recognizes
-            that it has no known collision vulnerabilities and is less computationally intensive to compute than
-            <code>sha256</code>, [[Stop-Using-SHA-256]].
+            OCFL Objects SHOULD use <code>sha512</code> digests by default. The choice of the <code>sha512</code>
+            digest algorithm recognizes that it has no known collision vulnerabilities and is less computationally
+            intensive to compute than <code>sha256</code>, [[Stop-Using-SHA-256]].
         </p>
         <p>
-            For content addressability OCFL Objects MUST use either <code>sha256</code> or <code>sha512</code>, to
-            reduce the likelihood of digest collisions.
+            For content addressability OCFL Objects MUST use either <code>sha256</code> or <code>sha512</code>
+            digests, to reduce the likelihood of digest collisions.
         </p>
         <p>
             However, for legacy content migration and consistency, implementers MAY choose from the following
