@@ -173,9 +173,9 @@
       access and management of digital objects within digital repositories.
   </p>
   <p>
-      This specification is a normative specification which describes the nature of an OCFL Object (the
-      "object-at-rest"). A set of recommendations for how OCFL Objects should be acted upon (the "object-in-motion")
-      can be found in the [[OCFL-Implementation-Notes]].
+      This normative specification describes the nature of an OCFL Object (the "object-at-rest") and the arrangement
+      of OCFL Objects under an OCFL Storage Root. A set of recommendations for how OCFL Objects should be acted upon
+      (the "object-in-motion") can be found in the [[OCFL-Implementation-Notes]].
   </p>
     <section id="need">
         <h2>Need</h2>
@@ -184,19 +184,19 @@
            digital repositories.
         </p>
         <p>
-           A general observation is that the contents of a digital repository -- that is, the digital files and metadata
-           that an institution might wish to manage -- are largely stable. Once content has been accessioned, it is
-           unlikely to change significantly over its lifetime. This is in contrast to the software applications that
-           manage these contents, which are ephemeral, requiring constant updating and replacement. Thus, transitions
-           between application-specific methods of file management to support software upgrades and replacement cycles
-           can be seen as unnecessary and risky change which affects the long-term stable objects in support of the
-           short-term, ephemeral software.
+           A general observation is that the contents of a digital repository &#8212; that is, the digital files and
+           metadata that an institution might wish to manage &#8212; are largely stable. Once content has been
+           accessioned, it is unlikely to change significantly over its lifetime. This is in contrast to the software
+           applications that manage these contents, which are ephemeral, requiring constant updating and replacement.
+           Thus, transitions between application-specific methods of file management to support software upgrades and
+           replacement cycles can be seen as unnecessary and risky change which affects the long-term stable objects
+           in support of the short-term, ephemeral software.
         </p>
         <p>
-           By providing a specification for the file and directory layout on disk, OCFL is an attempt at reducing, or
-           even eliminating, the need for these transitions. As an application-independent specification, conforming
-           applications will natively "understand" the underlying file structure without needing to first transition
-           these contents to their own format.
+           By providing a specification for the file and directory layout on disk or in an object store, OCFL is an
+           attempt at reducing, or even eliminating, the need for these transitions. As an application-independent
+           specification, conforming applications will natively "understand" the underlying file structure without
+           needing to first transition these contents to their own format.
          </p>
     </section>
 </section>
