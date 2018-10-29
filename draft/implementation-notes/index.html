@@ -238,6 +238,18 @@
       </section>
 
       <section>
+        <h2>Filesystem metadata</h2>
+        <p>
+          Filesystem metadata (e.g. permissions, access, and creation times) are not considered portable between
+          filesystems or preservable through file transfer operations. Nor can these attributes be validated in terms of
+          fixity in a consistent manner. As such, OCFL neither explicitly supports nor expects that these quanties
+          remain consistent. If retaining this metadata is important then files should either be encapsulated in a
+          filesystem image format that preserves this information, or the metadata extracted and stored explicitly in an
+          additional file.
+        </p>
+      </section>    
+        
+      <section>
         <h2>Empty Directories</h2>
         <p>
           OCFL preserves files and their content, with directories serving as a useful organizational convention. An
@@ -249,19 +261,6 @@
         <p>
           Note that <code>.keep</code> files are not considered special by OCFL in any way and are treated exactly the
           same way as other files. As such, a non-zero length <code>.keep</code> file is not considered invalid.
-        </p>
-      </section>
-
-
-      <section>
-        <h2>Filesystem metadata</h2>
-        <p>
-          Filesystem metadata (e.g. permissions, access, and creation times) are not considered portable between
-          filesystems or preservable through file transfer operations. Nor can these attributes be validated in terms of
-          fixity in a consistent manner. As such, OCFL neither explicitly supports nor expects that these quanties
-          remain consistent. If retaining this metadata is important then files should either be encapsulated in a
-          filesystem image format that preserves this information, or the metadata extracted and stored explicitly in an
-          additional file.
         </p>
       </section>
 
