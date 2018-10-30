@@ -551,8 +551,9 @@
             <p>
                 An OCFL Object Inventory MUST include a block for storing versions. This block MUST have the
                 key of <code>versions</code> within the inventory, and it MUST be a JSON object. The keys of this object
-                MUST correspond to the names of the <a href="#version-directories">version directories</a> used. The
-                values MUST be another JSON object that describes this version.
+                MUST correspond to the names of the <a href="#version-directories">version directories</a> used. Each
+                value MUST be another JSON object that characterizes the version, as described in the
+                <a href="#version"></a> section.
             </p>
             <section id="version">
                 <h2>Version</h2>
@@ -570,8 +571,9 @@
                         <code>created</code>
                     </dt>
                     <dd>
-                        The value of this key MUST be expressed in [[!ISO8601]], and SHOULD include a timezone value
-                        or UTC. It SHOULD also be granular to the second level.
+                        The value of this key is the datetime of creation of this version. It MUST be expressed in
+                        [[!ISO8601]], and SHOULD include a timezone value or UTC. It SHOULD also be granular to the
+                        second level.
                     </dd>
                     <dt>
                         <code>message</code>
@@ -603,17 +605,9 @@
                             <p>
                                 Non-normative note: The <a>logical state</a> of the object uses content-addressing
                                 to map logical file paths to their bitstreams, as expressed in the manifest
-                                section of the inventory.
-                            </p>
-                            <p>
-                                Notably, the version state can be used to provide de-duplication of content within
-                                the OCFL Object, by mapping multiple logical file paths to the same content digest in
-                                the manifest. Implementers may choose to use this functionality on a case-by-case
-                                basis. For example, they may choose to implement renaming (that is, changes in file
-                                <i>name</i>, but not file <i>content</i>) by pointing a new logical file path to the
-                                digest for content that was added in a previous version. Implementers may also,
-                                however, choose to accession a new file with a new name and the same content as a new
-                                version. See [[OCFL-Implementation-Notes]].
+                                section of the inventory. Notably, the version state provides de-duplication of content
+                                within the OCFL Object by mapping multiple logical file paths with the same content to
+                                the same digest in the manifest. See [[OCFL-Implementation-Notes]].
                             </p>
                             <p>
                                 An example state block is shown below:
