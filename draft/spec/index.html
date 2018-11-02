@@ -644,14 +644,14 @@
                 key of <code>fixity</code> within the inventory.
             </p>
             <p>
-                The structure of the <code>fixity</code> section MUST contain a key corresponding to an
-                <a href="#digest-algorithms">approved digest algorithm</a>. The value of this key MUST follow the
-                structure of the <a href="#manifest"><code>manifest</code></a> section; that is, a key corresponding
-                to the digest value, and an array of <a>existing file path</a>s that match that digest.
+                The <code>fixity</code> block MUST contain keys corresponding to <a href="#digest-algorithms">digest
+                algorithms listed in the Digests section</a>. The value of each key MUST follow the structure of the
+                <a href="#manifest"><code>manifest</code></a> block; that is, a key corresponding to the digest value,
+                and an array of <a>existing file path</a>s that match that digest.
             </p>
             <blockquote class="informative">
                 <p>
-                    An example fixity section with <code>md5</code> and <code>sha1</code> digests is shown below.
+                    An example fixity block with <code>md5</code> and <code>sha1</code> digests is shown below.
                 </p>
 <pre>
   "fixity": {
