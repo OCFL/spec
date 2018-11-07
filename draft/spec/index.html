@@ -383,14 +383,16 @@
             version directory names.
         </p>
         <p>
-            Empty directories within a version directory are not permitted. Otherwise empty directories MAY be
-            maintained by creating a <code>.keep</code> file within that directory.
-        </p>
-        <p>
             Version directories MUST have a sub-directory called <code>content</code> if there are files present, and
             SHOULD NOT contain a <code>content</code> sub-directory otherwise. There MUST be no other files or
             directories as children of a version directory, other than an <a href="#inventory">inventory file</a>,
             an <a href="#inventory-digest">inventory digest</a>, and a <code>content</code> directory.
+        </p>
+        <p>
+            Every file within a version's <code>content</code> directory MUST be referenced in the
+            <a href="#manifest">manifest</a> section of the inventory. There MUST NOT be empty directories within
+            a version's <code>content</code> directory. Directories that would otherwise be empty MAY be maintained
+            by creating a <code>.keep</code> file within the directory.
         </p>
     </section>
 
