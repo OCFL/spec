@@ -242,7 +242,7 @@
         <p>
           Filesystem metadata (e.g. permissions, access, and creation times) are not considered portable between
           filesystems or preservable through file transfer operations. Nor can these attributes be validated in terms of
-          fixity in a consistent manner. As such, OCFL neither explicitly supports nor expects that these quanties
+          fixity in a consistent manner. As such, OCFL neither explicitly supports nor expects that these attributes
           remain consistent. If retaining this metadata is important then files should either be encapsulated in a
           filesystem image format that preserves this information, or the metadata extracted and stored explicitly in an
           additional file.
@@ -274,7 +274,7 @@
           of storage significantly larger than the sum of the individual file sizes. In this case, assuming that the
           majority of the files are relatively static data that is unlikely to change between objects versions, it
           is sensible to package the static files together in a single, larger file (zip is recommended). This can
-          be parsed to extract individual files if necessary but can signficantly improve the efficiency of basic
+          be parsed to extract individual files if necessary but can significantly improve the efficiency of basic
           OCFL client and storage operations.
         </p>
       </section>
@@ -303,8 +303,8 @@
         <ul>
         <li>
             Flat: Each object is contained in a directory with a name that is simply derived from the
-            unique identifer of the object, possibly with the escaping/replacement of characters that are not
-            permitted in file/directory names. While this is a very simple approach, most filesystems begin
+            unique identifier of the object, possibly with the escaping or replacement of characters that are not
+            permitted in file and directory names. While this is a very simple approach, most filesystems begin
             to encounter performance issues when directories contain more than a few thousand files so
             this arrangement is best suited to repositories with a small number of objects (or many
             OCFL Storage Roots).
@@ -445,14 +445,14 @@
           earlier versions of the object.
         </li>
         <li>
-          Updating: Changes the content pointed to by an exsting file path. The path must exist in
+          Updating: Changes the content pointed to by an existing file path. The path must exist in
           the previous version of the OCFL Object, and the content cannot have existed in any earlier
           versions of the object.
         </li>
         <li>
           Renaming: Changes the file path of existing content. The path cannot exist in the previous
           version of the OCFL Object, and the content cannot have existed in any earlier versions of
-          the bject.
+          the object.
         </li>
         <li>
           Deletion: Removes a file path and corresponding content from the current version of an OCFL
@@ -493,9 +493,9 @@
         <h2>Version Immutability</h2>
         <p>
           Previous versions of an object should be considered immutable since the composition of later versions of an
-          object may be dependent on them. In addition, the assumtion of immutability ensures that copies of different
-          versions of an object remain cosistent with each other, avoiding issues with identifying canonicity and
-          reconcilitation.
+          object may be dependent on them. In addition, the assumption of immutability ensures that copies of different
+          versions of an object remain consistent with each other, avoiding issues with identifying canonicity and
+          reconciliation.
         </p>
         <p>
           One key consequence of this immutabilty is that manifest entries should never be deleted. New entries may be
@@ -508,7 +508,7 @@
     <section>
       <h2>File Purging</h2>
       <p>
-        Sometimes a file needs to be deleted from all versons of an object, perhaps for legal reasons. Doing this to
+        Sometimes a file needs to be deleted from all versions of an object, perhaps for legal reasons. Doing this to
         an OCFL Object breaks the previous version immutability assumption and is not supported directly. The correct
         way to do this is to create a new object that excludes the offending file, with a revised version history taking
         this into account. The original object can then be deleted in its entirety. Creating the new object first is
@@ -540,7 +540,7 @@
       <h2>Forward Delta</h2>
       <p>
         Forward delta differencing is a key, though optional, feature of OCFL that means that parts of an OCFL object
-        version that are unchanged from a previous version are not stored again. This has the potential to signficantly
+        version that are unchanged from a previous version are not stored again. This has the potential to significantly
         improve storage efficiency when objects have multiple versions, whether through ongoing curatorial action or
         the accessioning of updated material.
       </p>
