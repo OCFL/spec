@@ -745,11 +745,15 @@
           in the root.
         </p>
         <p>
-          An OCFL Storage Root MUST NOT contain any files or directories other than those described here.
+          An OCFL Storage Root MAY contain files used by <a href="#root-extensions">storage root extensions</a>.
         </p>
         <p>
-          Although implementations may require multiple OCFL Storage Roots; that is, several logical or
-          physical volumes, or multiple "buckets" in an object store, each OCFL Storage Root MUST be independent.
+          Sub-directories within a storage root MUST NOT contain files that are not part of an OCFL Object. Empty
+          directories MUST NOT appear within a storage root.
+        </p>
+        <p>
+          Although implementations may require multiple OCFL Storage Roots&mdash;that is, several logical or
+          physical volumes, or multiple "buckets" in an object store&mdash;each OCFL Storage Root MUST be independent.
         </p>
         <p>
           The following example OCFL Storage Root represents the minimal set of files and folders:
@@ -757,7 +761,7 @@
         <pre>
 [storage_root]
     ├── 0=ocfl_1.0
-    └── ocfl_1.0.txt (optional)
+    └── ocfl_1.0.txt (human-readable text of the OCFL specification; optional)
         </pre>
     </section>
 
