@@ -505,7 +505,9 @@
                 </dd>
                 <dt><code>type</code></dt>
                 <dd>
-                    A type for the inventory JSON object. This MUST have the value <code>Object</code>.
+                    A type for the inventory JSON object that also serves to document the OCFL specification version
+                    that the inventory complies with. This MUST be the URI of the inventory section of the
+                    specification, <code>https://ocfl.io/1.0/spec/#inventory</code>.
                 </dd>
                 <dt><code>digestAlgorithm</code></dt>
                 <dd>
@@ -568,12 +570,6 @@
                     A JSON object to describe one <a>OCFL Version</a>, which MUST include the following keys:
                 </p>
                 <dl>
-                    <dt>
-                        <code>type</code>
-                    </dt>
-                    <dd>
-                        A type for the version JSON object. This MUST have the value <code>Version</code>.
-                    </dd>
                     <dt>
                         <code>created</code>
                     </dt>
@@ -858,7 +854,7 @@
   "manifest": {
     "7545b8...f67": [ "v1/content/file.txt" ]
   },
-  "type": "Object",
+  "type": "https://ocfl.io/1.0/spec/#inventory",
   "versions": {
     "v1": {
       "created": "2018-10-02T12:00:00Z",
@@ -866,7 +862,6 @@
       "state": {
         "7545b8...f67": [ "file.txt" ]
       },
-      "type": "Version",
       "user": {
         "address": "alice@example.org",
         "name": "Alice"
@@ -943,7 +938,7 @@
     "cf83e1...a3e": [ "v1/content/empty.txt" ],
     "ffccf6...62e": [ "v1/content/image.tiff" ]
   },
-  "type": "Object",
+  "type": "https://ocfl.io/1.0/spec/#inventory",
   "versions": {
     "v1": {
       "created": "2018-01-01T01:01:01Z",
@@ -953,7 +948,6 @@
         "cf83e1...a3e": [ "empty.txt" ],
         "ffccf6...62e": [ "image.tiff" ]
       },
-      "type": "Version",
       "user": {
         "address": "alice@example.com",
         "name": "Alice"
@@ -966,7 +960,6 @@
         "4d27c8...b53": [ "foo/bar.xml" ],
         "cf83e1...a3e": [ "empty.txt", "empty2.txt" ]
       },
-      "type": "Version",
       "user": {
         "address": "bob@example.com",
         "name": "Bob"
@@ -980,7 +973,6 @@
         "cf83e1...a3e": [ "empty2.txt" ],
         "ffccf6...62e": [ "image.tiff" ]
       },
-      "type": "Version",
       "user": {
         "address": "cecilia@example.com",
         "name": "Cecilia"
@@ -1085,7 +1077,7 @@ myfirstbag
     "921d36...877": [ "v2/content/myfirstbag/data/27614-h/images/q173.png" ],
     "b8bdf1...927": [ "v2/content/myfirstbag/data/27614-h/images/q173.txt" ]
   },
-  "type": "Object",
+  "type": "https://ocfl.io/1.0/spec/#inventory",
   "versions": {
     "v1": {
       "created": "2018-10-09T11:20:29.209164Z",
@@ -1096,7 +1088,6 @@ myfirstbag
         "d66d80...8bd": [ "myfirstbag/data/27613-h/images/q172.txt" ],
         "f15428...83f": [ "myfirstbag/manifest-md5.txt" ]
       },
-      "type": "Version",
       "user": {
         "address": "someone@example.org",
         "name": "Some One"
@@ -1113,7 +1104,6 @@ myfirstbag
         "921d36...877": [ "myfirstbag/data/27614-h/images/q173.png" ],
         "b8bdf1...927": [ "myfirstbag/data/27614-h/images/q173.txt" ]
       },
-      "type": "Version",
       "user": {
         "address": "somebody-else@example.org",
         "name": "Somebody Else"
