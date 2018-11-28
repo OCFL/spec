@@ -754,6 +754,22 @@
           An OCFL Storage Root MAY contain files used by <a href="#root-extensions">storage root extensions</a>.
         </p>
         <p>
+          An OCFL Storage Root MAY contain a JSON file named <code>ocfl_layout.json</code> to describe the arrangement
+          of directories and OCFL objects under the storage root.
+          If present, this JSON document MUST include the following two keys in the root JSON object:
+        </p>
+        <ul>
+          <li>
+            <code>uri</code> - A URI identifying the precise arrangement of directories and OCFL objects under the
+            storage root, i.e. how OCFL object identifiers are mapped to directory hierarchies.
+            If a URL is used then it SHOULD resolve to a detailed specification of the arrangement.
+          </li>
+          <li>
+            <code>description</code> - A human readable description of the arrangement of directories and OCFL
+            objects under the storage root.
+          </li>
+        </ul>
+        <p>
           Sub-directories within a storage root MUST NOT contain files that are not part of an OCFL Object. Empty
           directories MUST NOT appear within a storage root.
         </p>
@@ -767,7 +783,8 @@
         <pre>
 [storage_root]
     ├── 0=ocfl_1.0
-    └── ocfl_1.0.txt (human-readable text of the OCFL specification; optional)
+    ├── ocfl_1.0.txt (human-readable text of the OCFL specification; optional)
+    └── ocfl_layout.json (description of storage hierarchy layout; optional)
         </pre>
     </section>
 
