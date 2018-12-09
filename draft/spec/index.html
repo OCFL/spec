@@ -487,6 +487,12 @@
             <code>inventory.json</code>. The order of entries in both the [[JSON]] objects and arrays used in inventory
             files has no significance.
         </p>
+        <p>
+            The forward slash (/) path separator MUST be used in existing and logical file paths in the
+            <a href="#manifest">manifest</a>, <a href="#fixity">fixity</a>, and <a href="#version">state</a> blocks
+            within the inventory. Implementations that target systems using other separators will need to translate
+            paths appropriately.
+        </p>
         <blockquote class="informative">
             <p>
                 Non-normative note: A [[JSON-Schema]] for validating OCFL Object Inventory files is provided at
