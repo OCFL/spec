@@ -704,9 +704,13 @@
     <section id="version-inventory">
         <h2>Version Inventory and Inventory Digest</h2>
         <p>
-            Every version directory SHOULD include an inventory file that is an <a href="#inventory">Inventory</a>
-            of all content for versions up to and including that particular version. Every inventory file MUST have
-            a corresponding <a href="#inventory-digest">Inventory Digest</a>.
+            Every OCFL Object MUST have an  inventory file within the OCFL Object Root,
+            corresponding to the state of the OCFL Object at the current version. Additionally, every version directory
+            SHOULD include an inventory file that is an <a href="#inventory">Inventory</a> of all content for versions
+            up to and including that particular version. Where an OCFL Object contains <code>inventory.json</code>
+            in version directories, the inventory file in the OCFL Object Root MUST be the same as the file in the
+            most recent version. Every inventory file MUST have a corresponding <a href="#inventory-digest">Inventory
+            Digest</a>.
         </p>
         <blockquote class="informative">
             Non-normative note: Storing an inventory for every version provides redundancy for this critical
