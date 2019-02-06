@@ -594,20 +594,6 @@
                         second level.
                     </dd>
                     <dt>
-                        <code>message</code>
-                    </dt>
-                    <dd>
-                        The value of this key is freeform text, used to record the rationale for creating this version.
-                    </dd>
-                    <dt>
-                        <code>user</code>
-                    </dt>
-                    <dd>
-                        The value of this key is a JSON object, containing a readable user name key, <code>name</code>
-                        and an address key, <code>address</code>. The format of the address key MAY be either an
-                        e-mail address or a URI reference to a personal identifier, e.g., an ORCID iD.
-                    </dd>
-                    <dt>
                         <code>state</code>
                     </dt>
                     <dd>
@@ -649,6 +635,30 @@
         └── bar.xml
 </pre>
                         </blockquote>
+                    </dd>
+                </dl>
+                <p>
+                    The JSON object describing an <a>OCFL Version</a>, SHOULD include the following keys:
+                </p>
+                <dl>
+                    <dt>
+                        <code>message</code>
+                    </dt>
+                    <dd>
+                        The value of this key is freeform text, used to record the rationale for creating this version.
+                    </dd>
+                    <dt>
+                        <code>user</code>
+                    </dt>
+                    <dd>
+                        The value of this key is a JSON object intended to identify the user or agent that created the
+                        current <a>OCFL Version</a>.
+                        The value of the <code>user</code> key MUST contain a user name key, <code>name</code> and
+                        SHOULD contain an address key, <code>address</code>.
+                        The <code>name</code> value is any readable name of the user, e.g., a proper name, user ID,
+                        agent ID.
+                        The <code>address</code> value is either a mailto URI [[RFC6068]] with the e-mail address of
+                        the <code>user</code> or a URL to a personal identifier, e.g., an ORCID iD.
                     </dd>
                 </dl>
             </section>
