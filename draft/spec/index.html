@@ -409,9 +409,12 @@
         <h2>Digests</h2>
         <p>
             Digests play two roles in an OCFL Object. The first is that digests allow for content-addressable
-            storage; that is, for a file to be addressed by the digest of its contents, rather than its filename.
-            The second is that digests provide for fixity checks to determine whether a file has become corrupt
-            through hardware degradation, accident, or malicious actors.
+            reference to files with the OCFL Object. That is, the connection between a file's <a>existing file
+            path</a> on physical storage and its <a>logical file path</a> in a version of the object's content
+            is made with a digest of its contents, rather than its filename. This use of the content digest
+            facilitates de-duplication of files with the same content within an object, such as files that are
+            unchanged from one version to the next. The second role that digests play is provide for fixity checks
+            to determine whether a file has become corrupt, through hardware degradation or accident for example.
         </p>
         <p>
             For content-addressing, OCFL Objects MUST use either <code>sha512</code> or <code>sha256</code> 
