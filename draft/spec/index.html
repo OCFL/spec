@@ -415,9 +415,9 @@
         </p>
         <p>
             For content-addressing, OCFL Objects SHOULD use <code>sha512</code>. The choice of the <code>sha512</code>
-            digest algorithm as default recognizes that it is widely available in different implementations, has no
-            known collision vulnerabilities, and is less computationally intensive to compute than
-            <code>sha256</code>, [[Stop-Using-SHA-256]].
+            digest algorithm as default recognizes that it has no known collision vulnerabilities, is less
+            computationally intensive to compute than <code>sha256</code>, [[Stop-Using-SHA-256]], and multiple
+            implementations are available.
         </p>
         <p>
             For storage of additional fixity values, and perhaps to support legacy content migration, implementers
