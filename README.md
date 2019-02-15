@@ -26,8 +26,7 @@
 ### Mailing Lists
 
  - pasig-discuss@mail.asis.org: Broader communications, announcements, meeting notifications
- - ocfl-community@googlegroups.com: OCFL community discussions, announcements, support
- - ocfl-tech@googlegroups.com: Software implementer discussions, spec interpretation, technical discussions
+ - ocfl-community@googlegroups.com: OCFL community discussions, announcements, support, software implementer discussions, spec interpretation, technical discussions
 
 ### Slack Channel
 

@@ -199,8 +199,8 @@
           needing to first transition these contents to their own format.
          </p>
         <p>
-          While digital repository content changes relatively slowly, it is necessary to be able to track changes to 
-          digital objects. Within the file and directory layout specification, OCFL provides a simple structure to 
+          While digital repository content changes relatively slowly, it is necessary to be able to track changes to
+          digital objects. Within the file and directory layout specification, the OCFL provides a simple structure to
           efficiently capture versions of object contents so that all previous states of an object may be recovered
           and examined.
         </p>
@@ -319,7 +319,7 @@
             (i.e., structure).</li>
     </ol>
     <p>
-        A key goal of OCFL is the rebuildability of a repository from an OCFL Storage Root without additional
+        A key goal of the OCFL is the rebuildability of a repository from an OCFL Storage Root without additional
         information resources. Consequently, a key implementation consideration should be to ensure that OCFL Objects
         contain all the data and metadata required to achieve this. With reference to the [[OAIS]] model, this would
         include all the descriptive, administrative, structural, representation and preservation metadata relevant
@@ -409,9 +409,12 @@
         <h2>Digests</h2>
         <p>
             Digests play two roles in an OCFL Object. The first is that digests allow for content-addressable
-            storage; that is, for a file to be addressed by the digest of its contents, rather than its filename.
-            The second is that digests provide for fixity checks to determine whether a file has become corrupt
-            through hardware degradation, accident, or malicious actors.
+            reference to files within the OCFL Object. That is, the connection between a file's <a>existing file
+            path</a> on physical storage and its <a>logical file path</a> in a version of the object's content
+            is made with a digest of its contents, rather than its filename. This use of the content digest
+            facilitates de-duplication of files with the same content within an object, such as files that are
+            unchanged from one version to the next. The second role that digests play is provide for fixity checks
+            to determine whether a file has become corrupt, through hardware degradation or accident for example.
         </p>
         <p>
             For content-addressing, OCFL Objects SHOULD use <code>sha512</code>. The choice of the <code>sha512</code>
@@ -457,6 +460,13 @@
                     MUST be encoded using hex (base16) encoding [[!RFC4648]].
                     For example, the <code>sha512</code> digest of a zero-length bitstream starts
                     <code>cf83e1357eefb8bdf1542850d66d8007d620e405...</code> (128 hex digits long).</td>
+            </tr>
+            <tr>
+                <td><code>blake2b</code></td>
+                <td>Full-length form only, using the 2B variant (64 bit) as defined by [[!RFC7693]]. MUST be encoded
+                    using hex (base16) encoding [[!RFC4648]]. For example, the <code>blake2b</code> digest of a
+                    zero-length bitstream starts <code>786a02f742015903c6c6fd852552d272912f4740...</code> (128 hex
+                    digits long).</td>
             </tr>
             </tbody>
         </table>
@@ -587,20 +597,6 @@
                         second level.
                     </dd>
                     <dt>
-                        <code>message</code>
-                    </dt>
-                    <dd>
-                        The value of this key is freeform text, used to record the rationale for creating this version.
-                    </dd>
-                    <dt>
-                        <code>user</code>
-                    </dt>
-                    <dd>
-                        The value of this key is a JSON object, containing a readable user name key, <code>name</code>
-                        and an address key, <code>address</code>. The format of the address key MAY be either an
-                        e-mail address or a URI reference to a personal identifier, e.g., an ORCID iD.
-                    </dd>
-                    <dt>
                         <code>state</code>
                     </dt>
                     <dd>
@@ -642,6 +638,30 @@
         └── bar.xml
 </pre>
                         </blockquote>
+                    </dd>
+                </dl>
+                <p>
+                    The JSON object describing an <a>OCFL Version</a>, SHOULD include the following keys:
+                </p>
+                <dl>
+                    <dt>
+                        <code>message</code>
+                    </dt>
+                    <dd>
+                        The value of this key is freeform text, used to record the rationale for creating this version.
+                    </dd>
+                    <dt>
+                        <code>user</code>
+                    </dt>
+                    <dd>
+                        The value of this key is a JSON object intended to identify the user or agent that created the
+                        current <a>OCFL Version</a>.
+                        The value of the <code>user</code> key MUST contain a user name key, <code>name</code> and
+                        SHOULD contain an address key, <code>address</code>.
+                        The <code>name</code> value is any readable name of the user, e.g., a proper name, user ID,
+                        agent ID.
+                        The <code>address</code> value is either a mailto URI [[RFC6068]] with the e-mail address of
+                        the <code>user</code> or a URL to a personal identifier, e.g., an ORCID iD.
                     </dd>
                 </dl>
             </section>
@@ -704,9 +724,13 @@
     <section id="version-inventory">
         <h2>Version Inventory and Inventory Digest</h2>
         <p>
-            Every version directory SHOULD include an inventory file that is an <a href="#inventory">Inventory</a>
-            of all content for versions up to and including that particular version. Every inventory file MUST have
-            a corresponding <a href="#inventory-digest">Inventory Digest</a>.
+            Every OCFL Object MUST have an inventory file within the OCFL Object Root,
+            corresponding to the state of the OCFL Object at the current version. Additionally, every version directory
+            SHOULD include an inventory file that is an <a href="#inventory">Inventory</a> of all content for versions
+            up to and including that particular version. Where an OCFL Object contains <code>inventory.json</code>
+            in version directories, the inventory file in the OCFL Object Root MUST be the same as the file in the
+            most recent version. Every inventory file MUST have a corresponding <a href="#inventory-digest">Inventory
+            Digest</a>.
         </p>
         <blockquote class="informative">
             Non-normative note: Storing an inventory for every version provides redundancy for this critical
@@ -801,7 +825,7 @@
         </p>
         <p>
           Root conformance indicates that the OCFL Storage Root conforms to this section (i.e. the OCFL Storage Root
-          section) of the specification.  OCFL Objects within the OCFL Storage Root also include a conformance
+          section) of the specification. OCFL Objects within the OCFL Storage Root also include a conformance
           declaration which MUST indicate OCFL Object conformance to the same or earlier version of the specification.
         </p>
     </section>
@@ -831,7 +855,7 @@
         <h2>Extensions</h2>
         <p>
             The behavior of the storage root may be extended to support features from other specifications.
-            An OCFL validator MUST ignore any files in the storage root it does not understand. Additional 
+            An OCFL validator MUST ignore any files in the storage root it does not understand. Additional
             files MUST NOT appear in other directories under the storage root.
         </p>
         <blockquote class="informative">
@@ -905,7 +929,7 @@
     ├── 0=ocfl_object_1.0
     ├── inventory.json
     ├── inventory.json.sha512
-    ├── v1        
+    ├── v1
     │   ├── inventory.json
     │   ├── inventory.json.sha512
     │   └── content
@@ -913,7 +937,7 @@
     │       ├── foo
     │       │   └── bar.xml
     │       └── image.tiff
-    ├── v2    
+    ├── v2
     │   ├── inventory.json
     │   ├── inventory.json.sha512
     │   └── content
@@ -1009,8 +1033,8 @@
     <section id="example-bagit-in-ocfl">
         <h2>BagIt in an OCFL Object</h2>
         <p>
-            [[BagIt]] is a common file packaging specification, but unlike OCFL it does not provide a mechanism for
-            content versioning. Using OCFL it is possible to store a BagIt structure with content versioning, such
+            [[BagIt]] is a common file packaging specification, but unlike the OCFL it does not provide a mechanism for
+            content versioning. Using the OCFL it is possible to store a BagIt structure with content versioning, such
             that when the object state is resolved, it creates a valid BagIt 'bag'. This example will illustrate one way
             this can be accomplished, using the <a href="https://tools.ietf.org/html/draft-kunze-bagit-17#section-4.1">
             example of a basic bag</a> given in the BagIt specification.
@@ -1089,7 +1113,7 @@ myfirstbag
 <pre>
 {
   "digestAlgorithm": "sha512",
-  "head": "v1",
+  "head": "v2",
   "id": "urn:uri:example.com/myfirstbag",
   "manifest": {
     "cf83e1...a3e": [ "v1/content/myfirstbag/bagit.txt" ],
@@ -1141,7 +1165,7 @@ myfirstbag
         <h2>Moab in an OCFL Object</h2>
         <p>
             [[Moab]] is an archive information package format developed and used by Stanford University.
-            Many of the ideas in Moab have been refined by OCFL, and OCFL is designed to
+            Many of the ideas in Moab have been refined by the OCFL, and the OCFL is designed to
             give institutions currently using Moab an easy path to adoption.
         </p>
         <p>
