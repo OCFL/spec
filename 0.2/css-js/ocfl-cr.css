@@ -1,0 +1,20 @@
+/* ocfl modification of respec unofficial style for 
+   candidate recommendations. Used with specStatus="ocfl-cr"
+
+   2018-10-17
+*/
+
+/* Style for an "Unofficial Draft" */
+
+@import "base.css";
+
+body {
+  background-image: url(ocfl-cr-logo.png); 
+  background-color: transparent;
+}
+
+html {
+  background-image: url(ocfl-cr-watermark.png);
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
