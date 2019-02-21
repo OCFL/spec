@@ -489,6 +489,11 @@
           following <code>v</code> is a zero then the number format is zero padded to fixed length, otherwise it
           is simply an integer.
         </p>
+        <p>
+          Systems with version directories have often used zero padding in order to show version order with common
+          lexical sorting tools (such as Unix <code>ls</code>). Zero padding is not recommended in order to avoid
+          having to make arbitrary choices of padding length or to place limits on the number of versions supported.
+        </p>
       </section>
 
       <section>
