@@ -1031,6 +1031,43 @@
 </pre>
     </section>
 
+    <section id="example-object-with-file-renaming">
+        <h2>File Renaming in an OCFL Object</h2>
+        <p>
+            The following example OCFL Object inventory shows how exiting file paths may differ from
+            logical file paths. The example object has just one version, <code>v1</code>, which has
+            two files with logical file paths <code>.hidden.txt</code> and
+            <code>name with spaces.txt</code> as shown in the <code>state</code> block. These names
+            have been normalized to avoid spaces and leading period in the existing file paths. The
+            <code>manifest</code> block shows <code>%2Ehidden.txt</code> and
+            <code>name%20with%20spaces.txt</code> within the <code>v1/content</code> directory. This
+            specification does not constrain the normalization or renaming strategy adopted, in
+            this example URI encoding was used but many other approaches are possible, and they may
+            or may not yield an obvious relation between exiting file paths and logical file paths.
+        </p>
+<pre>
+{
+  "digestAlgorithm": "sha512",
+  "head": "v1",
+  "id": "http://example.org/rename",
+  "manifest": {
+    "2deeaf...c0f": [ "v1/content/%2Ehidden.txt" ],
+    "329ebf...a6a": [ "v1/content/name%20with%20spaces.txt" ]
+  },
+  "type": "https://ocfl.io/1.0/spec/#inventory",
+  "versions": {
+    "v1": {
+      "created": "2019-03-14T20:31:00Z",
+      "state": {
+        "2deeaf...c0f": [ ".hidden.txt" ],
+        "329ebf...a6a": [ "name with spaces.txt" ]
+      }
+    }
+  }
+}
+</pre>
+    </section>
+
     <section id="example-bagit-in-ocfl">
         <h2>BagIt in an OCFL Object</h2>
         <p>
