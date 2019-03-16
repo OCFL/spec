@@ -1031,36 +1031,38 @@
 </pre>
     </section>
 
-    <section id="example-object-with-file-renaming">
-        <h2>File Renaming in an OCFL Object</h2>
+    <section id="example-object-diff-paths">
+        <h2>Different Logical and Existing File Paths in an OCFL Object</h2>
         <p>
             The following example OCFL Object inventory shows how existing file paths may differ from
             logical file paths. The example object has just one version, <code>v1</code>, which has
-            two files with logical file paths <code>.hidden.txt</code> and
-            <code>name with spaces.txt</code> as shown in the <code>state</code> block. These names
-            have been normalized to avoid spaces and leading period in the existing file paths. The
-            <code>manifest</code> block shows <code>%2Ehidden.txt</code> and
-            <code>name%20with%20spaces.txt</code> within the <code>v1/content</code> directory. This
-            specification does not constrain the normalization or renaming strategy adopted, in
-            this example URI encoding was used but many other approaches are possible, and they may
-            or may not yield an obvious relation between existing file paths and logical file paths.
+            two files with logical file paths <code>a file.wxy</code> and
+            <code>another file.xyz</code> as shown in the <code>state</code> block. The corresponding
+            existing file paths are <code>v1/content/3bacb119a98a15c5</code> and
+            <code>v1/content/9f2bab8ef869947d</code> respectively, as shown in the
+            <code>manifest</code>. Except for location within the appropriate version directory,
+            <code>v1/content</code> in this example, the OCFL specification does not constrain the
+            choice of existing file paths used when creating or updating an OCFL object. The choice
+            might depend on particular limitations of, or optimizations for, the target storage
+            system, or on portability considerations. Any compliant implementation will be able to
+            recover version state with the original logical file paths.
         </p>
 <pre>
 {
   "digestAlgorithm": "sha512",
   "head": "v1",
-  "id": "http://example.org/rename",
+  "id": "http://example.org/diff-paths",
   "manifest": {
-    "2deeaf...c0f": [ "v1/content/%2Ehidden.txt" ],
-    "329ebf...a6a": [ "v1/content/name%20with%20spaces.txt" ]
+    "7545b8...f67": [ "v1/content/3bacb119a98a15c5" ],
+    "af318d...3cd": [ "v1/content/9f2bab8ef869947d" ]
   },
   "type": "https://ocfl.io/1.0/spec/#inventory",
   "versions": {
     "v1": {
       "created": "2019-03-14T20:31:00Z",
       "state": {
-        "2deeaf...c0f": [ ".hidden.txt" ],
-        "329ebf...a6a": [ "name with spaces.txt" ]
+        "7545b8...f67": [ "a file.wxy" ],
+        "af318d...3cd": [ "another file.xyz" ]
       }
     }
   }
