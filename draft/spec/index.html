@@ -1032,6 +1032,45 @@
 </pre>
     </section>
 
+    <section id="example-object-diff-paths">
+        <h2>Different Logical and Existing File Paths in an OCFL Object</h2>
+        <p>
+            The following example OCFL Object inventory shows how existing file paths may differ from
+            logical file paths. The example object has just one version, <code>v1</code>, which has
+            two files with logical file paths <code>a file.wxy</code> and
+            <code>another file.xyz</code> as shown in the <code>state</code> block. The corresponding
+            existing file paths are <code>v1/content/3bacb119a98a15c5</code> and
+            <code>v1/content/9f2bab8ef869947d</code> respectively, as shown in the
+            <code>manifest</code>. Except for location within the appropriate version directory,
+            <code>v1/content</code> in this example, the OCFL specification does not constrain the
+            choice of existing file paths used when creating or updating an OCFL object. The choice
+            might depend on particular limitations of, or optimizations for, the target storage
+            system, or on portability considerations. Any compliant implementation will be able to
+            recover version state with the original logical file paths.
+        </p>
+<pre>
+{
+  "digestAlgorithm": "sha512",
+  "head": "v1",
+  "id": "http://example.org/diff-paths",
+  "manifest": {
+    "7545b8...f67": [ "v1/content/3bacb119a98a15c5" ],
+    "af318d...3cd": [ "v1/content/9f2bab8ef869947d" ]
+  },
+  "type": "https://ocfl.io/1.0/spec/#inventory",
+  "versions": {
+    "v1": {
+      "created": "2019-03-14T20:31:00Z",
+      "state": {
+        "7545b8...f67": [ "a file.wxy" ],
+        "af318d...3cd": [ "another file.xyz" ]
+      }
+    }
+  }
+}
+</pre>
+    </section>
+
     <section id="example-bagit-in-ocfl">
         <h2>BagIt in an OCFL Object</h2>
         <p>
