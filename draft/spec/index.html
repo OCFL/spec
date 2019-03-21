@@ -761,8 +761,17 @@
                 wrong, while others may wish to only store a log entry if an intervention was required.
             </p>
         </blockquote>
-
     </section>
+
+    <section id="deposit-directory">
+        <h2>Deposit Directory</h2>
+        <p>
+            The base directory of an OCFL Object MAY contain a directory named <code>deposit</code>, which MAY be empty.
+            Implementers MAY use this directory for assembling new versions of the object's content. Clients performing
+            any other operation, or validating an object, MUST ignore the <code>deposit</code> directory if present.
+        </p>
+    </section>
+
 </section>
 
 <section id="storage-root">
