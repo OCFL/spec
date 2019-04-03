@@ -879,12 +879,6 @@
             file.
         </p>
         <ol>
-          <li>The use of JSON for the inventory means that content paths are stored as Unicode. Therefore, the
-              filesystem hosting an OCFL Storage Root SHOULD support Unicode file- and path-names. If not, there
-              MUST be a consistent, symmetric mapping between the character set used for filesystem paths and
-              Unicode which MUST be used for all OCFL-related operations.</li>
-          <li>OCFL storage MUST be both case-preserving and case-sensitive so that the mapping
-              between content paths in the inventory and the filesystem is consistent and unique.</li>
           <li>Filesystem metadata (e.g. permissions, access, and creation times) are not considered portable between
               filesystems or preservable through file transfer operations. Nor can these attributes be validated in
               terms of fixity in a consistent manner. As such, the OCFL does not support the portability of these
