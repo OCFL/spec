@@ -394,15 +394,14 @@
             version directory names.
         </p>
         <p>
-            Version directories MUST have a sub-directory called <code>content</code> if there are files present, and
-            SHOULD NOT contain a <code>content</code> sub-directory otherwise. There MUST be no other files or
-            directories as children of a version directory, other than an <a href="#inventory">inventory file</a>,
-            an <a href="#inventory-digest">inventory digest</a>, and a <code>content</code> directory.
-        </p>
-        <p>
-            Every file within a version's <code>content</code> directory MUST be referenced in the
+            Version directories MAY contain one or more sub-directories. These sub-directories may have any valid name.
+            There MUST be no files as children of a version directory, other than an <a href="#inventory">inventory file</a>,
+            and an <a href="#inventory-digest">inventory digest</a>.
+       </p>
+       <p>
+            Every file within a sub-directory of a version directory MUST be referenced in the
             <a href="#manifest">manifest</a> section of the inventory. There MUST NOT be empty directories within
-            a version's <code>content</code> directory. A directory that would otherwise be empty MAY be maintained
+            a version's directory. A directory that would otherwise be empty MAY be maintained
             by creating a file within it named according to local conventions, for example by making an empty
             <code>.keep</code> file.
         </p>
