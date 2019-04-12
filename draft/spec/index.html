@@ -872,28 +872,22 @@
     <section id="filesystem-features">
         <h2>Filesystem features</h2>
         <p>
-            In order to maximise the compatibility of the OCFL with different filesystems, and thus improve the 
-            portability of OCFL Objects betwwen different systems, some restrictions on the use of certain 
+            In order to maximize the compatibility of the OCFL with different filesystems, and thus improve the
+            portability of OCFL Objects between different systems, some restrictions on the use of certain
             filesystem features are necessary. If the preservation of non-OCFL-compliant features is required then
-            data MUST be wrappered in a suitable disk or filesystem image format which OCFL can treat as a regular
+            data MUST be wrapped in a suitable disk or filesystem image format which OCFL can treat as a regular
             file.
         </p>
         <ol>
-          <li>The use of JSON for the inventory means that storage paths are stored in as Unicode. Therefore, the 
-              filesystem hosting an OCFL Storage Root SHOULD support Unicode file- and path-names. If not, there
-              MUST be a consistent, symmetric mapping between the character set used for filesystem paths and
-              Unicode which MUST be used for all OCFL-related operations.</li>
-          <li>The OCFL REQUIRES that filesystems are both case-preserving and case-sensitive so that the mapping 
-              between storage paths in the inventory and the filesystem is consistent and unique.</li>
           <li>Filesystem metadata (e.g. permissions, access, and creation times) are not considered portable between
-              filesystems or preservable through file transfer operations. Nor can these attributes be validated in 
-              terms of fixity in a consistent manner. As such, the OCFL does NOT support the portability of these
+              filesystems or preservable through file transfer operations. Nor can these attributes be validated in
+              terms of fixity in a consistent manner. As such, the OCFL does not support the portability of these
               attributes.</li>
           <li>Hard and soft (symbolic) links are not portable and MUST NOT be used within OCFL Storage hierachies.
               A common use case for links is storage deduplication. OCFL inventories provide a portable method
               of achieving the same effect.</li>
-          <li>Transparent filesystem features such as compression and encryption should be effectively invisible to 
-              OCFL operations. Consequently, they should NOT be expected to be portable.</li>
+          <li>Transparent filesystem features such as compression and encryption should be effectively invisible to
+              OCFL operations. Consequently, they should not be expected to be portable.</li>
         </ol>
     </section>
 
