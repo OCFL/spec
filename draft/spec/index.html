@@ -713,9 +713,14 @@
             the chosen digest algorithm for the object. An example might be <code>inventory.json.sha512</code>.
         </p>
         <p>
-            The digest sidecar file MUST contain the digest of the inventory file. This MUST follow the format
-            <code>DIGEST inventory.json</code>; that is, the digest of the inventory file, a single space, and the
-            string <code>inventory.json</code> which is the name of the inventory file in the same directory.
+            The digest sidecar file MUST contain the digest of the inventory file. This MUST follow the format:
+        </p>
+<pre>
+DIGEST inventory.json
+</pre>
+        <p>
+            One or more linear whitespace characters (spaces or tabs) must separate DIGEST from the string
+            <code>inventory.json</code>; that is, the name of the inventory file in the same directory.
         </p>
         <p>
             The digest of the inventory MUST be computed only after all changes to the inventory have been made, so this
