@@ -875,17 +875,17 @@
             In order to maximize the compatibility of the OCFL with different filesystems, and thus improve the
             portability of OCFL Objects between different systems, some restrictions on the use of certain
             filesystem features are necessary. If the preservation of non-OCFL-compliant features is required then
-            data MUST be wrapped in a suitable disk or filesystem image format which OCFL can treat as a regular
+            the content MUST be wrapped in a suitable disk or filesystem image format which OCFL can treat as a regular
             file.
         </p>
         <ol>
           <li>Filesystem metadata (e.g. permissions, access, and creation times) are not considered portable between
-              filesystems or preservable through file transfer operations. Nor can these attributes be validated in
+              filesystems or preservable through file transfer operations. These attributes also cannot be validated in
               terms of fixity in a consistent manner. As such, the OCFL does not support the portability of these
               attributes.</li>
           <li>Hard and soft (symbolic) links are not portable and MUST NOT be used within OCFL Storage hierachies.
               A common use case for links is storage deduplication. OCFL inventories provide a portable method
-              of achieving the same effect.</li>
+              of achieving the same effect by using digests to address content.</li>
           <li>Transparent filesystem features such as compression and encryption should be effectively invisible to
               OCFL operations. Consequently, they should not be expected to be portable.</li>
         </ol>
