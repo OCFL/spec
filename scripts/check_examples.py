@@ -30,7 +30,10 @@ with open(os.path.join(args.spec_dir, 'index.html'), 'r') as fh:
 spec = BeautifulSoup(spec_html, 'html.parser')
 
 errors = 0
-for id in ('example-minimal-inventory', 'example-versioned-inventory'):
+for id in ('example-minimal-inventory',
+           'example-versioned-inventory',
+           'example-diff-paths-inventory',
+           'example-bagit-inventory'):
     example_json = ''.join(spec.find(id=id).string)
     # expand sha512 examples to match SYNTAX (not content!)
     example_json = re.sub(r'([\da-fA-F]{6})\.\.\.([\da-fA-F]{3})',
