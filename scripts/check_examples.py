@@ -6,7 +6,6 @@ on success, non-zero otherwise.
 import argparse
 from bs4 import BeautifulSoup
 import json
-from json.decoder import JSONDecodeError
 from jsonschema import validate
 from jsonschema.exceptions import ValidationError
 import os.path
@@ -32,20 +31,22 @@ spec = BeautifulSoup(spec_html, 'html.parser')
 
 errors = 0
 for id in ('example-minimal-inventory', 'example-versioned-inventory'):
+    example_json = ''.join(spec.find(id=id).string)
+    # expand sha512 examples to match SYNTAX (not content!)
+    example_json = re.sub(r'([\da-fA-F]{6})\.\.\.([\da-fA-F]{3})',
+                          r'\1' + 'a' * 119 + r'\2',
+                          example_json)
     try:
-        example_json = ''.join(spec.find(id=id).string)
-        # expand sha512 examples to match SYNTAX (not content!)
-        example_json = re.sub(r'([\da-fA-F]{6})\.\.\.([\da-fA-F]{3})',
-                              r'\1' + 'a' * 119 + r'\2',
-                              example_json)
         example = json.loads(example_json)
-        validate(instance=example, schema=schema)
-        print("%s -- OK" % (id))
-    except JSONDecodeError as e:
+    except Exception as e:  # wildly different exceptions in python 2 & 3
         print("%s -- JSON PARSING FAILED" % (id))
         if args.verbose:
             print(str(e))
         errors += 1
+        continue
+    try:
+        validate(instance=example, schema=schema)
+        print("%s -- OK" % (id))
     except ValidationError as e:
         print("%s -- JSON SCHEMA VALIDATION FAILED against %s" % (id, schema_file))
         if args.verbose:
