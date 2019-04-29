@@ -2,6 +2,13 @@
 
 This Oxford Common File Layout (OCFL) specification describes an application-independent approach to the storage of digital information in a structured, transparent, and predictable manner. It is designed to promote long-term object management best practices within digital repositories.
 
+Specifically, the benefits of the OCFL include:
+  * __Completeness__, so that a repository can be rebuilt from the files it stores
+  * __Parsability__, both by humans and machines, to ensure content can be understood in the absence of original software
+  * __Robustness__ against errors, corruption, and migration between storage technologies
+  * __Versioning__, so repositories can make changes to objects allowing their history to persist
+  * __Storage diversity__, to ensure content can be stored on diverse storage infrastructures including conventional filesystems and cloud object stores
+
 ## Latest Release (Alpha 0.2)
   * [OCFL Specification](0.2/spec/)
   * [OCFL Implementation Notes](0.2/implementation-notes/)
