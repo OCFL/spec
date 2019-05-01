@@ -904,6 +904,8 @@ DIGEST inventory.json
           <li>Hard and soft (symbolic) links are not portable and MUST NOT be used within OCFL Storage hierachies.
               A common use case for links is storage deduplication. OCFL inventories provide a portable method
               of achieving the same effect by using digests to address content.</li>
+          <li>File paths and filenames in the OCFL are case sensitive. Filesystems MUST preserve the case of OCFL
+              filepaths and filenames.</li>
           <li>Transparent filesystem features such as compression and encryption should be effectively invisible to
               OCFL operations. Consequently, they should not be expected to be portable.</li>
         </ol>
