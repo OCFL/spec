@@ -187,7 +187,7 @@
     <section>
       <h2>Object Contents</h2>
       <p>
-        The OCFL separates the existing file path of stored files from the logical file path of these files' content in
+        The OCFL separates the content path of stored files from the logical path of these files' content in
         OCFL object versions. This is a key feature that allows previous versions of objects to remain immutable but
         permitting deduplication, forward delta differencing, and easy file renaming. Consequently, the OCFL only
         requires that files added to any version of an OCFL object must be stored somewhere within the relevant version
@@ -202,7 +202,7 @@
       <p>
         However, this is not always possible. For example, complex objects with deep file hierarchies may encounter
         issues if they come from a fileystem that allows longer paths than are supported by the target OCFL system. In
-        this case, the decoupling between existing file paths and logical file paths in OCFL objects allows the use of
+        this case, the decoupling between content paths and logical paths in OCFL objects allows the use of
         truncated paths for storage while the full paths can be preserved in state block entries which are not length
         constrained.
       </p>
@@ -447,7 +447,7 @@
           earlier versions of the object.
         </li>
         <li>
-          Updating: Changes the content pointed to by an existing file path. The path must exist in
+          Updating: Changes the content pointed to by an content path. The path must exist in
           the previous version of the OCFL Object, and the content cannot have existed in any earlier
           versions of the object.
         </li>
@@ -576,7 +576,7 @@
         </li>
         <li>
           Updating: Files updated from the previous version appear as changed entries in the <code>state</code>
-          block of the new version - with new digests associated with existing file paths. The updated file should
+          block of the new version - with new digests associated with content paths. The updated file should
           be stored and a new entry for the updated content must be made in the <code>manifest</code> block of the
           object's inventory. The new digest can then be used to replace the digest for the old content in
           the relevant <code>state</code> block entry. If the file content, as determined by its digest, corresponds
