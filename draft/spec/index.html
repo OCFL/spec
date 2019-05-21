@@ -406,11 +406,10 @@
             an <a href="#inventory-digest">inventory digest</a>, and a <code>content</code> directory.
         </p>
         <p>
-            Every file within a version's <code>content</code> directory MUST be referenced in the
-            <a href="#manifest">manifest</a> section of the inventory. There MUST NOT be empty directories within
-            a version's <code>content</code> directory. A directory that would otherwise be empty MAY be maintained
-            by creating a file within it named according to local conventions, for example by making an empty
-            <code>.keep</code> file.
+            Every file within a version's content directory MUST be referenced in the <a href="#manifest">manifest</a>
+            section of the inventory. There MUST NOT be empty directories within a version's content directory. A
+            directory that would otherwise be empty MAY be maintained by creating a file within it named according to
+            local conventions, for example by making an empty <code>.keep</code> file.
         </p>
     </section>
 
@@ -549,6 +548,16 @@
                 </dd>
             </dl>
             <p>
+                There MAY be the following key:
+            </p>
+            <dl>
+                <dt><code>contentDirectory</code></dt>
+                <dd>
+                    The name of the designated content directory within the version directories. If not specified then
+                    the content directory name is <code>content</code>.
+                </dd>
+            </dl>
+            <p>
                 In addition to these keys, there MUST be two other blocks present, <code>manifest</code> and
                 <code>versions</code>, which are discussed in the next two sections.
             </p>
@@ -560,7 +569,7 @@
                 The value of the <code>manifest</code> key is a JSON object, with keys corresponding to the digests
                 of every content file in all versions of the <a>OCFL Object</a>. The value for each key is an array
                 containing the <a>content path</a>s of files in the OCFL Object that have content with the
-                given digest. content paths within a manifest block MUST be relative to the <a>OCFL Object Root</a>.
+                given digest. Content paths within a manifest block MUST be relative to the <a>OCFL Object Root</a>.
             </p>
             <blockquote class="informative">
                 <p>
