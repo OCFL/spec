@@ -394,25 +394,10 @@
             version directory names.
         </p>
         <p>
-            Version directories MUST contain a designated content sub-directory if the version contains files to be
-            preserved, and SHOULD NOT contain this sub-directory otherwise. The name of this designated sub-directory
-            MAY be defined in the <a href="#inventory">inventory file</a> using the key <code>contentDirectory</code>
-            with the value being the chosen sub-directory name as a string, relative to the version directory.
-            The <code>contentDirectory</code> value MUST NOT contain the forward slash (/) path separator. If the key
-            <code>contentDirectory</code> is set, it MUST be set in the first version of the object and MUST NOT
-            change between versions of the same object.
-          </p>
-          <p>
-            There MUST be no other files as children of a version directory, other than an <a
-             href="#inventory">inventory file</a> and a <a href="#inventory-digest">inventory digest</a>.
-            The version directory SHOULD NOT contain any directories other than the designated content
-            sub-directory.
-        </p>
-        <p>
-            If the key <code>contentDirectory</code> is not present in the <a href="#inventory">inventory file</a> then the
-            name of the designated content sub-directory MUST be <code>content</code>. OCFL-compliant tools
-            (including any validators) MUST ignore all directories in the object version directory except for the
-            designated content directory.
+            Version directories MUST have a sub-directory called <code>content</code> if there are files present, and
+            SHOULD NOT contain a <code>content</code> sub-directory otherwise. There MUST be no other files or
+            directories as children of a version directory, other than an <a href="#inventory">inventory file</a>,
+            an <a href="#inventory-digest">inventory digest</a>, and a <code>content</code> directory.
         </p>
         <p>
             Every file within a version's <code>content</code> directory MUST be referenced in the
