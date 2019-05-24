@@ -71,6 +71,10 @@
                     "required": [ "created", "state" ]
                 }
             }
+        },
+        "contentDirectory": {
+            "type": "string",
+            "pattern": "^[^/]+$"
         }
     },
     "required": [ "digestAlgorithm", "head", "id", "manifest", "type", "versions" ],
