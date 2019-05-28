@@ -183,25 +183,25 @@
         <h3>Completeness</h3>
         <p>
           The OCFL recommends storing metadata and the content it describes together so the OCFL object can be fully
-          understood in the absence of original software. OCFL does not make recommendations about what constitutes an
-          object, nor does it assume what type of metadata is needed to fully understand the object recognizing those
-          decisions may differ from one repository to another. However, it is recommended that when making this
+          understood in the absence of original software. The OCFL does not make recommendations about what constitutes
+          an object, nor does it assume what type of metadata is needed to fully understand the object, recognizing
+          those decisions may differ from one repository to another. However, it is recommended that when making this
           decision, implementers consider what is necessary to rebuild the objects from the files stored.
         </p>
         <h3>Parsability</h3>
         <p>
           One goal of the OCFL is to ensure objects remain fixed over time. This can be difficult as software and
-          infrastructure change and content is migrated. To combat this challenge, the OCFL ensures that both humans
+          infrastructure change, and content is migrated. To combat this challenge, the OCFL ensures that both humans
           and machines can understand the layout and corresponding inventory regardless of the software or
-          infrastructure used. This allows for humans to read the layout and corresponding inventory and understand it
-          without the use of machines. Additionally, if software were to become obsolete, the OCFL could easily be
-          understood by a light weight application, even without the full feature repository that might have been used
-          in the past.
+          infrastructure used. This allows for humans to read the layout and corresponding inventory, and understand it
+          without the use of machines. Additionally, if existing software were to become obsolete, the OCFL could
+          easily be understood by a light weight application, even without the full feature repository that might have
+          been used in the past.
         </p>
         <h3>Versioning</h3>
         <p>
           Another need expressed by the community was the need to update and change objects, either the content itself
-          of the metadata associated with the object. The OCFL relies heavily on the prior art in the [[Moab]] Design
+          or the metadata associated with the object. The OCFL relies heavily on the prior art in the [[Moab]] Design
           for Digital Object Versioning which utilizes forward deltas to track the history of the object. Utilizing
           this schema allows implementers of the OCFL to easily recreate past versions of an OCFL object. Like with
           determining what constitutes an OCFL object, the OCFL remains silent on when versioning should occur
@@ -212,8 +212,8 @@
           The OCFL also fills the need for robustness against errors, corruption, and migration. The versioning schema
           ensures an OCFL object is robust enough to allow for the discovery of human errors. The fixity checking built
           into OCFL via content addressable storage allows implementers to identify file corruption that might happen
-          outside of normal human interactions. Finally, the OCFL allows for methods that ease complications related to
-          migrating content from one technology to another.
+          outside of normal human interactions. The OCFL allows eases content migrations by providing a technology
+          agnostic method for verifying OCFL objects have remained fixed.
         </p>
         <h3>Storage diversity</h3>
         <p>
