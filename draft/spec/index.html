@@ -1361,98 +1361,98 @@ myfirstbag
             in an OCFL object, and the presence of <code>contentDirectory</code> to specify <code>data</code> as the
             preserved content directory:
         </p>
-<pre>
-  {
-    "digestAlgorithm": "sha512",
-    "head": "v3",
-    "id": "druid:bj102hs9687",
-    "contentDirectory": "data",
-    "manifest": {
-        "98114a...588": [ "v0001/data/content/eric-smith-dissertation-augmented.pdf" ],
-        "7f3d87...15b": [ "v0001/data/content/eric-smith-dissertation.pdf" ],
-        "6d19f0...064": [ "v0001/data/metadata/technicalMetadata.xml" ],
-        "6e4be4...375": [ "v0001/data/metadata/provenanceMetadata.xml" ],
-        "d8a319...d0f": [ "v0001/data/metadata/descMetadata.xml" ],
-        "de823a...acc": [ "v0001/data/metadata/rightsMetadata.xml" ],
-        "080617...40c": [ "v0001/data/metadata/identityMetadata.xml" ],
-        "e15267...58d": [ "v0001/data/metadata/versionMetadata.xml" ],
-        "0d9e0b...9a2": [ "v0001/data/metadata/contentMetadata.xml" ],
-        "dd9289...31d": [ "v0001/data/metadata/relationshipMetadata.xml" ],
-        "7519c5...63f": [ "v0002/data/metadata/provenanceMetadata.xml" ],
-        "abda4c...622": [ "v0002/data/metadata/workflows.xml" ],
-        "76549e...b2b": [ "v0002/data/metadata/rightsMetadata.xml" ],
-        "bdc4d6...3b6": [ "v0002/data/metadata/events.xml" ],
-        "7b331c...f9b": [ "v0002/data/metadata/identityMetadata.xml" ],
-        "80ceac...b9c": [ "v0002/data/metadata/versionMetadata.xml" ],
-        "4853a2...fbe": [ "v0002/data/metadata/contentMetadata.xml" ],
-        "1d5090...f5f": [ "v0002/data/metadata/relationshipMetadata.xml" ],
-        "f209bf...ceb": [ "v0002/data/metadata/embargoMetadata.xml" ],
-        "dd9125...d4b": [ "v0003/data/metadata/technicalMetadata.xml" ],
-        "d9e177...477": [ "v0003/data/metadata/provenanceMetadata.xml" ],
-        "4f5908...4f5": [ "v0003/data/metadata/workflows.xml" ],
-        "e64db0...500": [ "v0003/data/metadata/descMetadata.xml" ],
-        "05fa51...818": [ "v0003/data/metadata/rightsMetadata.xml" ],
-        "d70dd8...5ad": [ "v0003/data/metadata/events.xml" ],
-        "509a2d...dc6": [ "v0003/data/metadata/identityMetadata.xml" ],
-        "548066...893": [ "v0003/data/metadata/versionMetadata.xml" ],
-        "93884e...aae": [ "v0003/data/metadata/contentMetadata.xml" ],
-        "4c5ab4...b02": [ "v0003/data/metadata/embargoMetadata.xml" ]
+<pre id="example-moab-inventory">
+{
+  "digestAlgorithm": "sha512",
+  "head": "v3",
+  "id": "druid:bj102hs9687",
+  "contentDirectory": "data",
+  "manifest": {
+    "98114a...588": [ "v0001/data/content/eric-smith-dissertation-augmented.pdf" ],
+    "7f3d87...15b": [ "v0001/data/content/eric-smith-dissertation.pdf" ],
+    "6d19f0...064": [ "v0001/data/metadata/technicalMetadata.xml" ],
+    "6e4be4...375": [ "v0001/data/metadata/provenanceMetadata.xml" ],
+    "d8a319...d0f": [ "v0001/data/metadata/descMetadata.xml" ],
+    "de823a...acc": [ "v0001/data/metadata/rightsMetadata.xml" ],
+    "080617...40c": [ "v0001/data/metadata/identityMetadata.xml" ],
+    "e15267...58d": [ "v0001/data/metadata/versionMetadata.xml" ],
+    "0d9e0b...9a2": [ "v0001/data/metadata/contentMetadata.xml" ],
+    "dd9289...31d": [ "v0001/data/metadata/relationshipMetadata.xml" ],
+    "7519c5...63f": [ "v0002/data/metadata/provenanceMetadata.xml" ],
+    "abda4c...622": [ "v0002/data/metadata/workflows.xml" ],
+    "76549e...b2b": [ "v0002/data/metadata/rightsMetadata.xml" ],
+    "bdc4d6...3b6": [ "v0002/data/metadata/events.xml" ],
+    "7b331c...f9b": [ "v0002/data/metadata/identityMetadata.xml" ],
+    "80ceac...b9c": [ "v0002/data/metadata/versionMetadata.xml" ],
+    "4853a2...fbe": [ "v0002/data/metadata/contentMetadata.xml" ],
+    "1d5090...f5f": [ "v0002/data/metadata/relationshipMetadata.xml" ],
+    "f209bf...ceb": [ "v0002/data/metadata/embargoMetadata.xml" ],
+    "dd9125...d4b": [ "v0003/data/metadata/technicalMetadata.xml" ],
+    "d9e177...477": [ "v0003/data/metadata/provenanceMetadata.xml" ],
+    "4f5908...4f5": [ "v0003/data/metadata/workflows.xml" ],
+    "e64db0...500": [ "v0003/data/metadata/descMetadata.xml" ],
+    "05fa51...818": [ "v0003/data/metadata/rightsMetadata.xml" ],
+    "d70dd8...5ad": [ "v0003/data/metadata/events.xml" ],
+    "509a2d...dc6": [ "v0003/data/metadata/identityMetadata.xml" ],
+    "548066...893": [ "v0003/data/metadata/versionMetadata.xml" ],
+    "93884e...aae": [ "v0003/data/metadata/contentMetadata.xml" ],
+    "4c5ab4...b02": [ "v0003/data/metadata/embargoMetadata.xml" ]
+  },
+  "type": "https://ocfl.io/1.0/spec/#inventory",
+  "versions": {
+    "v1": {
+      "created": "2019-03-14T20:31:00Z",
+      "state": {
+        "98114a...588": [ "content/eric-smith-dissertation-augmented.pdf" ],
+        "7f3d87...15b": [ "content/eric-smith-dissertation.pdf" ],
+        "6d19f0...064": [ "metadata/technicalMetadata.xml" ],
+        "6e4be4...375": [ "metadata/provenanceMetadata.xml" ],
+        "d8a319...d0f": [ "metadata/descMetadata.xml" ],
+        "de823a...acc": [ "metadata/rightsMetadata.xml" ],
+        "080617...40c": [ "metadata/identityMetadata.xml" ],
+        "e15267...58d": [ "metadata/versionMetadata.xml" ],
+        "0d9e0b...9a2": [ "metadata/contentMetadata.xml" ],
+        "dd9289...31d": [ "metadata/relationshipMetadata.xml" ]
+      }
     },
-    "type": "https://ocfl.io/1.0/spec/#inventory",
-    "versions": {
-      "v1": {
-        "created": "2019-03-14T20:31:00Z",
-        "state": {
-            "98114a...588": [ "content/eric-smith-dissertation-augmented.pdf" ],
-            "7f3d87...15b": [ "content/eric-smith-dissertation.pdf" ],
-            "6d19f0...064": [ "metadata/technicalMetadata.xml" ],
-            "6e4be4...375": [ "metadata/provenanceMetadata.xml" ],
-            "d8a319...d0f": [ "metadata/descMetadata.xml" ],
-            "de823a...acc": [ "metadata/rightsMetadata.xml" ],
-            "080617...40c": [ "metadata/identityMetadata.xml" ],
-            "e15267...58d": [ "metadata/versionMetadata.xml" ],
-            "0d9e0b...9a2": [ "metadata/contentMetadata.xml" ],
-            "dd9289...31d": [ "metadata/relationshipMetadata.xml" ]
-        },
-      },
-      "v2": {
-        "created": "2019-03-24T09:22:00Z",
-        "state": {
-            "98114a...588": [ "content/eric-smith-dissertation-augmented.pdf" ],
-            "7f3d87...15b": [ "content/eric-smith-dissertation.pdf" ],
-            "6d19f0...064": [ "metadata/technicalMetadata.xml" ],
-            "7519c5...63f": [ "metadata/provenanceMetadata.xml" ],
-            "d8a319...d0f": [ "metadata/descMetadata.xml" ],
-            "76549e...b2b": [ "metadata/rightsMetadata.xml" ],
-            "7b331c...f9b": [ "metadata/identityMetadata.xml" ],
-            "80ceac...b9c": [ "metadata/versionMetadata.xml" ],
-            "4853a2...fbe": [ "metadata/contentMetadata.xml" ],
-            "1d5090...f5f": [ "metadata/relationshipMetadata.xml" ],
-            "abda4c...622": [ "metadata/workflows.xml" ],
-            "bdc4d6...3b6": [ "metadata/events.xml" ],
-            "f209bf...ceb": [ "metadata/embargoMetadata.xml" ]
-        },
-      },
-      "v3": {
-        "created": "2019-04-02T11:07:00Z",
-        "state": {
-            "98114a...588": [ "content/eric-smith-dissertation-augmented.pdf" ],
-            "7f3d87...15b": [ "content/eric-smith-dissertation.pdf" ],
-            "dd9125...d4b": [ "metadata/technicalMetadata.xml" ],
-            "d9e177...477": [ "metadata/provenanceMetadata.xml" ],
-            "e64db0...500": [ "metadata/descMetadata.xml" ],
-            "05fa51...818": [ "metadata/rightsMetadata.xml" ],
-            "509a2d...dc6": [ "metadata/identityMetadata.xml" ],
-            "548066...893": [ "metadata/versionMetadata.xml" ],
-            "93884e...aae": [ "metadata/contentMetadata.xml" ],
-            "1d5090...f5f": [ "metadata/relationshipMetadata.xml" ],
-            "4f5908...4f5": [ "metadata/workflows.xml" ],
-            "d70dd8...5ad": [ "metadata/events.xml" ],
-            "4c5ab4...b02": [ "metadata/embargoMetadata.xml" ]
-        },
-      },
+    "v2": {
+      "created": "2019-03-24T09:22:00Z",
+      "state": {
+        "98114a...588": [ "content/eric-smith-dissertation-augmented.pdf" ],
+        "7f3d87...15b": [ "content/eric-smith-dissertation.pdf" ],
+        "6d19f0...064": [ "metadata/technicalMetadata.xml" ],
+        "7519c5...63f": [ "metadata/provenanceMetadata.xml" ],
+        "d8a319...d0f": [ "metadata/descMetadata.xml" ],
+        "76549e...b2b": [ "metadata/rightsMetadata.xml" ],
+        "7b331c...f9b": [ "metadata/identityMetadata.xml" ],
+        "80ceac...b9c": [ "metadata/versionMetadata.xml" ],
+        "4853a2...fbe": [ "metadata/contentMetadata.xml" ],
+        "1d5090...f5f": [ "metadata/relationshipMetadata.xml" ],
+        "abda4c...622": [ "metadata/workflows.xml" ],
+        "bdc4d6...3b6": [ "metadata/events.xml" ],
+        "f209bf...ceb": [ "metadata/embargoMetadata.xml" ]
+      }
     },
+    "v3": {
+      "created": "2019-04-02T11:07:00Z",
+      "state": {
+        "98114a...588": [ "content/eric-smith-dissertation-augmented.pdf" ],
+        "7f3d87...15b": [ "content/eric-smith-dissertation.pdf" ],
+        "dd9125...d4b": [ "metadata/technicalMetadata.xml" ],
+        "d9e177...477": [ "metadata/provenanceMetadata.xml" ],
+        "e64db0...500": [ "metadata/descMetadata.xml" ],
+        "05fa51...818": [ "metadata/rightsMetadata.xml" ],
+        "509a2d...dc6": [ "metadata/identityMetadata.xml" ],
+        "548066...893": [ "metadata/versionMetadata.xml" ],
+        "93884e...aae": [ "metadata/contentMetadata.xml" ],
+        "1d5090...f5f": [ "metadata/relationshipMetadata.xml" ],
+        "4f5908...4f5": [ "metadata/workflows.xml" ],
+        "d70dd8...5ad": [ "metadata/events.xml" ],
+        "4c5ab4...b02": [ "metadata/embargoMetadata.xml" ]
+      }
+    }
   }
+}
 </pre>
 </section>
 </section>
