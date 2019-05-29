@@ -204,22 +204,22 @@
           or the metadata associated with the object. The OCFL relies heavily on the prior art in the [[Moab]] Design
           for Digital Object Versioning which utilizes forward deltas to track the history of the object. Utilizing
           this schema allows implementers of the OCFL to easily recreate past versions of an OCFL object. Like with
-          determining what constitutes an OCFL object, the OCFL remains silent on when versioning should occur
-          recognizing again that this may differe from implementation to implementation.
+          objects, the OCFL remains silent on when versioning should occur recognizing this may differ from
+          implementation to implementation.
         </p>
         <h3>Robustness</h3>
         <p>
           The OCFL also fills the need for robustness against errors, corruption, and migration. The versioning schema
           ensures an OCFL object is robust enough to allow for the discovery of human errors. The fixity checking built
-          into OCFL via content addressable storage allows implementers to identify file corruption that might happen
-          outside of normal human interactions. The OCFL eases content migrations by providing a technology agnostic
-          method for verifying OCFL objects have remained fixed.
+          into the OCFL via content addressable storage allows implementers to identify file corruption that might
+          happen outside of normal human interactions. The OCFL eases content migrations by providing a technology
+          agnostic method for verifying OCFL objects have remained fixed.
         </p>
         <h3>Storage diversity</h3>
         <p>
-          Finally, the community expressed a need to store content on a wide variety of storage technologies currently
-          available on the market. With that in mind, the OCFL was written with an eye toward various storage
-          infrastructures including cloud object stores.
+          Finally, the community expressed a need to store content on a wide variety of storage technologies. With that
+          in mind, the OCFL was written with an eye toward various storage infrastructures including cloud object
+          stores.
         </p>
     </section>
     <section id="note">
