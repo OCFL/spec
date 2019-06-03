@@ -4,7 +4,7 @@
 
 ## Status of this document
 
-**This version**: 0.1
+**This version**: 0.3
 
 **Latest stable version**: N/A
 
