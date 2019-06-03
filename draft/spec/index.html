@@ -172,47 +172,74 @@
       of digital objects in a structured, transparent, and predictable manner. It is designed to promote long-term
       access and management of digital objects within digital repositories.
   </p>
-  <p>
-      This normative specification describes the nature of an OCFL Object (the "object-at-rest") and the arrangement
-      of OCFL Objects under an OCFL Storage Root. A set of recommendations for how OCFL Objects should be acted upon
-      (the "object-in-motion") can be found in the [[OCFL-Implementation-Notes]]. The OCFL editorial group recommends
-      reading both the specification and the implementation notes in order to understand the full scope of the OCFL.
-  </p>
-    <p>
-        This specification is designed to operate on storage systems that employ a hierarchical metaphor for
-        presenting data to users. On traditional disk-based storage this may take the form of files and directories,
-        and this is the terminology we use in this specification since it is widely known. However, it may equally
-        apply to object stores, where namespaces, containers, and objects present a similar organization hierarchy to
-        users.
-    </p>
     <section id="need">
         <h2>Need</h2>
         <p>
-          The OCFL initiative arose from a need to have well-defined application-independent file management within
-          digital repositories.
+          The OCFL initiative began as a discussion amongst digital repository practitioners to identify well-defined,
+          common, and application-independent file management for a digital repository's persisted objects and
+          represents a specification of the community’s collective recommendations addressing five primary
+          requirements: completeness, parsability, versioning, robustness, and storage diversity.
         </p>
+        <h3>Completeness</h3>
         <p>
-          A general observation is that the contents of a digital repository &#8212; that is, the digital files and
-          metadata that an institution might wish to manage &#8212; are largely stable. Once content has been
-          accessioned, it is unlikely to change significantly over its lifetime. This is in contrast to the software
-          applications that manage these contents, which are ephemeral, requiring constant updating and replacement.
-          Thus, transitions between application-specific methods of file management to support software upgrades and
-          replacement cycles can be seen as unnecessary and risky change which affects the long-term stable objects
-          in support of the short-term, ephemeral software.
+          The OCFL recommends storing metadata and the content it describes together so the OCFL object can be fully
+          understood in the absence of original software. The OCFL does not make recommendations about what constitutes
+          an object, nor does it assume what type of metadata is needed to fully understand the object, recognizing
+          those decisions may differ from one repository to another. However, it is recommended that when making this
+          decision, implementers consider what is necessary to rebuild the objects from the files stored.
         </p>
+        <h3>Parsability</h3>
         <p>
-          By providing a specification for the file and directory layout on disk or in an object store, the OCFL is an
-          attempt at reducing, or even eliminating, the need for these transitions. As an application-independent
-          specification, conforming applications will natively "understand" the underlying file structure without
-          needing to first transition these contents to their own format.
-         </p>
+          One goal of the OCFL is to ensure objects remain fixed over time. This can be difficult as software and
+          infrastructure change, and content is migrated. To combat this challenge, the OCFL ensures that both humans
+          and machines can understand the layout and corresponding inventory regardless of the software or
+          infrastructure used. This allows for humans to read the layout and corresponding inventory, and understand it
+          without the use of machines. Additionally, if existing software were to become obsolete, the OCFL could
+          easily be understood by a light weight application, even without the full feature repository that might have
+          been used in the past.
+        </p>
+        <h3>Versioning</h3>
         <p>
-          While digital repository content changes relatively slowly, it is necessary to be able to track changes to
-          digital objects. Within the file and directory layout specification, the OCFL provides a simple structure to
-          efficiently capture versions of object contents so that all previous states of an object may be recovered
-          and examined.
+          Another need expressed by the community was the need to update and change objects, either the content itself
+          or the metadata associated with the object. The OCFL relies heavily on the prior art in the [[Moab]] Design
+          for Digital Object Versioning which utilizes forward deltas to track the history of the object. Utilizing
+          this schema allows implementers of the OCFL to easily recreate past versions of an OCFL object. Like with
+          objects, the OCFL remains silent on when versioning should occur recognizing this may differ from
+          implementation to implementation.
+        </p>
+        <h3>Robustness</h3>
+        <p>
+          The OCFL also fills the need for robustness against errors, corruption, and migration. The versioning schema
+          ensures an OCFL object is robust enough to allow for the discovery of human errors. The fixity checking built
+          into the OCFL via content addressable storage allows implementers to identify file corruption that might
+          happen outside of normal human interactions. The OCFL eases content migrations by providing a technology
+          agnostic method for verifying OCFL objects have remained fixed.
+        </p>
+        <h3>Storage diversity</h3>
+        <p>
+          Finally, the community expressed a need to store content on a wide variety of storage technologies. With that
+          in mind, the OCFL was written with an eye toward various storage infrastructures including cloud object
+          stores.
         </p>
     </section>
+    <section id="note">
+      <h2>Note</h2>
+      <p>
+          This normative specification describes the nature of an OCFL Object (the "object-at-rest") and the
+          arrangement of OCFL Objects under an OCFL Storage Root. A set of recommendations for how OCFL Objects should
+          be acted upon (the "object-in-motion") can be found in the [[OCFL-Implementation-Notes]]. The OCFL editorial
+          group recommends reading both the specification and the implementation notes in order to understand the full
+          scope of the OCFL.
+      </p>
+      <p>
+          This specification is designed to operate on storage systems that employ a hierarchical metaphor for
+          presenting data to users. On traditional disk-based storage this may take the form of files and directories,
+          and this is the terminology we use in this specification since it is widely known. However, it may equally
+          apply to object stores, where namespaces, containers, and objects present a similar organization hierarchy to
+          users.
+      </p>
+    </section>
+
 </section>
 
 <section id="sotd">
