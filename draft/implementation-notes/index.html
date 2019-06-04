@@ -629,7 +629,7 @@
           <li>  
           Temporary Version Directories: New versions should be created in a temporary version directory.
           This could reside in the OCFL Storage Root workspace directory ("deposit"), the same location as
-          other version directories in an OCFL Object or elsewhere. in any case, only one such directory 
+          other version directories in an OCFL Object or elsewhere. In any case, only one such directory 
           can exist per OCFL Object at any time and updates to it should be managed by a single 
           controlling process to avoid conflicts. It is advised that object updates should be given
           a unique transaction identifier to simplify any overlying process control logic. For 
@@ -687,13 +687,13 @@
             </li>
             <li>
             Does a temporary version directory for the object and transaction ID in question exist?
-	    If no, then abort with error. transaction ID is invalid for some reason, need to debug!
+	    If no, then abort with error. The transaction ID is invalid for some reason, need to debug!
             </li>
             <li>
-            Update object as per defined operations section earlier
+            Update object as described earlier.
             </li>
             <li>
-            Ideally, update local inventory after each operation, not at the end
+            Ideally, update the local inventory after each file change operation, not at the end
             </li>
           </ol>
         </section>
@@ -706,7 +706,7 @@
             </li>
             <li>
             Does a temporary version directory for the object and transaction ID in question exist?
-	    If no, then abort with error. transaction ID is invalid for some reason, need to debug!
+	    If no, then abort with error. The transaction ID is invalid for some reason, need to debug!
             </li>
             <li>
             Generate inventory checksum file in temporary version directory
@@ -738,16 +738,18 @@
             Delete temporary version directories and inventory files - this automatically reverts to last good version.
             </li>
             <li>
-            If the manifest checksum fails then you will find a new version directory not in the manifest
+            If the manifest checksum fails then the manifest is corrupted by a failed copy. This should be recoverable
+            from the most recent version directory (which is the newly created one).
             </li>
             <li>
-            Any overlying transactional store will need cleanup but basically repeat 5-7 above
+            Any overlying transactional store will need cleanup but basically repeat 5-7 above after validating all
+            object checksums - considering some sort of failure has just occurred.
             </li>    
           </ol>
         </section>
 
       </section>
-
+    </section>
   </section>
 
 </body>
