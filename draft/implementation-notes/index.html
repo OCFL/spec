@@ -602,6 +602,151 @@
         </li>
       </ul>
     </section>
+    
+    <section>
+      <h2>Guidance on Updating OCFL Object Versions</h2>
+      <p>
+      The OCFL is designed to be a specification that covers objects at rest and consequently
+      does not specify in detail update and file locking mechanisms since these are implementation
+      dependent features. Nevertheless, this section includes some basic guidance on how to 
+      update OCFL objects in a manner that tries to ensure that updates are limited to a single  
+      transaction and that failures are detectable and recoverable.
+      </p>
+    
+      <section>
+        <h2>Temporary Names</h2>
+        <p>  
+        While an OCFL object is being updated, and a new version is created, files and folders 
+        being written to should have temporary names that are not meaningful to OCFL parsers.
+        The top level inventory should also be updated last. This ensures that all the files 
+        referenced by the inventory are valid and, consequently, read-only clients that
+        reference the inventory should continue to operate normally except for the brief moment
+        when the inventory is actually being updated. In practice, it is expected that upstream
+        web caching should be able to cover this momentary unavailability in the majority of 
+        cases. The following temporary names are defined:
+        <ul>
+          <li>  
+          Temporary Version Directories: New versions should be created in a temporary version directory.
+          This could reside in the OCFL Storage Root workspace directory ("deposit"), the same location as
+          other version directories in an OCFL Object or elsewhere. in any case, only one such directory 
+          can exist per OCFL Object at any time and updates to it should be managed by a single 
+          controlling process to avoid conflicts. It is advised that object updates should be given
+          a unique transaction identifier to simplify any overlying process control logic. For 
+          example, the identifier could be used as an an eTag for a REST API implementation. A 
+          good temporary directory name should be "deposit_transaction ID_OCFL Object ID". 
+          If there is guaranteed to only be a single process controlling updates to the contents 
+          of an OCFL storage root, then it is permissible to use "deposit_OCFL Object ID" as a 
+          temporary version directory name. If temporary directories are stored within OCFL 
+          Objects then the OCFL Object ID part may be omitted since it is implicit.
+          </li>
+          <li>
+          Temporary Inventory Files: A top level object inventory file should never be updated in situ.
+          Instead, the inventory should be created within the temporary version directory and updated as
+          the version contents are modified. This provides some level of forensic recovery information in 
+          the event of failure during version creation, yet ensures that the top level inventory remains 
+          valid for read clients for as long as possible. When the construction of the new version 
+          and its inventory is complete, it can then be copied to a temporary file name alongside 
+          the top level inventory. Temporary inventory files always occur in OCFL Object Roots and
+          should be names "tmp_inventory.json".
+          </li>
+        </ul>
+      </section>
+
+      <section>
+      <h2>Operational Logic</h2>
+      <p>
+      Bearing in mind the temporary names specified above, it is possible to sketch out how  
+      they can be used to ensure some level of integrity in during OCFL updates.
+      </p>
+
+        <section>  
+          <h2>Initiating a New Object Version</h2>
+          <ol>
+            <li>    
+            Generate a new transaction ID
+            </li>
+            <li>    
+            Does a temporary version directory or temporary inventory file for the object in question exist?
+	    If yes, then abort with error. Do not start a new transaction without rereading the updated object
+            </li>
+            <li>
+            Create a temporary version directory and save the transaction ID
+            </li>
+            <li>
+            Copy inventory from object into temporary directory
+            </li>
+            <li>
+          </ol>      
+        </section>
+
+        <section>  
+          <h2>Updating a New Object Version</h2>
+          <ol>
+            <li>    
+            Get current transaction ID
+            </li>
+            <li>
+            Does a temporary version directory for the object and transaction ID in question exist?
+	    If no, then abort with error. transaction ID is invalid for some reason, need to debug!
+            </li>
+            <li>
+            Update object as per defined operations section earlier
+            </li>
+            <li>
+            Ideally, update local inventory after each operation, not at the end
+            </li>
+          </ol>
+        </section>
+
+        <section>  
+          <h2>Finalising a New Object Version</h2>                
+          <ol>
+            <li>    
+            Get current transaction ID 
+            </li>
+            <li>
+            Does a temporary version directory for the object and transaction ID in question exist?
+	    If no, then abort with error. transaction ID is invalid for some reason, need to debug!
+            </li>
+            <li>
+            Generate inventory checksum file in temporary version directory
+            </li>
+            <li>
+            Move/rename temporary version directory to valid OCFL version directory name in object 
+            </li>
+            <li>
+            Copy inventory from new version to top level temporary Inventory File
+            </li>
+            <li>
+            Update the inventory by deleting the old one and renaming the temporary one.
+            This should not take very long and is the only time when read-only client cannot access the object
+            because the inventory is not valid.
+            </li>
+            <li>
+            Update the inventory checksum by deleting the old one and copying the one from the new version.
+            </li>
+            <li>
+            Delete transaction ID
+            </li>
+          </ol>
+        </section>
+
+        <section>  
+          <h2>Clean up after failure</h2>
+          <ol>
+            <li>
+            Delete temporary version directories and inventory files - this automatically reverts to last good version.
+            </li>
+            <li>
+            If the manifest checksum fails then you will find a new version directory not in the manifest
+            </li>
+            <li>
+            Any overlying transactional store will need cleanup but basically repeat 5-7 above
+            </li>    
+          </ol>
+        </section>
+
+      </section>
 
   </section>
 
