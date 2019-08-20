@@ -610,14 +610,15 @@
       does not specify in detail update and file locking mechanisms since these are implementation
       dependent features. Nevertheless, this section includes some basic guidance on how to 
       update OCFL objects in a manner that tries to ensure that updates are limited to a single  
-      transaction and that failures are detectable and recoverable.
+      transaction and that failures are detectable and recoverable. Objects that are being updated are,
+      of course, not expected to be valid OCFL objects until the update operation is completed.
       </p>
     
       <section>
-        <h2>Temporary Names</h2>
+        <h2>Temporary Files and Directories</h2>
         <p>  
         While an OCFL object is being updated, and a new version is created, files and folders 
-        being written to should have temporary names that are not meaningful to OCFL parsers.
+        being written to should have temporary names that should be ignored by OCFL parsers.
         The top level inventory should also be updated last. This ensures that all the files 
         referenced by the inventory are valid and, consequently, read-only clients that
         reference the inventory should continue to operate normally except for the brief moment
@@ -627,18 +628,13 @@
 	</p>	
         <ul>
           <li>  
-          Temporary Version Directories: New versions should be created in a temporary version directory.
-          This could reside in the OCFL Storage Root workspace directory ("deposit"), the same location as
-          other version directories in an OCFL Object or elsewhere. In any case, only one such directory 
-          can exist per OCFL Object at any time and updates to it should be managed by a single 
-          controlling process to avoid conflicts. It is advised that object updates should be given
-          a unique transaction identifier to simplify any overlying process control logic. For 
-          example, the identifier could be used as an an eTag for a REST API implementation. A 
-          good temporary directory name should be "deposit_transaction ID_OCFL Object ID". 
-          If there is guaranteed to only be a single process controlling updates to the contents 
-          of an OCFL storage root, then it is permissible to use "deposit_OCFL Object ID" as a 
-          temporary version directory name. If temporary directories are stored within OCFL 
-          Objects then the OCFL Object ID part may be omitted since it is implicit.
+          Temporary Version Directories: New object versions should be created in a temporary version
+	  directory residing in the OCFL Storage Root workspace directory (<code>"deposit"</code>). One 
+	  temporary version directory should exist per OCFL Object at any time and updates to it should
+          be managedby a single controlling process to avoid conflicts. It is useful to have a unique 
+          transaction identifier for each object being updated to simplify any overlying process control
+	  logic. For example, the identifier could be used as an an eTag for a REST API implementation.
+	  The identifier can also be used to generate a name for the relevant temporary version directory.
           </li>
           <li>
           Temporary Inventory Files: A top level object inventory file should never be updated in situ.
@@ -691,9 +687,6 @@
             </li>
             <li>
             Update object as described earlier.
-            </li>
-            <li>
-            Ideally, update the local inventory after each file change operation, not at the end
             </li>
           </ol>
         </section>
