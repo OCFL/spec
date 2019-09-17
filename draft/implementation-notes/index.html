@@ -631,9 +631,9 @@
           Temporary Version Directories: New object versions should be created in a temporary version
 	  directory residing in the OCFL Storage Root workspace directory (<code>"deposit"</code>). One 
 	  temporary version directory should exist per OCFL Object at any time and updates to it should
-          be managedby a single controlling process to avoid conflicts. It is useful to have a unique 
+          be managed by a single controlling process to avoid conflicts. It is useful to have a unique 
           transaction identifier for each object being updated to simplify any overlying process control
-	  logic. For example, the identifier could be used as an an eTag for a REST API implementation.
+	  logic. For example, the identifier could be used as an eTag for a REST API implementation.
 	  The identifier can also be used to generate a name for the relevant temporary version directory.
           </li>
           <li>
@@ -653,7 +653,7 @@
       <h2>Operational Logic</h2>
       <p>
       Bearing in mind the temporary names specified above, it is possible to sketch out how  
-      they can be used to ensure some level of integrity in during OCFL updates.
+      they can be used to ensure some level of integrity during OCFL updates.
       </p>
 
         <section>  
@@ -712,7 +712,7 @@
             </li>
             <li>
             Update the inventory by deleting the old one and renaming the temporary one.
-            This should not take very long and is the only time when read-only client cannot access the object
+            This should not take very long and is the only time when read-only clients cannot access the object
             because the inventory is not valid.
             </li>
             <li>
