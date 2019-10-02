@@ -402,10 +402,10 @@
       <p>
 	Some identifier schemes may require transformation before such approaches can be used effectively. A simple
 	example would be sequentially assigned identifiers, which would not distribute objects within the filesystem
-	evenly, or variable length identifers. Hash functions may be used to provide a unidirectional mapping between
-	URI/PID and filesystem path as required by the OCFL. Encryption algorithms may be used to provide a 
-	bi-directional mapping which may be a useful aid to recoverability. Relevant details should be recorded in
-	<code>"ocfl_layout.json"</code> in the Storage Root.
+	evenly. Hash functions may be used to provide a unidirectional mapping between URI/PID and filesystem path,
+	as required by the OCFL. Encryption algorithms may be used to provide a bi-directional mapping which may be
+	a useful aid to human readability. Relevant details should be referenced in <code>ocfl_layout.json</code> 
+	in the Storage Root.
       </p>      
     </section>
 
@@ -532,8 +532,8 @@
       </p>
       <p>
         The new object need not have the same identifier as the original object. In this case, the deleted object may be
-        replaced by a new object with the original identifier and location in the OCFL Storage Root. This object is
-        a standard OCFL object with content that redirects users and software to the new version - possibly with an 
+        replaced by a new object using the original identifier and location in the OCFL Storage Root. This object is
+        a standard OCFL object with content that redirects users and software to the new version - possibly with an
 	indication of why the new object was created, if appropriate. The OCFL does not define redirect mechanisms,
         the interpretation of object contents is purely a client application concern.
       </p>
@@ -651,7 +651,7 @@
           valid for read clients for as long as possible. When the construction of the new version 
           and its inventory is complete, it can then be copied to a temporary file name alongside 
           the top level inventory. Temporary inventory files always occur in OCFL Object Roots and
-          should be names "tmp_inventory.json".
+          should be named <code>tmp_inventory.json</code>.
           </li>
         </ul>
       </section>
