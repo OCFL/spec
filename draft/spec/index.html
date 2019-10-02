@@ -474,7 +474,8 @@
         </p>
         <p>
             For storage of additional fixity values, and perhaps to support legacy content migration, implementers
-            MAY choose from the following list of digest algorithms:
+            SHOULD choose from the following controlled vocabulary of digest algorithms. Additional algorithms MAY be
+            supplied using an extension mechanism, with no expectation that all clients will support them.
         </p>
         <table class="simple" id="digest-algorithms">
             <thead>
@@ -580,8 +581,7 @@
                 <dt><code>digestAlgorithm</code></dt>
                 <dd>
                     The digest algorithm used for calculating digests within the OCFL Object. This SHOULD be
-                    <code>sha512</code>, however other values are permitted. See the <a href="#digests">section on
-                    Digests</a> for more information.
+                    <code>sha512</code>, however <code>sha256</code> MAY also be used.
                 </dd>
                 <dt><code>head</code></dt>
                 <dd>
@@ -734,10 +734,11 @@
                 key of <code>fixity</code> within the inventory.
             </p>
             <p>
-                The <code>fixity</code> block MUST contain keys corresponding to <a href="#digest-algorithms">digest
-                algorithms listed in the Digests section</a>. The value of each key MUST follow the structure of the
-                <a href="#manifest"><code>manifest</code></a> block; that is, a key corresponding to the digest value,
-                and an array of <a>content path</a>s that match that digest.
+                The <code>fixity</code> block SHOULD contain keys corresponding to the controlled vocabulary given in
+                the <a href="#digest-algorithms">digest algorithms</a> listed in the Digests section. Additional keys
+                MAY be used if they are supplied in an extension. The value of each key MUST follow the structure of
+                the <a href="#manifest"><code>manifest</code></a> block; that is, a key corresponding to the digest
+                value, and an array of <a>content path</a>s that match that digest.
             </p>
             <blockquote class="informative">
                 <p>
