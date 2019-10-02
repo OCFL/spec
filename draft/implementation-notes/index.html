@@ -398,7 +398,15 @@
                 └── ...
             </pre>
           </li>
-      </ul>
+        </ul>
+      <p>
+	Some identifier schemes may require transformation before such approaches can be used effectively. A simple
+	example would be sequentially assigned identifiers, which would not distribute objects within the filesystem
+	evenly, or variable length identifers. Hash functions may be used to provide a unidirectional mapping between
+	URI/PID and filesystem path as required by the OCFL. Encryption algorithms may be used to provide a 
+	bi-directional mapping which may be a useful aid to recoverability. Relevant details should be recorded in
+	<code>"ocfl_layout.json"</code> in the Storage Root.
+      </p>      
     </section>
 
     <section>
@@ -523,12 +531,11 @@
         object is created.
       </p>
       <p>
-        The new object need not have the same identifier as the original object. In this case, the deleted object can be
-        replaced by a "stub" object with the original identifier and location in the OCFL Storage Root. This object is
-        a standard OCFL object that just contains brief information that redirects users and software to the new
-        version - possibly with an indication of why the new object was created, if appropriate. The OCFL does not
-        define this stub object in any way - its structure, interpretation and handling are entirely client dependent,
-        but ideally some elements should be human readable for rebuildability.
+        The new object need not have the same identifier as the original object. In this case, the deleted object may be
+        replaced by a new object with the original identifier and location in the OCFL Storage Root. This object is
+        a standard OCFL object with content that redirects users and software to the new version - possibly with an 
+	indication of why the new object was created, if appropriate. The OCFL does not define redirect mechanisms,
+        the interpretation of object contents is purely a client application concern.
       </p>
     </section>
 
