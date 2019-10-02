@@ -263,6 +263,15 @@
             An algorithmic characterization of the contents of a file conforming to a standard digest algorithm.
         </dd>
         <dt>
+            <dfn>Extension</dfn>:
+        </dt>
+        <dd>
+            Extensions are used to collaborate, review, and publish additional non-normative functions related to OCFL.
+            Extensions are intended to be informational and cite-able, but outside the scope of the normal specification
+            process. Existing extensions may be found in the <a href="https://ocfl.github.io/extensions/">OCFL
+            Extensions repository.</a>
+        </dd>
+        <dt>
             <dfn>Inventory</dfn>:
         </dt>
         <dd>
@@ -475,7 +484,7 @@
         <p>
             For storage of additional fixity values, and perhaps to support legacy content migration, implementers
             SHOULD choose from the following controlled vocabulary of digest algorithms. Additional algorithms MAY be
-            supplied using an extension mechanism, with no expectation that all clients will support them.
+            supplied using an <a>Extension</a> mechanism, with no expectation that all clients will support them.
         </p>
         <table class="simple" id="digest-algorithms">
             <thead>
@@ -581,7 +590,8 @@
                 <dt><code>digestAlgorithm</code></dt>
                 <dd>
                     The digest algorithm used for calculating digests within the OCFL Object. This SHOULD be
-                    <code>sha512</code>, however <code>sha256</code> MAY also be used.
+                    <code>sha512</code>, however <code>sha256</code> MAY also be used. See the
+                    <a href="#digest-algorithms">section on Digests</a> for more information.
                 </dd>
                 <dt><code>head</code></dt>
                 <dd>
@@ -736,9 +746,9 @@
             <p>
                 The <code>fixity</code> block SHOULD contain keys corresponding to the controlled vocabulary given in
                 the <a href="#digest-algorithms">digest algorithms</a> listed in the Digests section. Additional keys
-                MAY be used if they are supplied in an extension. The value of each key MUST follow the structure of
-                the <a href="#manifest"><code>manifest</code></a> block; that is, a key corresponding to the digest
-                value, and an array of <a>content path</a>s that match that digest.
+                MAY be used if they are supplied in an <a href="">extension</a>. The value of each key MUST follow the
+                structure of the <a href="#manifest"><code>manifest</code></a> block; that is, a key corresponding to
+                the digest value, and an array of <a>content path</a>s that match that digest.
             </p>
             <blockquote class="informative">
                 <p>
