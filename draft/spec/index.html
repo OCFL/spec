@@ -124,14 +124,6 @@
                     href: "https://public.ccsds.org/pubs/650x0m2.pdf",
                     date: "June 2012"
                 },
-                "Stop-Using-SHA-256": {
-                  title: "Stop Using SHA-256",
-                  href: "https://medium.com/@davidtstrauss/stop-using-sha-256-6adbb55c608",
-                  authors: [
-                    "David Timothy Strauss"
-                  ],
-                  date: "6 October 2017"
-                },
                 "OCFL-Implementation-Notes": {
                     title: "OCFL Implementation Notes",
                     href: "../implementation-notes"
@@ -479,15 +471,16 @@
             whether a file has become corrupt, through hardware degradation or accident for example.
         </p>
         <p>
-            For content-addressing, OCFL Objects SHOULD use <code>sha512</code>. The choice of the <code>sha512</code>
-            digest algorithm as default recognizes that it has no known collision vulnerabilities, is less
-            computationally intensive to compute than <code>sha256</code>, [[Stop-Using-SHA-256]], and multiple
-            implementations are available.
+            For content-addressing, OCFL Objects MUST use either <code>sha512</code> or <code>sha256</code>, and SHOULD
+            use <code>sha512</code>. The choice of the <code>sha512</code> digest algorithm as default recognizes
+            that it has no known collision vulnerabilities and multiple implementations are available.
         </p>
         <p>
-            For storage of additional fixity values, and perhaps to support legacy content migration, implementers
-            SHOULD choose from the following controlled vocabulary of digest algorithms. Additional algorithms MAY be
-            supplied using an <a>Extension</a> mechanism, with no expectation that all clients will support them.
+            For storage of additional fixity values, or to support legacy content migration, implementers
+            MUST choose from the following controlled vocabulary of digest algorithms, or from a list of additional
+            algorithms given in an extension. OCFL clients MUST support all fixity algorithms given in the table
+            below, and MAY support additional algorithms from the extensions. Optional fixity algorithms that are
+            not supported by a client MUST be ignored by that client.
         </p>
         <table class="simple" id="digest-algorithms">
             <thead>
@@ -592,8 +585,8 @@
                 </dd>
                 <dt><code>digestAlgorithm</code></dt>
                 <dd>
-                    The digest algorithm used for calculating digests within the OCFL Object. This SHOULD be
-                    <code>sha512</code>, however <code>sha256</code> MAY also be used. See the
+                    The digest algorithm used for calculating digests within the OCFL Object. This MUST be
+                    either <code>sha512</code> or <code>sha256</code>, and SHOULD be <code>sha512</code>. See the
                     <a href="#digest-algorithms">section on Digests</a> for more information.
                 </dd>
                 <dt><code>head</code></dt>
@@ -747,16 +740,16 @@
                 key of <code>fixity</code> within the inventory.
             </p>
             <p>
-                The <code>fixity</code> block SHOULD contain keys corresponding to the controlled vocabulary given in
-                the <a href="#digest-algorithms">digest algorithms</a> listed in the Digests section. Additional keys
-                MAY be used if they are supplied in an <a>Extension</a>. The value of each key MUST follow the
-                structure of the <a href="#manifest"><code>manifest</code></a> block; that is, a key corresponding to
+                The <code>fixity</code> block MUST contain keys corresponding to the controlled vocabulary given in
+                the <a href="#digest-algorithms">digest algorithms</a> listed in the Digests section, or in a table
+                given in an <a>Extension</a>. The value of the fixity block MUST follow the structure of the
+                <a href="#manifest"><code>manifest</code></a> block; that is, a key corresponding to
                 the digest value, and an array of <a>content path</a>s that match that digest.
             </p>
             <blockquote class="informative">
-                <p>
-                    An example fixity block with <code>md5</code> and <code>sha1</code> digests is shown below.
-                </p>
+            <p>
+                An example fixity block with <code>md5</code> and <code>sha1</code> digests is shown below.
+            </p>
 <pre>
   "fixity": {
     "md5": {
@@ -782,7 +775,8 @@
         <p>
             Every occurrence of an inventory file MUST have an accompanying sidecar file stating its digest. This
             sidecar file must be of the form <code>inventory.json.ALGORITHM</code>, where <code>ALGORITHM</code> is
-            the chosen digest algorithm for the object. An example might be <code>inventory.json.sha512</code>.
+            the chosen digest algorithm for the object. This value MUST match the value given by the `digestAlgorithm`
+            block of the inventory. An example might be <code>inventory.json.sha512</code>.
         </p>
         <p>
             The digest sidecar file MUST contain the digest of the inventory file. This MUST follow the format:
