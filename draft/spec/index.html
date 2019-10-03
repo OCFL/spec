@@ -124,14 +124,6 @@
                     href: "https://public.ccsds.org/pubs/650x0m2.pdf",
                     date: "June 2012"
                 },
-                "Stop-Using-SHA-256": {
-                  title: "Stop Using SHA-256",
-                  href: "https://medium.com/@davidtstrauss/stop-using-sha-256-6adbb55c608",
-                  authors: [
-                    "David Timothy Strauss"
-                  ],
-                  date: "6 October 2017"
-                },
                 "OCFL-Implementation-Notes": {
                     title: "OCFL Implementation Notes",
                     href: "../implementation-notes"
@@ -481,8 +473,7 @@
         <p>
             For content-addressing, OCFL Objects MUST use either <code>sha512</code> or <code>sha256</code>, and SHOULD
             use <code>sha512</code>. The choice of the <code>sha512</code> digest algorithm as default recognizes
-            that it has no known collision vulnerabilities, is less computationally intensive to compute than
-            <code>sha256</code>, [[Stop-Using-SHA-256]], and multiple implementations are available.
+            that it has no known collision vulnerabilities and multiple implementations are available.
         </p>
         <p>
             For storage of additional fixity values, or to support legacy content migration, implementers
