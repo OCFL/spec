@@ -7,14 +7,14 @@
     "additionalProperties": false,
     "properties": {
         "digestAlgorithm": {
-            "enum": [ "md5", "sha1", "sha256", "sha512" ]
+            "enum": [ "sha256", "sha512" ]
         },
         "fixity": {
             "description": "Optional property. Keys are digest type and values are objects with digest to file mappings",
             "type": "object",
             "additionalProperties": false,
             "patternProperties": {
-                "^(md5|sha1|sha256|sha512)$": {
+                "^(md5|sha1|sha256|sha512|blake2b-512)$": {
                     "$ref": "#/definitions/digests_to_files"
                 }
             }
@@ -80,7 +80,7 @@
     "required": [ "digestAlgorithm", "head", "id", "manifest", "type", "versions" ],
     "definitions": {
         "digests_to_files": {
-            "description": "Object pattern used for `manifest`, `state` and within `fixity` objects. Keys are digests which MUST be hex strings with chars 0-9, a-f or A-F, values are arrays of file paths (non-empty strings). This pattern permits digests that are 32, 40, 64, or 128 hex digits long (matching md5, sha1, sha256, and sha512 respectively) but does not check that the length is correct for the type",
+            "description": "Object pattern used for `manifest`, `state` and within `fixity` objects. Keys are digests which MUST be hex strings with chars 0-9, a-f or A-F, values are arrays of file paths (non-empty strings). This pattern permits digests that are 32, 40, 64, or 128 hex digits long (matching md5, sha1, sha256, and sha512 / blake2b-512 respectively) but does not check that the length is correct for the type",
             "type" : "object",
             "additionalProperties": false,
             "patternProperties": {
