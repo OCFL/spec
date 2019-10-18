@@ -107,6 +107,13 @@
                     ],
                     date: "17 September 2018"
                 },
+                "Digest-Algorithms-Extension": {
+                    title: "OCFL Community Extension 0001: Digest Algorithms",
+                    href: "https://ocfl.github.io/extensions/0001-digest-algorithms.html",
+                    authors: [
+                        "OCFL Editors"
+                    ]
+                },
                 "Moab": {
                     title: "The Moab Design for Digital Object Versioning",
                     href: "https://journal.code4lib.org/articles/8482",
@@ -482,14 +489,14 @@
         <p>
             For storage of additional fixity values, or to support legacy content migration, implementers
             MUST choose from the following controlled vocabulary of digest algorithms, or from a list of additional
-            algorithms given in an extension. OCFL clients MUST support all fixity algorithms given in the table
-            below, and MAY support additional algorithms from the extensions. Optional fixity algorithms that are
-            not supported by a client MUST be ignored by that client.
+            algorithms given in the [[Digest-Algorithms-Extension]]. OCFL clients MUST support all fixity algorithms
+            given in the table below, and MAY support additional algorithms from the extensions. Optional fixity
+            algorithms that are not supported by a client MUST be ignored by that client.
         </p>
         <table class="simple" id="digest-algorithms">
             <thead>
             <tr>
-                <th>Digest Algorithm</th>
+                <th>Digest Algorithm Name</th>
                 <th>Note</th>
             </tr>
             </thead>
