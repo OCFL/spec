@@ -782,6 +782,93 @@
       </section>
     </section>
   </section>
+  <section>
+    <h2>Special Case Object</h2>
+    <p>
+    This section contains details of a number of object types that are useful to explore   
+    in more detail than the strict OCFL specification. All these objects are OCFL compliant
+    but can usefully be defined in a common manner to simplify application design and 
+    object portability.
+    </p>
+    <section>
+      <h2>Placeholder Objects</h2>
+      <p>
+      A placeholder object has no content but serves to register the allocation of an object
+      ID, and the corresponding location in the OCFL object root, to ensure that it cannot 
+      be taken up by another object. Such an object has a single version with an empty
+      <code>content</code> directory maintained through the presence of a <code>.keep</code> 
+      file as detailed previously. Use cases for such objects include:
+      </p>
+      <ul>
+        <li>
+          The pre-allocation of ID's for inclusion in print publications prior to data 
+          availability.
+        </li>
+        <li>
+          Tombstones for completely purged objects to ensure another object does not
+          erroneously inherit the same ID.
+        </li>
+      </ul>
+      <p>
+      The reason for the existence of the placeholder may be recorded as text in the 
+      <code>.keep</code> file or in the <code>comments</code> section of the inventory.  	
+      </p>
+    </section>
+    <section>
+      <h2>Mutable Head Objects</h2>
+      <p>
+      Mutable head objects have a current version that can be updated without creating a 
+      new version yet still requires some level of persistence. The existence of mutable
+      head versions contravenes the immutability assumptions upon which OCFL is based, and
+      thus cannot be accomodated within the standard OCFL version numbering scheme. However,
+      the <code>var</code> directory can be used to implement such a facility. The 
+      recommended approach is:
+      </p>
+      <ul>
+        <li>
+          The top level inventory in the object root still refers to the most recent immutable
+          (numbered) version of the OCFL object. This indicates a stable version of the object
+          that can be referenced externally and copied for archival or replication purposes.
+        </li>
+        <li>
+          If a <code>var</code> directory exists and it contains both an OCFL inventory and 
+          conformance details, then it can be assumed to contain a mutable head version. This
+          is NOT part of the formal OCFL spec but a recommended convention for one use for
+          the <code>var</code> directory.
+        </li>
+        <li>
+          A mutable head version should, in all respects, be a conformant OCFL object version 
+          except that its inventory will not match that of the containing OCFL object root.
+          This allows the convenient reuse of much OCFL object version orientated code, and
+          the easy conversion to an immutable version when the decision to commit is taken.
+        </li>
+        <li>
+          External references and dependencies on mutable head versions should be discouraged
+          since referential integrity cannot be guaranteed. References should either point to 
+          an immutable version or the object as a whole.
+        </li>
+        <li>
+          Updating mutable head versions needs to be undertaken cautiously since it involves
+          overwriting rather than addition, and the object is thus potentially in an invalid 
+          state for longer. Removing the inventory file as the first part of updating, and 
+          re-instating the new inventory as the final operation, helps to ensure that a partial
+          update is not considered a valid mutable head version according to the convention 
+          described above.
+        </li>
+      </ul>
+    </section>
+    <section>
+    <h2>Unversioned Objects</h2>
+    <p>
+    An unversioned object is one that has no immutable versions and is always overwritten 
+    when updated. This is not something that OCFL explicitly supports but can be realised
+    by combining the two approaches above, creating a placeholder object with an empty 
+    version and then adding a mutable head. As with a regular placeholder object, the reason
+    for the existence of the unversioned object may be recorded as text in the 
+    <code>.keep</code> file or in the <code>comments</code> section of the inventory. 
+    </p>
+    </section>
+  </section>
 
 </body>
 </html>
