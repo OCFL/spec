@@ -854,7 +854,17 @@ DIGEST inventory.json
                 wrong, while others may wish to only store a log entry if an intervention was required.
             </p>
         </blockquote>
+    </section>
 
+    <section id="extensions">
+        <h2>Extensions directory</h2>
+        <p>
+            The base directory of an OCFL Object MAY contain a directory named <code>extensions</code> for the purposes
+            of extending the functionality of an OCFL Object. Sub-directories of the extensions directory MUST be named
+            according to a registered extension name. OCFL Validators MUST ignore any content in extensions that are
+            not understood. The specific structure and function of the extension, as well as a declaration of the
+            registered extension name MUST be defined in the OCFL Extensions Registry.
+        </p>
     </section>
 </section>
 
@@ -953,7 +963,7 @@ DIGEST inventory.json
     </section>
 
     <section id="root-extensions">
-        <h2>Extensions</h2>
+        <h2>Root Extensions</h2>
         <p>
             The behavior of the storage root may be extended to support features from other specifications.
             An OCFL validator MUST ignore any files in the storage root it does not understand. Additional
@@ -1512,6 +1522,27 @@ myfirstbag
 }
 </pre>
 </section>
+    <section id="example-extended-object">
+        <h2>Example Extended OCFL Object</h2>
+        <p>
+            The following example OCFL Object has an extension containing custom content. The OCFL Object itself
+            remains valid.
+        </p>
+<pre>
+[object root]
+    ├── 0=ocfl_object_1.0
+    ├── inventory.json
+    ├── inventory.json.sha512
+    ├── extensions
+    │   └── my-extension
+    │       └── file1-new.txt
+    └── v1
+        ├── inventory.json
+        ├── inventory.json.sha512
+        └── content
+            └── file.txt
+</pre>
+    </section>
 </section>
 </body>
 </html>
