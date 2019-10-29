@@ -19,7 +19,7 @@ Specifically, the benefits of the OCFL include:
   * [OCFL Implementation Notes](draft/implementation-notes/)
   
 ## Extensions
-  * [Extension specifications](https://github.com/OCFL/extensions)
+  * [OCFL Community Extensions](https://github.com/OCFL/extensions)
 
 ## Participate
 
