@@ -892,13 +892,8 @@ DIGEST inventory.json
           </li>
         </ul>
         <p>
-            An OCFL Storage Root MAY contain a directory named <code>deposit</code>, which MAY be empty. Implementations
-            MAY use this directory for assembling new or updated content. Clients performing any other operation, or
-            validating a storage root, MUST ignore the <code>deposit</code> directory if present.
-        </p>
-        <p>
-          Except for a <code>deposit</code> directory, sub-directories within an OCFL Storage Root MUST NOT contain
-          files that are not part of an OCFL Object. Empty directories MUST NOT appear within a storage root.
+          Sub-directories within an OCFL Storage Root MUST NOT contain files that are not part of an OCFL Object.
+          Empty directories MUST NOT appear within a storage root.
         </p>
         <p>
           Although implementations may require multiple OCFL Storage Roots&mdash;that is, several logical or
