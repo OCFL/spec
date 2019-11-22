@@ -758,25 +758,28 @@
         <section id="fixity">
             <h2>Fixity</h2>
             <p>
-                An OCFL Object inventory MAY include a block for storing fixity checks. This block MUST have the
-                key of <code>fixity</code> within the inventory.
+                An OCFL Object inventory MAY include a block for storing additional fixity information to supplement the
+                complete set of digests in the <a href="#manifest">Manifest</a>, for example to support legacy digests
+                from a content migration. This block MUST have the key of <code>fixity</code> within the inventory.
             </p>
             <p>
                 The <code>fixity</code> block MUST contain keys corresponding to the controlled vocabulary given in
-                the <a href="#digest-algorithms">digest algorithms</a> listed in the Digests section, or in a table
-                given in an <a>Extension</a>. The value of the fixity block MUST follow the structure of the
-                <a href="#manifest"><code>manifest</code></a> block; that is, a key corresponding to
-                the digest value, and an array of <a>content path</a>s that match that digest.
+                the <a href="#digest-algorithms">digest algorithms</a> listed in the <a href="#digests">Digests</a>
+                section, or in a table given in an <a>Extension</a>. The value of the fixity block for a particular
+                digest algorithm MUST follow the structure of the <a href="#manifest"><code>manifest</code></a> block;
+                that is, a key corresponding to the digest value, and an array of <a>content path</a>s that match that
+                digest. The fixity block for any digest algorithm MAY include digest values for any subset of
+                content paths in the object.
             </p>
             <blockquote class="informative">
             <p>
-                An example fixity block with <code>md5</code> and <code>sha1</code> digests is shown below.
+                An example fixity block with <code>md5</code> and <code>sha1</code> digests is shown below. In this
+                case the <code>md5</code> digest values are provided only for version 1 content paths.
             </p>
 <pre>
   "fixity": {
     "md5": {
       "184f84e28cbe75e050e9c25ea7f2e939": [ "v1/content/foo/bar.xml" ],
-      "2673a7b11a70bc7ff960ad8127b4adeb": [ "v2/content/foo/bar.xml" ],
       "c289c8ccd4bab6e385f5afdd89b5bda2": [ "v1/content/image.tiff" ],
       "d41d8cd98f00b204e9800998ecf8427e": [ "v1/content/empty.txt" ]
     },
