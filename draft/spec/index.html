@@ -769,7 +769,8 @@
                 digest algorithm MUST follow the structure of the <a href="#manifest"><code>manifest</code></a> block;
                 that is, a key corresponding to the digest value, and an array of <a>content path</a>s that match that
                 digest. The fixity block for any digest algorithm MAY include digest values for any subset of
-                content paths in the object.
+                content paths in the object. There is no requirement that all content files have a value in the fixity
+                block, or that fixity values provided in one version are carried forward to later versions.
             </p>
             <blockquote class="informative">
             <p>
