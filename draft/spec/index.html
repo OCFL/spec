@@ -453,32 +453,35 @@
             version directory names.
         </p>
         <p>
-            Version directories MUST contain a designated content sub-directory if the version contains files to be
-            preserved, and SHOULD NOT contain this sub-directory otherwise. The name of this designated sub-directory
-            MAY be defined in the <a href="#inventory">inventory file</a> using the key <code>contentDirectory</code>
-            with the value being the chosen sub-directory name as a string, relative to the version directory.
-            The <code>contentDirectory</code> value MUST NOT contain the forward slash (/) path separator. If the key
-            <code>contentDirectory</code> is set, it MUST be set in the first version of the object and MUST NOT
-            change between versions of the same object.
-          </p>
-          <p>
             There MUST be no other files as children of a version directory, other than an <a
-             href="#inventory">inventory file</a> and a <a href="#inventory-digest">inventory digest</a>.
+            href="#inventory">inventory file</a> and a <a href="#inventory-digest">inventory digest</a>.
             The version directory SHOULD NOT contain any directories other than the designated content
             sub-directory. Once created, the contents of a version directory are expected to be immutable.
         </p>
-        <p>
-            If the key <code>contentDirectory</code> is not present in the <a href="#inventory">inventory file</a> then
-            the name of the designated content sub-directory MUST be <code>content</code>. OCFL-compliant tools
-            (including any validators) MUST ignore all directories in the object version directory except for the
-            designated content directory.
-        </p>
-        <p>
-            Every file within a version's content directory MUST be referenced in the <a href="#manifest">manifest</a>
-            section of the inventory. There MUST NOT be empty directories within a version's content directory. A
-            directory that would otherwise be empty MAY be maintained by creating a file within it named according to
-            local conventions, for example by making an empty <code>.keep</code> file.
-        </p>
+        <section id="content-directory">
+          <h2>Content Directory</h2>
+          <p>
+              Version directories MUST contain a designated content sub-directory if the version contains files to be
+              preserved, and SHOULD NOT contain this sub-directory otherwise. The name of this designated sub-directory
+              MAY be defined in the <a href="#inventory">inventory file</a> using the key <code>contentDirectory</code>
+              with the value being the chosen sub-directory name as a string, relative to the version directory.
+              The <code>contentDirectory</code> value MUST NOT contain the forward slash (/) path separator. If the key
+              <code>contentDirectory</code> is set, it MUST be set in the first version of the object and MUST NOT
+              change between versions of the same object.
+            </p>
+          <p>
+              If the key <code>contentDirectory</code> is not present in the <a href="#inventory">inventory file</a>
+              then the name of the designated content sub-directory MUST be <code>content</code>. OCFL-compliant tools
+              (including any validators) MUST ignore all directories in the object version directory except for the
+              designated content directory.
+          </p>
+          <p>
+              Every file within a version's content directory MUST be referenced in the <a href="#manifest">manifest</a>
+              section of the inventory. There MUST NOT be empty directories within a version's content directory. A
+              directory that would otherwise be empty MAY be maintained by creating a file within it named according to
+              local conventions, for example by making an empty <code>.keep</code> file.
+          </p>
+        </section>
     </section>
 
     <section id="digests">
@@ -576,10 +579,9 @@
             files has no significance.
         </p>
         <p>
-            The forward slash (/) path separator MUST be used in content and logical paths in the
-            <a href="#manifest">manifest</a>, <a href="#fixity">fixity</a>, and <a href="#version">state</a> blocks
-            within the inventory. Implementations that target systems using other separators will need to translate
-            paths appropriately.
+            The forward slash (/) path separator MUST be used in content paths in the <a href="#manifest">manifest</a>
+            and <a href="#fixity">fixity</a> blocks within the inventory. Implementations that target systems using
+            other separators will need to translate paths appropriately.
         </p>
         <blockquote class="informative">
             <p>
@@ -758,25 +760,29 @@
         <section id="fixity">
             <h2>Fixity</h2>
             <p>
-                An OCFL Object inventory MAY include a block for storing fixity checks. This block MUST have the
-                key of <code>fixity</code> within the inventory.
+                An OCFL Object inventory MAY include a block for storing additional fixity information to supplement the
+                complete set of digests in the <a href="#manifest">Manifest</a>, for example to support legacy digests
+                from a content migration. This block MUST have the key of <code>fixity</code> within the inventory.
             </p>
             <p>
                 The <code>fixity</code> block MUST contain keys corresponding to the controlled vocabulary given in
-                the <a href="#digest-algorithms">digest algorithms</a> listed in the Digests section, or in a table
-                given in an <a>Extension</a>. The value of the fixity block MUST follow the structure of the
-                <a href="#manifest"><code>manifest</code></a> block; that is, a key corresponding to
-                the digest value, and an array of <a>content path</a>s that match that digest.
+                the <a href="#digest-algorithms">digest algorithms</a> listed in the <a href="#digests">Digests</a>
+                section, or in a table given in an <a>Extension</a>. The value of the fixity block for a particular
+                digest algorithm MUST follow the structure of the <a href="#manifest"><code>manifest</code></a> block;
+                that is, a key corresponding to the digest value, and an array of <a>content path</a>s that match that
+                digest. The fixity block for any digest algorithm MAY include digest values for any subset of
+                content paths in the object. There is no requirement that all content files have a value in the fixity
+                block, or that fixity values provided in one version are carried forward to later versions.
             </p>
             <blockquote class="informative">
             <p>
-                An example fixity block with <code>md5</code> and <code>sha1</code> digests is shown below.
+                An example fixity block with <code>md5</code> and <code>sha1</code> digests is shown below. In this
+                case the <code>md5</code> digest values are provided only for version 1 content paths.
             </p>
 <pre>
   "fixity": {
     "md5": {
       "184f84e28cbe75e050e9c25ea7f2e939": [ "v1/content/foo/bar.xml" ],
-      "2673a7b11a70bc7ff960ad8127b4adeb": [ "v2/content/foo/bar.xml" ],
       "c289c8ccd4bab6e385f5afdd89b5bda2": [ "v1/content/image.tiff" ],
       "d41d8cd98f00b204e9800998ecf8427e": [ "v1/content/empty.txt" ]
     },
@@ -902,13 +908,8 @@ DIGEST inventory.json
           </li>
         </ul>
         <p>
-            An OCFL Storage Root MAY contain a directory named <code>deposit</code>, which MAY be empty. Implementations
-            MAY use this directory for assembling new or updated content. Clients performing any other operation, or
-            validating a storage root, MUST ignore the <code>deposit</code> directory if present.
-        </p>
-        <p>
-          Except for a <code>deposit</code> directory, sub-directories within an OCFL Storage Root MUST NOT contain
-          files that are not part of an OCFL Object. Empty directories MUST NOT appear within a storage root.
+          Sub-directories within an OCFL Storage Root MUST NOT contain files that are not part of an OCFL Object.
+          Empty directories MUST NOT appear within a storage root.
         </p>
         <p>
           Although implementations may require multiple OCFL Storage Roots&mdash;that is, several logical or
