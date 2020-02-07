@@ -803,8 +803,9 @@
         <p>
             Every occurrence of an inventory file MUST have an accompanying sidecar file stating its digest. This
             sidecar file must be of the form <code>inventory.json.ALGORITHM</code>, where <code>ALGORITHM</code> is
-            the chosen digest algorithm for the object. This value MUST match the value given by the `digestAlgorithm`
-            block of the inventory. An example might be <code>inventory.json.sha512</code>.
+            the chosen digest algorithm for the object. This value MUST match the value given for the
+            <code>digestAlgorithm</code> key in the inventory. An example might be
+            <code>inventory.json.sha512</code>.
         </p>
         <p>
             The digest sidecar file MUST contain the digest of the inventory file. This MUST follow the format:
