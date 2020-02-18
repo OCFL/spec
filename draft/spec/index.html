@@ -836,8 +836,11 @@ DIGEST inventory.json
         </p>
         <p>
             In the case that prior version directories include an inventory file there will be multiple inventory 
-            files describing prior versions within the OCFL Object. Each version block in each prior inventory file MUST represent the same object state as the corresponding version block in the current inventory file. 
-            Additionally, the values of the <code>created</code>, <code>message</code> and <code>user</code> keys in each version block in each prior inventory file SHOULD have the same values as the corresponding keys in the correspodings version block in the current inventory file.
+            files describing prior versions within the OCFL Object. Each version block in each prior inventory file
+            MUST represent the same object state as the corresponding version block in the current inventory file. 
+            Additionally, the values of the <code>created</code>, <code>message</code> and <code>user</code> keys in
+            each version block in each prior inventory file SHOULD have the same values as the corresponding keys in
+            the correspodings version block in the current inventory file.
         </p>
         <blockquote class="informative">
             Non-normative note: Storing an inventory for every version provides redundancy for this critical
