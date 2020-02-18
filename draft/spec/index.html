@@ -296,7 +296,8 @@
         </dt>
         <dd>
             A path that represents a file's location in the <a>logical state</a> of an object. Logical paths are
-            used in conjunction with a digest to represent the file name for a given bitstream at a given version.
+            used in conjunction with a digest to represent the file name and path for a given bitstream at a given
+            version.
         </dd>
         <dt>
             <dfn>Logical State</dfn>:
@@ -696,7 +697,8 @@
                             are digest values, each of which MUST correspond to an entry in the
                             <a href="#manifest">manifest of the inventory</a>. The value for each key is an array
                             containing <a>logical path</a> names of files in the OCFL Object state that have
-                            content with the given digest.
+                            content with the given digest. Logical paths MUST NOT start with <code>.</code>,
+                            <code>..</code>, <code>/</code>, or <code>//</code>.
                         </p>
                         <blockquote class="informative">
                             <p>
