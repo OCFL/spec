@@ -863,15 +863,30 @@ DIGEST inventory.json
         </blockquote>
     </section>
 
-    <section id="extensions">
-        <h2>Extensions directory</h2>
+    <section id="object-extensions">
+        <h2>Object Extensions</h2>
         <p>
             The base directory of an OCFL Object MAY contain a directory named <code>extensions</code> for the purposes
-            of extending the functionality of an OCFL Object. Sub-directories of the extensions directory MUST be named
-            according to a registered extension name. OCFL Validators MUST ignore any content in extensions that are
-            not understood. The specific structure and function of the extension, as well as a declaration of the
-            registered extension name MUST be defined in the OCFL Extensions Registry.
+            of extending the functionality of an OCFL Object. The <code>extensions</code> directory MUST NOT contain
+            any files, and no sub-directories other than extension sub-directories. Extension sub-directories MUST be
+            named according to a registered extension name. The specific structure and function of the extension, as
+            well as a declaration of the registered extension name MUST be defined in one of the following locations:
+            <ul>
+              <li>
+                The <a href="https://ocfl.github.io/extensions/">OCFL Extensions repository</a>
+              </li>
+              <li>
+                The Storage Root as a plain text document
+              </li>
+            </ul>
         </p>
+        <blockquote class="informative">
+          <p>
+            Non-normative note: Extension sub-directories are required to use the same name as the registered extension
+            in order to both avoid the possiblity of an extension sub-directory colliding with the name of another
+            registered extension as well as to facilitate the recognition of extensions by OCFL consumer clients.
+          </p>
+        </blockquote>
     </section>
 </section>
 
@@ -964,10 +979,18 @@ DIGEST inventory.json
         </ol>
     </section>
 
-    <section id="root-extensions">
-        <h2>Root Extensions</h2>
+    <section id="storage-root-extensions">
+        <h2>Storage Root Extensions</h2>
         <p>
             The behavior of the storage root may be extended to support features from other specifications.
+        </p>
+        <p>
+            The base directory of an OCFL Object MAY contain a directory named <code>extensions</code> for the purposes
+            of extending the functionality of an OCFL Object. The storage root <code>extensions</code> directory MUST
+            conform to the same guidelines and limitations as those defined for
+            <a href="#object-extensions">object extensions</a>.
+        </p>
+        <p>
             An OCFL validator MUST ignore any files in the storage root it does not understand. Additional
             files MUST NOT appear in other directories under the storage root.
         </p>
@@ -1536,7 +1559,7 @@ myfirstbag
     ├── inventory.json
     ├── inventory.json.sha512
     ├── extensions
-    │   └── my-extension
+    │   └── 0011-my-extension
     │       └── file1-new.txt
     └── v1
         ├── inventory.json
