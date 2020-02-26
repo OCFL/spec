@@ -868,21 +868,21 @@ DIGEST inventory.json
         <p>
             The base directory of an OCFL Object MAY contain a directory named <code>extensions</code> for the purposes
             of extending the functionality of an OCFL Object. The <code>extensions</code> directory MUST NOT contain
-            any files, and no sub-directories other than extension sub-directories. Extension sub-directories MUST be
+            any files, and no sub-directories other than extension sub-directories. Extension sub-directories SHOULD be
             named according to a registered extension name. The specific structure and function of the extension, as
             well as a declaration of the registered extension name MUST be defined in one of the following locations:
-            <ul>
-              <li>
-                The <a href="https://ocfl.github.io/extensions/">OCFL Extensions repository</a>
-              </li>
-              <li>
-                The Storage Root as a plain text document
-              </li>
-            </ul>
         </p>
+        <ul>
+          <li>
+            The <a href="https://ocfl.github.io/extensions/">OCFL Extensions repository</a>
+          </li>
+          <li>
+            The Storage Root, as a plain text document directly in the Storage Root
+          </li>
+        </ul>
         <blockquote class="informative">
           <p>
-            Non-normative note: Extension sub-directories are required to use the same name as the registered extension
+            Non-normative note: Extension sub-directories should use the same name as a registered extension
             in order to both avoid the possiblity of an extension sub-directory colliding with the name of another
             registered extension as well as to facilitate the recognition of extensions by OCFL consumer clients.
           </p>
@@ -985,9 +985,9 @@ DIGEST inventory.json
             The behavior of the storage root may be extended to support features from other specifications.
         </p>
         <p>
-            The base directory of an OCFL Object MAY contain a directory named <code>extensions</code> for the purposes
-            of extending the functionality of an OCFL Object. The storage root <code>extensions</code> directory MUST
-            conform to the same guidelines and limitations as those defined for
+            The base directory of an OCFL Storage Root MAY contain a directory named <code>extensions</code> for the
+            purposes of extending the functionality of an OCFL Storage Root. The storage root <code>extensions</code>
+            directory MUST conform to the same guidelines and limitations as those defined for
             <a href="#object-extensions">object extensions</a>.
         </p>
         <p>
@@ -1559,7 +1559,7 @@ myfirstbag
     ├── inventory.json
     ├── inventory.json.sha512
     ├── extensions
-    │   └── 0011-my-extension
+    │   └── 0000-example-extension
     │       └── file1-new.txt
     └── v1
         ├── inventory.json
