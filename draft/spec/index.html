@@ -684,9 +684,10 @@
                         <code>created</code>
                     </dt>
                     <dd>
-                        The value of this key is the datetime of creation of this version. It MUST be expressed in
-                        [[!ISO8601]], and SHOULD include a timezone value or UTC. It SHOULD also be granular to the
-                        second level.
+                        The value of this key is the datetime of creation of this version. It MUST be expressed in the
+                        Internet Date/Time Format defined by [[!RFC3339]]. This format requires the inclusion of a
+                        timezone value or <code>Z</code> for UTC, and that the time component be granular to the
+                        second level (with optional fractional seconds).
                     </dd>
                     <dt>
                         <code>state</code>
@@ -846,9 +847,9 @@ DIGEST inventory.json
             Digest</a>.
         </p>
         <p>
-            In the case that prior version directories include an inventory file there will be multiple inventory 
+            In the case that prior version directories include an inventory file there will be multiple inventory
             files describing prior versions within the OCFL Object. Each version block in each prior inventory file
-            MUST represent the same object state as the corresponding version block in the current inventory file. 
+            MUST represent the same object state as the corresponding version block in the current inventory file.
             Additionally, the values of the <code>created</code>, <code>message</code> and <code>user</code> keys in
             each version block in each prior inventory file SHOULD have the same values as the corresponding keys in
             the corresponding version block in the current inventory file.
