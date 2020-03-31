@@ -160,7 +160,7 @@
       </p>
     </section>
 
-    <section>
+    <section id="fixity">
       <h2>Fixity</h2>
       <p>
         The digests in the manifest are used by the OCFL for content addressability rather than fixity but they are
@@ -503,7 +503,7 @@
         </p>
       </section>
 
-      <section>
+      <section id="version-immutability">
         <h2>Version Immutability</h2>
         <p>
           Previous versions of an object should be considered immutable since the composition of later versions of an
@@ -536,6 +536,138 @@
         indication of why the new object was created, if appropriate. The OCFL does not define redirect mechanisms,
         the interpretation of object contents is purely a client application concern.
       </p>
+    </section>
+
+    <section id="digest-migration">
+      <h2>Migrating to a New Digest Algorithm</h2>
+      <p>
+        Over time new digest algorithms are developed to increase security and address vulnerabilities in existing
+        algorithms. It may become desirable to migrate an object to use a new algorithm while retaining
+        <a href="#version-immutability">Version Immutability</a>. OCFL supports this through the creation of a new
+        version with a new <code>digestAlgorithm</code> that either retains the same object content or is combined with
+        a content update.
+      </p>
+      <p>
+        Consider an example OCFL object where the <code>digestAlgorithm</code> in the <code>inventory.json</code> is
+        <code>sha256</code> and the OCFL object contains a single file (<code>file.txt</code>). We will illustrate
+        migration to use <code>sha512</code> without changing the object content. The starting <code>v1</code> file
+        layout is:
+      </p>
+      <pre>
+[object root]
+    ├── 0=ocfl_object_1.0
+    ├── inventory.json
+    ├── inventory.json.sha256
+    └── v1
+        ├── inventory.json
+        ├── inventory.json.sha256
+        └── content
+            └── file.txt
+      </pre>
+      <p>
+        and the corresponding inventory is:
+      </p>
+      <pre>
+{
+  "digestAlgorithm": "sha256",
+  "head": "v1",
+  "id": "http://example.org/digest_update_example",
+  "manifest": {
+    "579391...bfe": [
+      "v1/content/file.txt"
+    ]
+  },
+  "type": "https://ocfl.io/1.0/spec/#inventory",
+  "versions": {
+    "v1": {
+      "created": "2020-01-01T01:01:01",
+      "message": "sha256 forever",
+      "state": {
+        "579391...bfe": [
+          "file.txt"
+        ]
+      },
+      "user": {
+        "address": "mailto:secret@example.org",
+        "name": "Secret Agent"
+      }
+    }
+  }
+}
+      </pre>
+      <p>
+        We create a new version, <code>v2</code>, using the <code>digestAlgorithm</code> <code>sha512</code>. The
+        <code>v1</code> directory and inventory are unchanged. The <code>v2</code> directory has no <code>content</code>
+        directory because no new content is added. The new inventory uses <code>sha512</code> values for the
+        <code>manifest</code> and <code>state</code> blocks, the legacy <code>sha256</code> digests are retained
+        in the <code>fixity</code> block as an implementation choice. The file layout of the object with
+        <code>v2</code> is:
+      </p>
+      <pre>
+[object root]
+    ├── 0=ocfl_object_1.0
+    ├── inventory.json
+    ├── inventory.json.sha512
+    ├── v1
+    │   ├── content
+    │   │   └── file.txt
+    │   ├── inventory.json
+    │   └── inventory.json.sha256
+    └── v2
+        ├── inventory.json
+        └── inventory.json.sha512
+      </pre>
+      <p>
+        and the corresponding <code>v2</code> inventory is:
+      </p>
+      <pre>
+{
+  "digestAlgorithm": "sha512",
+  "fixity": {
+    "sha256": {
+      "579391...bfe": [
+        "v1/content/file.txt"
+      ]
+    }
+  },
+  "head": "v2",
+  "id": "http://example.org/digest_update_example",
+  "manifest": {
+    "7545b8720a60123...f67": [
+      "v1/content/file.txt"
+    ]
+  },
+  "type": "https://ocfl.io/1.0/spec/#inventory",
+  "versions": {
+    "v1": {
+      "created": "2020-01-01T01:01:01",
+      "message": "sha256 forever",
+      "state": {
+        "7545b8720a60123...f67": [
+          "file.txt"
+        ]
+      },
+      "user": {
+        "address": "mailto:secret@example.org",
+        "name": "Secret Agent"
+      }
+    },
+    "v2": {
+      "created": "2020-03-26T21:00:00",
+      "message": "Update sha256 to sha512, no content change",
+      "state": {
+        "7545b8720a60123...f67": [
+          "file.txt"
+        ]
+      },
+      "user": {
+        "address": "mailto:special@example.org",
+        "name": "Special Agent"
+      }
+    }
+  }
+}
+      </pre>
     </section>
 
     <section>
