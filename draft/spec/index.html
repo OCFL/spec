@@ -410,78 +410,85 @@
                └── ... content files ...
 </pre>
         <p>
-            The <a>OCFL Object Root</a> MUST NOT contain files or directories other than those specified in the
-            following sections.
+            The <a>OCFL Object Root</a> <span id="E001">MUST NOT</span> contain files or directories other than those
+            specified in the following sections.
         </p>
     </section>
 
     <section id="object-conformance-declaration">
         <h2>Object Conformance Declaration</h2>
         <p>
-            The version declaration MUST be formatted according to the [[!NAMASTE]] specification. It MUST be a
-            file in the base directory of the OCFL Object Root giving the OCFL version in the filename. The filename
-            MUST conform to the pattern <code>T=dvalue</code>, where <code>T</code> MUST be 0, and <code>dvalue</code>
-            MUST be <code>ocfl_object_</code>, followed by the OCFL specification version number. The text contents of
-            the file MUST be the same as <code>dvalue</code>, followed by a newline (<code>\n</code>).
+            The version declaration <span id="E002">MUST</span> be formatted according to the [[!NAMASTE]]
+            specification.
+            It <span id="E003">MUST</span> be a file in the base directory of the OCFL Object Root giving the OCFL
+            version in the filename. The filename <span id="E004">MUST</span> conform to the pattern
+            <code>T=dvalue</code>, where <code>T</code> <span id="E005">MUST</span> be 0, and <code>dvalue</code>
+            <span id="E006">MUST</span> be <code>ocfl_object_</code>, followed by the OCFL specification version
+            number. The text contents of the file <span id="E007">MUST</span> be the same as <code>dvalue</code>,
+            followed by a newline (<code>\n</code>).
         </p>
     </section>
 
     <section id="version-directories">
         <h2>Version Directories</h2>
         <p>
-            OCFL Object content MUST be stored as a sequence of one or more versions. Each object version is stored in a
-            version directory under the object root. The sequence of version numbers is the sequence of positive,
-            base-ten integers: 1, 2, 3, etc., and the version directory name is constructed by adding the prefix
-            <code>v</code>. The version number sequence MUST start at 1 and MUST be continuous without missing integers.
+            OCFL Object content <span id="E008">MUST</span> be stored as a sequence of one or more versions. Each
+            object version is stored in a version directory under the object root. The sequence of version numbers
+            is the sequence of positive, base-ten integers: 1, 2, 3, etc., and the version directory name is
+            constructed by adding the prefix <code>v</code>. The version number sequence <span id="E009">MUST</span>
+            start at 1 and <span id="E010">MUST</span> be continuous without missing integers.
         </p>
         <p>
-            Implementations SHOULD use version directory names constructed without zero-padding the
-            version number, ie. <code>v1</code>, <code>v2</code>, <code>v3</code>, etc..
+            Implementations <span id="W001">SHOULD</span> use version directory names constructed without zero-padding
+            the version number, ie. <code>v1</code>, <code>v2</code>, <code>v3</code>, etc..
         </p>
         <p>
             For compatibility with existing filesystem conventions, implementations MAY use zero-padded version
             directory numbers, with the following restriction: If zero-padded version directory numbers are used then
-            they MUST start with the prefix <code>v</code> and then a zero. For example, in an implementation that uses
-            five digits for version directory names then <code>v00001</code> to <code>v09999</code> are allowed,
-            <code>v10000</code> is not allowed.
+            they <span id="E011">MUST</span> start with the prefix <code>v</code> and then a zero. For example, in an
+            implementation that uses five digits for version directory names then <code>v00001</code> to
+            <code>v09999</code> are allowed, <code>v10000</code> is not allowed.
         </p>
         <p>
             The first version of an object defines the naming convention for all version directories for the object.
-            All version directories of an object MUST use the same naming convention: either a non-padded version
-            directory number, or a zero-padded version directory number of consistent length. Operations that add a new
-            version to an object MUST follow the version directory naming convention established by earlier versions.
-            In all cases, references to files inside version directories from inventory files MUST use the actual
-            version directory names.
+            All version directories of an object <span id="E012">MUST</span> use the same naming convention: either a
+            non-padded version directory number, or a zero-padded version directory number of consistent length.
+            Operations that add a new version to an object <span id="E013">MUST</span> follow the version directory
+            naming convention established by earlier versions. In all cases, references to files inside version
+            directories from inventory files <span id="E014">MUST</span> use the actual version directory names.
         </p>
         <p>
-            There MUST be no other files as children of a version directory, other than an <a
+            There <span id="E015">MUST</span> be no other files as children of a version directory, other than an <a
             href="#inventory">inventory file</a> and a <a href="#inventory-digest">inventory digest</a>.
-            The version directory SHOULD NOT contain any directories other than the designated content
-            sub-directory. Once created, the contents of a version directory are expected to be immutable.
+            The version directory <span id="W002">SHOULD NOT</span> contain any directories other than the designated
+            content sub-directory. Once created, the contents of a version directory are expected to be immutable.
         </p>
         <section id="content-directory">
           <h2>Content Directory</h2>
           <p>
-              Version directories MUST contain a designated content sub-directory if the version contains files to be
-              preserved, and SHOULD NOT contain this sub-directory otherwise. The name of this designated sub-directory
-              MAY be defined in the <a href="#inventory">inventory file</a> using the key <code>contentDirectory</code>
-              with the value being the chosen sub-directory name as a string, relative to the version directory.
-              The <code>contentDirectory</code> value MUST NOT contain the forward slash (<code>/</code>) path
-              separator and MUST NOT be either one or two periods (<code>.</code> or <code>..</code>). If the key
-              <code>contentDirectory</code> is set, it MUST be set in the first version of the object and MUST NOT
-              change between versions of the same object.
+              Version directories <span id="E016">MUST</span> contain a designated content sub-directory if the version
+              contains files to be preserved, and <span id="W003">SHOULD NOT</span> contain this sub-directory
+              otherwise. The name of this designated sub-directory MAY be defined in the
+              <a href="#inventory">inventory file</a> using the key <code>contentDirectory</code> with the value being
+              the chosen sub-directory name as a string, relative to the version directory. The
+              <code>contentDirectory</code> value <span id="E017">MUST NOT</span> contain the forward slash
+              (<code>/</code>) path separator and <span id="E018">MUST NOT</span> be either one or two periods
+              (<code>.</code> or <code>..</code>). If the key <code>contentDirectory</code> is set, it
+              <span id="E019">MUST</span> be set in the first version of the object and
+              <span id="E020">MUST NOT</span> change between versions of the same object.
             </p>
           <p>
               If the key <code>contentDirectory</code> is not present in the <a href="#inventory">inventory file</a>
-              then the name of the designated content sub-directory MUST be <code>content</code>. OCFL-compliant tools
-              (including any validators) MUST ignore all directories in the object version directory except for the
-              designated content directory.
+              then the name of the designated content sub-directory <span id="E021">MUST</span> be
+              <code>content</code>. OCFL-compliant tools (including any validators) <span id="E022">MUST</span>
+              ignore all directories in the object version directory except for the designated content directory.
           </p>
           <p>
-              Every file within a version's content directory MUST be referenced in the <a href="#manifest">manifest</a>
-              section of the inventory. There MUST NOT be empty directories within a version's content directory. A
-              directory that would otherwise be empty MAY be maintained by creating a file within it named according to
-              local conventions, for example by making an empty <code>.keep</code> file.
+              Every file within a version's content directory <span id="E023">MUST</span> be referenced in the
+              <a href="#manifest">manifest</a> section of the inventory. There <span id="E024">MUST NOT</span> be empty
+              directories within a version's content directory. A directory that would otherwise be empty MAY be
+              maintained by creating a file within it named according to local conventions, for example by making an
+              empty <code>.keep</code> file.
           </p>
         </section>
     </section>
@@ -498,16 +505,18 @@
             whether a file has become corrupt, through hardware degradation or accident for example.
         </p>
         <p>
-            For content-addressing, OCFL Objects MUST use either <code>sha512</code> or <code>sha256</code>, and SHOULD
-            use <code>sha512</code>. The choice of the <code>sha512</code> digest algorithm as default recognizes
-            that it has no known collision vulnerabilities and multiple implementations are available.
+            For content-addressing, OCFL Objects <span id="E025">MUST</span> use either <code>sha512</code> or
+            <code>sha256</code>, and <span id="W004">SHOULD</span> use <code>sha512</code>. The choice of the
+            <code>sha512</code> digest algorithm as default recognizes that it has no known collision vulnerabilities
+            and multiple implementations are available.
         </p>
         <p>
             For storage of additional fixity values, or to support legacy content migration, implementers
-            MUST choose from the following controlled vocabulary of digest algorithms, or from a list of additional
-            algorithms given in the [[Digest-Algorithms-Extension]]. OCFL clients MUST support all fixity algorithms
-            given in the table below, and MAY support additional algorithms from the extensions. Optional fixity
-            algorithms that are not supported by a client MUST be ignored by that client.
+            <span id="E026">MUST</span> choose from the following controlled vocabulary of digest algorithms, or from a
+            list of additional algorithms given in the [[Digest-Algorithms-Extension]]. OCFL clients
+            <span id="E027">MUST</span> support all fixity algorithms given in the table below, and MAY support
+            additional algorithms from the extensions. Optional fixity algorithms that are not supported by a client
+            <span id="E028">MUST</span> be ignored by that client.
         </p>
         <table class="simple" id="digest-algorithms">
             <thead>
@@ -526,30 +535,30 @@
             <tr>
                 <td><code>sha1</code></td>
                 <td>Insecure. Use only for legacy fixity values. SHA-1 algorithm defined by [[!FIPS-180-4]]
-                    and MUST be encoded using hex (base16) encoding [[!RFC4648]].
+                    and <span id="E029">MUST</span> be encoded using hex (base16) encoding [[!RFC4648]].
                     For example, the <code>sha1</code> digest of a zero-length bitstream is
                     <code>da39a3ee5e6b4b0d3255bfef95601890afd80709</code>.</td>
             </tr>
             <tr>
                 <td><code>sha256</code></td>
                 <td>Non-truncated form only; note performance implications. SHA-256 algorithm defined by
-                    [[!FIPS-180-4]] and MUST be encoded using hex (base16) encoding [[!RFC4648]].
+                    [[!FIPS-180-4]] and <span id="E030">MUST</span> be encoded using hex (base16) encoding [[!RFC4648]].
                     For example, the <code>sha256</code> digest of a zero-length bitstream starts
                     <code>e3b0c44298fc1c149afbf4c8996fb92427ae41e4...</code> (64 hex digits long).</td>
             </tr>
             <tr>
                 <td><code>sha512</code></td>
                 <td>Default choice. Non-truncated form only. SHA-512 algorithm defined by [[!FIPS-180-4]] and
-                    MUST be encoded using hex (base16) encoding [[!RFC4648]].
+                    <span id="E031">MUST</span> be encoded using hex (base16) encoding [[!RFC4648]].
                     For example, the <code>sha512</code> digest of a zero-length bitstream starts
                     <code>cf83e1357eefb8bdf1542850d66d8007d620e405...</code> (128 hex digits long).</td>
             </tr>
             <tr>
                 <td><code>blake2b-512</code></td>
-                <td>Full-length form only, using the 2B variant (64 bit) as defined by [[!RFC7693]]. MUST be encoded
-                    using hex (base16) encoding [[!RFC4648]]. For example, the <code>blake2b-512</code> digest of a
-                    zero-length bitstream starts <code>786a02f742015903c6c6fd852552d272912f4740...</code> (128 hex
-                    digits long).</td>
+                <td>Full-length form only, using the 2B variant (64 bit) as defined by [[!RFC7693]].
+                    <span id="E032">MUST</span> be encoded using hex (base16) encoding [[!RFC4648]]. For example, the
+                    <code>blake2b-512</code> digest of a zero-length bitstream starts
+                    <code>786a02f742015903c6c6fd852552d272912f4740...</code> (128 hex digits long).</td>
             </tr>
             </tbody>
         </table>
@@ -576,14 +585,14 @@
     <section id="inventory">
         <h2>Inventory</h2>
         <p>
-            An OCFL Object Inventory MUST follow the [[!JSON]] structure described in this section and MUST be named
-            <code>inventory.json</code>. The order of entries in both the [[JSON]] objects and arrays used in inventory
-            files has no significance.
+            An OCFL Object Inventory <span id="E033">MUST</span> follow the [[!JSON]] structure described in this
+            section and <span id="E034">MUST</span> be named <code>inventory.json</code>. The order of entries in both
+            the [[JSON]] objects and arrays used in inventory files has no significance.
         </p>
         <p>
-            The forward slash (/) path separator MUST be used in content paths in the <a href="#manifest">manifest</a>
-            and <a href="#fixity">fixity</a> blocks within the inventory. Implementations that target systems using
-            other separators will need to translate paths appropriately.
+            The forward slash (/) path separator <span id="E035">MUST</span> be used in content paths in the
+            <a href="#manifest">manifest</a> and <a href="#fixity">fixity</a> blocks within the inventory.
+            Implementations that target systems using other separators will need to translate paths appropriately.
         </p>
         <blockquote class="informative">
             <p>
@@ -594,31 +603,32 @@
         <section id="inventory-structure">
             <h2>Basic Structure</h2>
             <p>
-                An OCFL Object Inventory MUST include the following keys:
+                An OCFL Object Inventory <span id="E036">MUST</span> include the following keys:
             </p>
             <dl>
                 <dt><code>id</code></dt>
                 <dd>
-                    A unique identifier for the OCFL Object. This MUST be unique in the local context, and SHOULD be
-                    a URI [[!RFC3986]]. There is no expectation that a URI used is resolvable. For example, URNs
-                    [[RFC8141]] MAY be used.
+                    A unique identifier for the OCFL Object. This <span id="E037">MUST</span> be unique in the local
+                    context, and <span id="W005">SHOULD</span> be a URI [[!RFC3986]]. There is no expectation that a
+                    URI used is resolvable. For example, URNs [[RFC8141]] MAY be used.
                 </dd>
                 <dt><code>type</code></dt>
                 <dd>
                     A type for the inventory JSON object that also serves to document the OCFL specification version
-                    that the inventory complies with. This MUST be the URI of the inventory section of the
-                    specification, <code>https://ocfl.io/1.0/spec/#inventory</code>.
+                    that the inventory complies with. This <span id="E038">MUST</span> be the URI of the inventory
+                    section of the specification, <code>https://ocfl.io/1.0/spec/#inventory</code>.
                 </dd>
                 <dt><code>digestAlgorithm</code></dt>
                 <dd>
-                    The digest algorithm used for calculating digests within the OCFL Object. This MUST be
-                    either <code>sha512</code> or <code>sha256</code>, and SHOULD be <code>sha512</code>. See the
+                    The digest algorithm used for calculating digests within the OCFL Object. This
+                    <span id="E039">MUST</span> be either <code>sha512</code> or <code>sha256</code>, and
+                    <span id="W006">SHOULD</span> be <code>sha512</code>. See thead
                     <a href="#digest-algorithms">section on Digests</a> for more information.
                 </dd>
                 <dt><code>head</code></dt>
                 <dd>
-                    The version directory name of the most recent version of the object. This MUST be the version
-                    directory name with the highest version number.
+                    The version directory name of the most recent version of the object. This
+                    <span id="E040">MUST</span> be the version directory name with the highest version number.
                 </dd>
             </dl>
             <p>
@@ -632,8 +642,8 @@
                 </dd>
             </dl>
             <p>
-                In addition to these keys, there MUST be two other blocks present, <code>manifest</code> and
-                <code>versions</code>, which are discussed in the next two sections.
+                In addition to these keys, there <span id="E041">MUST</span> be two other blocks present,
+                <code>manifest</code> and <code>versions</code>, which are discussed in the next two sections.
             </p>
         </section>
 
@@ -643,7 +653,8 @@
                 The value of the <code>manifest</code> key is a JSON object, with keys corresponding to the digests
                 of every content file in all versions of the <a>OCFL Object</a>. The value for each key is an array
                 containing the <a>content path</a>s of files in the OCFL Object that have content with the
-                given digest. Content paths within a manifest block MUST be relative to the <a>OCFL Object Root</a>.
+                given digest. Content paths within a manifest block <span id="E042">MUST</span> be relative to the
+                <a>OCFL Object Root</a>.
             </p>
             <blockquote class="informative">
                 <p>
@@ -668,26 +679,28 @@
         <section id="versions">
             <h2>Versions</h2>
             <p>
-                An OCFL Object Inventory MUST include a block for storing versions. This block MUST have the
-                key of <code>versions</code> within the inventory, and it MUST be a JSON object. The keys of this object
-                MUST correspond to the names of the <a href="#version-directories">version directories</a> used. Each
-                value MUST be another JSON object that characterizes the version, as described in the
-                <a href="#version"></a> section.
+                An OCFL Object Inventory <span id="E043">MUST</span> include a block for storing versions. This block
+                <span id="E044">MUST</span> have the key of <code>versions</code> within the inventory, and it
+                <span id="E045">MUST</span> be a JSON object. The keys of this object <span id="E046">MUST</span>
+                correspond to the names of the <a href="#version-directories">version directories</a> used. Each
+                value <span id="E047">MUST</span> be another JSON object that characterizes the version, as described
+                in the <a href="#version"></a> section.
             </p>
             <section id="version">
                 <h2>Version</h2>
                 <p>
-                    A JSON object to describe one <a>OCFL Version</a>, which MUST include the following keys:
+                    A JSON object to describe one <a>OCFL Version</a>, which <span id="E048">MUST</span> include the
+                    following keys:
                 </p>
                 <dl>
                     <dt>
                         <code>created</code>
                     </dt>
                     <dd>
-                        The value of this key is the datetime of creation of this version. It MUST be expressed in the
-                        Internet Date/Time Format defined by [[!RFC3339]]. This format requires the inclusion of a
-                        timezone value or <code>Z</code> for UTC, and that the time component be granular to the
-                        second level (with optional fractional seconds).
+                        The value of this key is the datetime of creation of this version. It
+                        <span id="E049">MUST</span> be expressed in the Internet Date/Time Format defined by
+                        [[!RFC3339]]. This format requires the inclusion of a timezone value or <code>Z</code> for UTC,
+                        and that the time component be granular to the second level (with optional fractional seconds).
                     </dd>
                     <dt>
                         <code>state</code>
@@ -696,7 +709,7 @@
                         <p>
                             The value of this key is a JSON object, containing a list of keys and values corresponding
                             to the <a>logical state</a> of the object at that version. The keys of this JSON object
-                            are digest values, each of which MUST correspond to an entry in the
+                            are digest values, each of which <span id="E050">MUST</span> correspond to an entry in the
                             <a href="#manifest">manifest of the inventory</a>. The value for each key is an array
                             containing <a>logical path</a> names of files in the OCFL Object state that have
                             content with the given digest.
@@ -705,10 +718,11 @@
                             <a href="#logical-path">Logical paths</a> present the structure of an OCFL Object at a
                             given version. This is given as an array of values, with the following restrictions to
                             provide for path safety in the common case of the logical path value representing a file
-                            path. The logical path MUST be interpreted as a set of one or more path elements joined by
-                            a <code>/</code> path separator. Path elements MUST NOT be <code>.</code>, <code>..</code>,
-                            or empty (<code>//</code>). Additionally, a logical path MUST NOT begin or end with a
-                            forward slash (<code>/</code>).
+                            path. The logical path <span id="E051">MUST</span> be interpreted as a set of one or more
+                            path elements joined by a <code>/</code> path separator. Path elements
+                            <span id="E052">MUST NOT</span> be <code>.</code>, <code>..</code>, or empty
+                            (<code>//</code>). Additionally, a logical path <span id="E053">MUST NOT</span> begin or
+                            end with a forward slash (<code>/</code>).
                         </p>
                         <blockquote class="informative">
                             <p>
@@ -743,7 +757,8 @@
                     </dd>
                 </dl>
                 <p>
-                    The JSON object describing an <a>OCFL Version</a>, SHOULD include the following keys:
+                    The JSON object describing an <a>OCFL Version</a>, <span id="W007">SHOULD</span> include the
+                    following keys:
                 </p>
                 <dl>
                     <dt>
@@ -758,12 +773,12 @@
                     <dd>
                         The value of this key is a JSON object intended to identify the user or agent that created the
                         current <a>OCFL Version</a>.
-                        The value of the <code>user</code> key MUST contain a user name key, <code>name</code> and
-                        SHOULD contain an address key, <code>address</code>.
-                        The <code>name</code> value is any readable name of the user, e.g., a proper name, user ID,
-                        agent ID.
-                        The <code>address</code> value SHOULD be a URI: either a mailto URI [[RFC6068]] with the e-mail
-                        address of the user or a URL to a personal identifier, e.g., an ORCID iD.
+                        The value of the <code>user</code> key <span id="E054">MUST</span> contain a user name key,
+                        <code>name</code> and <span id="W008">SHOULD</span> contain an address key,
+                        <code>address</code>. The <code>name</code> value is any readable name of the user, e.g., a
+                        proper name, user ID, agent ID. The <code>address</code> value <span id="W009">SHOULD</span> be
+                        a URI: either a mailto URI [[RFC6068]] with the e-mail address of the user or a URL to a
+                        personal identifier, e.g., an ORCID iD.
                     </dd>
                 </dl>
             </section>
@@ -774,17 +789,19 @@
             <p>
                 An OCFL Object inventory MAY include a block for storing additional fixity information to supplement the
                 complete set of digests in the <a href="#manifest">Manifest</a>, for example to support legacy digests
-                from a content migration. This block MUST have the key of <code>fixity</code> within the inventory.
+                from a content migration. This block <span id="E055">MUST</span> have the key of <code>fixity</code>
+                within the inventory.
             </p>
             <p>
-                The <code>fixity</code> block MUST contain keys corresponding to the controlled vocabulary given in
-                the <a href="#digest-algorithms">digest algorithms</a> listed in the <a href="#digests">Digests</a>
-                section, or in a table given in an <a>Extension</a>. The value of the fixity block for a particular
-                digest algorithm MUST follow the structure of the <a href="#manifest"><code>manifest</code></a> block;
-                that is, a key corresponding to the digest value, and an array of <a>content path</a>s that match that
-                digest. The fixity block for any digest algorithm MAY include digest values for any subset of
-                content paths in the object. There is no requirement that all content files have a value in the fixity
-                block, or that fixity values provided in one version are carried forward to later versions.
+                The <code>fixity</code> block <span id="E056">MUST</span> contain keys corresponding to the controlled
+                vocabulary given in the <a href="#digest-algorithms">digest algorithms</a> listed in the
+                <a href="#digests">Digests</a> section, or in a table given in an <a>Extension</a>. The value of the
+                fixity block for a particular digest algorithm <span id="E057">MUST</span> follow the structure of the
+                <a href="#manifest"><code>manifest</code></a> block; that is, a key corresponding to the digest value,
+                and an array of <a>content path</a>s that match that digest. The fixity block for any digest algorithm
+                MAY include digest values for any subset of content paths in the object. There is no requirement that
+                all content files have a value in the fixity block, or that fixity values provided in one version are
+                carried forward to later versions.
             </p>
             <blockquote class="informative">
             <p>
@@ -813,14 +830,15 @@
     <section id="inventory-digest">
         <h2>Inventory Digest</h2>
         <p>
-            Every occurrence of an inventory file MUST have an accompanying sidecar file stating its digest. This
-            sidecar file must be of the form <code>inventory.json.ALGORITHM</code>, where <code>ALGORITHM</code> is
-            the chosen digest algorithm for the object. This value MUST match the value given for the
-            <code>digestAlgorithm</code> key in the inventory. An example might be
-            <code>inventory.json.sha512</code>.
+            Every occurrence of an inventory file <span id="E058">MUST</span> have an accompanying sidecar file stating
+            its digest. This sidecar file must be of the form <code>inventory.json.ALGORITHM</code>, where
+            <code>ALGORITHM</code> is the chosen digest algorithm for the object. This value
+            <span id="E059">MUST</span> match the value given for the <code>digestAlgorithm</code> key in the
+            inventory. An example might be <code>inventory.json.sha512</code>.
         </p>
         <p>
-            The digest sidecar file MUST contain the digest of the inventory file. This MUST follow the format:
+            The digest sidecar file <span id="E060">MUST</span> contain the digest of the inventory file. This
+            <span id="E061">MUST</span> follow the format:
         </p>
 <pre>
 DIGEST inventory.json
@@ -830,29 +848,30 @@ DIGEST inventory.json
             <code>inventory.json</code>; that is, the name of the inventory file in the same directory.
         </p>
         <p>
-            The digest of the inventory MUST be computed only after all changes to the inventory have been made, and
-            thus writing the digest sidecar file is the last step in the versioning process.
+            The digest of the inventory <span id="E062">MUST</span> be computed only after all changes to the inventory
+            have been made, and thus writing the digest sidecar file is the last step in the versioning process.
         </p>
     </section>
 
     <section id="version-inventory">
         <h2>Version Inventory and Inventory Digest</h2>
         <p>
-            Every OCFL Object MUST have an inventory file within the OCFL Object Root,
+            Every OCFL Object <span id="E063">MUST</span> have an inventory file within the OCFL Object Root,
             corresponding to the state of the OCFL Object at the current version. Additionally, every version directory
-            SHOULD include an inventory file that is an <a href="#inventory">Inventory</a> of all content for versions
-            up to and including that particular version. Where an OCFL Object contains <code>inventory.json</code>
-            in version directories, the inventory file in the OCFL Object Root MUST be the same as the file in the
-            most recent version. Every inventory file MUST have a corresponding <a href="#inventory-digest">Inventory
-            Digest</a>.
+            <span id="W010">SHOULD</span> include an inventory file that is an <a href="#inventory">Inventory</a> of
+            all content for versions up to and including that particular version. Where an OCFL Object contains
+            <code>inventory.json</code> in version directories, the inventory file in the OCFL Object Root
+            <span id="E064">MUST</span> be the same as the file in the most recent version. Every inventory file
+            <span id="E065">MUST</span> have a corresponding <a href="#inventory-digest">Inventory Digest</a>.
         </p>
         <p>
             In the case that prior version directories include an inventory file there will be multiple inventory
             files describing prior versions within the OCFL Object. Each version block in each prior inventory file
-            MUST represent the same object state as the corresponding version block in the current inventory file.
-            Additionally, the values of the <code>created</code>, <code>message</code> and <code>user</code> keys in
-            each version block in each prior inventory file SHOULD have the same values as the corresponding keys in
-            the corresponding version block in the current inventory file.
+            <span id="E066">MUST</span> represent the same object state as the corresponding version block in the
+            current inventory file. Additionally, the values of the <code>created</code>, <code>message</code> and
+            <code>user</code> keys in each version block in each prior inventory file <span id="W011">SHOULD</span>
+            have the same values as the corresponding keys in the corresponding version block in the current inventory
+            file.
         </p>
         <blockquote class="informative">
             Non-normative note: Storing an inventory for every version provides redundancy for this critical
@@ -864,10 +883,10 @@ DIGEST inventory.json
         <h2>Logs Directory</h2>
         <p>
             The base directory of an OCFL Object MAY contain a directory named <code>logs</code>, which MAY be empty.
-            Implementers SHOULD use this for storing files that contain a record of actions taken on the object. Since
-            these logs may be subject to local standards requirements, the format of these logs is considered
-            out-of-scope for the OCFL Object. Clients operating on the object MAY log actions here that are not
-            otherwise captured.
+            Implementers <span id="W012">SHOULD</span> use this for storing files that contain a record of actions
+            taken on the object. Since these logs may be subject to local standards requirements, the format of these
+            logs is considered out-of-scope for the OCFL Object. Clients operating on the object MAY log actions here
+            that are not otherwise captured.
         </p>
         <blockquote class="informative">
             <p>
@@ -887,10 +906,11 @@ DIGEST inventory.json
         <h2>Object Extensions</h2>
         <p>
             The base directory of an OCFL Object MAY contain a directory named <code>extensions</code> for the purposes
-            of extending the functionality of an OCFL Object. The <code>extensions</code> directory MUST NOT contain
-            any files, and no sub-directories other than extension sub-directories. Extension sub-directories SHOULD be
-            named according to a registered extension name. The specific structure and function of the extension, as
-            well as a declaration of the registered extension name MUST be defined in one of the following locations:
+            of extending the functionality of an OCFL Object. The <code>extensions</code> directory
+            <span id="E067">MUST NOT</span> contain any files, and no sub-directories other than extension
+            sub-directories. Extension sub-directories <span id="W013">SHOULD</span> be named according to a registered
+            extension name. The specific structure and function of the extension, as well as a declaration of the
+            registered extension name <span id="E068">MUST</span> be defined in one of the following locations:
         </p>
         <ul>
           <li>
@@ -919,7 +939,7 @@ DIGEST inventory.json
     <section id="root-structure">
         <h2>Root Structure</h2>
         <p>
-          An OCFL Storage Root MUST contain a
+          An OCFL Storage Root <span id="E069">MUST</span> contain a
           <a href="#root-conformance-declaration">Root Conformance Declaration</a> identifying it as such.
         </p>
         <p>
@@ -929,14 +949,15 @@ DIGEST inventory.json
         </p>
         <p>
           An OCFL Storage Root MAY contain a JSON file named <code>ocfl_layout.json</code> to describe the arrangement
-          of directories and OCFL objects under the storage root.
-          If present, this JSON document MUST include the following two keys in the root JSON object:
+          of directories and OCFL objects under the storage root. If present, this JSON document
+          <span id="E070">MUST</span> include the following two keys in the root JSON object:
         </p>
         <ul>
           <li>
             <code>key</code> - A key identifying the precise arrangement of directories and OCFL objects under the
             storage root, i.e. how OCFL object identifiers are mapped to directory hierarchies. The value of this key
-            is not defined in the OCFL specification, but MUST correspond to a value given in an <a>Extension</a>.
+            is not defined in the OCFL specification, but <span id="E071">MUST</span> correspond to a value given in an
+            <a>Extension</a>.
           </li>
           <li>
             <code>description</code> - A human readable description of the arrangement of directories and OCFL
@@ -944,12 +965,13 @@ DIGEST inventory.json
           </li>
         </ul>
         <p>
-          Sub-directories within an OCFL Storage Root MUST NOT contain files that are not part of an OCFL Object.
-          Empty directories MUST NOT appear within a storage root.
+          Sub-directories within an OCFL Storage Root <span id="E072">MUST NOT</span> contain files that are not part
+          of an OCFL Object. Empty directories <span id="E073">MUST NOT</span> appear within a storage root.
         </p>
         <p>
           Although implementations may require multiple OCFL Storage Roots&mdash;that is, several logical or
-          physical volumes, or multiple "buckets" in an object store&mdash;each OCFL Storage Root MUST be independent.
+          physical volumes, or multiple "buckets" in an object store&mdash;each OCFL Storage Root
+          <span id="E074">MUST</span> be independent.
         </p>
         <p>
           The following example OCFL Storage Root represents the minimal set of files and folders:
@@ -965,24 +987,27 @@ DIGEST inventory.json
     <section id="root-conformance-declaration">
         <h2>Root Conformance Declaration</h2>
         <p>
-          The OCFL version declaration MUST be formatted according to the [[!NAMASTE]] specification. It MUST be a
-          file in the base directory of the <a>OCFL Storage Root</a> giving the OCFL version in the filename.
-          The filename MUST conform to the pattern <code>T=dvalue</code>, where <code>T</code> MUST be 0, and
-          <code>dvalue</code> MUST be <code>ocfl_</code>, followed by the OCFL specification version number. The
-          text contents of the file MUST be the same as <code>dvalue</code>, followed by a newline (<code>\n</code>).
+          The OCFL version declaration <span id="E075">MUST</span> be formatted according to the [[!NAMASTE]]
+          specification. It <span id="E076">MUST</span> be a file in the base directory of the <a>OCFL Storage Root</a>
+          giving the OCFL version in the filename. The filename <span id="E077">MUST</span> conform to the pattern
+          <code>T=dvalue</code>, where <code>T</code> <span id="E078">MUST</span> be 0, and <code>dvalue</code>
+          <span id="E079">MUST</span> be <code>ocfl_</code>, followed by the OCFL specification version number. The
+          text contents of the file <span id="E080">MUST</span> be the same as <code>dvalue</code>, followed by a
+          newline (<code>\n</code>).
         </p>
         <p>
           Root conformance indicates that the OCFL Storage Root conforms to this section (i.e. the OCFL Storage Root
           section) of the specification. OCFL Objects within the OCFL Storage Root also include a conformance
-          declaration which MUST indicate OCFL Object conformance to the same or earlier version of the specification.
+          declaration which <span id="E081">MUST</span> indicate OCFL Object conformance to the same or earlier version
+          of the specification.
         </p>
     </section>
 
     <section id="root-hierarchies">
         <h2>Storage Hierarchies</h2>
         <p>
-          <a>OCFL Object Root</a>s MUST be stored either as the terminal resource at the end of a directory storage
-          hierarchy or as direct children of a containing <a>OCFL Storage Root</a>.
+          <a>OCFL Object Root</a>s <span id="E082">MUST</span> be stored either as the terminal resource at the end of
+          a directory storage hierarchy or as direct children of a containing <a>OCFL Storage Root</a>.
         </p>
         <p>
           A common practice is to use a unique identifier scheme to compose this storage hierarchy, typically arranged
@@ -990,12 +1015,14 @@ DIGEST inventory.json
           hierarchies, the following restrictions apply:
         </p>
         <ol>
-          <li>There MUST be a deterministic mapping from an object identifier to a unique storage path</li>
-          <li>Storage hierarchies MUST NOT include files within intermediate directories</li>
-          <li>Storage hierarchies MUST be terminated by OCFL Object Roots</li>
-          <li>Storage hierarchies within the same OCFL Storage Root SHOULD use just one layout pattern</li>
-          <li>Storage hierarchies within the same OCFL Storage Root SHOULD consistently use either a directory
-            hierarchy of OCFL Objects or top-level OCFL Objects</li>
+          <li>There <span id="E083">MUST</span> be a deterministic mapping from an object identifier to a unique
+            storage path</li>
+          <li>Storage hierarchies <span id="E084">MUST NOT</span> include files within intermediate directories</li>
+          <li>Storage hierarchies <span id="E085">MUST</span> be terminated by OCFL Object Roots</li>
+          <li>Storage hierarchies within the same OCFL Storage Root <span id="W014">SHOULD</span> use just one layout
+            pattern</li>
+          <li>Storage hierarchies within the same OCFL Storage Root <span id="W015">SHOULD</span> consistently use
+            either a directory hierarchy of OCFL Objects or top-level OCFL Objects</li>
         </ol>
     </section>
 
@@ -1007,12 +1034,12 @@ DIGEST inventory.json
         <p>
             The base directory of an OCFL Storage Root MAY contain a directory named <code>extensions</code> for the
             purposes of extending the functionality of an OCFL Storage Root. The storage root <code>extensions</code>
-            directory MUST conform to the same guidelines and limitations as those defined for
+            directory <span id="E086">MUST</span> conform to the same guidelines and limitations as those defined for
             <a href="#object-extensions">object extensions</a>.
         </p>
         <p>
-            An OCFL validator MUST ignore any files in the storage root it does not understand. Additional
-            files MUST NOT appear in other directories under the storage root.
+            An OCFL validator <span id="E087">MUST</span> ignore any files in the storage root it does not understand.
+            Additional files <span id="E088">MUST NOT</span> appear in other directories under the storage root.
         </p>
         <blockquote class="informative">
             <p>
@@ -1029,19 +1056,19 @@ DIGEST inventory.json
             In order to maximize the compatibility of the OCFL with different filesystems, and thus improve the
             portability of OCFL Objects between different systems, some restrictions on the use of certain
             filesystem features are necessary. If the preservation of non-OCFL-compliant features is required then
-            the content MUST be wrapped in a suitable disk or filesystem image format which OCFL can treat as a regular
-            file.
+            the content <span id="E089">MUST</span> be wrapped in a suitable disk or filesystem image format which OCFL
+            can treat as a regular file.
         </p>
         <ol>
           <li>Filesystem metadata (e.g. permissions, access, and creation times) are not considered portable between
               filesystems or preservable through file transfer operations. These attributes also cannot be validated in
               terms of fixity in a consistent manner. As such, the OCFL does not support the portability of these
               attributes.</li>
-          <li>Hard and soft (symbolic) links are not portable and MUST NOT be used within OCFL Storage hierachies.
-              A common use case for links is storage deduplication. OCFL inventories provide a portable method
-              of achieving the same effect by using digests to address content.</li>
-          <li>File paths and filenames in the OCFL are case sensitive. Filesystems MUST preserve the case of OCFL
-              filepaths and filenames.</li>
+          <li>Hard and soft (symbolic) links are not portable and <span id="E090">MUST NOT</span> be used within OCFL
+              Storage hierachies. A common use case for links is storage deduplication. OCFL inventories provide a
+              portable method of achieving the same effect by using digests to address content.</li>
+          <li>File paths and filenames in the OCFL are case sensitive. Filesystems <span id="E091">MUST</span> preserve
+              the case of OCFL filepaths and filenames.</li>
           <li>Transparent filesystem features such as compression and encryption should be effectively invisible to
               OCFL operations. Consequently, they should not be expected to be portable.</li>
         </ol>
