@@ -407,7 +407,7 @@
         as required by the OCFL. Encryption algorithms may be used to provide a bi-directional mapping which may be
         a useful aid to human readability. Relevant details should be referenced in <code>ocfl_layout.json</code>
         in the Storage Root.
-      </p>      
+      </p>
     </section>
 
     <section>
@@ -740,66 +740,66 @@
         </li>
       </ul>
     </section>
-    
+
    <section>
       <h2>An Example Approach to Updating OCFL Object Versions</h2>
       <p>
       The OCFL is designed to be a specification that covers objects at rest and consequently
       does not specify in detail update and file locking mechanisms since these are implementation
-      dependent features. Nevertheless, this section includes a simple example of a way to 
-      update OCFL Objects in a manner that tries to ensure that updates are as transactional as  
+      dependent features. Nevertheless, this section includes a simple example of a way to
+      update OCFL Objects in a manner that tries to ensure that updates are as transactional as
       possible, and that failures are detectable and recoverable. Objects that are being updated are,
       of course, not expected to be valid OCFL objects until the update operation is completed. Creating
       a new OCFL Object only differs from updating in that it involves creating a version directory
-      before version update logic takes over.   
+      before version update logic takes over.
       </p>
-    
+
       <section>
         <h2>Segregating Objects-in-flight</h2>
-        <p>  
+        <p>
         While an OCFL Object is being created or updated, the files and folders being written should
         be assembled in a location that is ignored by OCFL parsers and validators. When an OCFL Version
         is transferred to the OCFL Object Root, the top level inventory should be updated as the
         final operation. This ensures that all the files referenced by the inventory are valid and,
         consequently, read-only clients that reference the inventory should continue to operate normally
-        except for the brief moment when the inventory is actually being updated. In practice, it is 
-        expected that upstream caching should be able to cover this momentary unavailability in 
+        except for the brief moment when the inventory is actually being updated. In practice, it is
+        expected that upstream caching should be able to cover this momentary unavailability in
         the majority of cases. This example approach defines the following:
-	</p>	
+  </p>
         <ul>
-          <li>  
+          <li>
           Workspace: Any OCFL Client should have a place to assemble versions before they are transferred
           to the Storage Root to make the transfer operation easier to implement in a controllable
           and recoverable manner. Ideally it should be within the same filesystem/namespace to make file
-          transfers as atomic as possible, comprising filesystem metadata changes rather than file copy 
+          transfers as atomic as possible, comprising filesystem metadata changes rather than file copy
           operations. The Workspace is a directory that contains all such objects-in-flight in a similar
-          layout to an OCFL Storage Root. 
+          layout to an OCFL Storage Root.
           </li>
           <li>
-          Object Workspace Directory: In this example, for simplicity, each OCFL Object being created or 
-          updated has a path in the Workspace that is the same as its eventual storage path in the OCFL 
+          Object Workspace Directory: In this example, for simplicity, each OCFL Object being created or
+          updated has a path in the Workspace that is the same as its eventual storage path in the OCFL
           Storage Root. This means that it is easy for clients to determine if an object is being updated
-          and also provides a mechanism to implement objects with mutable current versions without 
+          and also provides a mechanism to implement objects with mutable current versions without
           violating OCFL assumptions. When updating an OCFL Object, it is useful to make a copy of the
-          inventory of most recent stable version of the object in this directory when it is created 
+          inventory of most recent stable version of the object in this directory when it is created
           at the start of the update operation.
           </li>
           <li>
-          Version Assembly Directory: In this case, one version assembly directory should exist per OCFL 
+          Version Assembly Directory: In this case, one version assembly directory should exist per OCFL
           Object at any time and updates to it should be managed by a single controlling process to avoid
           conflicts. If updates to multiple objects, or from multiple sources, need to be supported, then
           it should be implemented upstream of version assembly in order to allow additional locking and
-          conflict resolution. It is useful to have a unique transaction identifier for each object being 
-          updated to simplify any overlying process control logic (For example, it could be used as an 
+          conflict resolution. It is useful to have a unique transaction identifier for each object being
+          updated to simplify any overlying process control logic (For example, it could be used as an
           eTag for a REST API implementation). This transaction identifier can be used to generate a name
-          for the version assembly directory, which sits within the object workspace directory. 
+          for the version assembly directory, which sits within the object workspace directory.
           </li>
           <li>
           Temporary Inventory Files: A top level object inventory file should never be updated in situ.
           Instead, a new inventory should be created in a version assembly directory and updated as
-          the version contents are modified. This provides some level of forensic recovery information in 
-          the event of failure during version creation. When the construction of the new version 
-          and its inventory is complete, it can then be copied to a temporary file name alongside 
+          the version contents are modified. This provides some level of forensic recovery information in
+          the event of failure during version creation. When the construction of the new version
+          and its inventory is complete, it can then be copied to a temporary file name alongside
           the top level inventory. In this case, temporary inventory files always occur in OCFL Object
           Roots and are named <code>tmp_inventory.json</code>, for argument's sake. The presence of this
           file is not valid OCFL and indicative of an update failure.
@@ -810,19 +810,19 @@
       <section>
       <h2>Operational Logic</h2>
       <p>
-      Bearing in mind the definitions specified above, it is possible to sketch out how  
+      Bearing in mind the definitions specified above, it is possible to sketch out how
       they can be used to ensure some level of integrity during OCFL updates.
       </p>
 
-        <section>  
+        <section>
           <h2>Initiating a New Object Version</h2>
           <ol>
-            <li>    
+            <li>
             Generate a new transaction ID
             </li>
-            <li>    
+            <li>
             Does a version assembly directory (in the requisite object workspace directory) for the object
-            in question exist? If yes, then abort with error - there is a transaction in process. Do not 
+            in question exist? If yes, then abort with error - there is a transaction in process. Do not
             start a new transaction without rereading the updated object.
             </li>
             <li>
@@ -832,18 +832,18 @@
             <li>
             Copy inventory from object into version assembly directory as a starting point for the new version
             </li>
-          </ol>      
+          </ol>
         </section>
 
-        <section>  
+        <section>
           <h2>Updating a New Object Version</h2>
           <ol>
-            <li>    
+            <li>
             Get current transaction ID
             </li>
             <li>
             Does a version assembly directory for the object and transaction ID in question exist?
-	        If no, then abort with error - the transaction ID is invalid for some reason, need to debug!
+          If no, then abort with error - the transaction ID is invalid for some reason, need to debug!
             </li>
             <li>
             Update object as described earlier.
@@ -851,32 +851,32 @@
           </ol>
         </section>
 
-        <section>  
-          <h2>Finalizing a New Object Version</h2>                
+        <section>
+          <h2>Finalizing a New Object Version</h2>
           <ol>
-            <li>    
-            Get current transaction ID 
+            <li>
+            Get current transaction ID
             </li>
             <li>
             Does a version assembly directory for the object and transaction ID in question exist?
             If no, then abort with error - the transaction ID is invalid for some reason, need to debug!
             </li>
             <li>
-            Generate inventory checksum file in version assembly directory. This effectively locks and 
+            Generate inventory checksum file in version assembly directory. This effectively locks and
             finalizes the inventory.
             </li>
             <li>
             Move/rename version assembly directory to valid OCFL version directory name in OCFL Object
             Root in the OCFL Storage Root. At this point all of the new version content is in place in
-            the OCFL Object but the top level inventory still references the previous version. This is 
-            assumed to be an atomic operation. Otherwise, copy the version assembly directory, keeping 
-            its name then rename to a valid version directory.  
+            the OCFL Object but the top level inventory still references the previous version. This is
+            assumed to be an atomic operation. Otherwise, copy the version assembly directory, keeping
+            its name then rename to a valid version directory.
             </li>
             <li>
             Copy inventory from new version to top level temporary inventory file.
             </li>
             <li>
-            Update the inventory by deleting the old one and renaming the temporary one. This should 
+            Update the inventory by deleting the old one and renaming the temporary one. This should
             not take very long and is the only time when read-only clients cannot access the object
             because the inventory is not valid.
             </li>
@@ -887,30 +887,30 @@
             Delete the transaction ID
             </li>
             <li>
-            Clean up the Workspace to remove stale Object and version assembly directories  
+            Clean up the Workspace to remove stale Object and version assembly directories
             </li>
           </ol>
         </section>
 
-        <section>  
+        <section>
           <h2>Clean up after failure</h2>
           <ol>
             <li>
             Delete version assembly directories and temporary inventory files - this automatically reverts
             objects to last known good version. Assembly directories anywhere in an OCFL Storage Root are
-            a result of failed copies. 
+            a result of failed copies.
             </li>
             <li>
-            If the inventory checksum fails then the inventory is corrupted by a failed copy. This should be 
+            If the inventory checksum fails then the inventory is corrupted by a failed copy. This should be
             recoverable from the most recent version directory (which is the newly created one).
             </li>
             <li>
             Any overlying transactional store will need cleanup but basically repeat 5-9 above after validating
             all object checksums - considering some sort of failure has just occurred.
-            </li>    
+            </li>
           </ol>
         </section>
-     
+
       </section>
     </section>
   </section>
