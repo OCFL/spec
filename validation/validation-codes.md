@@ -7,7 +7,7 @@
  - Validators MUST validate OCFL Objects
  - Validators MUST validate OCFL Storage Roots
 
-## Errors (corresponding with MUST in specification)
+## Object Errors (corresponding with MUST in specification)
 
 | Code | Description | Reference
 | --- | --- | --- |
