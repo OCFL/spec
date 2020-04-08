@@ -77,11 +77,22 @@
 | E110 | OCFL Object Root must contain only specified files/directories |/
 | E911 | An unknown error has occurred. |/
 
-## Warnings  (corresponding with SHOULD in specification)
+## Warnings (corresponding with SHOULD in specification)
 
-| Code | Reason | Spec Reference
+| Code | Reason | Spec Reference |
 | --- | --- | --- |
-| W005 | Missing inventory.json in $VERSION directory |/
-| W006 | Missing inventory.json digest sidecar file in $VERSION directory |/
-| W007 | Storage Root should have a copy of the OCFL Specification |/
-| WXXX | Mixed-case digests in $INVENTORY |/
+| W001 | 'Implementations SHOULD use version directory names constructed without zero-padding the version number, ie. v1, v2, v3, etc.'' | https://ocfl.io/draft/spec/#W001
+| W002 | 'The version directory SHOULD NOT contain any directories other than the designated content sub-directory. Once created, the contents of a version directory are expected to be immutable.' | https://ocfl.io/draft/spec/#W002
+| W003 | 'Version directories must contain a designated content sub-directory if the version contains files to be preserved, and SHOULD NOT contain this sub-directory otherwise.'| https://ocfl.io/draft/spec/#W003
+| W004 | 'For content-addressing, OCFL Objects SHOULD use sha512.' | https://ocfl.io/draft/spec/#W004
+| W005 | 'The OCFL Object Inventory id SHOULD be a URI.' | https://ocfl.io/draft/spec/#W005
+| W006 | 'The OCFL Object Inventory digestAlgorithm SHOULD be sha512.' | https://ocfl.io/draft/spec/#W006
+| W007 | 'In the OCFL Object Inventory, the JSON object describing an OCFL Version, SHOULD include the message and user keys.' | https://ocfl.io/draft/spec/#W007
+| W008 | 'In the OCFL Object Inventory, in the version block, the value of the user key SHOULD contain an address key, address.' | https://ocfl.io/draft/spec/#W008
+| W009 | 'In the OCFL Object Inventory, in the version block, the address value SHOULD be a URI: either a mailto URI [RFC6068] with the e-mail address of the user or a URL to a personal identifier, e.g., an ORCID iD.' | https://ocfl.io/draft/spec/#W009
+| W010 | 'In addition to the inventory in the OCFL Object Root, every version directory SHOULD include an inventory file that is an Inventory of all content for versions up to and including that particular version.' | https://ocfl.io/draft/spec/#W010
+| W011 | 'In the case that prior version directories include an inventory file, the values of the created, message and user keys in each version block in each prior inventory file SHOULD have the same values as the corresponding keys in the corresponding version block in the current inventory file.' | https://ocfl.io/draft/spec/#W011
+| W012 | 'Implementers SHOULD use the logs directory, if present, for storing files that contain a record of actions taken on the object.' | https://ocfl.io/draft/spec/#W012
+| W013 | 'In an OCFL Object, extension sub-directories SHOULD be named according to a registered extension name.' | https://ocfl.io/draft/spec/#W013
+| W014 | 'Storage hierarchies within the same OCFL Storage Root SHOULD use just one layout pattern.' | https://ocfl.io/draft/spec/#W014
+| W015 | 'Storage hierarchies within the same OCFL Storage Root SHOULD consistently use either a directory hierarchy of OCFL Objects or top-level OCFL Objects.' | https://ocfl.io/draft/spec/#W015
