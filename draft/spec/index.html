@@ -830,10 +830,9 @@
     <section id="inventory-digest">
         <h2>Inventory Digest</h2>
         <p>
-            Every occurrence of an inventory file <span id="E058">MUST</span> have an accompanying sidecar file stating
-            its digest. This sidecar file <span id="E092">MUST</span> be of the form
-            <code>inventory.json.ALGORITHM</code>, where <code>ALGORITHM</code> is the chosen digest algorithm
-            for the object. This value <span id="E059">MUST</span> match the value given for the
+            Every occurrence of an inventory file <span id="E058">MUST</span> have an accompanying sidecar file named
+            <code>inventory.json.ALGORITHM</code> stating its digest, where <code>ALGORITHM</code> is the chosen digest
+            algorithm for the object. The ALGORITHM <span id="E059">MUST</span> match the value given for the
             <code>digestAlgorithm</code> key in the inventory. An example might be <code>inventory.json.sha512</code>.
         </p>
         <p>
