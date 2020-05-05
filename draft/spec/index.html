@@ -798,10 +798,11 @@
                 <a href="#digests">Digests</a> section, or in a table given in an <a>Extension</a>. The value of the
                 fixity block for a particular digest algorithm <span id="E057">MUST</span> follow the structure of the
                 <a href="#manifest"><code>manifest</code></a> block; that is, a key corresponding to the digest value,
-                and an array of <a>content path</a>s that match that digest. The fixity block for any digest algorithm
-                MAY include digest values for any subset of content paths in the object. There is no requirement that
-                all content files have a value in the fixity block, or that fixity values provided in one version are
-                carried forward to later versions.
+                and an array of <a>content path</a>s. The fixity block for any digest algorithm MAY include digest
+                values for any subset of content paths in the object. Where included, the digest values given
+                <span id="E093">MUST</span> match the digests of the files at the corresponding content paths. There
+                is no requirement that all content files have a value in the fixity block, or that fixity values
+                provided in one version are carried forward to later versions.
             </p>
             <blockquote class="informative">
             <p>
