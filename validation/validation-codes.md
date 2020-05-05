@@ -69,7 +69,6 @@
 | E056 | 'The fixity block must contain keys corresponding to the controlled vocabulary given in the digest algorithms listed in the Digests section, or in a table given in an Extension.' | https://ocfl.io/draft/spec/#E056
 | E057 | 'The value of the fixity block for a particular digest algorithm must follow the structure of the manifest block; that is, a key corresponding to the digest value, and an array of content paths that match that digest.' | https://ocfl.io/draft/spec/#E057'
 | E058 | 'Every occurrence of an inventory file must have an accompanying sidecar file stating its digest.' | https://ocfl.io/draft/spec/#E058
-| E092 | 'This sidecar file must be of the form inventory.json.ALGORITHM, where ALGORITHM is the chosen digest algorithm for the object.' | https://ocfl.io/draft/spec/#E092
 | E059 | 'This value must match the value given for the digestAlgorithm key in the inventory.' | https://ocfl.io/draft/spec/#E059
 | E060 | 'The digest sidecar file must contain the digest of the inventory file.' | https://ocfl.io/draft/spec/#E060
 | E061 | '[The digest sidecar file] must follow the format: DIGEST inventory.json' | https://ocfl.io/draft/spec/#E061
