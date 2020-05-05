@@ -78,6 +78,8 @@
 | E066 | 'Each version block in each prior inventory file must represent the same object state as the corresponding version block in the current inventory file.' | https://ocfl.io/draft/spec/#E066
 | E067 | 'The extensions directory must not contain any files, and no sub-directories other than extension sub-directories.' | https://ocfl.io/draft/spec/#E067
 | E068 | 'The specific structure and function of the extension, as well as a declaration of the registered extension name must be defined in one of the following locations: The OCFL Extensions repository OR The Storage Root, as a plain text document directly in the Storage Root.' | https://ocfl.io/draft/spec/#E068
+| E092 | 'The value for each key in the manifest must be an array containing the content paths of files in the OCFL
+Object that have content with the given digest.' | https://ocfl.io/draft/spec/#E092
 
 ## Warnings (corresponding with SHOULD in specification)
 
