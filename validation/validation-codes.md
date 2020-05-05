@@ -49,7 +49,7 @@
 | E036 | 'An OCFL Object Inventory must include the following keys: [id, type, digestAlgorithm, head]' | https://ocfl.io/draft/spec/#E036
 | E037 | '[id] must be unique in the local context, and should be a URI [RFC3986].' | https://ocfl.io/draft/spec/#E037
 | E038 | '[type] must be the URI of the inventory section of the specification, https://ocfl.io/1.0/spec/#inventory.' | https://ocfl.io/draft/spec/#E038
-| E039 | '[digestAlgorithm] must be either sha512 or sha256, and should be sha512.' | https://ocfl.io/draft/spec/#E039
+| E039 | '[digestAlgorithm] must be the algorithm used in the manifest and state blocks.' | https://ocfl.io/draft/spec/#E039
 | E040 |[head] must be the version directory name with the highest version number.' | https://ocfl.io/draft/spec/#E040
 | E041 | 'In addition to these keys, there must be two other blocks present, manifest and versions, which are discussed in the next two sections.' | https://ocfl.io/draft/spec/#E041
 | E042 | 'Content paths within a manifest block must be relative to the OCFL Object Root.' | https://ocfl.io/draft/spec/#E042
@@ -89,7 +89,6 @@
 | W003 | 'Version directories must contain a designated content sub-directory if the version contains files to be preserved, and SHOULD NOT contain this sub-directory otherwise.'| https://ocfl.io/draft/spec/#W003
 | W004 | 'For content-addressing, OCFL Objects SHOULD use sha512.' | https://ocfl.io/draft/spec/#W004
 | W005 | 'The OCFL Object Inventory id SHOULD be a URI.' | https://ocfl.io/draft/spec/#W005
-| W006 | 'The OCFL Object Inventory digestAlgorithm SHOULD be sha512.' | https://ocfl.io/draft/spec/#W006
 | W007 | 'In the OCFL Object Inventory, the JSON object describing an OCFL Version, SHOULD include the message and user keys.' | https://ocfl.io/draft/spec/#W007
 | W008 | 'In the OCFL Object Inventory, in the version block, the value of the user key SHOULD contain an address key, address.' | https://ocfl.io/draft/spec/#W008
 | W009 | 'In the OCFL Object Inventory, in the version block, the address value SHOULD be a URI: either a mailto URI [RFC6068] with the e-mail address of the user or a URL to a personal identifier, e.g., an ORCID iD.' | https://ocfl.io/draft/spec/#W009

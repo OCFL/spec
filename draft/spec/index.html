@@ -620,10 +620,10 @@
                 </dd>
                 <dt><code>digestAlgorithm</code></dt>
                 <dd>
-                    The digest algorithm used for calculating digests within the OCFL Object. This
-                    <span id="E039">MUST</span> be either <code>sha512</code> or <code>sha256</code>, and
-                    <span id="W006">SHOULD</span> be <code>sha512</code>. See thead
-                    <a href="#digest-algorithms">section on Digests</a> for more information.
+                    The digest algorithm used for calculating digests for content-addressing within the OCFL Object
+                    and for the <a href="#inventory-digest">Inventory Digest</a>. This <span id="E039">MUST</span> be
+                    the algorithm used in the <code>manifest</code> and <code>state</code> blocks, see the
+                    <a href="#digests">section on Digests</a> for more information about algorithms.
                 </dd>
                 <dt><code>head</code></dt>
                 <dd>
