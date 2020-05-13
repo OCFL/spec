@@ -81,8 +81,7 @@
 | E092 | 'The value for each key in the manifest must be an array containing the content paths of files in the OCFL Object that have content with the given digest.' | https://ocfl.io/draft/spec/#E092
 | E093 | 'Where included in the fixity block, the digest values given must match the digests of the files at the corresponding content paths.' | https://ocfl.io/draft/spec/#E093
 | E094 | 'The value of [the message] key is freeform text, used to record the rationale for creating this version. It must be a JSON string.' | https://ocfl.io/draft/spec/#E094
-| E095 | 'Within a version, logical paths must be unique and non-conflicting, so the logical path for a file cannot appear as
-the initial part of another logical path.' | https://ocfl.io/draft/spec/#E095
+| E095 | 'Within a version, logical paths must be unique and non-conflicting, so the logical path for a file cannot appear as the initial part of another logical path.' | https://ocfl.io/draft/spec/#E095
 
 ## Warnings (corresponding with SHOULD in specification)
 
