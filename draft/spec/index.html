@@ -718,11 +718,18 @@
                             <a href="#logical-path">Logical paths</a> present the structure of an OCFL Object at a
                             given version. This is given as an array of values, with the following restrictions to
                             provide for path safety in the common case of the logical path value representing a file
-                            path. The logical path <span id="E051">MUST</span> be interpreted as a set of one or more
-                            path elements joined by a <code>/</code> path separator. Path elements
-                            <span id="E052">MUST NOT</span> be <code>.</code>, <code>..</code>, or empty
-                            (<code>//</code>). Additionally, a logical path <span id="E053">MUST NOT</span> begin or
-                            end with a forward slash (<code>/</code>).
+                            path. 
+                            <ul>
+                                <li>The logical path <span id="E051">MUST</span> be interpreted as a set of one or more
+                                    path elements joined by a <code>/</code> path separator.</li>
+                                <li>Path elements <span id="E052">MUST NOT</span> be <code>.</code>, <code>..</code>, 
+                                    or empty (<code>//</code>).</li>
+                                <li>A logical path <span id="E053">MUST NOT</span> begin or end with a forward slash 
+                                    (<code>/</code>).</li>
+                                <li>Within a version, logical paths <span id="Etbd">MUST</span> be unique and 
+                                    non-conflicting, so the logical path for a file cannot appear as the initial part
+                                    of another logical path</li>
+                            </ul>
                         </p>
                         <blockquote class="informative">
                             <p>
