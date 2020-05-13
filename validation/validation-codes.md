@@ -80,6 +80,8 @@
 | E068 | 'The specific structure and function of the extension, as well as a declaration of the registered extension name must be defined in one of the following locations: The OCFL Extensions repository OR The Storage Root, as a plain text document directly in the Storage Root.' | https://ocfl.io/draft/spec/#E068
 | E092 | 'The value for each key in the manifest must be an array containing the content paths of files in the OCFL Object that have content with the given digest.' | https://ocfl.io/draft/spec/#E092
 | E093 | 'Where included in the fixity block, the digest values given must match the digests of the files at the corresponding content paths.' | https://ocfl.io/draft/spec/#E093
+| E094 | 'Within a version, logical paths must be unique and non-conflicting, so the logical path for a file cannot appear as
+the initial part of another logical path.' | https://ocfl.io/draft/spec/#E094
 
 ## Warnings (corresponding with SHOULD in specification)
 
