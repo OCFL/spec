@@ -83,7 +83,7 @@
 | E094 | 'The value of [the message] key is freeform text, used to record the rationale for creating this version. It must be a JSON string.' | https://ocfl.io/draft/spec/#E094
 | E095 | 'Within a version, logical paths must be unique and non-conflicting, so the logical path for a file cannot appear as the initial part of another logical path.' | https://ocfl.io/draft/spec/#E095
 | E096 | 'As JSON keys are case sensitive, while digests may not be, there is an additional requirement that each digest value must occur only once in the manifest regardless of case.' | https://ocfl.io/draft/spec/#E096
-| E097 | 'As JSON keys are case sensitive, while digests may not be, there is an additional requirement that each digest value must occur only once in the fixity block for any digiest algorithm, regardless of case.' | https://ocfl.io/draft/spec/#E097
+| E097 | 'As JSON keys are case sensitive, while digests may not be, there is an additional requirement that each digest value must occur only once in the fixity block for any digest algorithm, regardless of case.' | https://ocfl.io/draft/spec/#E097
 
 ## Warnings (corresponding with SHOULD in specification)
 
