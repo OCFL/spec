@@ -85,8 +85,8 @@
 | E096 | 'As JSON keys are case sensitive, while digests may not be, there is an additional requirement that each digest value must occur only once in the manifest regardless of case.' | https://ocfl.io/draft/spec/#E096
 | E097 | 'As JSON keys are case sensitive, while digests may not be, there is an additional requirement that each digest value must occur only once in the fixity block for any digest algorithm, regardless of case.' | https://ocfl.io/draft/spec/#E097
 | E098 | 'The content path must be interpreted as a set of one or more path elements joined by a / path separator.' | https://ocfl.io/draft/spec/#E098
-| E099 | '[content] path elements must not be ., .., or empty (//).'' | https://ocfl.io/draft/spec/#E099
-| E100 | 'A' content path must not begin or end with a forward slash (/).' | https://ocfl.io/draft/spec/#E100
+| E099 | '[content] path elements must not be ., .., or empty (//).' | https://ocfl.io/draft/spec/#E099
+| E100 | 'A content path must not begin or end with a forward slash (/).' | https://ocfl.io/draft/spec/#E100
 | E101 | 'Within an inventory, content paths must be unique and non-conflicting, so the content path for a file cannot appear as the initial part of another content path.' | https://ocfl.io/draft/spec/#E101
 
 ## Warnings (corresponding with SHOULD in specification)
