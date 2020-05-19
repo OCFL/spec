@@ -656,8 +656,20 @@
                 Object that have content with the given digest. As JSON keys are case sensitive, while digests may 
                 not be, there is an additional requirement that each digest value <span id="E096">MUST</span> occur
                 only once in the manifest regardless of case. Content paths within a manifest block 
-                <span id="E042">MUST</span> be relative to the <a>OCFL Object Root</a>. 
+                <span id="E042">MUST</span> be relative to the <a>OCFL Object Root</a>. The following restrictions
+                avoid ambiguity and provide path safety for clients processing the <code>manifest</code>.
             </p>
+            <ul>
+                <li>The content path <span id="E098">MUST</span> be interpreted as a set of one or more
+                    path elements joined by a <code>/</code> path separator.</li>
+                <li>Path elements <span id="E099">MUST NOT</span> be <code>.</code>, <code>..</code>,
+                    or empty (<code>//</code>).</li>
+                <li>A content path <span id="E100">MUST NOT</span> begin or end with a forward slash
+                    (<code>/</code>).</li>
+                <li>Within an inventory, content paths <span id="E101">MUST</span> be unique and
+                    non-conflicting, so the content path for a file cannot appear as the initial part
+                    of another content path.</li>
+            </ul>
             <blockquote class="informative">
                 <p>
                     Non-normative note: If only one file is stored in the OCFL Object for each digest, fully
