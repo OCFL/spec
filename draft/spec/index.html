@@ -709,9 +709,9 @@
                         <p>
                             The value of this key is a JSON object, containing a list of keys and values corresponding
                             to the <a>logical state</a> of the object at that version. The keys of this JSON object
-                            are digest values, each of which <span id="E050">MUST</span> correspond to an entry in the
-                            <a href="#manifest">manifest of the inventory</a>. The value for each key is an array
-                            containing <a>logical path</a> names of files in the OCFL Object state that have
+                            are digest values, each of which <span id="E050">MUST</span> exactly match a digest value
+                            key in the <a href="#manifest">manifest of the inventory</a>. The value for each key is an
+                            array containing <a>logical path</a> names of files in the OCFL Object state that have
                             content with the given digest.
                         </p>
                         <p>
@@ -719,15 +719,15 @@
                             given version. This is given as an array of values, with the following restrictions to
                             provide for path safety in the common case of the logical path value representing a file
                             path.
-                        </p>    
+                        </p>
                             <ul>
                                 <li>The logical path <span id="E051">MUST</span> be interpreted as a set of one or more
                                     path elements joined by a <code>/</code> path separator.</li>
-                                <li>Path elements <span id="E052">MUST NOT</span> be <code>.</code>, <code>..</code>, 
+                                <li>Path elements <span id="E052">MUST NOT</span> be <code>.</code>, <code>..</code>,
                                     or empty (<code>//</code>).</li>
-                                <li>A logical path <span id="E053">MUST NOT</span> begin or end with a forward slash 
+                                <li>A logical path <span id="E053">MUST NOT</span> begin or end with a forward slash
                                     (<code>/</code>).</li>
-                                <li>Within a version, logical paths <span id="E095">MUST</span> be unique and 
+                                <li>Within a version, logical paths <span id="E095">MUST</span> be unique and
                                     non-conflicting, so the logical path for a file cannot appear as the initial part
                                     of another logical path.</li>
                             </ul>
