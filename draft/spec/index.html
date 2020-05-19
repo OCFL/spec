@@ -653,8 +653,10 @@
                 The value of the <code>manifest</code> key is a JSON object, with keys corresponding to the digests
                 of every content file in all versions of the <a>OCFL Object</a>. The value for each key
                 <span id="E092">MUST</span> be an array containing the <a>content path</a>s of files in the OCFL
-                Object that have content with the given digest. Content paths within a manifest block
-                <span id="E042">MUST</span> be relative to the <a>OCFL Object Root</a>.
+                Object that have content with the given digest. As JSON keys are case sensitive, while digests may 
+                not be, there is an additional requirement that each digest value <span id="E096">MUST</span> occur
+                only once in the manifest regardless of case. Content paths within a manifest block 
+                <span id="E042">MUST</span> be relative to the <a>OCFL Object Root</a>. 
             </p>
             <blockquote class="informative">
                 <p>
@@ -808,9 +810,11 @@
                 <a href="#manifest"><code>manifest</code></a> block; that is, a key corresponding to the digest value,
                 and an array of <a>content path</a>s. The fixity block for any digest algorithm MAY include digest
                 values for any subset of content paths in the object. Where included, the digest values given
-                <span id="E093">MUST</span> match the digests of the files at the corresponding content paths. There
-                is no requirement that all content files have a value in the fixity block, or that fixity values
-                provided in one version are carried forward to later versions.
+                <span id="E093">MUST</span> match the digests of the files at the corresponding content paths. As JSON
+                keys are case sensitive, while digests may not be, there is an additional requirement that each digest
+                value <span id="E097">MUST</span> occur only once in the fixity block for any digest algorithm, 
+                regardless of case. There is no requirement that all content files have a value in the fixity block, or
+                that fixity values provided in one version are carried forward to later versions. 
             </p>
             <blockquote class="informative">
             <p>
