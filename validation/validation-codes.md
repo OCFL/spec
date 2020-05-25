@@ -78,6 +78,29 @@
 | E066 | 'Each version block in each prior inventory file must represent the same object state as the corresponding version block in the current inventory file.' | https://ocfl.io/draft/spec/#E066
 | E067 | 'The extensions directory must not contain any files, and no sub-directories other than extension sub-directories.' | https://ocfl.io/draft/spec/#E067
 | E068 | 'The specific structure and function of the extension, as well as a declaration of the registered extension name must be defined in one of the following locations: The OCFL Extensions repository OR The Storage Root, as a plain text document directly in the Storage Root.' | https://ocfl.io/draft/spec/#E068
+| E069 | 'An OCFL Storage Root MUST contain a Root Conformance Declaration identifying it as such.' | https://ocfl.io/draft/spec/#E069
+| E070 | 'If present, [the ocfl_layout.json document] MUST include the following two keys in the root JSON object: [key, description]' | https://ocfl.io/draft/spec/#E070
+| E071 | 'The value of [the ocfl_layout.json key "key"] is not defined in the OCFL specification, but MUST correspond to a value given in an Extension.' | https://ocfl.io/draft/spec/#E071
+| E072 | 'Sub-directories within an OCFL Storage Root MUST NOT contain files that are not part of an OCFL Object.' | https://ocfl.io/draft/spec/#E072
+| E073 | 'Empty directories MUST NOT appear within a storage root.' | https://ocfl.io/draft/spec/#E073
+| E074 | 'Although implementations may require multiple OCFL Storage Roots - that is, several logical or physical volumes, or multiple "buckets" in an object store - each OCFL Storage Root MUST be independent.' | https://ocfl.io/draft/spec/#E074
+| E075 | 'The OCFL version declaration MUST be formatted according to the NAMASTE specification.' | https://ocfl.io/draft/spec/#E075
+| E076 | '[The OCFL version declaration] MUST be a file in the base directory of the OCFL Storage Root giving the OCFL version in the filename.' | https://ocfl.io/draft/spec/#E076
+| E077 | '[The OCFL version declaration filename] MUST conform to the pattern T=dvalue, where T must be 0, and dvalue must be ocfl_, followed by the OCFL specification version number.' | https://ocfl.io/draft/spec/#E077
+| E078 | '[The OCFL version declaration filename] must conform to the pattern T=dvalue, where T MUST be 0, and dvalue must be ocfl_, followed by the OCFL specification version number.' | https://ocfl.io/draft/spec/#E078
+| E079 | '[The OCFL version declaration filename] must conform to the pattern T=dvalue, where T must be 0, and dvalue MUST be ocfl_, followed by the OCFL specification version number.' | https://ocfl.io/draft/spec/#E079
+| E080 | 'The text contents of [the OCFL version declaration file] MUST be the same as dvalue, followed by a newline (\n).' | https://ocfl.io/draft/spec/#E080
+| E081 | 'OCFL Objects within the OCFL Storage Root also include a conformance declaration which MUST indicate OCFL Object conformance to the same or earlier version of the specification.' | https://ocfl.io/draft/spec/#E081
+| E082 | 'OCFL Object Roots MUST be stored either as the terminal resource at the end of a directory storage hierarchy or as direct children of a containing OCFL Storage Root.' | https://ocfl.io/draft/spec/#E082
+| E083 | 'There MUST be a deterministic mapping from an object identifier to a unique storage path.' | https://ocfl.io/draft/spec/#E083
+| E084 | 'Storage hierarchies MUST NOT include files within intermediate directories.' | https://ocfl.io/draft/spec/#E084
+| E085 | 'Storage hierarchies MUST be terminated by OCFL Object Roots.' | https://ocfl.io/draft/spec/#E085
+| E086 | 'The storage root extensions directory MUST conform to the same guidelines and limitations as those defined for object extensions.' | https://ocfl.io/draft/spec/#E086
+| E087 | 'An OCFL validator MUST ignore any files in the storage root it does not understand.' | https://ocfl.io/draft/spec/#E087
+| E088 | 'Additional files MUST NOT appear in other directories under the storage root.' | https://ocfl.io/draft/spec/#E088
+| E089 | 'If the preservation of non-OCFL-compliant features is required then the content MUST be wrapped in a suitable disk or filesystem image format which OCFL can treat as a regular file.' | https://ocfl.io/draft/spec/#E089
+| E090 | 'Hard and soft (symbolic) links are not portable and MUST NOT be used within OCFL Storage hierachies.' | https://ocfl.io/draft/spec/#E090
+| E091 | 'Filesystems MUST preserve the case of OCFL filepaths and filenames.' | https://ocfl.io/draft/spec/#E091
 | E092 | 'The value for each key in the manifest must be an array containing the content paths of files in the OCFL Object that have content with the given digest.' | https://ocfl.io/draft/spec/#E092
 | E093 | 'Where included in the fixity block, the digest values given must match the digests of the files at the corresponding content paths.' | https://ocfl.io/draft/spec/#E093
 | E094 | 'The value of [the message] key is freeform text, used to record the rationale for creating this version. It must be a JSON string.' | https://ocfl.io/draft/spec/#E094
