@@ -967,9 +967,10 @@ DIGEST inventory.json
           <a href="#root-conformance-declaration">Root Conformance Declaration</a> identifying it as such.
         </p>
         <p>
-          An OCFL Storage Root MAY contain other files. These might include a human-readable copy of the OCFL
-          specification to make the storage root self-documenting, or files used by
-          <a href="#storage-root-extensions">storage root extensions</a>.
+          An OCFL Storage Root MAY contain other files as direct children. These might include a human-readable
+          copy of the OCFL specification to make the storage root self-documenting, or files used by
+          <a href="#storage-root-extensions">storage root extensions</a>. An OCFL validator
+          <span id="E087">MUST</span> ignore any files in the storage root it does not understand.
         </p>
         <p>
           An OCFL Storage Root MAY contain a JSON file named <code>ocfl_layout.json</code> to describe the arrangement
@@ -989,8 +990,11 @@ DIGEST inventory.json
           </li>
         </ul>
         <p>
-          Sub-directories within an OCFL Storage Root <span id="E072">MUST NOT</span> contain files that are not part
-          of an OCFL Object. Empty directories <span id="E073">MUST NOT</span> appear within a storage root.
+          An OCFL Storage Root <span id="E088">MUST NOT</span> contain directories or sub-directories other than as
+          a directory hierarchy used to store OCFL Objects or for <a href="#storage-root-extensions">storage root
+          extensions</a>. The directory hierarchy used to store OCFL Objects <span id="E072">MUST NOT</span> contain
+          files that are not part of an OCFL Object. Empty directories <span id="E073">MUST NOT</span> appear under
+          a storage root.
         </p>
         <p>
           Although implementations may require multiple OCFL Storage Roots&mdash;that is, several logical or
@@ -1060,10 +1064,6 @@ DIGEST inventory.json
             purposes of extending the functionality of an OCFL Storage Root. The storage root <code>extensions</code>
             directory <span id="E086">MUST</span> conform to the same guidelines and limitations as those defined for
             <a href="#object-extensions">object extensions</a>.
-        </p>
-        <p>
-            An OCFL validator <span id="E087">MUST</span> ignore any files in the storage root it does not understand.
-            Additional files <span id="E088">MUST NOT</span> appear in other directories under the storage root.
         </p>
         <blockquote class="informative">
             <p>
