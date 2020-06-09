@@ -111,6 +111,7 @@
 | E099 | '[content] path elements must not be ., .., or empty (//).' | https://ocfl.io/draft/spec/#E099
 | E100 | 'A content path must not begin or end with a forward slash (/).' | https://ocfl.io/draft/spec/#E100
 | E101 | 'Within an inventory, content paths must be unique and non-conflicting, so the content path for a file cannot appear as the initial part of another content path.' | https://ocfl.io/draft/spec/#E101
+| E102 | 'An inventory file must not contain keys that are not specified.' | https://ocfl.io/draft/spec/#E102
 
 ## Warnings (corresponding with SHOULD in specification)
 
