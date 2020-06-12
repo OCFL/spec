@@ -587,7 +587,8 @@
         <p>
             An OCFL Object Inventory <span id="E033">MUST</span> follow the [[!JSON]] structure described in this
             section and <span id="E034">MUST</span> be named <code>inventory.json</code>. The order of entries in both
-            the [[JSON]] objects and arrays used in inventory files has no significance.
+            the [[JSON]] objects and arrays used in inventory files has no significance. An OCFL Object Inventory
+            <span id="E102">MUST NOT</span> contain any keys not described in this specification.
         </p>
         <p>
             The forward slash (/) path separator <span id="E035">MUST</span> be used in content paths in the
@@ -603,8 +604,7 @@
         <section id="inventory-structure">
             <h2>Basic Structure</h2>
             <p>
-                An OCFL Object Inventory <span id="E036">MUST</span> include the following keys, and
-                <span id="E102">MUST NOT</span> contain any keys not specified.
+                Every OCFL inventory <span id="E036">MUST</span> include the following keys:
             </p>
             <dl>
                 <dt><code>id</code></dt>
