@@ -48,7 +48,7 @@
 | E035 | 'The forward slash (/) path separator must be used in content paths in the manifest and fixity blocks within the inventory.' | https://ocfl.io/draft/spec/#E035
 | E036 | 'An OCFL Object Inventory must include the following keys: [id, type, digestAlgorithm, head]' | https://ocfl.io/draft/spec/#E036
 | E037 | '[id] must be unique in the local context, and should be a URI [RFC3986].' | https://ocfl.io/draft/spec/#E037
-| E038 | '[type] must be the URI of the inventory section of the specification, https://ocfl.io/1.0/spec/#inventory.' | https://ocfl.io/draft/spec/#E038
+| E038 | 'In the object root inventory [the type value] must be the URI of the inventory section of the specification version matching the object conformance declaration.' | https://ocfl.io/draft/spec/#E038
 | E039 | '[digestAlgorithm] must be the algorithm used in the manifest and state blocks.' | https://ocfl.io/draft/spec/#E039
 | E040 |[head] must be the version directory name with the highest version number.' | https://ocfl.io/draft/spec/#E040
 | E041 | 'In addition to these keys, there must be two other blocks present, manifest and versions, which are discussed in the next two sections.' | https://ocfl.io/draft/spec/#E041
