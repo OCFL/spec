@@ -616,8 +616,10 @@
                 <dt><code>type</code></dt>
                 <dd>
                     A type for the inventory JSON object that also serves to document the OCFL specification version
-                    that the inventory complies with. This <span id="E038">MUST</span> be the URI of the inventory
-                    section of the specification, <code>https://ocfl.io/1.0/spec/#inventory</code>.
+                    that the inventory complies with. In the object root inventory this <span id="E038">MUST</span>
+                    be the URI of the inventory section of the specification version matching the object conformance
+                    declaration. For the current specification version the value is
+                    <code>https://ocfl.io/1.0/spec/#inventory</code>.
                 </dd>
                 <dt><code>digestAlgorithm</code></dt>
                 <dd>
