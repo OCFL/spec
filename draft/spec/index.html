@@ -976,23 +976,6 @@ DIGEST inventory.json
           <span id="E087">MUST</span> ignore any files in the storage root it does not understand.
         </p>
         <p>
-          An OCFL Storage Root MAY contain a JSON file named <code>ocfl_layout.json</code> to describe the arrangement
-          of directories and OCFL objects under the storage root. If present, this JSON document
-          <span id="E070">MUST</span> include the following two keys in the root JSON object:
-        </p>
-        <ul>
-          <li>
-            <code>key</code> - A key identifying the precise arrangement of directories and OCFL objects under the
-            storage root, i.e. how OCFL object identifiers are mapped to directory hierarchies. The value of this key
-            is not defined in the OCFL specification, but <span id="E071">MUST</span> correspond to a value given in an
-            <a>Extension</a>.
-          </li>
-          <li>
-            <code>description</code> - A human readable description of the arrangement of directories and OCFL
-            objects under the storage root.
-          </li>
-        </ul>
-        <p>
           An OCFL Storage Root <span id="E088">MUST NOT</span> contain directories or sub-directories other than as
           a directory hierarchy used to store OCFL Objects or for <a href="#storage-root-extensions">storage root
           extensions</a>. The directory hierarchy used to store OCFL Objects <span id="E072">MUST NOT</span> contain
@@ -1010,8 +993,7 @@ DIGEST inventory.json
         <pre>
 [storage_root]
     ├── 0=ocfl_1.0
-    ├── ocfl_1.0.txt (human-readable text of the OCFL specification; optional)
-    └── ocfl_layout.json (description of storage hierarchy layout; optional)
+    └── ocfl_1.0.txt (human-readable text of the OCFL specification; optional)
         </pre>
     </section>
 
@@ -1633,8 +1615,7 @@ myfirstbag
     ├── extensions
     │   └── 0000-example-extension
     │       └── file-example.txt
-    ├── ocfl_1.0.txt
-    └── ocfl_layout.json
+    └── ocfl_1.0.txt
 </pre>
     </section>
     <section id="example-extended-object">
