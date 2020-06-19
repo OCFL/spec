@@ -976,29 +976,29 @@ DIGEST inventory.json
           <span id="E087">MUST</span> ignore any files in the storage root it does not understand.
         </p>
         <p>
-          An OCFL Storage Root MAY contain a JSON file named <code>ocfl_layout.json</code> to describe the arrangement
-          of directories and OCFL objects under the storage root. If present, this JSON document
-          <span id="E070">MUST</span> include the following two keys in the root JSON object:
-        </p>
-        <ul>
-          <li>
-            <code>key</code> - A key identifying the precise arrangement of directories and OCFL objects under the
-            storage root, i.e. how OCFL object identifiers are mapped to directory hierarchies. The value of this key
-            is not defined in the OCFL specification, but <span id="E071">MUST</span> correspond to a value given in an
-            <a>Extension</a>.
-          </li>
-          <li>
-            <code>description</code> - A human readable description of the arrangement of directories and OCFL
-            objects under the storage root.
-          </li>
-        </ul>
-        <p>
           An OCFL Storage Root <span id="E088">MUST NOT</span> contain directories or sub-directories other than as
           a directory hierarchy used to store OCFL Objects or for <a href="#storage-root-extensions">storage root
           extensions</a>. The directory hierarchy used to store OCFL Objects <span id="E072">MUST NOT</span> contain
           files that are not part of an OCFL Object. Empty directories <span id="E073">MUST NOT</span> appear under
           a storage root.
         </p>
+        <p>
+          An OCFL Storage Root MAY contain a JSON file named <code>ocfl_layout.json</code> to describe the arrangement
+          of directories and OCFL objects under the storage root. If present, this JSON document
+          <span id="E070">MUST</span> include the following two keys in the root JSON object:
+        </p>
+        <ul>
+          <li>
+            <code>extension</code> - An extension name that identifies an arrangement of directories and OCFL objects
+            under the storage root, i.e. how OCFL object identifiers are mapped to directory hierarchies. The
+            value of the <code>extension</code> key <span id="E071">MUST</span> be the registered <a>extension</a>
+            name for the extension defining the arrangement under the storage root.
+          </li>
+          <li>
+            <code>description</code> - A human readable description of the arrangement of directories and OCFL
+            objects under the storage root.
+          </li>
+        </ul>
         <p>
           Although implementations may require multiple OCFL Storage Roots&mdash;that is, several logical or
           physical volumes, or multiple "buckets" in an object store&mdash;each OCFL Storage Root
