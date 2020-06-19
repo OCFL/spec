@@ -346,6 +346,13 @@
             The state of an <a>OCFL Object</a>'s content which is constructed using the incremental changes recorded in
             the sequence of corresponding and prior version directories.
         </dd>
+        <dt>
+            <dfn>Registered Extension Name</dfn>:
+        </dt>
+        <dd>
+            The registered name of an extension is the name provided in the <i>Extension Name</i> property of the
+            extension's definition.
+        </dd>
     </dl>
 </section>
 
@@ -935,9 +942,10 @@ DIGEST inventory.json
             The base directory of an OCFL Object MAY contain a directory named <code>extensions</code> for the purposes
             of extending the functionality of an OCFL Object. The <code>extensions</code> directory
             <span id="E067">MUST NOT</span> contain any files, and no sub-directories other than extension
-            sub-directories. Extension sub-directories <span id="W013">SHOULD</span> be named according to a registered
-            <a>extension</a> name. The specific structure and function of the extension, as well as a declaration of the
-            registered extension name <span id="E068">MUST</span> be defined in one of the following locations:
+            sub-directories. Extension sub-directories <span id="W013">SHOULD</span> be named according to a
+            <a>registered extension name</a>. The specific structure and function of the extension, as well as a
+            declaration of the registered extension name <span id="E068">MUST</span> be defined in one of the following
+            locations:
         </p>
         <ul>
           <li>
@@ -991,8 +999,8 @@ DIGEST inventory.json
           <li>
             <code>extension</code> - An extension name that identifies an arrangement of directories and OCFL objects
             under the storage root, i.e. how OCFL object identifiers are mapped to directory hierarchies. The
-            value of the <code>extension</code> key <span id="E071">MUST</span> be the registered <a>extension</a>
-            name for the extension defining the arrangement under the storage root.
+            value of the <code>extension</code> key <span id="E071">MUST</span> be the <a>registered extension
+            name</a> for the extension defining the arrangement under the storage root.
           </li>
           <li>
             <code>description</code> - A human readable description of the arrangement of directories and OCFL
