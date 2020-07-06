@@ -10,6 +10,12 @@
             specStatus: "REC",
             publishDate: "2020-07-07",
             shortName: "ocfl-spec",
+            lint: {
+                // turn off w3c-specific linting
+                "privsec-section": false,
+                "no-http-props": false,
+                "no-headingless-sections": false
+            },
             includePermalinks: true,
             editors: [
                 {

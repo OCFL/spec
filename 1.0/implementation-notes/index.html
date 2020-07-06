@@ -10,6 +10,12 @@
         var respecConfig = {
             specStatus: "NOTE",
             shortName: "ocfl-impl",
+            lint: {
+                // turn off w3c-specific linting
+                "privsec-section": false,
+                "no-http-props": false,
+                "no-headingless-sections": false
+            },
             includePermalinks: true,
             editors: [
                 {
