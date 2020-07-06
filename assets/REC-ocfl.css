@@ -1,0 +1,6 @@
+/* Style for a "Note" */
+@import "BASE-ocfl.css";
+
+body {
+    background-image: url(https://ocfl.io/assets/logo-REC.svg);
+}
