@@ -1,5 +1,5 @@
 {
-    "$id": "https://ocfl.io/0.1/spec/inventory_schema.json",
+    "$id": "https://ocfl.io/1.0/spec/inventory_schema.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "JSON Schema for OCFL Inventory files",
     "description": "Note that this schema does not permit extension keys, only keys defined in the OCFL Specification are admitted.",
