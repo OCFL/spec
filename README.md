@@ -4,9 +4,9 @@
 
 ## Status of this document
 
-**This version**: 0.9
+**This version**: 1.0
 
-**Latest stable version**: N/A
+**Latest stable version**: 1.0
 
 **Editors**
 
@@ -19,7 +19,7 @@
  
 ## Latest editors draft
 
-[https://ocfl.io/](https://ocfl.io/)
+[https://ocfl.io/](https://ocfl.io/draft/spec)
  
 ## Communication Channels
 
