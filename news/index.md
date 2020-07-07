@@ -2,6 +2,8 @@
 
 ## Version 1.0 of the Oxford Common File Layout (OCFL) Released
 
+**07 July 2020**
+
 The OCFL Editors are pleased to announce version 1.0 of the Oxford Common File Layout, reflecting over 24 months of 
 work by the OCFL Editors and the digital preservation and technology communities.
 
