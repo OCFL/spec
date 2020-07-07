@@ -18,8 +18,10 @@ Specifically, the benefits of the OCFL include:
   * [OCFL Specification](draft/spec/)
   * [OCFL Implementation Notes](draft/implementation-notes/)
   
-## Extensions
+## Tools
   * [OCFL Community Extensions](https://github.com/OCFL/extensions)
+  * [OCFL Fixture Objects](https://github.com/OCFL/fixtures)
+  * [OCFL Validation Codes](https://github.com/OCFL/spec/blob/master/validation/validation-codes.md)
 
 ## Participate
 
