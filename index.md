@@ -9,6 +9,9 @@ Specifically, the benefits of the OCFL include:
   * __Versioning__, so repositories can make changes to objects allowing their history to persist
   * __Storage diversity__, to ensure content can be stored on diverse storage infrastructures including conventional filesystems and cloud object stores
 
+## News
+  * [Version 1.0 Release Announcement](/news/)
+
 ## Latest Release (1.0)
   * [OCFL Specification](1.0/spec/)
   * [OCFL Implementation Notes](1.0/implementation-notes/)
