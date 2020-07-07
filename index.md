@@ -31,5 +31,6 @@ Specifically, the benefits of the OCFL include:
   * [OCFL Use Cases](https://github.com/OCFL/Use-Cases/issues)
   * [OCFL Specification github](https://github.com/OCFL/spec)
   * [OCFL Specification Issues](https://github.com/OCFL/spec/issues)
+  * [Validators (in the OCFL Wiki)](https://github.com/OCFL/spec/wiki/Implementations#validators)
 
 
