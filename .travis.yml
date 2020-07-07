@@ -1,6 +1,4 @@
-language: java
-jdk:
-  - oraclejdk9
+language: minimal
 
 install:
  - pip install --user html5validator beautifulsoup4 jsonschema
