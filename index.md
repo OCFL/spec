@@ -10,7 +10,7 @@ Specifically, the benefits of the OCFL include:
   * __Storage diversity__, to ensure content can be stored on diverse storage infrastructures including conventional filesystems and cloud object stores
 
 ## News
-  * [Version 1.0 Release Announcement](/news/)
+  * [Version 1.0 Release Announcement](/news/#version-10-of-the-oxford-common-file-layout-ocfl-released)
 
 ## Latest Release (1.0)
   * [OCFL Specification](1.0/spec/)

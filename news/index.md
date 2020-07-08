@@ -57,9 +57,9 @@ which also contains links to the Slack channel and mailing lists.
 
 ### The OCFL Editors
 
-Andrew Hankinson (Bodleian Libraries, University of Oxford)
-Neil Jefferies (Bodleian Libraries, University of Oxford)
-Rosalyn Metz (Emory University)
-Julian Morley (Stanford University)
-Simeon Warner (Cornell University)
+Andrew Hankinson (Bodleian Libraries, University of Oxford)\
+Neil Jefferies (Bodleian Libraries, University of Oxford)\
+Rosalyn Metz (Emory University)\
+Julian Morley (Stanford University)\
+Simeon Warner (Cornell University)\
 Andrew Woods (LYRASIS)
