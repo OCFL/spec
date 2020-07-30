@@ -1,0 +1,39 @@
+{
+  "digestAlgorithm": "sha512",
+  "head": "v1",
+  "id": "https://ocfl.io/history",
+  "manifest": {
+    "77d6ecdbc24ad892361616e2dddca97ef7c281795969d2114338ea35546da809c5af55f2ed43bfb00f78fdb80fe276c530d503d44592fdc9d4b26c6b05246bc9": [
+      "v1/content/Oxford Common Filesystem Layout--Initial Proposal.pdf"
+    ],
+    "a014a467dc3b03bef8ffc94410552e151607a966c7b65453296777e559c5c670808439afb38eb751d22b2a74cf075e88a16c6e9281b4f20e08d869d80b757283": [
+      "v1/content/README.md"
+    ],
+    "ab892c47ba5209238973b04ebed296fe587dbed056c450b9c8653933899ca66fd6292995c355bde943795f82e1fe3827d9351e699092917f1bfbe8840362396b": [
+      "v1/content/Oxford Common Filesystem Layout - Discussion Paper - 2018-01-22.pdf"
+    ],
+    "cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e": [
+      "v1/content/inventory.json"
+    ]
+  },
+  "type": "https://ocfl.io/1.0/spec/#inventory",
+  "versions": {
+    "v1": {
+      "created": "2020-07-30T11:59:52.277818Z",
+      "state": {
+        "77d6ecdbc24ad892361616e2dddca97ef7c281795969d2114338ea35546da809c5af55f2ed43bfb00f78fdb80fe276c530d503d44592fdc9d4b26c6b05246bc9": [
+          "Oxford Common Filesystem Layout--Initial Proposal.pdf"
+        ],
+        "a014a467dc3b03bef8ffc94410552e151607a966c7b65453296777e559c5c670808439afb38eb751d22b2a74cf075e88a16c6e9281b4f20e08d869d80b757283": [
+          "README.md"
+        ],
+        "ab892c47ba5209238973b04ebed296fe587dbed056c450b9c8653933899ca66fd6292995c355bde943795f82e1fe3827d9351e699092917f1bfbe8840362396b": [
+          "Oxford Common Filesystem Layout - Discussion Paper - 2018-01-22.pdf"
+        ],
+        "cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e": [
+          "inventory.json"
+        ]
+      }
+    }
+  }
+}
