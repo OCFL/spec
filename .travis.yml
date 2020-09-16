@@ -1,7 +1,9 @@
-language: minimal
+language: python
+python:
+  - "3.8"
 
 install:
- - pip install --user html5validator beautifulsoup4 jsonschema
+ - pip install html5validator beautifulsoup4 jsonschema
 
 script:
  - html5validator --ignore "Section lacks heading"
