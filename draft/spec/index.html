@@ -504,13 +504,13 @@
     <section id="digests">
         <h2>Digests</h2>
         <p>
-            A <a>digest</a> plays two roles in an OCFL Object. The first is that digests allow for content-addressable
-            reference to files within the OCFL Object. That is, the connection between a file's <a>content
-            path</a> on physical storage and its <a>logical path</a> in a version of the object's content is made
-            with a digest of its contents, rather than its filename. This use of the content digest facilitates
-            de-duplication of files with the same content within an object, such as files that are unchanged from
-            one version to the next. The second role that digests play is provide for fixity checks to determine
-            whether a file has become corrupt, through hardware degradation or accident for example.
+            A <a>digest</a> plays two roles in an OCFL Object. The first is that digests allow for 
+            content-addressable reference to files within the OCFL Object. That is, the connection between a file's 
+            <a>content path</a> on physical storage and its <a>logical path</a> in a version of the object's content 
+            is made with a digest of its contents, rather than its filename. This use of the content digest 
+            facilitates de-duplication of files with the same content within an object, such as files that are 
+            unchanged from one version to the next. The second role that digests play is provide for fixity checks 
+            to determine whether a file has become corrupt, through hardware degradation or accident for example.
         </p>
         <p>
             For content-addressing, OCFL Objects <span id="E025">MUST</span> use either <code>sha512</code> or
@@ -919,9 +919,9 @@ DIGEST inventory.json
         <p>
             The base directory of an OCFL Object MAY contain a directory named <code>logs</code>, which MAY be empty.
             Implementers <span id="W012">SHOULD</span> use the <a>logs directory</a> for storing files that contain a
-            record of actions taken on the object. Since these logs may be subject to local standards requirements, the 
-            format of these logs is considered out-of-scope for the OCFL Object. Clients operating on the object MAY 
-            log actions here that are not otherwise captured.
+            record of actions taken on the object. Since these logs may be subject to local standards requirements, 
+            the format of these logs is considered out-of-scope for the OCFL Object. Clients operating on the object 
+            MAY log actions here that are not otherwise captured.
         </p>
         <blockquote class="informative">
             <p>
