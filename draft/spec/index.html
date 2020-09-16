@@ -504,7 +504,7 @@
     <section id="digests">
         <h2>Digests</h2>
         <p>
-            Digests play two roles in an OCFL Object. The first is that digests allow for content-addressable
+            A <a>digest</a> plays two roles in an OCFL Object. The first is that digests allow for content-addressable
             reference to files within the OCFL Object. That is, the connection between a file's <a>content
             path</a> on physical storage and its <a>logical path</a> in a version of the object's content is made
             with a digest of its contents, rather than its filename. This use of the content digest facilitates
@@ -918,10 +918,10 @@ DIGEST inventory.json
         <h2>Logs Directory</h2>
         <p>
             The base directory of an OCFL Object MAY contain a directory named <code>logs</code>, which MAY be empty.
-            Implementers <span id="W012">SHOULD</span> use this for storing files that contain a record of actions
-            taken on the object. Since these logs may be subject to local standards requirements, the format of these
-            logs is considered out-of-scope for the OCFL Object. Clients operating on the object MAY log actions here
-            that are not otherwise captured.
+            Implementers <span id="W012">SHOULD</span> use the <a>logs directory</a> for storing files that contain a
+            record of actions taken on the object. Since these logs may be subject to local standards requirements, the 
+            format of these logs is considered out-of-scope for the OCFL Object. Clients operating on the object MAY 
+            log actions here that are not otherwise captured.
         </p>
         <blockquote class="informative">
             <p>
