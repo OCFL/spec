@@ -58,7 +58,7 @@
 | E045 | 'This block must have the key of versions within the inventory, and it MUST be a JSON object.' | https://ocfl.io/1.0/spec/#E045
 | E046 | 'The keys of [the versions object] must correspond to the names of the version directories used.' | https://ocfl.io/1.0/spec/#E046
 | E047 | 'Each value [of the versions object] must be another JSON object that characterizes the version, as described in the 3.5.3.1 Version section.' | https://ocfl.io/1.0/spec/#E047
-| E048 | 'A JSON object to describe one OCFL Version, which must include the following keys: [created, state, message, user]' | https://ocfl.io/1.0/spec/#E048
+| E048 | 'A JSON object to describe one OCFL Version, which must include the following keys: [created, state]' | https://ocfl.io/1.0/spec/#E048
 | E049 | '[the value of the "created" key] must be expressed in the Internet Date/Time Format defined by [RFC3339].' | https://ocfl.io/1.0/spec/#E049
 | E050 | 'The keys of [the "state" JSON object] are digest values, each of which must correspond to an entry in the manifest of the inventory.' | https://ocfl.io/1.0/spec/#E050
 | E051 | 'The logical path [value of a "state" digest key] must be interpreted as a set of one or more path elements joined by a / path separator.' | https://ocfl.io/1.0/spec/#E051
