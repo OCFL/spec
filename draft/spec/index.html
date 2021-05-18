@@ -461,9 +461,9 @@
             The first version of an object defines the naming convention for all version directories for the object.
             All version directories of an object <span id="E012">MUST</span> use the same naming convention: either a
             non-padded version directory number, or a zero-padded version directory number of consistent length.
-            Operations that add a new version to an object <span id="E013">MUST</span> follow the version directory
-            naming convention established by earlier versions. In all cases, references to files inside version
-            directories from inventory files <span id="E014">MUST</span> use the actual version directory names.
+            The version naming convention <span id="E013">MUST</span> be consistent across all versions. In all
+            cases, references to files inside version directories from inventory files <span id="E014">MUST</span>
+            use the actual version directory names.
         </p>
         <p>
             There <span id="E015">MUST</span> be no other files as children of a version directory, other than an <a
