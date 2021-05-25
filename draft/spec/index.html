@@ -436,8 +436,8 @@
     <section id="object-conformance-declaration">
         <h2>Object Conformance Declaration</h2>
         <p>
-            The version declaration <span id="E002">MUST</span> be formatted according to the [[!NAMASTE]]
-            specification.
+            The OCFL specification version declaration <span id="E002">MUST</span> be formatted according to the
+            [[!NAMASTE]] specification.
             It <span id="E003">MUST</span> be a file in the base directory of the OCFL Object Root giving the OCFL
             version in the filename. The filename <span id="E004">MUST</span> conform to the pattern
             <code>T=dvalue</code>, where <code>T</code> <span id="E005">MUST</span> be 0, and <code>dvalue</code>
@@ -923,6 +923,17 @@ DIGEST inventory.json
             Non-normative note: Storing an inventory for every version provides redundancy for this critical
             information in a way that is compatible with storage strategies that have immutable version directories.
         </blockquote>
+        <section id="conformance-of-prior-versions">
+          <h2>Conformance of prior versions</h2>
+          <p>
+              Version directories in OCFL are intended to be immutable in that existing version directories do not
+              change when new version directory is added. Each version directory within an OCFL Object
+              <span id="E103">MUST</span> conform to either the same or a later OCFL specification version as the
+              preceding version directory. If inventories are stored in the version directories then the OCFL
+              specification version for a given version directory is apparent from the <code>type</code> attribute
+              in that <a href="#inventory-structure">inventory</a>.
+          </p>
+      </section>
     </section>
 
     <section id="logs-directory">
