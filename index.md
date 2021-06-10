@@ -24,7 +24,7 @@ Specifically, the benefits of the OCFL include:
 ## Tools
   * [OCFL Community Extensions](https://github.com/OCFL/extensions)
   * [OCFL Fixture Objects](https://github.com/OCFL/fixtures)
-  * [OCFL Validation Codes](https://ocfl.io/validation/validation-codes.html)
+  * [OCFL Validation Codes](https://ocfl.io/1.0/spec/validation-codes.html)
 
 ## Participate
 
