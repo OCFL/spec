@@ -13,12 +13,6 @@
             includePermalinks: true,
             editors: [
                 {
-                    name: "Andrew Hankinson",
-                    url: "https://orcid.org/0000-0003-2663-0003",
-                    company: "Bodleian Libraries, University of Oxford",
-                    companyURL: "http://www.bodleian.ox.ac.uk/"
-                },
-                {
                     name: "Neil Jefferies",
                     url: "https://orcid.org/0000-0003-3311-3741",
                     company: "Bodleian Libraries, University of Oxford",
@@ -54,6 +48,22 @@
             wgURI: "https://ocfl.io",
             wgPublicList: "",
             otherLinks: [{
+                key: "Additional Documents",
+                data: [
+                    {
+                        value: "Implementation Notes",
+                        href: "https://ocfl.io/draft/implementation-notes/",
+                    },
+                    {
+                        value: "Validation Codes",
+                        href: "https://ocfl.io/draft/spec/validation-codes.html",
+                    },
+                    {
+                        value: "Extensions",
+                        href: "https://github.com/OCFL/extensions/",
+                    }
+                ]
+            }, {
                 key: "Previous version",
                 data: [
                     {
@@ -332,13 +342,13 @@
             <dfn>OCFL Object Root</dfn>:
         </dt>
         <dd>
-            The base directory of an <a>OCFL Object</a>, identified by a [[NAMASTE]] file "0=ocfl_object_1.0".
+            The base directory of an <a>OCFL Object</a>, identified by a [[NAMASTE]] file "0=ocfl_object_1.1".
         </dd>
         <dt>
             <dfn>OCFL Storage Root</dfn>:
         </dt>
         <dd>
-            A base directory used to store OCFL Objects, identified by a [[NAMASTE]] file "0=ocfl_1.0".
+            A base directory used to store OCFL Objects, identified by a [[NAMASTE]] file "0=ocfl_1.1".
         </dd>
         <dt>
             <dfn>OCFL Version</dfn>:
@@ -408,7 +418,7 @@
         </p>
 <pre>
 [object_root]
-    ├── 0=ocfl_object_1.0
+    ├── 0=ocfl_object_1.1
     ├── inventory.json
     ├── inventory.json.sha512
     └── v1
@@ -493,10 +503,10 @@
           </p>
           <p>
               Every file within a version's content directory <span id="E023">MUST</span> be referenced in the
-              <a href="#manifest">manifest</a> section of the inventory. There <span id="E024">MUST NOT</span> be empty
-              directories within a version's content directory. A directory that would otherwise be empty MAY be
-              maintained by creating a file within it named according to local conventions, for example by making an
-              empty <code>.keep</code> file.
+              <a href="#manifest">manifest</a> section of that version's inventory. There
+              <span id="E024">MUST NOT</span> be empty directories within a version's content directory. A directory
+              that would otherwise be empty MAY be maintained by creating a file within it named according to local
+              conventions, for example by making an empty <code>.keep</code> file.
           </p>
         </section>
     </section>
@@ -628,7 +638,7 @@
                     that the inventory complies with. In the object root inventory this <span id="E038">MUST</span>
                     be the URI of the inventory section of the specification version matching the object conformance
                     declaration. For the current specification version the value is
-                    <code>https://ocfl.io/1.0/spec/#inventory</code>.
+                    <code>https://ocfl.io/1.1/spec/#inventory</code>.
                 </dd>
                 <dt><code>digestAlgorithm</code></dt>
                 <dd>
@@ -663,9 +673,9 @@
             <h2>Manifest</h2>
             <p>
                 The value of the <code>manifest</code> key is a JSON object, with keys corresponding to the digests
-                of every content file in all versions of the <a>OCFL Object</a>. The value for each key
-                <span id="E092">MUST</span> be an array containing the <a>content path</a>s of files in the OCFL
-                Object that have content with the given digest. As JSON keys are case sensitive, while digests may
+                of every content file in the current and previous versions of the <a>OCFL Object</a>. The value for
+                each key <span id="E092">MUST</span> be an array containing the <a>content path</a>s of files in the
+                OCFL Object that have content with the given digest. As JSON keys are case sensitive, while digests may
                 not be, there is an additional requirement that each digest value <span id="E096">MUST</span> occur
                 only once in the manifest regardless of case. Content paths within a manifest block
                 <span id="E042">MUST</span> be relative to the <a>OCFL Object Root</a>. The following restrictions
@@ -1031,8 +1041,8 @@ DIGEST inventory.json
         </p>
         <pre>
 [storage_root]
-    ├── 0=ocfl_1.0
-    ├── ocfl_1.0.txt (human-readable text of the OCFL specification; optional)
+    ├── 0=ocfl_1.1
+    ├── ocfl_1.1.txt (human-readable text of the OCFL specification; optional)
     └── ocfl_layout.json (description of storage hierarchy layout; optional)
         </pre>
     </section>
@@ -1136,7 +1146,7 @@ DIGEST inventory.json
         </p>
 <pre>
 [object root]
-    ├── 0=ocfl_object_1.0
+    ├── 0=ocfl_object_1.1
     ├── inventory.json
     ├── inventory.json.sha512
     └── v1
@@ -1157,7 +1167,7 @@ DIGEST inventory.json
   "manifest": {
     "7545b8...f67": [ "v1/content/file.txt" ]
   },
-  "type": "https://ocfl.io/1.0/spec/#inventory",
+  "type": "https://ocfl.io/1.1/spec/#inventory",
   "versions": {
     "v1": {
       "created": "2018-10-02T12:00:00Z",
@@ -1166,7 +1176,7 @@ DIGEST inventory.json
         "7545b8...f67": [ "file.txt" ]
       },
       "user": {
-        "address": "alice@example.org",
+        "address": "mailto:alice@example.org",
         "name": "Alice"
       }
     }
@@ -1182,7 +1192,7 @@ DIGEST inventory.json
         </p>
 <pre>
 [object root]
-    ├── 0=ocfl_object_1.0
+    ├── 0=ocfl_object_1.1
     ├── inventory.json
     ├── inventory.json.sha512
     ├── v1
@@ -1240,7 +1250,7 @@ DIGEST inventory.json
     "cf83e1...a3e": [ "v1/content/empty.txt" ],
     "ffccf6...62e": [ "v1/content/image.tiff" ]
   },
-  "type": "https://ocfl.io/1.0/spec/#inventory",
+  "type": "https://ocfl.io/1.1/spec/#inventory",
   "versions": {
     "v1": {
       "created": "2018-01-01T01:01:01Z",
@@ -1251,7 +1261,7 @@ DIGEST inventory.json
         "ffccf6...62e": [ "image.tiff" ]
       },
       "user": {
-        "address": "alice@example.com",
+        "address": "mailto:alice@example.com",
         "name": "Alice"
       }
     },
@@ -1263,7 +1273,7 @@ DIGEST inventory.json
         "cf83e1...a3e": [ "empty.txt", "empty2.txt" ]
       },
       "user": {
-        "address": "bob@example.com",
+        "address": "mailto:bob@example.com",
         "name": "Bob"
       }
     },
@@ -1276,7 +1286,7 @@ DIGEST inventory.json
         "ffccf6...62e": [ "image.tiff" ]
       },
       "user": {
-        "address": "cecilia@example.com",
+        "address": "mailto:cecilia@example.com",
         "name": "Cecilia"
       }
     }
@@ -1308,13 +1318,17 @@ DIGEST inventory.json
     "7545b8...f67": [ "v1/content/3bacb119a98a15c5" ],
     "af318d...3cd": [ "v1/content/9f2bab8ef869947d" ]
   },
-  "type": "https://ocfl.io/1.0/spec/#inventory",
+  "type": "https://ocfl.io/1.1/spec/#inventory",
   "versions": {
     "v1": {
       "created": "2019-03-14T20:31:00Z",
       "state": {
         "7545b8...f67": [ "a file.wxy" ],
         "af318d...3cd": [ "another file.xyz" ]
+      },
+      "user": {
+        "address": "mailto:admin@example.org",
+        "name": "Some Admin"
       }
     }
   }
@@ -1333,7 +1347,7 @@ DIGEST inventory.json
         </p>
 <pre>
 [object root]
-    ├── 0=ocfl_object_1.0
+    ├── 0=ocfl_object_1.1
     ├── inventory.json
     ├── inventory.json.sha512
     └── v1
@@ -1355,7 +1369,7 @@ DIGEST inventory.json
         </p>
 <pre>
 [object root]
-    ├── 0=ocfl_object_1.0
+    ├── 0=ocfl_object_1.1
     ├── inventory.json
     ├── inventory.json.sha512
     ├── v1
@@ -1416,7 +1430,7 @@ myfirstbag
     "921d36...877": [ "v2/content/myfirstbag/data/27614-h/images/q173.png" ],
     "b8bdf1...927": [ "v2/content/myfirstbag/data/27614-h/images/q173.txt" ]
   },
-  "type": "https://ocfl.io/1.0/spec/#inventory",
+  "type": "https://ocfl.io/1.1/spec/#inventory",
   "versions": {
     "v1": {
       "created": "2018-10-09T11:20:29.209164Z",
@@ -1428,7 +1442,7 @@ myfirstbag
         "f15428...83f": [ "myfirstbag/manifest-md5.txt" ]
       },
       "user": {
-        "address": "someone@example.org",
+        "address": "mailto:someone@example.org",
         "name": "Some One"
       }
     },
@@ -1444,7 +1458,7 @@ myfirstbag
         "b8bdf1...927": [ "myfirstbag/data/27614-h/images/q173.txt" ]
       },
       "user": {
-        "address": "somebody-else@example.org",
+        "address": "mailto:somebody-else@example.org",
         "name": "Somebody Else"
       }
     }
@@ -1586,7 +1600,7 @@ myfirstbag
     "93884e...aae": [ "v0003/data/metadata/contentMetadata.xml" ],
     "4c5ab4...b02": [ "v0003/data/metadata/embargoMetadata.xml" ]
   },
-  "type": "https://ocfl.io/1.0/spec/#inventory",
+  "type": "https://ocfl.io/1.1/spec/#inventory",
   "versions": {
     "v1": {
       "created": "2019-03-14T20:31:00Z",
@@ -1651,11 +1665,11 @@ myfirstbag
         </p>
 <pre>
 [storage root]
-    ├── 0=ocfl_1.0
+    ├── 0=ocfl_1.1
     ├── extensions
     │   └── 0000-example-extension
     │       └── file-example.txt
-    ├── ocfl_1.0.txt
+    ├── ocfl_1.1.txt
     └── ocfl_layout.json
 </pre>
     </section>
@@ -1667,7 +1681,7 @@ myfirstbag
         </p>
 <pre>
 [object root]
-    ├── 0=ocfl_object_1.0
+    ├── 0=ocfl_object_1.1
     ├── inventory.json
     ├── inventory.json.sha512
     ├── extensions

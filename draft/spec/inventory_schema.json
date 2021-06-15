@@ -31,7 +31,8 @@
         },
         "type": {
             "description": "Seems that using `const` would be nicer but that doesn't seem to work with Python jsonschema",
-            "enum": ["https://ocfl.io/1.0/spec/#inventory"]
+            "enum": ["https://ocfl.io/1.0/spec/#inventory",
+                     "https://ocfl.io/1.1/spec/#inventory"]
         },
         "versions": {
             "description": "Each key is a version directory name with version objects as values",
