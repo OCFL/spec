@@ -113,6 +113,8 @@
 | E101 | 'Within an inventory, content paths must be unique and non-conflicting, so the content path for a file cannot appear as the initial part of another content path.' | https://ocfl.io/draft/spec/#E101
 | E102 | 'An inventory file must not contain keys that are not specified.' | https://ocfl.io/draft/spec/#E102
 | E103 | 'Each version directory within an OCFL Object MUST conform to either the same or a later OCFL specification version as the preceding version directory.' | https://ocfl.io/draft/spec/#E103
+| E104 | 'Version directory names MUST be constructed by prepending v to the version number.' | https://ocfl.io/draft/spec/#E104
+| E105 | 'The version number MUST be taken from the sequence of positive, base-ten integers: 1, 2, 3, etc.' | https://ocfl.io/draft/spec/#E105
 
 ## Warnings (corresponding with SHOULD in specification)
 
