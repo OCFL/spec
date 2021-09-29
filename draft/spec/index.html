@@ -776,7 +776,7 @@
                                 the same digest in the manifest. See [[OCFL-Implementation-Notes]].
                             </p>
                             <p>
-                                An example state block is shown below:
+                                An example <code>state</code> block is shown below:
                             </p>
 <pre>
   "state": {
@@ -785,9 +785,9 @@
   }
 </pre>
                             <p>
-                                This state block describes an object with 3 files, two of which have the same content
-                                (<code>empty.txt</code> and <code>empty2.txt</code>), and one of which is in a
-                                sub-directory (<code>bar.xml</code>). The <a>logical state</a> shown as a tree
+                                This <code>state</code> block describes an object with 3 files, two of which have
+                                the same content (<code>empty.txt</code> and <code>empty2.txt</code>), and one of which
+                                is in a sub-directory (<code>bar.xml</code>). The <a>logical state</a> shown as a tree
                                 is thus:
                             </p>
 <pre>
@@ -842,18 +842,19 @@
                 <a href="#digests">Digests</a> section, or in a table given in an <a>Extension</a>. The value of the
                 fixity block for a particular digest algorithm <span id="E057">MUST</span> follow the structure of the
                 <a href="#manifest"><code>manifest</code></a> block; that is, a key corresponding to the digest value,
-                and an array of <a>content path</a>s. The fixity block for any digest algorithm MAY include digest
-                values for any subset of content paths in the object. Where included, the digest values given
+                and an array of <a>content path</a>s. The <code>fixity</code> block for any digest algorithm MAY include
+                digest values for any subset of content paths in the object. Where included, the digest values given
                 <span id="E093">MUST</span> match the digests of the files at the corresponding content paths. As JSON
                 keys are case sensitive, while digests may not be, there is an additional requirement that each digest
-                value <span id="E097">MUST</span> occur only once in the fixity block for any digest algorithm,
-                regardless of case. There is no requirement that all content files have a value in the fixity block, or
-                that fixity values provided in one version are carried forward to later versions.
+                value <span id="E097">MUST</span> occur only once in the <code>fixity</code> block for any digest
+                algorithm, regardless of case. There is no requirement that all content files have a value in the
+                <code>fixity</code> block, or that fixity values provided in one version are carried forward to later
+                versions.
             </p>
             <blockquote class="informative">
             <p>
-                An example fixity block with <code>md5</code> and <code>sha1</code> digests is shown below. In this
-                case the <code>md5</code> digest values are provided only for version 1 content paths.
+                An example <code>fixity</code> with <code>md5</code> and <code>sha1</code> digests is shown below. In
+                this case the <code>md5</code> digest values are provided only for version 1 content paths.
             </p>
 <pre>
   "fixity": {
@@ -912,12 +913,12 @@ DIGEST inventory.json
         </p>
         <p>
             In the case that prior version directories include an inventory file there will be multiple inventory
-            files describing prior versions within the OCFL Object. Each version block in each prior inventory file
-            <span id="E066">MUST</span> represent the same object state as the corresponding version block in the
-            current inventory file. Additionally, the values of the <code>created</code>, <code>message</code> and
-            <code>user</code> keys in each version block in each prior inventory file <span id="W011">SHOULD</span>
-            have the same values as the corresponding keys in the corresponding version block in the current inventory
-            file.
+            files describing prior versions within the OCFL Object. Each <code>version</code> block in each prior
+            inventory file <span id="E066">MUST</span> represent the same object state as the corresponding
+            <code>version</code> block in the current inventory file. Additionally, the values of the
+            <code>created</code>, <code>message</code> and <code>user</code> keys in each <code>version</code> block
+            in each prior inventory file <span id="W011">SHOULD</span> have the same values as the corresponding keys
+            in the corresponding <code>version</code> block in the current inventory file.
         </p>
         <blockquote class="informative">
             Non-normative note: Storing an inventory for every version provides redundancy for this critical
@@ -1478,8 +1479,8 @@ myfirstbag
             Converting content preserved in a Moab object in a way that does not compromise existing Moab
             access patterns whilst allowing for the eventual use of OCFL-native workflows requires a Moab to
             OCFL conversion tool. This tool uses the Moab-versioning gem to extract deltas and digests
-            of the Moab data directory for each Moab version and translate those into version state blocks
-            in an OCFL inventory file, which would be placed in the root directory of the Moab object.
+            of the Moab data directory for each Moab version and translate those into version <code>state</code>
+            blocks in an OCFL inventory file, which would be placed in the root directory of the Moab object.
             The content of the <code>data</code> directory in the Moab version directories (and thus, the bitstreams
             that Moab is preserving) is tracked by OCFL, via the <code>contentDirectory</code> value.
             The contents of the Moab <code>manifests</code> directories are not tracked, as the intention is not
