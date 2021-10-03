@@ -451,10 +451,11 @@
         <h2>Version Directories</h2>
         <p>
             OCFL Object content <span id="E008">MUST</span> be stored as a sequence of one or more versions. Each
-            object version is stored in a version directory under the object root. The sequence of version numbers
-            is the sequence of positive, base-ten integers: 1, 2, 3, etc., and the version directory name is
-            constructed by adding the prefix <code>v</code>. The version number sequence <span id="E009">MUST</span>
-            start at 1 and <span id="E010">MUST</span> be continuous without missing integers.
+            object version is stored in a version directory under the object root. Version directory names
+            <span id="E104">MUST</span> be constructed by prepending <code>v</code> to the version number. The
+            version number <span id="E105">MUST</span> be taken from the sequence of positive, base-ten integers:
+            1, 2, 3, etc.. The version number sequence <span id="E009">MUST</span> start at 1 and
+            <span id="E010">MUST</span> be continuous without missing integers.
         </p>
         <p>
             Implementations <span id="W001">SHOULD</span> use version directory names constructed without zero-padding
