@@ -114,7 +114,7 @@
 | E102 | 'An inventory file must not contain keys that are not specified.' | https://ocfl.io/draft/spec/#E102
 | E103 | 'Each version directory within an OCFL Object MUST conform to either the same or a later OCFL specification version as the preceding version directory.' | https://ocfl.io/draft/spec/#E103
 | E106 | 'The value of the manifest key MUST be a JSON object.' | https://ocfl.io/draft/spec/#E106
-| E107 | 'The value of the manifest key must be a JSON object, all keys of which MUST correspond to digest value keys found in one or more state JSON objects of the current and/or previous version blocks of the OCFL Object.' | https://ocfl.io/draft/spec/#E107
+| E107 | 'The value of the manifest key must be a JSON object, and each key MUST correspond to digest value keys found in one or more state JSON objects of the current and/or previous version blocks of the OCFL Object.' | https://ocfl.io/draft/spec/#E107
 
 ## Warnings (corresponding with SHOULD in specification)
 
