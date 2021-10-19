@@ -908,9 +908,9 @@ DIGEST inventory.json
             Every OCFL Object <span id="E063">MUST</span> have an inventory file within the OCFL Object Root,
             corresponding to the state of the OCFL Object at the current version. Additionally, every version directory
             <span id="W010">SHOULD</span> include an inventory file that is an <a href="#inventory">Inventory</a> of
-            all content for versions up to and including that particular version. In the case where no files have been
+            all content for versions up to and including that particular version. In the case when no files have been
             added or updated in a given version, resulting in an empty and therefore absent "content" directory 
-            (see https://ocfl.io/1.0/spec/#content-directory), such a version directory <span id="E109">MUST</span> 
+            (see https://ocfl.io/1.0/spec/#content-directory), the version directory <span id="E109">MUST</span> 
             include an inventory file. Where an OCFL Object contains <code>inventory.json</code> in version directories, 
             the inventory file in the OCFL Object Root <span id="E064">MUST</span> be the same as the file in the most
             recent version. See also requirements for the corresponding <a href="#inventory-digest">Inventory Digest</a>.
