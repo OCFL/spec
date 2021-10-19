@@ -117,6 +117,7 @@
 | E105 | 'The version number MUST be taken from the sequence of positive, base-ten integers: 1, 2, 3, etc.' | https://ocfl.io/draft/spec/#E105
 | E106 | 'The value of the manifest key MUST be a JSON object.' | https://ocfl.io/draft/spec/#E106
 | E107 | 'The value of the manifest key must be a JSON object, and each key MUST correspond to a digest value key found in one or more state blocks of the current and/or previous version blocks of the OCFL Object.' | https://ocfl.io/draft/spec/#E107
+| E110 | 'A unique identifier for the OCFL Object MUST NOT change between versions of the same object.' | https://ocfl.io/draft/spec/#E110
 
 ## Warnings (corresponding with SHOULD in specification)
 
