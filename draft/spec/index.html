@@ -490,6 +490,8 @@
               otherwise. The name of this designated sub-directory MAY be defined in the
               <a href="#inventory">inventory file</a> using the key <code>contentDirectory</code> with the value being
               the chosen sub-directory name as a string, relative to the version directory. The
+              <code>contentDirectory</code> value <span id="E0108">MUST</span> represent a direct child directory of the
+              version directory in which it is found. As such, the
               <code>contentDirectory</code> value <span id="E017">MUST NOT</span> contain the forward slash
               (<code>/</code>) path separator and <span id="E018">MUST NOT</span> be either one or two periods
               (<code>.</code> or <code>..</code>). If the key <code>contentDirectory</code> is set, it
@@ -630,8 +632,9 @@
                 <dt><code>id</code></dt>
                 <dd>
                     A unique identifier for the OCFL Object. This <span id="E037">MUST</span> be unique in the local
-                    context, and <span id="W005">SHOULD</span> be a URI [[!RFC3986]]. There is no expectation that a
-                    URI used is resolvable. For example, URNs [[RFC8141]] MAY be used.
+                    context, <span id="E110">MUST NOT</span> change between versions of the same object, and <span 
+                    id="W005">SHOULD</span> be a URI [[!RFC3986]]. There is no expectation that a URI used is 
+                    resolvable. For example, URNs [[RFC8141]] MAY be used.
                 </dd>
                 <dt><code>type</code></dt>
                 <dd>
