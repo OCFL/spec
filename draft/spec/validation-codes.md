@@ -118,7 +118,7 @@
 | E106 | 'The value of the manifest key MUST be a JSON object.' | https://ocfl.io/draft/spec/#E106
 | E107 | 'The value of the manifest key must be a JSON object, and each key MUST correspond to a digest value key found in one or more state blocks of the current and/or previous version blocks of the OCFL Object.' | https://ocfl.io/draft/spec/#E107
 | E108 | 'The contentDirectory value MUST represent a direct child directory of the version directory in which it is found.' | https://ocfl.io/draft/spec/#E108
-| E109 | 'When no files have been added or updated in a given version, resulting in an empty and therefore absent "content" directory, the version directory MUST include an inventory file.' | https://ocfl.io/draft/spec/#E109
+| E109 | 'Where no files have been added or updated in a given version, resulting in an empty or absent content directory, the version directory MUST still include an inventory file.' | https://ocfl.io/draft/spec/#E109
 | E110 | 'A unique identifier for the OCFL Object MUST NOT change between versions of the same object.' | https://ocfl.io/draft/spec/#E110
 
 ## Warnings (corresponding with SHOULD in specification)
