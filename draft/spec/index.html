@@ -680,9 +680,10 @@
                 <span id="E107">MUST</span> correspond to a digest value key found in one or more <code>state</code>
                 blocks of the current and/or previous <code>version</code> blocks of the <a>OCFL Object</a>. The
                 value for each key <span id="E092">MUST</span> be an array containing the <a>content path</a>s of files
-                in the OCFL Object that have content with the given digest. As JSON keys are case sensitive, while
-                digests may not be, there is an additional requirement that each digest value
-                <span id="E096">MUST</span> occur only once in the manifest regardless of case. Content paths within a
+                in the OCFL Object that have content with the given digest. As JSON keys are case sensitive,
+                for digest algorithms with case insensitive digest values, there is an additional requirement that each
+                digest value <span id="E096">MUST</span> occur only once in the manifest block for any digest algorithm,
+                regardless of case. Content paths within a
                 manifest block <span id="E042">MUST</span> be relative to the <a>OCFL Object Root</a>. The following
                 restrictions avoid ambiguity and provide path safety for clients processing the <code>manifest</code>.
             </p>
@@ -850,9 +851,10 @@
                 and an array of <a>content path</a>s. The <code>fixity</code> block for any digest algorithm MAY include
                 digest values for any subset of content paths in the object. Where included, the digest values given
                 <span id="E093">MUST</span> match the digests of the files at the corresponding content paths. As JSON
-                keys are case sensitive, while digests may not be, there is an additional requirement that each digest
-                value <span id="E097">MUST</span> occur only once in the <code>fixity</code> block for any digest
-                algorithm, regardless of case. There is no requirement that all content files have a value in the
+                keys are case sensitive, for digest algorithms with case insensitive digest values, there is an
+                additional requirement that each digest value <span id="E097">MUST</span> occur only once in the
+                <code>fixity</code> block for any digest algorithm, regardless of case.
+                There is no requirement that all content files have a value in the
                 <code>fixity</code> block, or that fixity values provided in one version are carried forward to later
                 versions.
             </p>
