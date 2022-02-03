@@ -79,7 +79,7 @@
 | E067 | 'The extensions directory must not contain any files, and no sub-directories other than extension sub-directories.' | https://ocfl.io/draft/spec/#E067
 | E068 | 'The specific structure and function of the extension, as well as a declaration of the registered extension name must be defined in one of the following locations: The OCFL Extensions repository OR The Storage Root, as a plain text document directly in the Storage Root.' | https://ocfl.io/draft/spec/#E068
 | E069 | 'An OCFL Storage Root MUST contain a Root Conformance Declaration identifying it as such.' | https://ocfl.io/draft/spec/#E069
-| E070 | 'If present, [the ocfl_layout.json document] MUST include the following two keys in the root JSON object: [key, description]' | https://ocfl.io/draft/spec/#E070
+| E070 | 'If present, [the ocfl_layout.json document] MUST include the following two keys in the root JSON object: [extension, description]' | https://ocfl.io/draft/spec/#E070
 | E071 | 'The value of the [ocfl_layout.json] extension key must be the registered extension name for the extension defining the arrangement under the storage root.' | https://ocfl.io/draft/spec/#E071
 | E072 | 'The directory hierarchy used to store OCFL Objects MUST NOT contain files that are not part of an OCFL Object.' | https://ocfl.io/draft/spec/#E072
 | E073 | 'Empty directories MUST NOT appear under a storage root.' | https://ocfl.io/draft/spec/#E073
