@@ -65,7 +65,7 @@
 | E052 | '[logical] Path elements must not be ., .., or empty (//).' | https://ocfl.io/draft/spec/#E052
 | E053 | 'Additionally, a logical path must not begin or end with a forward slash (/).' | https://ocfl.io/draft/spec/#E053
 | E054 | 'The value of the user key must contain a user name key, "name" and should contain an address key, "address".' | https://ocfl.io/draft/spec/#E054
-| E055 | 'This block must have the key of fixity within the inventory.' | https://ocfl.io/draft/spec/#E055
+| E055 | 'If present, [the fixity] block must have the key of fixity within the inventory.' | https://ocfl.io/draft/spec/#E055
 | E056 | 'The fixity block must contain keys corresponding to the controlled vocabulary given in the digest algorithms listed in the Digests section, or in a table given in an Extension.' | https://ocfl.io/draft/spec/#E056
 | E057 | 'The value of the fixity block for a particular digest algorithm must follow the structure of the manifest block; that is, a key corresponding to the digest value, and an array of content paths that match that digest.' | https://ocfl.io/draft/spec/#E057'
 | E058 | 'Every occurrence of an inventory file must have an accompanying sidecar file stating its digest.' | https://ocfl.io/draft/spec/#E058
@@ -119,6 +119,7 @@
 | E107 | 'The value of the manifest key must be a JSON object, and each key MUST correspond to a digest value key found in one or more state blocks of the current and/or previous version blocks of the OCFL Object.' | https://ocfl.io/draft/spec/#E107
 | E108 | 'The contentDirectory value MUST represent a direct child directory of the version directory in which it is found.' | https://ocfl.io/draft/spec/#E108
 | E110 | 'A unique identifier for the OCFL Object MUST NOT change between versions of the same object.' | https://ocfl.io/draft/spec/#E110
+| E111 | 'If present, [the value of the fixity key] MUST be a JSON object, which may be empty.' | https://ocfl.io/draft/spec/#E111
 
 ## Warnings (corresponding with SHOULD in specification)
 
