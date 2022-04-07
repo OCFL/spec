@@ -136,6 +136,6 @@
 | W010 | 'In addition to the inventory in the OCFL Object Root, every version directory SHOULD include an inventory file that is an Inventory of all content for versions up to and including that particular version.' | https://ocfl.io/draft/spec/#W010
 | W011 | 'In the case that prior version directories include an inventory file, the values of the created, message and user keys in each version block in each prior inventory file SHOULD have the same values as the corresponding keys in the corresponding version block in the current inventory file.' | https://ocfl.io/draft/spec/#W011
 | W012 | 'Implementers SHOULD use the logs directory, if present, for storing files that contain a record of actions taken on the object.' | https://ocfl.io/draft/spec/#W012
-| W013 | 'In an OCFL Object, extension sub-directories SHOULD be named according to a registered extension name.' | https://ocfl.io/draft/spec/#W013
+| W013 | 'In an OCFL Object or Storage Root, extension sub-directories SHOULD be named according to a registered extension name.' | https://ocfl.io/draft/spec/#W013
 | W014 | 'Storage hierarchies within the same OCFL Storage Root SHOULD use just one layout pattern.' | https://ocfl.io/draft/spec/#W014
 | W015 | 'Storage hierarchies within the same OCFL Storage Root SHOULD consistently use either a directory hierarchy of OCFL Objects or top-level OCFL Objects.' | https://ocfl.io/draft/spec/#W015
