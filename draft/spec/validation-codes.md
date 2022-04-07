@@ -77,7 +77,6 @@
 | E064 | 'Where an OCFL Object contains inventory.json in version directories, the inventory file in the OCFL Object Root must be the same as the file in the most recent version.' | https://ocfl.io/draft/spec/#E064
 | E066 | 'Each version block in each prior inventory file must represent the same object state as the corresponding version block in the current inventory file.' | https://ocfl.io/draft/spec/#E066
 | E067 | 'The extensions directory must not contain any files, and no sub-directories other than extension sub-directories.' | https://ocfl.io/draft/spec/#E067
-| E068 | 'The specific structure and function of the extension, as well as a declaration of the registered extension name must be defined in one of the following locations: The OCFL Extensions repository OR The Storage Root, as a plain text document directly in the Storage Root.' | https://ocfl.io/draft/spec/#E068
 | E069 | 'An OCFL Storage Root MUST contain a Root Conformance Declaration identifying it as such.' | https://ocfl.io/draft/spec/#E069
 | E070 | 'If present, [the ocfl_layout.json document] MUST include the following two keys in the root JSON object: [extension, description]' | https://ocfl.io/draft/spec/#E070
 | E071 | 'The value of the [ocfl_layout.json] extension key must be the registered extension name for the extension defining the arrangement under the storage root.' | https://ocfl.io/draft/spec/#E071
