@@ -437,9 +437,9 @@
         <h2>Object Conformance Declaration</h2>
         <p>
             The OCFL specification version declaration <span id="E002">MUST</span> be formatted according to the
-            [[!NAMASTE]] specification.
-            It <span id="E003">MUST</span> be a file in the base directory of the OCFL Object Root giving the OCFL
-            version in the filename. The filename <span id="E004">MUST</span> conform to the pattern
+            [[!NAMASTE]] specification. There <span id="E003">MUST</span> be exactly one version declaration file in
+            the base directory of the OCFL Object Root giving the OCFL version in the filename.
+            The filename <span id="E004">MUST</span> conform to the pattern
             <code>T=dvalue</code>, where <code>T</code> <span id="E005">MUST</span> be 0, and <code>dvalue</code>
             <span id="E006">MUST</span> be <code>ocfl_object_</code>, followed by the OCFL specification version
             number. The text contents of the file <span id="E007">MUST</span> be the same as <code>dvalue</code>,
@@ -1052,8 +1052,9 @@ DIGEST inventory.json
         <h2>Root Conformance Declaration</h2>
         <p>
           The OCFL version declaration <span id="E075">MUST</span> be formatted according to the [[!NAMASTE]]
-          specification. It <span id="E076">MUST</span> be a file in the base directory of the <a>OCFL Storage Root</a>
-          giving the OCFL version in the filename. The filename <span id="E077">MUST</span> conform to the pattern
+          specification. There <span id="E076">MUST</span> be exaclty one version declaration file in the base
+          directory of the <a>OCFL Storage Root</a> giving the OCFL version in the filename.
+          The filename <span id="E077">MUST</span> conform to the pattern
           <code>T=dvalue</code>, where <code>T</code> <span id="E078">MUST</span> be 0, and <code>dvalue</code>
           <span id="E079">MUST</span> be <code>ocfl_</code>, followed by the OCFL specification version number. The
           text contents of the file <span id="E080">MUST</span> be the same as <code>dvalue</code>, followed by a
