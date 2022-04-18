@@ -753,8 +753,8 @@
                             to the <a>logical state</a> of the object at that version. The keys of this JSON object
                             are digest values, each of which <span id="E050">MUST</span> exactly match a digest value
                             key in the <a href="#manifest">manifest of the inventory</a>. The value for each key is an
-                            array containing <a>logical path</a> names of files in the OCFL Object state that have
-                            content with the given digest.
+                            array containing <a>logical path</a> names of files in the OCFL Object's logical state that
+                            have content with the given digest.
                         </p>
                         <p>
                             <a href="#logical-path">Logical paths</a> present the structure of an OCFL Object at a
@@ -922,7 +922,7 @@ DIGEST inventory.json
         <p>
             In the case that prior version directories include an inventory file there will be multiple inventory
             files describing prior versions within the OCFL Object. Each <code>version</code> block in each prior
-            inventory file <span id="E066">MUST</span> represent the same object state as the corresponding
+            inventory file <span id="E066">MUST</span> represent the same <a>logical state</a> as the corresponding
             <code>version</code> block in the current inventory file. Additionally, the values of the
             <code>created</code>, <code>message</code> and <code>user</code> keys in each <code>version</code> block
             in each prior inventory file <span id="W011">SHOULD</span> have the same values as the corresponding keys
@@ -1354,9 +1354,10 @@ DIGEST inventory.json
         <p>
             [[BagIt]] is a common file packaging specification, but unlike the OCFL it does not provide a mechanism for
             content versioning. Using the OCFL it is possible to store a BagIt structure with content versioning, such
-            that when the object state is resolved, it creates a valid BagIt 'bag'. This example will illustrate one way
-            this can be accomplished, using the <a href="https://tools.ietf.org/html/draft-kunze-bagit-17#section-4.1">
-            example of a basic bag</a> given in the BagIt specification.
+            that when the <a>logical state</a> is resolved, it creates a valid BagIt 'bag'. This example will
+            illustrate one way this can be accomplished, using the
+            <a href="https://tools.ietf.org/html/draft-kunze-bagit-17#section-4.1"> example of a basic bag</a> given in
+            the BagIt specification.
         </p>
 <pre>
 [object root]
