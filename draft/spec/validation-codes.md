@@ -13,7 +13,7 @@
 | --- | --- | --- |
 | E001 | 'The OCFL Object Root must not contain files or directories other than those specified in the following sections.' | https://ocfl.io/draft/spec/#E001
 | E002 | 'The version declaration must be formatted according to the NAMASTE specification.' | https://ocfl.io/draft/spec/#E002
-| E003 | '[The version declaration] must be a file in the base directory of the OCFL Object Root giving the OCFL version in the filename.' | https://ocfl.io/draft/spec/#E003
+| E003 | 'There must be exactly one version declaration file in the base directory of the OCFL Object Root giving the OCFL version in the filename.' | https://ocfl.io/draft/spec/#E003
 | E004 | 'The [version declaration] filename MUST conform to the pattern T=dvalue, where T must be 0, and dvalue must be ocfl_object_, followed by the OCFL specification version number.' | https://ocfl.io/draft/spec/#E004
 | E005 | 'The [version declaration] filename must conform to the pattern T=dvalue, where T MUST be 0, and dvalue must be ocfl_object_, followed by the OCFL specification version number.' | https://ocfl.io/draft/spec/#E005
 | E006 | 'The [version declaration] filename must conform to the pattern T=dvalue, where T must be 0, and dvalue MUST be ocfl_object_, followed by the OCFL specification version number.' | https://ocfl.io/draft/spec/#E006
@@ -84,7 +84,7 @@
 | E073 | 'Empty directories MUST NOT appear under a storage root.' | https://ocfl.io/draft/spec/#E073
 | E074 | 'Although implementations may require multiple OCFL Storage Roots - that is, several logical or physical volumes, or multiple "buckets" in an object store - each OCFL Storage Root MUST be independent.' | https://ocfl.io/draft/spec/#E074
 | E075 | 'The OCFL version declaration MUST be formatted according to the NAMASTE specification.' | https://ocfl.io/draft/spec/#E075
-| E076 | '[The OCFL version declaration] MUST be a file in the base directory of the OCFL Storage Root giving the OCFL version in the filename.' | https://ocfl.io/draft/spec/#E076
+| E076 | 'There must be exactly one version declaration file in the base directory of the OCFL Storage Root giving the OCFL version in the filename.' | https://ocfl.io/draft/spec/#E076
 | E077 | '[The OCFL version declaration filename] MUST conform to the pattern T=dvalue, where T must be 0, and dvalue must be ocfl_, followed by the OCFL specification version number.' | https://ocfl.io/draft/spec/#E077
 | E078 | '[The OCFL version declaration filename] must conform to the pattern T=dvalue, where T MUST be 0, and dvalue must be ocfl_, followed by the OCFL specification version number.' | https://ocfl.io/draft/spec/#E078
 | E079 | '[The OCFL version declaration filename] must conform to the pattern T=dvalue, where T must be 0, and dvalue MUST be ocfl_, followed by the OCFL specification version number.' | https://ocfl.io/draft/spec/#E079
