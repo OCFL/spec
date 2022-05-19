@@ -148,7 +148,7 @@ diagrams, examples, and notes in this specification are non-normative.
 Everything else in this specification is normative.
 
 The key words may, must, must not, should, and should not are to be
-interpreted as described in [RFC2119].
+interpreted as described in [RFC2119](#ref-rfc2119).
 
 ## 2. Terminology
 {: #terminology}
