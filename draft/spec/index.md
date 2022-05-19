@@ -140,6 +140,11 @@ This document is draft of a potential specification. It has no official
 standing of any kind and does not represent the support or consensus of
 any standards organisation.
 
+## Table of Contents
+
+* Placeholder for Table of Contents (required by kramdown)
+{:toc}
+
 ## 1. Conformance
 {: #conformance}
 
