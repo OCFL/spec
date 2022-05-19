@@ -2,6 +2,7 @@
 ---
 <img src="https://avatars0.githubusercontent.com/u/35607965" alt="OCFL Hand-drive logo" style="float:right;width:307px;height:307px;"/>
 # Oxford Common File Layout Specification
+{:.no_toc}
 
 Unofficial Draft 05 May 2022
 
@@ -36,7 +37,7 @@ License](https://creativecommons.org/licenses/by/4.0/). [OCFL logo:
 [Patrick Hochstenbach](http://orcid.org/0000-0001-8390-6171) is
 licensed under [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/).
 ## Introduction
-{: #abstract}
+{:.no_toc #abstract}
 
 This Oxford Common File Layout (OCFL) specification describes an
 application-independent approach to the storage of digital objects in a
@@ -45,7 +46,7 @@ promote long-term access and management of digital objects within
 digital repositories.
 
 ### Need
-{: #need}
+{:.no_toc #need}
 
 The OCFL initiative began as a discussion amongst digital repository
 practitioners to identify well-defined, common, and
@@ -56,7 +57,7 @@ completeness, parsability, versioning, robustness, and storage
 diversity.
 
 #### Completeness
-{: #completeness}
+{:.no_toc #completeness}
 
 The OCFL recommends storing metadata and the content it describes
 together so the OCFL object can be fully understood in the absence of
@@ -68,7 +69,7 @@ when making this decision, implementers consider what is necessary to
 rebuild the objects from the files stored.
 
 #### Parsability
-{: #parsability}
+{:.no_toc #parsability}
 
 One goal of the OCFL is to ensure objects remain fixed over time. This
 can be difficult as software and infrastructure change, and content is
@@ -82,7 +83,7 @@ application, even without the full feature repository that might have
 been used in the past.
 
 #### Versioning
-{: #versioning}
+{:.no_toc #versioning}
 
 Another need expressed by the community was the need to update and
 change objects, either the content itself or the metadata associated
@@ -95,7 +96,7 @@ on when versioning should occur recognizing this may differ from
 implementation to implementation.
 
 #### Robustness
-{: #robustness}
+{:.no_toc #robustness}
 
 The OCFL also fills the need for robustness against errors, corruption,
 and migration. The versioning schema ensures an OCFL object is robust
@@ -107,7 +108,7 @@ technology agnostic method for verifying OCFL objects have remained
 fixed.
 
 #### Storage diversity
-{: #storage-diversity}
+{:.no_toc #storage-diversity}
 
 Finally, the community expressed a need to store content on a wide
 variety of storage technologies. With that in mind, the OCFL was written
@@ -115,7 +116,7 @@ with an eye toward various storage infrastructures including cloud
 object stores.
 
 ### Note
-{: #note}
+{:.no_toc #note}
 
 This normative specification describes the nature of an OCFL Object (the
 "object-at-rest") and the arrangement of OCFL Objects under an OCFL
