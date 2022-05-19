@@ -148,7 +148,7 @@ diagrams, examples, and notes in this specification are non-normative.
 Everything else in this specification is normative.
 
 The key words may, must, must not, should, and should not are to be
-interpreted as described in [RFC2119](#ref-rfc2119).
+interpreted as described in \[[RFC2119](#ref-rfc2119)\].
 
 ## 2. Terminology
 {: #terminology}
@@ -1525,6 +1525,10 @@ Namaste Tags. J. Kunze.9 November 2009. URL:
 <span id="ref-rfc1321"/>**\[RFC1321]** The MD5 Message-Digest Algorithm.
 R. Rivest. IETF. April 1992. Informational. URL:
 <https://www.rfc-editor.org/rfc/rfc1321>
+
+<span id="ref-rfc2119"/>**\[RFC2119]** Key words for use in RFCs to
+Indicate Requirement Levels. S. Bradner. IETF. March 1997. Best Current
+Practice. URL: <https://www.rfc-editor.org/rfc/rfc2119>
 
 <span id="ref-rfc3339"/>**\[RFC3339]** Date and Time on the Internet:
 Timestamps. G. Klyne; C. Newman. IETF. July 2002. Proposed Standard.
