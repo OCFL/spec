@@ -134,15 +134,16 @@ containers, and objects present a similar organization hierarchy to
 users.
 
 ## Status of This Document
-{: #sotd}
+{:.no_toc #sotd}
 
 This document is draft of a potential specification. It has no official
 standing of any kind and does not represent the support or consensus of
 any standards organisation.
 
 ## Table of Contents
+{:.no_toc}
 
-* Placeholder for Table of Contents (required by kramdown)
+* TOC placeholder (required by kramdown)
 {:toc}
 
 ## 1. Conformance

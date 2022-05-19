@@ -43,11 +43,17 @@ This document provides guidance on implementation of the
 behave when operating on OCFL Objects.
 
 ## Status of This Document
-{: #sotd}
+{:.no_toc #sotd}
 
 This document is draft of a potential specification. It has no official
 standing of any kind and does not represent the support or consensus of
 any standards organisation.
+
+## Table of Contents
+{:.no_toc}
+
+* TOC placeholder (required by kramdown)
+{:toc}
 
 ## 1. Digital Preservation
 {: #digital-preservation}
