@@ -43,13 +43,6 @@ This document provides guidance on implementation of the
 \[[OCFL-Specification](#ref-ocfl-specification)\] for how clients should
 behave when operating on OCFL Objects.
 
-## Status of This Document
-{:.no_toc #sotd}
-
-This document is draft of a potential specification. It has no official
-standing of any kind and does not represent the support or consensus of
-any standards organisation.
-
 ## Table of Contents
 {:.no_toc}
 

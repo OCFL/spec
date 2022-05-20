@@ -134,13 +134,6 @@ known. However, it may equally apply to object stores, where namespaces,
 containers, and objects present a similar organization hierarchy to
 users.
 
-## Status of This Document
-{:.no_toc #sotd}
-
-This document is draft of a potential specification. It has no official
-standing of any kind and does not represent the support or consensus of
-any standards organisation.
-
 ## Table of Contents
 {:.no_toc}
 
