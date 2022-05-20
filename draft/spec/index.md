@@ -288,7 +288,7 @@ figure:
                └── ... content files ...
 ```
 
-The [OCFL Object Root](#dfn-ocfl-object-root)<span id="E001"
+The [OCFL Object Root](#dfn-ocfl-object-root) <span id="E001"
 class="rfc2119">MUST NOT</span> contain files or directories other than
 those specified in the following sections.
 
@@ -301,8 +301,8 @@ class="rfc2119">MUST</span> be formatted according to the
 class="rfc2119">MUST</span> be exactly one version declaration file in
 the base directory of the [OCFL Object Root](#dfn-ocfl-object-root)
 giving the OCFL version in the filename. The filename <span id="E004"
-class="rfc2119">MUST</span> conform to the pattern `T=dvalue`, where
-`T`<span id="E005" class="rfc2119">MUST</span> be 0, and `dvalue`<span
+class="rfc2119">MUST</span> conform to the pattern `T=dvalue`, where `T`
+<span id="E005" class="rfc2119">MUST</span> be 0, and `dvalue` <span
 id="E006" class="rfc2119">MUST</span> be `ocfl_object_`, followed by the
 OCFL specification version number. The text contents of the file <span
 id="E007" class="rfc2119">MUST</span> be the same as `dvalue`, followed
@@ -853,7 +853,7 @@ root.
 
 An OCFL Storage Root MAY contain a file named `ocfl_layout.json` to
 describe the arrangement of directories and OCFL objects under the
-storage root. If present, `ocfl_layout.json`<span id="E070"
+storage root. If present, `ocfl_layout.json` <span id="E070"
 class="rfc2119">MUST</span> be a JSON (defined by
 \[[RFC8259](#ref-rfc8259)\]) document encoded in UTF-8 and include the
 following two keys in the root JSON object:
@@ -892,11 +892,12 @@ There <span id="E076" class="rfc2119">MUST</span> be exactly one version
 declaration file in the base directory of the [OCFL Storage
 Root](#dfn-ocfl-storage-root) giving the OCFL version in the filename.
 The filename <span id="E077" class="rfc2119">MUST</span> conform to the
-pattern `T=dvalue`, where `T`<span id="E078" class="rfc2119">MUST</span>
-be 0, and `dvalue`<span id="E079" class="rfc2119">MUST</span> be
-`ocfl_`, followed by the OCFL specification version number. The text
-contents of the file <span id="E080" class="rfc2119">MUST</span> be the
-same as `dvalue`, followed by a newline (`\n`).
+pattern `T=dvalue`, where `T` <span id="E078"
+class="rfc2119">MUST</span> be 0, and `dvalue` <span id="E079"
+class="rfc2119">MUST</span> be `ocfl_`, followed by the OCFL
+specification version number. The text contents of the file <span
+id="E080" class="rfc2119">MUST</span> be the same as `dvalue`, followed
+by a newline (`\n`).
 
 Root conformance indicates that the OCFL Storage Root conforms to this
 section (i.e. the OCFL Storage Root section) of the specification. OCFL
