@@ -44,7 +44,7 @@ This document provides guidance on implementation of the
 behave when operating on OCFL Objects.
 
 ## Table of Contents
-{:.no_toc}
+{:.no_toc #table-of-contents}
 
 * TOC placeholder (required by kramdown)
 {:toc}

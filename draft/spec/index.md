@@ -135,7 +135,7 @@ containers, and objects present a similar organization hierarchy to
 users.
 
 ## Table of Contents
-{:.no_toc}
+{:.no_toc #table-of-contents}
 
 * TOC placeholder (required by kramdown)
 {:toc}
@@ -153,59 +153,63 @@ interpreted as described in \[[RFC2119](#ref-rfc2119)\].
 ## 2. Terminology
 {: #terminology}
 
-* **Content Path:** The file path of a file on disk or in an object
-store, relative to the [OCFL Object Root](#OCFL Object Root). Content
-paths are used in the [Manifest](#Manifest) within an
-[Inventory](#Inventory).
+* <a name="dfn-content-path"/>**Content Path:** The file path of a file
+on disk or in an object store, relative to the [OCFL Object
+Root](#dfn-ocfl-object-root). Content paths are used in the
+[Manifest](#dfn-manifest) within an [Inventory](#dfn-inventory).
 
-* **Digest:** An algorithmic characterization of the contents of a file
-conforming to a standard digest algorithm.
+* <a name="dfn-digest"/>**Digest:** An algorithmic characterization of
+the contents of a file conforming to a standard digest algorithm.
 
-* **Extension:** Extensions are used to collaborate, review, and publish
-additional non-normative functions related to OCFL. Extensions are
-intended to be informational and cite-able, but outside the scope of the
-normal specification process. Registered extensions may be found in the
-[OCFL Extensions repository.](https://ocfl.github.io/extensions/)
+* <a name="dfn-extension"/>**Extension:** Extensions are used to
+collaborate, review, and publish additional non-normative functions
+related to OCFL. Extensions are intended to be informational and
+cite-able, but outside the scope of the normal specification process.
+Registered extensions may be found in the [OCFL Extensions
+repository.](https://ocfl.github.io/extensions/)
 
-* **Inventory:** A file, expressed in JSON, that tracks the history and
-current state of an OCFL Object.
+* <a name="dfn-inventory"/>**Inventory:** A file, expressed in JSON,
+that tracks the history and current state of an OCFL Object.
 
-* **Logical Path:** A path that represents a file's location in the
-[logical state](#logical state) of an object. Logical paths are used in
-conjunction with a digest to represent the file name and path for a
-given bitstream at a given version.
+* <a name="dfn-logical-path"/>**Logical Path:** A path that represents a
+file's location in the [logical state](#dfn-logical-state) of an object.
+Logical paths are used in conjunction with a digest to represent the
+file name and path for a given bitstream at a given version.
 
-* **Logical State:** A grouping of logical paths tied to their
-corresponding bitstreams that reflect the state of the object content
-for a given version.
+* <a name="dfn-logical-state"/>**Logical State:** A grouping of logical
+paths tied to their corresponding bitstreams that reflect the state of
+the object content for a given version.
 
-* **Logs Directory:** A directory for storing information about the
-content (e.g., actions performed) that is not part of the content
-itself.
+* <a name="dfn-logs-directory"/>**Logs Directory:** A directory for
+storing information about the content (e.g., actions performed) that is
+not part of the content itself.
 
-* **Manifest:** A section of the [Inventory](#Inventory) listing all
-files and their digests within an OCFL Object.
+* <a name="dfn-manifest"/>**Manifest:** A section of the
+[Inventory](#dfn-inventory) listing all files and their digests within
+an OCFL Object.
 
-* **OCFL Object:** A group of one or more content files and
-administrative information, that together have a unique identifier. The
-object may contain a sequence of versions of the files that represent
-the evolution of the object's contents.
+* <a name="dfn-ocfl-object"/>**OCFL Object:** A group of one or more
+content files and administrative information, that together have a
+unique identifier. The object may contain a sequence of versions of the
+files that represent the evolution of the object's contents.
 
-* **OCFL Object Root:** The base directory of an [OCFL Object](#OCFL
-Object), identified by a \[[NAMASTE](#ref-namaste)\] file
-"0=ocfl_object_1.1".
+* <a name="dfn-ocfl-object-root"/>**OCFL Object Root:** The base
+directory of an [OCFL Object](#dfn-ocfl-object), identified by a
+\[[NAMASTE](#ref-namaste)\] file "0=ocfl_object_1.1".
 
-* **OCFL Storage Root:** A base directory used to store OCFL Objects,
-identified by a \[[NAMASTE](#ref-namaste)\] file "0=ocfl_1.1".
+* <a name="dfn-ocfl-storage-root"/>**OCFL Storage Root:** A base
+directory used to store OCFL Objects, identified by a
+\[[NAMASTE](#ref-namaste)\] file "0=ocfl_1.1".
 
-* **OCFL Version:** The state of an [OCFL Object](#OCFL Object)'s
-content which is constructed using the incremental changes recorded in
-the sequence of corresponding and prior version directories.
+* <a name="dfn-ocfl-version"/>**OCFL Version:** The state of an [OCFL
+Object](#dfn-ocfl-object)'s content which is constructed using the
+incremental changes recorded in the sequence of corresponding and prior
+version directories.
 
-* **Registered Extension Name:** The registered name of an extension is
-the name provided in the _Extension Name_ property of the extension's
-definition in the [OCFL Extensions
-repository](https://ocfl.github.io/extensions/).
+* <a name="dfn-registered-extension-name"/>**Registered Extension
+Name:** The registered name of an extension is the name provided in the
+_Extension Name_ property of the extension's definition in the [OCFL
+Extensions repository](https://ocfl.github.io/extensions/).
 
 ## 3. OCFL Object
 {: #object-spec}
@@ -273,9 +277,9 @@ figure:
                └── ... content files ...
 ```
 
-The [OCFL Object Root](#OCFL Object Root)<span id="E001">MUST NOT</span>
-contain files or directories other than those specified in the following
-sections.
+The [OCFL Object Root](#dfn-ocfl-object-root)<span id="E001">MUST
+NOT</span> contain files or directories other than those specified in
+the following sections.
 
 ### 3.2 Object Conformance Declaration
 {: #object-conformance-declaration}
@@ -283,13 +287,14 @@ sections.
 The OCFL specification version declaration <span id="E002">MUST</span>
 be formatted according to the \[[NAMASTE](#ref-namaste)\] specification.
 There <span id="E003">MUST</span> be exactly one version declaration
-file in the base directory of the [OCFL Object Root](#OCFL Object Root)
-giving the OCFL version in the filename. The filename <span
-id="E004">MUST</span> conform to the pattern `T=dvalue`, where `T`<span
-id="E005">MUST</span> be 0, and `dvalue`<span id="E006">MUST</span> be
-`ocfl_object_`, followed by the OCFL specification version number. The
-text contents of the file <span id="E007">MUST</span> be the same as
-`dvalue`, followed by a newline (`\n`).
+file in the base directory of the [OCFL Object
+Root](#dfn-ocfl-object-root) giving the OCFL version in the filename.
+The filename <span id="E004">MUST</span> conform to the pattern
+`T=dvalue`, where `T`<span id="E005">MUST</span> be 0, and `dvalue`<span
+id="E006">MUST</span> be `ocfl_object_`, followed by the OCFL
+specification version number. The text contents of the file <span
+id="E007">MUST</span> be the same as `dvalue`, followed by a newline
+(`\n`).
 
 ### 3.3 Version Directories
 {: #version-directories}
@@ -368,17 +373,17 @@ named according to local conventions, for example by making an empty
 ### 3.4 Digests
 {: #digests}
 
-A [digest](#digest) plays two roles in an OCFL Object. The first is that
-digests allow for content-addressable reference to files within the OCFL
-Object. That is, the connection between a file's [content path](#content
-path) on physical storage and its [logical path](#logical path) in a
-version of the object's content is made with a digest of its contents,
-rather than its filename. This use of the content digest facilitates
-de-duplication of files with the same content within an object, such as
-files that are unchanged from one version to the next. The second role
-that digests play is provide for fixity checks to determine whether a
-file has become corrupt, through hardware degradation or accident for
-example.
+A [digest](#dfn-digest) plays two roles in an OCFL Object. The first is
+that digests allow for content-addressable reference to files within the
+OCFL Object. That is, the connection between a file's [content
+path](#dfn-content-path) on physical storage and its [logical
+path](#dfn-logical-path) in a version of the object's content is made
+with a digest of its contents, rather than its filename. This use of the
+content digest facilitates de-duplication of files with the same content
+within an object, such as files that are unchanged from one version to
+the next. The second role that digests play is provide for fixity checks
+to determine whether a file has become corrupt, through hardware
+degradation or accident for example.
 
 For content-addressing, OCFL Objects <span id="E025">MUST</span> use
 either `sha512` or `sha256`, and <span id="W004">SHOULD</span> use
@@ -447,35 +452,37 @@ validating OCFL Object Inventory files is provided at
 Every OCFL inventory <span id="E036">MUST</span> include the following
 keys:
 
-* **id:** A unique identifier for the OCFL Object. This <span
-id="E037">MUST</span> be unique in the local context, <span
+* <a name="dfn-id"/>**id:** A unique identifier for the OCFL Object.
+This <span id="E037">MUST</span> be unique in the local context, <span
 id="E110">MUST NOT</span> change between versions of the same object,
 and <span id="W005">SHOULD</span> be a URI \[[RFC3986](#ref-rfc3986)\].
 There is no expectation that a URI used is resolvable. For example, URNs
 \[[RFC8141](#ref-rfc8141)\] MAY be used.
 
-* **type:** A type for the inventory JSON object that also serves to
-document the OCFL specification version that the inventory complies
-with. In the object root inventory this <span id="E038">MUST</span> be
-the URI of the inventory section of the specification version matching
-the object conformance declaration. For the current specification
-version the value is `https://ocfl.io/1.1/spec/#inventory`.
+* <a name="dfn-type"/>**type:** A type for the inventory JSON object
+that also serves to document the OCFL specification version that the
+inventory complies with. In the object root inventory this <span
+id="E038">MUST</span> be the URI of the inventory section of the
+specification version matching the object conformance declaration. For
+the current specification version the value is
+`https://ocfl.io/1.1/spec/#inventory`.
 
-* **digestAlgorithm:** The digest algorithm used for calculating digests
-for content-addressing within the OCFL Object and for the [Inventory
-Digest](#inventory-digest). This <span id="E039">MUST</span> be the
-algorithm used in the `manifest` and `state` blocks, see the [section on
-Digests](#digests) for more information about algorithms.
+* <a name="dfn-digestalgorithm"/>**digestAlgorithm:** The digest
+algorithm used for calculating digests for content-addressing within the
+OCFL Object and for the [Inventory Digest](#inventory-digest). This
+<span id="E039">MUST</span> be the algorithm used in the `manifest` and
+`state` blocks, see the [section on Digests](#digests) for more
+information about algorithms.
 
-* **head:** The version directory name of the most recent version of the
-object. This <span id="E040">MUST</span> be the version directory name
-with the highest version number.
+* <a name="dfn-head"/>**head:** The version directory name of the most
+recent version of the object. This <span id="E040">MUST</span> be the
+version directory name with the highest version number.
 
 There MAY be the following key:
 
-* **contentDirectory:** The name of the designated content directory
-within the version directories. If not specified then the content
-directory name is `content`.
+* <a name="dfn-contentdirectory"/>**contentDirectory:** The name of the
+designated content directory within the version directories. If not
+specified then the content directory name is `content`.
 
 In addition to these keys, there <span id="E041">MUST</span> be two
 other blocks present, `manifest` and `versions`, which are discussed in
@@ -487,17 +494,17 @@ the next two sections.
 The value of the `manifest` key <span id="E106">MUST</span> be a JSON
 object, and each key <span id="E107">MUST</span> correspond to a digest
 value key found in one or more `state` blocks of the current and/or
-previous `version` blocks of the [OCFL Object](#OCFL Object). The value
-for each key <span id="E092">MUST</span> be an array containing the
-[content path](#content path)s of files in the OCFL Object that have
-content with the given digest. As JSON keys are case sensitive, for
+previous `version` blocks of the [OCFL Object](#dfn-ocfl-object). The
+value for each key <span id="E092">MUST</span> be an array containing
+the [content path](#dfn-content-path)s of files in the OCFL Object that
+have content with the given digest. As JSON keys are case sensitive, for
 digest algorithms with case insensitive digest values, there is an
 additional requirement that each digest value <span
 id="E096">MUST</span> occur only once in the manifest block for any
 digest algorithm, regardless of case. Content paths within a manifest
 block <span id="E042">MUST</span> be relative to the [OCFL Object
-Root](#OCFL Object Root). The following restrictions avoid ambiguity and
-provide path safety for clients processing the `manifest`.
+Root](#dfn-ocfl-object-root). The following restrictions avoid ambiguity
+and provide path safety for clients processing the `manifest`.
 
 * The content path <span id="E098">MUST</span> be interpreted as a set
 of one or more path elements joined by a `/` path separator.
@@ -514,9 +521,9 @@ as the initial part of another content path.
 
 > Non-normative note: If only one file is stored in the OCFL Object for
 each digest, fully de-duplicating the content, then there will be only
-one [content path](#content path) for each digest. There may, however,
-be multiple logical paths for a given digest if the content was not
-entirely de-duplicated when constructing the OCFL Object.
+one [content path](#dfn-content-path) for each digest. There may,
+however, be multiple logical paths for a given digest if the content was
+not entirely de-duplicated when constructing the OCFL Object.
 
 > An example manifest object for three content paths, all in version 1,
 is shown below:
@@ -544,24 +551,24 @@ version, as described in the [3.5.3.1 Version](#version) section.
 ##### 3.5.3.1 Version
 {: #version}
 
-A JSON object to describe one [OCFL Version](#OCFL Version), which <span
-id="E048">MUST</span> include the following keys:
+A JSON object to describe one [OCFL Version](#dfn-ocfl-version), which
+<span id="E048">MUST</span> include the following keys:
 
-* **created:** The value of this key is the datetime of creation of this
-version. It <span id="E049">MUST</span> be expressed in the Internet
-Date/Time Format defined by \[[RFC3339](#ref-rfc3339)\]. This format
-requires the inclusion of a timezone value or `Z` for UTC, and that the
-time component be granular to the second level (with optional fractional
-seconds).
+* <a name="dfn-created"/>**created:** The value of this key is the
+datetime of creation of this version. It <span id="E049">MUST</span> be
+expressed in the Internet Date/Time Format defined by
+\[[RFC3339](#ref-rfc3339)\]. This format requires the inclusion of a
+timezone value or `Z` for UTC, and that the time component be granular
+to the second level (with optional fractional seconds).
 
-* **state:** The value of this key is a JSON object, containing a list
-of keys and values corresponding to the [logical state](#logical state)
-of the object at that version. The keys of this JSON object are digest
-values, each of which <span id="E050">MUST</span> exactly match a digest
-value key in the [manifest of the inventory](#manifest). The value for
-each key is an array containing [logical path](#logical path) names of
-files in the OCFL Object's logical state that have content with the
-given digest.
+* <a name="dfn-state"/>**state:** The value of this key is a JSON
+object, containing a list of keys and values corresponding to the
+[logical state](#dfn-logical-state) of the object at that version. The
+keys of this JSON object are digest values, each of which <span
+id="E050">MUST</span> exactly match a digest value key in the [manifest
+of the inventory](#manifest). The value for each key is an array
+containing [logical path](#dfn-logical-path) names of files in the OCFL
+Object's logical state that have content with the given digest.
 
 [Logical paths](#logical-path) present the structure of an OCFL Object
 at a given version. This is given as an array of values, with the
@@ -581,12 +588,12 @@ forward slash (`/`).
 and non-conflicting, so the logical path for a file cannot appear as the
 initial part of another logical path.
 
-> Non-normative note: The [logical state](#logical state) of the object
-uses content-addressing to map logical paths to their bitstreams, as
-expressed in the manifest section of the inventory. Notably, the version
-state provides de-duplication of content within the OCFL Object by
-mapping multiple logical paths with the same content to the same digest
-in the manifest. See
+> Non-normative note: The [logical state](#dfn-logical-state) of the
+object uses content-addressing to map logical paths to their bitstreams,
+as expressed in the manifest section of the inventory. Notably, the
+version state provides de-duplication of content within the OCFL Object
+by mapping multiple logical paths with the same content to the same
+digest in the manifest. See
 \[[OCFL-Implementation-Notes](#ref-ocfl-implementation-notes)\].
 
 > An example `state` block is shown below:
@@ -600,8 +607,8 @@ in the manifest. See
 
 > This `state` block describes an object with 3 files, two of which have
 the same content (`empty.txt` and `empty2.txt`), and one of which is in
-a sub-directory (`bar.xml`). The [logical state](#logical state) shown
-as a tree is thus:
+a sub-directory (`bar.xml`). The [logical state](#dfn-logical-state)
+shown as a tree is thus:
 
 > ```
 ├── empty.txt
@@ -610,22 +617,22 @@ as a tree is thus:
         └── bar.xml
 ```
 
-The JSON object describing an [OCFL Version](#OCFL Version), <span
+The JSON object describing an [OCFL Version](#dfn-ocfl-version), <span
 id="W007">SHOULD</span> include the following keys:
 
-* **message:** The value of this key is freeform text, used to record
-the rationale for creating this version. It <span id="E094">MUST</span>
-be a JSON string.
+* <a name="dfn-message"/>**message:** The value of this key is freeform
+text, used to record the rationale for creating this version. It <span
+id="E094">MUST</span> be a JSON string.
 
-* **user:** The value of this key is a JSON object intended to identify
-the user or agent that created the current [OCFL Version](#OCFL
-Version). The value of the `user` key <span id="E054">MUST</span>
-contain a user name key, `name` and <span id="W008">SHOULD</span>
-contain an address key, `address`. The `name` value is any readable name
-of the user, e.g., a proper name, user ID, agent ID. The `address` value
-<span id="W009">SHOULD</span> be a URI: either a mailto URI
-\[[RFC6068](#ref-rfc6068)\] with the e-mail address of the user or a URL
-to a personal identifier, e.g., an ORCID iD.
+* <a name="dfn-user"/>**user:** The value of this key is a JSON object
+intended to identify the user or agent that created the current [OCFL
+Version](#dfn-ocfl-version). The value of the `user` key <span
+id="E054">MUST</span> contain a user name key, `name` and <span
+id="W008">SHOULD</span> contain an address key, `address`. The `name`
+value is any readable name of the user, e.g., a proper name, user ID,
+agent ID. The `address` value <span id="W009">SHOULD</span> be a URI:
+either a mailto URI \[[RFC6068](#ref-rfc6068)\] with the e-mail address
+of the user or a URL to a personal identifier, e.g., an ORCID iD.
 
 #### 3.5.4 Fixity
 {: #fixity}
@@ -640,21 +647,21 @@ id="E111">MUST</span> be a JSON object, which MAY be empty.
 The keys within the `fixity` block <span id="E056">MUST</span>
 correspond to the controlled vocabulary of [digest algorithm
 names](#digest-algorithms) listed in the [Digests](#digests) section, or
-in a table given in an [Extension](#Extension). The value of the fixity
-block for a particular digest algorithm <span id="E057">MUST</span>
-follow the structure of the [3.5.2 Manifest](#manifest) block; that is,
-a key corresponding to the digest value, and an array of [content
-path](#content path)s. The `fixity` block for any digest algorithm MAY
-include digest values for any subset of content paths in the object.
-Where included, the digest values given <span id="E093">MUST</span>
-match the digests of the files at the corresponding content paths. As
-JSON keys are case sensitive, for digest algorithms with case
-insensitive digest values, there is an additional requirement that each
-digest value <span id="E097">MUST</span> occur only once in the `fixity`
-block for any digest algorithm, regardless of case. There is no
-requirement that all content files have a value in the `fixity` block,
-or that fixity values provided in one version are carried forward to
-later versions.
+in a table given in an [Extension](#dfn-extension). The value of the
+fixity block for a particular digest algorithm <span
+id="E057">MUST</span> follow the structure of the [3.5.2
+Manifest](#manifest) block; that is, a key corresponding to the digest
+value, and an array of [content path](#dfn-content-path)s. The `fixity`
+block for any digest algorithm MAY include digest values for any subset
+of content paths in the object. Where included, the digest values given
+<span id="E093">MUST</span> match the digests of the files at the
+corresponding content paths. As JSON keys are case sensitive, for digest
+algorithms with case insensitive digest values, there is an additional
+requirement that each digest value <span id="E097">MUST</span> occur
+only once in the `fixity` block for any digest algorithm, regardless of
+case. There is no requirement that all content files have a value in the
+`fixity` block, or that fixity values provided in one version are
+carried forward to later versions.
 
 > An example `fixity` with `md5` and `sha1` digests is shown below. In
 this case the `md5` digest values are provided only for version 1
@@ -719,12 +726,13 @@ Digest](#inventory-digest).
 In the case that prior version directories include an inventory file
 there will be multiple inventory files describing prior versions within
 the OCFL Object. Each `version` block in each prior inventory file <span
-id="E066">MUST</span> represent the same [logical state](#logical state)
-as the corresponding `version` block in the current inventory file.
-Additionally, the values of the `created`, `message` and `user` keys in
-each `version` block in each prior inventory file <span
-id="W011">SHOULD</span> have the same values as the corresponding keys
-in the corresponding `version` block in the current inventory file.
+id="E066">MUST</span> represent the same [logical
+state](#dfn-logical-state) as the corresponding `version` block in the
+current inventory file. Additionally, the values of the `created`,
+`message` and `user` keys in each `version` block in each prior
+inventory file <span id="W011">SHOULD</span> have the same values as the
+corresponding keys in the corresponding `version` block in the current
+inventory file.
 
 #### 3.7.1 Conformance of prior versions
 {: #conformance-of-prior-versions}
@@ -743,11 +751,11 @@ attribute in that [inventory](#inventory-structure).
 
 The base directory of an OCFL Object MAY contain a directory named
 `logs`, which MAY be empty. Implementers <span id="W012">SHOULD</span>
-use the [logs directory](#logs directory) for storing files that contain
-a record of actions taken on the object. Since these logs may be subject
-to local standards requirements, the format of these logs is considered
-out-of-scope for the OCFL Object. Clients operating on the object MAY
-log actions here that are not otherwise captured.
+use the [logs directory](#dfn-logs-directory) for storing files that
+contain a record of actions taken on the object. Since these logs may be
+subject to local standards requirements, the format of these logs is
+considered out-of-scope for the OCFL Object. Clients operating on the
+object MAY log actions here that are not otherwise captured.
 
 > Non-normative note: The purpose of the logs directory is to provide
 implementers with a location for storing local information about actions
@@ -767,8 +775,8 @@ The base directory of an OCFL Object MAY contain a directory named
 Object. The `extensions` directory <span id="E067">MUST NOT</span>
 contain any files, and no sub-directories other than extension
 sub-directories. Extension sub-directories <span id="W013">SHOULD</span>
-be named according to a [registered extension name](#registered
-extension name) in the [OCFL Extensions
+be named according to a [registered extension
+name](#dfn-registered-extension-name) in the [OCFL Extensions
 repository](https://ocfl.github.io/extensions/).
 
 > Non-normative note: Extension sub-directories should use the same name
@@ -781,8 +789,8 @@ Extensions](#documenting-local-extensions).
 ## 4. OCFL Storage Root
 {: #storage-root}
 
-An [OCFL Storage Root](#OCFL Storage Root) is the base directory of an
-OCFL storage layout.
+An [OCFL Storage Root](#dfn-ocfl-storage-root) is the base directory of
+an OCFL storage layout.
 
 ### 4.1 Root Structure
 {: #root-structure}
@@ -815,7 +823,7 @@ UTF-8 and include the following two keys in the root JSON object:
 directories and OCFL objects under the storage root, i.e. how OCFL
 object identifiers are mapped to directory hierarchies. The value of the
 `extension` key <span id="E071">MUST</span> be the [registered extension
-name](#registered extension name) for the extension defining the
+name](#dfn-registered-extension-name) for the extension defining the
 arrangement under the storage root.
 
 * `description` - A human readable description of the arrangement of
@@ -842,13 +850,13 @@ files and folders:
 The OCFL version declaration <span id="E075">MUST</span> be formatted
 according to the \[[NAMASTE](#ref-namaste)\] specification. There <span
 id="E076">MUST</span> be exactly one version declaration file in the
-base directory of the [OCFL Storage Root](#OCFL Storage Root) giving the
-OCFL version in the filename. The filename <span id="E077">MUST</span>
-conform to the pattern `T=dvalue`, where `T`<span id="E078">MUST</span>
-be 0, and `dvalue`<span id="E079">MUST</span> be `ocfl_`, followed by
-the OCFL specification version number. The text contents of the file
-<span id="E080">MUST</span> be the same as `dvalue`, followed by a
-newline (`\n`).
+base directory of the [OCFL Storage Root](#dfn-ocfl-storage-root) giving
+the OCFL version in the filename. The filename <span
+id="E077">MUST</span> conform to the pattern `T=dvalue`, where `T`<span
+id="E078">MUST</span> be 0, and `dvalue`<span id="E079">MUST</span> be
+`ocfl_`, followed by the OCFL specification version number. The text
+contents of the file <span id="E080">MUST</span> be the same as
+`dvalue`, followed by a newline (`\n`).
 
 Root conformance indicates that the OCFL Storage Root conforms to this
 section (i.e. the OCFL Storage Root section) of the specification. OCFL
@@ -859,10 +867,10 @@ conformance to the same or earlier version of the specification.
 ### 4.3 Storage Hierarchies
 {: #root-hierarchies}
 
-[OCFL Object Root](#OCFL Object Root)s <span id="E082">MUST</span> be
-stored either as the terminal resource at the end of a directory storage
-hierarchy or as direct children of a containing [OCFL Storage
-Root](#OCFL Storage Root).
+[OCFL Object Root](#dfn-ocfl-object-root)s <span id="E082">MUST</span>
+be stored either as the terminal resource at the end of a directory
+storage hierarchy or as direct children of a containing [OCFL Storage
+Root](#dfn-ocfl-storage-root).
 
 A common practice is to use a unique identifier scheme to compose this
 storage hierarchy, typically arranged according to some form of the
@@ -1148,7 +1156,7 @@ will be able to recover version state with the original logical paths.
 \[[BagIt](#ref-bagit)\] is a common file packaging specification, but
 unlike the OCFL it does not provide a mechanism for content versioning.
 Using the OCFL it is possible to store a BagIt structure with content
-versioning, such that when the [logical state](#logical state) is
+versioning, such that when the [logical state](#dfn-logical-state) is
 resolved, it creates a valid BagIt 'bag'. This example will illustrate
 one way this can be accomplished, using the [example of a basic
 bag](https://datatracker.ietf.org/doc/html/rfc8493#section-4.1) given in
