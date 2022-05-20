@@ -259,10 +259,10 @@ continuous without missing integers.
 Implementations <span id="W001" class="rfc2119">SHOULD</span> use version directory names constructed without
 zero-padding the version number, ie. `v1`, `v2`, `v3`, etc..
 
-For compatibility with existing filesystem conventions, implementations MAY use zero-padded version directory numbers,
-with the following restriction: If zero-padded version directory numbers are used then they <span id="E011"
-class="rfc2119">MUST</span> start with the prefix `v` and then a zero. For example, in an implementation that uses five
-digits for version directory names then `v00001` to `v09999` are allowed, `v10000` is not allowed.
+For compatibility with existing filesystem conventions, implementations <span class="rfc2119">MAY</span> use zero-padded
+version directory numbers, with the following restriction: If zero-padded version directory numbers are used then they
+<span id="E011" class="rfc2119">MUST</span> start with the prefix `v` and then a zero. For example, in an implementation
+that uses five digits for version directory names then `v00001` to `v09999` are allowed, `v10000` is not allowed.
 
 The first version of an object defines the naming convention for all version directories for the object. All version
 directories of an object <span id="E012" class="rfc2119">MUST</span> use the same naming convention: either a non-padded
@@ -281,14 +281,14 @@ the contents of a version directory are expected to be immutable.
 
 Version directories <span id="E016" class="rfc2119">MUST</span> contain a designated content sub-directory if the
 version contains files to be preserved, and <span id="W003" class="rfc2119">SHOULD NOT</span> contain this sub-directory
-otherwise. The name of this designated sub-directory MAY be defined in the [inventory file](#inventory) using the key
-`contentDirectory` with the value being the chosen sub-directory name as a string, relative to the version directory.
-The `contentDirectory` value <span id="E0108" class="rfc2119">MUST</span> represent a direct child directory of the
-version directory in which it is found. As such, the `contentDirectory` value <span id="E017" class="rfc2119">MUST
-NOT</span> contain the forward slash (`/`) path separator and <span id="E018" class="rfc2119">MUST NOT</span> be either
-one or two periods (`.` or `..`). If the key `contentDirectory` is set, it <span id="E019" class="rfc2119">MUST</span>
-be set in the first version of the object and <span id="E020" class="rfc2119">MUST NOT</span> change between versions of
-the same object.
+otherwise. The name of this designated sub-directory <span class="rfc2119">MAY</span> be defined in the [inventory
+file](#inventory) using the key `contentDirectory` with the value being the chosen sub-directory name as a string,
+relative to the version directory. The `contentDirectory` value <span id="E0108" class="rfc2119">MUST</span> represent a
+direct child directory of the version directory in which it is found. As such, the `contentDirectory` value <span
+id="E017" class="rfc2119">MUST NOT</span> contain the forward slash (`/`) path separator and <span id="E018"
+class="rfc2119">MUST NOT</span> be either one or two periods (`.` or `..`). If the key `contentDirectory` is set, it
+<span id="E019" class="rfc2119">MUST</span> be set in the first version of the object and <span id="E020"
+class="rfc2119">MUST NOT</span> change between versions of the same object.
 
 If the key `contentDirectory` is not present in the [inventory file](#inventory) then the name of the designated content
 sub-directory <span id="E021" class="rfc2119">MUST</span> be `content`. OCFL-compliant tools (including any validators)
@@ -297,8 +297,9 @@ designated content directory.
 
 Every file within a version's content directory <span id="E023" class="rfc2119">MUST</span> be referenced in the
 [manifest](#manifest) section of that version's inventory. There <span id="E024" class="rfc2119">MUST NOT</span> be
-empty directories within a version's content directory. A directory that would otherwise be empty MAY be maintained by
-creating a file within it named according to local conventions, for example by making an empty `.keep` file.
+empty directories within a version's content directory. A directory that would otherwise be empty <span
+class="rfc2119">MAY</span> be maintained by creating a file within it named according to local conventions, for example
+by making an empty `.keep` file.
 
 ### 3.4 Digests
 {: #digests}
@@ -318,9 +319,9 @@ recognizes that it has no known collision vulnerabilities and multiple implement
 For storage of additional fixity values, or to support legacy content migration, implementers <span id="E026"
 class="rfc2119">MUST</span> choose from the following controlled vocabulary of digest algorithms, or from a list of
 additional algorithms given in the \[[Digest-Algorithms-Extension](#ref-digest-algorithms-extension)\]. OCFL clients
-<span id="E027" class="rfc2119">MUST</span> support all fixity algorithms given in the table below, and MAY support
-additional algorithms from the extensions. Optional fixity algorithms that are not supported by a client <span id="E028"
-class="rfc2119">MUST</span> be ignored by that client.
+<span id="E027" class="rfc2119">MUST</span> support all fixity algorithms given in the table below, and <span
+class="rfc2119">MAY</span> support additional algorithms from the extensions. Optional fixity algorithms that are not
+supported by a client <span id="E028" class="rfc2119">MUST</span> be ignored by that client.
 
 | Digest Algorithm Name | Note |
 | --- | --- |
@@ -330,8 +331,8 @@ class="rfc2119">MUST</span> be ignored by that client.
 | `sha512` | Default choice. Non-truncated form only. SHA-512 algorithm defined by \[[FIPS-180-4](#ref-fips-180-4)\] and <span id="E031" class="rfc2119">MUST</span> be encoded using hex (base16) encoding \[[RFC4648](#ref-rfc4648)\]. For example, the `sha512` digest of a zero-length bitstream starts `cf83e1357eefb8bdf1542850d66d8007d620e405...` (128 hex digits long). |
 | `blake2b-512` | Full-length form only, using the 2B variant (64 bit) as defined by \[[RFC7693](#ref-rfc7693)\]. <span id="E032" class="rfc2119">MUST</span> be encoded using hex (base16) encoding \[[RFC4648](#ref-rfc4648)\]. For example, the `blake2b-512` digest of a zero-length bitstream starts `786a02f742015903c6c6fd852552d272912f4740...` (128 hex digits long). |
 
-An OCFL Inventory MAY contain a fixity section that can store one or more blocks containing fixity values using multiple
-digest algorithms. See the [section on fixity](#fixity) below for further details.
+An OCFL Inventory <span class="rfc2119">MAY</span> contain a fixity section that can store one or more blocks containing
+fixity values using multiple digest algorithms. See the [section on fixity](#fixity) below for further details.
 
 > Non-normative note: Implementers may also store copies of their file digests in a system external to their OCFL Object
 stores at the point of ingest, to further safeguard against the possibility of malicious manipulation of file contents
@@ -366,7 +367,7 @@ Every OCFL inventory <span id="E036" class="rfc2119">MUST</span> include the fol
 * <a name="dfn-id"/>**id:** A unique identifier for the OCFL Object. This <span id="E037" class="rfc2119">MUST</span> be
 unique in the local context, <span id="E110" class="rfc2119">MUST NOT</span> change between versions of the same object,
 and <span id="W005" class="rfc2119">SHOULD</span> be a URI \[[RFC3986](#ref-rfc3986)\]. There is no expectation that a
-URI used is resolvable. For example, URNs \[[RFC8141](#ref-rfc8141)\] MAY be used.
+URI used is resolvable. For example, URNs \[[RFC8141](#ref-rfc8141)\] <span class="rfc2119">MAY</span> be used.
 
 * <a name="dfn-type"/>**type:** A type for the inventory JSON object that also serves to document the OCFL specification
 version that the inventory complies with. In the object root inventory this <span id="E038" class="rfc2119">MUST</span>
@@ -381,7 +382,7 @@ Digests](#digests) for more information about algorithms.
 * <a name="dfn-head"/>**head:** The version directory name of the most recent version of the object. This <span
 id="E040" class="rfc2119">MUST</span> be the version directory name with the highest version number.
 
-There MAY be the following key:
+There <span class="rfc2119">MAY</span> be the following key:
 
 * <a name="dfn-contentdirectory"/>**contentDirectory:** The name of the designated content directory within the version
 directories. If not specified then the content directory name is `content`.
@@ -508,22 +509,23 @@ with the e-mail address of the user or a URL to a personal identifier, e.g., an 
 #### 3.5.4 Fixity
 {: #fixity}
 
-An OCFL Object inventory MAY include a block for storing additional fixity information to supplement the complete set of
-digests in the [Manifest](#manifest), for example to support legacy digests from a content migration. If present, this
-block <span id="E055" class="rfc2119">MUST</span> have the key of `fixity` within the inventory, and its value <span
-id="E111" class="rfc2119">MUST</span> be a JSON object, which MAY be empty.
+An OCFL Object inventory <span class="rfc2119">MAY</span> include a block for storing additional fixity information to
+supplement the complete set of digests in the [Manifest](#manifest), for example to support legacy digests from a
+content migration. If present, this block <span id="E055" class="rfc2119">MUST</span> have the key of `fixity` within
+the inventory, and its value <span id="E111" class="rfc2119">MUST</span> be a JSON object, which <span
+class="rfc2119">MAY</span> be empty.
 
 The keys within the `fixity` block <span id="E056" class="rfc2119">MUST</span> correspond to the controlled vocabulary
 of [digest algorithm names](#digest-algorithms) listed in the [Digests](#digests) section, or in a table given in an
 [Extension](#dfn-extension). The value of the fixity block for a particular digest algorithm <span id="E057"
 class="rfc2119">MUST</span> follow the structure of the [3.5.2 Manifest](#manifest) block; that is, a key corresponding
-to the digest value, and an array of [content path](#dfn-content-path)s. The `fixity` block for any digest algorithm MAY
-include digest values for any subset of content paths in the object. Where included, the digest values given <span
-id="E093" class="rfc2119">MUST</span> match the digests of the files at the corresponding content paths. As JSON keys
-are case sensitive, for digest algorithms with case insensitive digest values, there is an additional requirement that
-each digest value <span id="E097" class="rfc2119">MUST</span> occur only once in the `fixity` block for any digest
-algorithm, regardless of case. There is no requirement that all content files have a value in the `fixity` block, or
-that fixity values provided in one version are carried forward to later versions.
+to the digest value, and an array of [content path](#dfn-content-path)s. The `fixity` block for any digest algorithm
+<span class="rfc2119">MAY</span> include digest values for any subset of content paths in the object. Where included,
+the digest values given <span id="E093" class="rfc2119">MUST</span> match the digests of the files at the corresponding
+content paths. As JSON keys are case sensitive, for digest algorithms with case insensitive digest values, there is an
+additional requirement that each digest value <span id="E097" class="rfc2119">MUST</span> occur only once in the
+`fixity` block for any digest algorithm, regardless of case. There is no requirement that all content files have a value
+in the `fixity` block, or that fixity values provided in one version are carried forward to later versions.
 
 > An example `fixity` with `md5` and `sha1` digests is shown below. In this case the `md5` digest values are provided
 only for version 1 content paths.
@@ -594,11 +596,11 @@ stored in the version directories then the OCFL specification version for a give
 ### 3.8 Logs Directory
 {: #logs-directory}
 
-The base directory of an OCFL Object MAY contain a directory named `logs`, which MAY be empty. Implementers <span
-id="W012" class="rfc2119">SHOULD</span> use the [logs directory](#dfn-logs-directory) for storing files that contain a
-record of actions taken on the object. Since these logs may be subject to local standards requirements, the format of
-these logs is considered out-of-scope for the OCFL Object. Clients operating on the object MAY log actions here that are
-not otherwise captured.
+The base directory of an OCFL Object <span class="rfc2119">MAY</span> contain a directory named `logs`, which <span
+class="rfc2119">MAY</span> be empty. Implementers <span id="W012" class="rfc2119">SHOULD</span> use the [logs
+directory](#dfn-logs-directory) for storing files that contain a record of actions taken on the object. Since these logs
+may be subject to local standards requirements, the format of these logs is considered out-of-scope for the OCFL Object.
+Clients operating on the object <span class="rfc2119">MAY</span> log actions here that are not otherwise captured.
 
 > Non-normative note: The purpose of the logs directory is to provide implementers with a location for storing local
 information about actions to the OCFL Object's content that is not part of the content itself.
@@ -610,11 +612,11 @@ only store a log entry if an intervention was required.
 ### 3.9 Object Extensions
 {: #object-extensions}
 
-The base directory of an OCFL Object MAY contain a directory named `extensions` for the purposes of extending the
-functionality of an OCFL Object. The `extensions` directory <span id="E067" class="rfc2119">MUST NOT</span> contain any
-files, and no sub-directories other than extension sub-directories. Extension sub-directories <span id="W013"
-class="rfc2119">SHOULD</span> be named according to a [registered extension name](#dfn-registered-extension-name) in the
-[OCFL Extensions repository](https://ocfl.github.io/extensions/).
+The base directory of an OCFL Object <span class="rfc2119">MAY</span> contain a directory named `extensions` for the
+purposes of extending the functionality of an OCFL Object. The `extensions` directory <span id="E067"
+class="rfc2119">MUST NOT</span> contain any files, and no sub-directories other than extension sub-directories.
+Extension sub-directories <span id="W013" class="rfc2119">SHOULD</span> be named according to a [registered extension
+name](#dfn-registered-extension-name) in the [OCFL Extensions repository](https://ocfl.github.io/extensions/).
 
 > Non-normative note: Extension sub-directories should use the same name as a registered extension in order to both
 avoid the possiblity of an extension sub-directory colliding with the name of another registered extension as well as to
@@ -632,10 +634,10 @@ An [OCFL Storage Root](#dfn-ocfl-storage-root) is the base directory of an OCFL 
 An OCFL Storage Root <span id="E069" class="rfc2119">MUST</span> contain a [Root Conformance
 Declaration](#root-conformance-declaration) identifying it as such.
 
-An OCFL Storage Root MAY contain other files as direct children. These might include a human-readable copy of the OCFL
-specification to make the storage root self-documenting, or files used to [document local
-extensions](#documenting-local-extensions). An OCFL validator <span id="E087" class="rfc2119">MUST</span> ignore any
-files in the storage root it does not understand.
+An OCFL Storage Root <span class="rfc2119">MAY</span> contain other files as direct children. These might include a
+human-readable copy of the OCFL specification to make the storage root self-documenting, or files used to [document
+local extensions](#documenting-local-extensions). An OCFL validator <span id="E087" class="rfc2119">MUST</span> ignore
+any files in the storage root it does not understand.
 
 An OCFL Storage Root <span id="E088" class="rfc2119">MUST NOT</span> contain directories or sub-directories other than
 as a directory hierarchy used to store OCFL Objects or for [storage root extensions](#storage-root-extensions). The
@@ -643,10 +645,10 @@ directory hierarchy used to store OCFL Objects <span id="E072" class="rfc2119">M
 not part of an OCFL Object. Empty directories <span id="E073" class="rfc2119">MUST NOT</span> appear under a storage
 root.
 
-An OCFL Storage Root MAY contain a file named `ocfl_layout.json` to describe the arrangement of directories and OCFL
-objects under the storage root. If present, `ocfl_layout.json` <span id="E070" class="rfc2119">MUST</span> be a JSON
-(defined by \[[RFC8259](#ref-rfc8259)\]) document encoded in UTF-8 and include the following two keys in the root JSON
-object:
+An OCFL Storage Root <span class="rfc2119">MAY</span> contain a file named `ocfl_layout.json` to describe the
+arrangement of directories and OCFL objects under the storage root. If present, `ocfl_layout.json` <span id="E070"
+class="rfc2119">MUST</span> be a JSON (defined by \[[RFC8259](#ref-rfc8259)\]) document encoded in UTF-8 and include the
+following two keys in the root JSON object:
 
 * `extension` - An extension name that identifies an arrangement of directories and OCFL objects under the storage root,
 i.e. how OCFL object identifiers are mapped to directory hierarchies. The value of the `extension` key <span id="E071"
@@ -713,9 +715,9 @@ either a directory hierarchy of OCFL Objects or top-level OCFL Objects
 
 The behavior of the storage root may be extended to support features from other specifications.
 
-The base directory of an OCFL Storage Root MAY contain a directory named `extensions` for the purposes of extending the
-functionality of an OCFL Storage Root. The storage root `extensions` directory <span id="E086"
-class="rfc2119">MUST</span> conform to the same guidelines and limitations as those defined for [object
+The base directory of an OCFL Storage Root <span class="rfc2119">MAY</span> contain a directory named `extensions` for
+the purposes of extending the functionality of an OCFL Storage Root. The storage root `extensions` directory <span
+id="E086" class="rfc2119">MUST</span> conform to the same guidelines and limitations as those defined for [object
 extensions](#object-extensions).
 
 > Non-normative note: Storage extensions can be used to support additional features, such as providing the storage
@@ -726,8 +728,9 @@ hierarchy disposition when pairtree is in use, or additional human-readable text
 
 It is preferable that both [Object Extensions](#object-extensions) and [Storage Root
 Extenstions](#storage-root-extensions) are documented and registered in the [OCFL Extensions
-repository](https://ocfl.github.io/extensions/). However, local extensions MAY be documented by including a plain text
-document directly in the storage root, thus making the storage root self-documenting.
+repository](https://ocfl.github.io/extensions/). However, local extensions <span class="rfc2119">MAY</span> be
+documented by including a plain text document directly in the storage root, thus making the storage root
+self-documenting.
 
 ### 4.6 Filesystem features
 {: #filesystem-features}
