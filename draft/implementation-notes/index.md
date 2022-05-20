@@ -39,6 +39,8 @@ licensed under [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/).
 ## Introduction
 {:.no_toc #abstract}
 
+_This section is non-normative._
+
 This document provides guidance on implementation of the \[[OCFL-Specification](#ref-ocfl-specification)\] for how
 clients should behave when operating on OCFL Objects.
 

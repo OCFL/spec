@@ -47,6 +47,8 @@ licensed under [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/).
 ## Introduction
 {:.no_toc #abstract}
 
+_This section is non-normative._
+
 This Oxford Common File Layout (OCFL) specification describes an application-independent approach to the storage of
 digital objects in a structured, transparent, and predictable manner. It is designed to promote long-term access and
 management of digital objects within digital repositories.
@@ -751,6 +753,8 @@ operations. Consequently, they should not be expected to be portable.
 
 ## 5. Examples
 {: #examples}
+
+_This section is non-normative._
 
 ### 5.1 Minimal OCFL Object
 {: #example-minimal-object}
