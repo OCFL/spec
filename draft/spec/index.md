@@ -583,6 +583,9 @@ in the current inventory file. Additionally, the values of the `created`, `messa
 block in each prior inventory file <span id="W011" class="rfc2119">SHOULD</span> have the same values as the
 corresponding keys in the corresponding `version` block in the current inventory file.
 
+> Non-normative note: Storing an inventory for every version provides redundancy for this critical information in a way
+that is compatible with storage strategies that have immutable version directories.
+
 #### 3.7.1 Conformance of prior versions
 {: #conformance-of-prior-versions}
 
