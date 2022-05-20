@@ -364,28 +364,27 @@ separators will need to translate paths appropriately.
 
 Every OCFL inventory <span id="E036" class="rfc2119">MUST</span> include the following keys:
 
-* <a name="dfn-id"/>**id:** A unique identifier for the OCFL Object. This <span id="E037" class="rfc2119">MUST</span> be
-unique in the local context, <span id="E110" class="rfc2119">MUST NOT</span> change between versions of the same object,
-and <span id="W005" class="rfc2119">SHOULD</span> be a URI \[[RFC3986](#ref-rfc3986)\]. There is no expectation that a
-URI used is resolvable. For example, URNs \[[RFC8141](#ref-rfc8141)\] <span class="rfc2119">MAY</span> be used.
+* `id`: A unique identifier for the OCFL Object. This <span id="E037" class="rfc2119">MUST</span> be unique in the local
+context, <span id="E110" class="rfc2119">MUST NOT</span> change between versions of the same object, and <span id="W005"
+class="rfc2119">SHOULD</span> be a URI \[[RFC3986](#ref-rfc3986)\]. There is no expectation that a URI used is
+resolvable. For example, URNs \[[RFC8141](#ref-rfc8141)\] <span class="rfc2119">MAY</span> be used.
 
-* <a name="dfn-type"/>**type:** A type for the inventory JSON object that also serves to document the OCFL specification
-version that the inventory complies with. In the object root inventory this <span id="E038" class="rfc2119">MUST</span>
-be the URI of the inventory section of the specification version matching the object conformance declaration. For the
-current specification version the value is `https://ocfl.io/1.1/spec/#inventory`.
+* `type`: A type for the inventory JSON object that also serves to document the OCFL specification version that the
+inventory complies with. In the object root inventory this <span id="E038" class="rfc2119">MUST</span> be the URI of the
+inventory section of the specification version matching the object conformance declaration. For the current
+specification version the value is `https://ocfl.io/1.1/spec/#inventory`.
 
-* <a name="dfn-digestalgorithm"/>**digestAlgorithm:** The digest algorithm used for calculating digests for
-content-addressing within the OCFL Object and for the [Inventory Digest](#inventory-digest). This <span id="E039"
-class="rfc2119">MUST</span> be the algorithm used in the `manifest` and `state` blocks, see the [section on
-Digests](#digests) for more information about algorithms.
+* `digestAlgorithm`: The digest algorithm used for calculating digests for content-addressing within the OCFL Object and
+for the [Inventory Digest](#inventory-digest). This <span id="E039" class="rfc2119">MUST</span> be the algorithm used in
+the `manifest` and `state` blocks, see the [section on Digests](#digests) for more information about algorithms.
 
-* <a name="dfn-head"/>**head:** The version directory name of the most recent version of the object. This <span
-id="E040" class="rfc2119">MUST</span> be the version directory name with the highest version number.
+* `head`: The version directory name of the most recent version of the object. This <span id="E040"
+class="rfc2119">MUST</span> be the version directory name with the highest version number.
 
 There <span class="rfc2119">MAY</span> be the following key:
 
-* <a name="dfn-contentdirectory"/>**contentDirectory:** The name of the designated content directory within the version
-directories. If not specified then the content directory name is `content`.
+* `contentDirectory`: The name of the designated content directory within the version directories. If not specified then
+the content directory name is `content`.
 
 In addition to these keys, there <span id="E041" class="rfc2119">MUST</span> be two other blocks present, `manifest` and
 `versions`, which are discussed in the next two sections.
@@ -443,16 +442,16 @@ Version](#version) section.
 A JSON object to describe one [OCFL Version](#dfn-ocfl-version), which <span id="E048" class="rfc2119">MUST</span>
 include the following keys:
 
-* <a name="dfn-created"/>**created:** The value of this key is the datetime of creation of this version. It <span
-id="E049" class="rfc2119">MUST</span> be expressed in the Internet Date/Time Format defined by
-\[[RFC3339](#ref-rfc3339)\]. This format requires the inclusion of a timezone value or `Z` for UTC, and that the time
-component be granular to the second level (with optional fractional seconds).
+* `created`: The value of this key is the datetime of creation of this version. It <span id="E049"
+class="rfc2119">MUST</span> be expressed in the Internet Date/Time Format defined by \[[RFC3339](#ref-rfc3339)\]. This
+format requires the inclusion of a timezone value or `Z` for UTC, and that the time component be granular to the second
+level (with optional fractional seconds).
 
-* <a name="dfn-state"/>**state:** The value of this key is a JSON object, containing a list of keys and values
-corresponding to the [logical state](#dfn-logical-state) of the object at that version. The keys of this JSON object are
-digest values, each of which <span id="E050" class="rfc2119">MUST</span> exactly match a digest value key in the
-[manifest of the inventory](#manifest). The value for each key is an array containing [logical path](#dfn-logical-path)
-names of files in the OCFL Object's logical state that have content with the given digest.
+* `state`: The value of this key is a JSON object, containing a list of keys and values corresponding to the [logical
+state](#dfn-logical-state) of the object at that version. The keys of this JSON object are digest values, each of which
+<span id="E050" class="rfc2119">MUST</span> exactly match a digest value key in the [manifest of the
+inventory](#manifest). The value for each key is an array containing [logical path](#dfn-logical-path) names of files in
+the OCFL Object's logical state that have content with the given digest.
 
 [Logical paths](#logical-path) present the structure of an OCFL Object at a given version. This is given as an array of
 values, with the following restrictions to provide for path safety in the common case of the logical path value
@@ -496,15 +495,15 @@ tree is thus:
 The JSON object describing an [OCFL Version](#dfn-ocfl-version), <span id="W007" class="rfc2119">SHOULD</span> include
 the following keys:
 
-* <a name="dfn-message"/>**message:** The value of this key is freeform text, used to record the rationale for creating
-this version. It <span id="E094" class="rfc2119">MUST</span> be a JSON string.
+* `message`: The value of this key is freeform text, used to record the rationale for creating this version. It <span
+id="E094" class="rfc2119">MUST</span> be a JSON string.
 
-* <a name="dfn-user"/>**user:** The value of this key is a JSON object intended to identify the user or agent that
-created the current [OCFL Version](#dfn-ocfl-version). The value of the `user` key <span id="E054"
-class="rfc2119">MUST</span> contain a user name key, `name` and <span id="W008" class="rfc2119">SHOULD</span> contain an
-address key, `address`. The `name` value is any readable name of the user, e.g., a proper name, user ID, agent ID. The
-`address` value <span id="W009" class="rfc2119">SHOULD</span> be a URI: either a mailto URI \[[RFC6068](#ref-rfc6068)\]
-with the e-mail address of the user or a URL to a personal identifier, e.g., an ORCID iD.
+* `user`: The value of this key is a JSON object intended to identify the user or agent that created the current [OCFL
+Version](#dfn-ocfl-version). The value of the `user` key <span id="E054" class="rfc2119">MUST</span> contain a user name
+key, `name` and <span id="W008" class="rfc2119">SHOULD</span> contain an address key, `address`. The `name` value is any
+readable name of the user, e.g., a proper name, user ID, agent ID. The `address` value <span id="W009"
+class="rfc2119">SHOULD</span> be a URI: either a mailto URI \[[RFC6068](#ref-rfc6068)\] with the e-mail address of the
+user or a URL to a personal identifier, e.g., an ORCID iD.
 
 #### 3.5.4 Fixity
 {: #fixity}
