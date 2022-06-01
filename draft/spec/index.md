@@ -330,7 +330,7 @@ fixity values using multiple digest algorithms. See the [section on fixity](#fix
 > Non-normative note: Implementers may also store copies of their file digests in a system external to their OCFL Object
 stores at the point of ingest, to further safeguard against the possibility of malicious manipulation of file contents
 and digests.
-
+>
 > Implementers should be aware that base16 digests are case insensitive. Different tools will generate digests in
 uppercase or lowercase, and this may lead to case differences between references to a digest and the digest itself
 within the inventory. If string-based methods are used to work with digests and inventories (as is the case in most
@@ -408,9 +408,9 @@ content path for a file cannot appear as the initial part of another content pat
 > Non-normative note: If only one file is stored in the OCFL Object for each digest, fully de-duplicating the content,
 then there will be only one [content path](#dfn-content-path) for each digest. There may, however, be multiple logical
 paths for a given digest if the content was not entirely de-duplicated when constructing the OCFL Object.
-
+>
 > An example manifest object for three content paths, all in version 1, is shown below:
-
+>
 > ```
 "manifest": {
     "7dcc35...c31": [ "v1/content/foo/bar.xml" ],
@@ -599,7 +599,7 @@ Clients operating on the object <span class="rfc2119">MAY</span> log actions her
 
 > Non-normative note: The purpose of the logs directory is to provide implementers with a location for storing local
 information about actions to the OCFL Object's content that is not part of the content itself.
-
+>
 > As an example, implementers may have different local requirements to store audit information for their content. Some
 may wish to store a log entry indicating that an audit was conducted, and nothing was wrong, while others may wish to
 only store a log entry if an intervention was required.
@@ -1303,8 +1303,8 @@ Institute of Standards and Technology. URL: <https://nvlpubs.nist.gov/nistpubs/F
 <span id="ref-rfc1321"/>**\[RFC1321]** The MD5 Message-Digest Algorithm. R. Rivest. IETF. April 1992. Informational.
 URL: <https://www.rfc-editor.org/rfc/rfc1321>
 
-<span id="ref-rfc2119"/>**\[RFC2119]** Key words for use in RFCs to Indicate Requirement Levels. S. Bradner. IETF. March
-1997. Best Current Practice. URL: <https://www.rfc-editor.org/rfc/rfc2119>
+<span id="ref-rfc2119"/>**\[RFC2119]** Key words for use in RFCs to Indicate Requirement Levels. S. Bradner. IETF.
+March 1997. Best Current Practice. URL: <https://www.rfc-editor.org/rfc/rfc2119>
 
 <span id="ref-rfc3339"/>**\[RFC3339]** Date and Time on the Internet: Timestamps. G. Klyne; C. Newman. IETF. July 2002.
 Proposed Standard. URL: <https://www.rfc-editor.org/rfc/rfc3339>
