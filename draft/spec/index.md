@@ -521,7 +521,7 @@ in the `fixity` block, or that fixity values provided in one version are carried
 
 > An example `fixity` with `md5` and `sha1` digests is shown below. In this case the `md5` digest values are provided
 only for version 1 content paths.
-
+>
 > ```
 "fixity": {
     "md5": {
