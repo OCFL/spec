@@ -464,25 +464,25 @@ logical path for a file cannot appear as the initial part of another logical pat
 to their bitstreams, as expressed in the manifest section of the inventory. Notably, the version state provides
 de-duplication of content within the OCFL Object by mapping multiple logical paths with the same content to the same
 digest in the manifest. See \[[OCFL-Implementation-Notes](#ref-ocfl-implementation-notes)\].
-
+>
 > An example `state` block is shown below:
-
+>
 > ```
 "state": {
     "4d27c8...b53": [ "foo/bar.xml" ],
     "cf83e1...a3e": [ "empty.txt", "empty2.txt" ]
   }
 ```
-
+>
 > This `state` block describes an object with 3 files, two of which have the same content (`empty.txt` and
 `empty2.txt`), and one of which is in a sub-directory (`bar.xml`). The [logical state](#dfn-logical-state) shown as a
 tree is thus:
-
+>
 > ```
 ├── empty.txt
-    ├── empty2.txt
-    └── foo
-        └── bar.xml
+├── empty2.txt
+└── foo
+    └── bar.xml
 ```
 
 The JSON object describing an [OCFL Version](#dfn-ocfl-version), <span id="W007" class="rfc2119">SHOULD</span> include
