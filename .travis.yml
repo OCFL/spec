@@ -6,7 +6,7 @@ install:
  - pip install html5validator beautifulsoup4 jsonschema
 
 script:
- - html5validator --ignore "Section lacks heading"
+ - html5validator --ignore "Section lacks heading" --blacklist _layouts
  - test `cut -c121- draft/spec/index.html | grep -vx "^$" | wc -l` -eq 0
  - test `cut -c121- draft/implementation-notes/index.html | grep -vx "^$" | wc -l` -eq 0
  - python scripts/check_examples.py
