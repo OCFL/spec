@@ -1,4 +1,5 @@
 ---
+no_site_title: true
 ---
 <img src="https://avatars0.githubusercontent.com/u/35607965" alt="OCFL Hand-drive logo" style="float:right;width:307px;height:307px;"/>
 # Implementation Notes, Oxford Common File Layout Specification
