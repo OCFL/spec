@@ -182,7 +182,13 @@ details of this arrangement alongside the OCFL specification as described in the
 In the interests of transparency it makes sense for an object's URI, its unique identifier and its location under the
 OCFL Storage Root to be aligned and simply derivable from each other. Good examples include:
 
-  * ```
+* Flat: Each object is contained in a directory with a name that is simply derived from the unique identifier of the
+object, possibly with the escaping or replacement of characters that are not permitted in file and directory names.
+While this is a very simple approach, most filesystems begin to encounter performance issues when directories contain
+more than a few thousand files so this arrangement is best suited to repositories with a small number of objects (or
+many OCFL Storage Roots).
+
+```
 [storage_root]
                 ├── 0=ocfl_1.1
                 ├── ocfl_1.1.html (optional copy of the OCFL specification)
@@ -204,13 +210,14 @@ OCFL Storage Root to be aligned and simply derivable from each other. Good examp
                 └── ...
 ```
 
-* Flat: Each object is contained in a directory with a name that is simply derived from the unique identifier of the
-object, possibly with the escaping or replacement of characters that are not permitted in file and directory names.
-While this is a very simple approach, most filesystems begin to encounter performance issues when directories contain
-more than a few thousand files so this arrangement is best suited to repositories with a small number of objects (or
-many OCFL Storage Roots).
+* PairTree: \[[PairTree](#ref-pairtree)\] is designed to overcome the limitations on the number of files in a directory
+that most file systems have. It creates hierarchy of directories by mapping identifier strings to directory paths two
+characters at a time. For numerical identifiers specified in hexadecimal this means that there are a maximum of 256
+items in any directory which is well within the capacity of any modern filesystem. However, for long identifiers,
+pairtree creates a large number of directories which will be sparsely populated unless the number of objects is very
+large. Traversing all these directories during validation or rebuilding operations can be slow.
 
-  * ```
+```
 [storage_root]
                 ├── 0=ocfl_1.1
                 ├── ocfl_1.1.html (optional copy of the OCFL specification)
@@ -239,14 +246,12 @@ many OCFL Storage Roots).
                 └── ...
 ```
 
-* PairTree: \[[PairTree](#ref-pairtree)\] is designed to overcome the limitations on the number of files in a directory
-that most file systems have. It creates hierarchy of directories by mapping identifier strings to directory paths two
-characters at a time. For numerical identifiers specified in hexadecimal this means that there are a maximum of 256
-items in any directory which is well within the capacity of any modern filesystem. However, for long identifiers,
-pairtree creates a large number of directories which will be sparsely populated unless the number of objects is very
-large. Traversing all these directories during validation or rebuilding operations can be slow.
+* Truncated n-tuple Tree: This approach aims to achieve some of the scalability benefits of PairTree whilst limiting the
+depth of the resulting directory hierarchy. To achieve this, the source identifier can be split at a higher level of
+granularity, and only a limited number of the identifier digits are used to generate directory paths. For example, using
+triples and three levels with example above yields:
 
-  * ```
+```
 [storage_root]
                 ├── 0=ocfl_1.1
                 ├── ocfl_1.1.html (optional copy of the OCFL specification)
@@ -267,11 +272,6 @@ large. Traversing all these directories during validation or rebuilding operatio
                 |               └── ...
                 └── ...
 ```
-
-* Truncated n-tuple Tree: This approach aims to achieve some of the scalability benefits of PairTree whilst limiting the
-depth of the resulting directory hierarchy. To achieve this, the source identifier can be split at a higher level of
-granularity, and only a limited number of the identifier digits are used to generate directory paths. For example, using
-triples and three levels with example above yields:
 
 Some identifier schemes may require transformation before such approaches can be used effectively. A simple example
 would be sequentially assigned identifiers, which would not distribute objects within the filesystem evenly. Hash
