@@ -187,7 +187,6 @@ object, possibly with the escaping or replacement of characters that are not per
 While this is a very simple approach, most filesystems begin to encounter performance issues when directories contain
 more than a few thousand files so this arrangement is best suited to repositories with a small number of objects (or
 many OCFL Storage Roots).
-
 ```
 [storage_root]
                 ├── 0=ocfl_1.1
@@ -216,7 +215,6 @@ characters at a time. For numerical identifiers specified in hexadecimal this me
 items in any directory which is well within the capacity of any modern filesystem. However, for long identifiers,
 pairtree creates a large number of directories which will be sparsely populated unless the number of objects is very
 large. Traversing all these directories during validation or rebuilding operations can be slow.
-
 ```
 [storage_root]
                 ├── 0=ocfl_1.1
@@ -250,7 +248,6 @@ large. Traversing all these directories during validation or rebuilding operatio
 depth of the resulting directory hierarchy. To achieve this, the source identifier can be split at a higher level of
 granularity, and only a limited number of the identifier digits are used to generate directory paths. For example, using
 triples and three levels with example above yields:
-
 ```
 [storage_root]
                 ├── 0=ocfl_1.1
