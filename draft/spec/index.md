@@ -1,14 +1,7 @@
 ---
+no_site_title: True
 ---
 <img src="https://avatars0.githubusercontent.com/u/35607965" alt="OCFL Hand-drive logo" style="float:right;width:307px;height:307px;"/>
-<style>
-        .rfc2119 {
-            text-transform: lowercase;
-            font-variant: small-caps;
-            font-style: normal;
-            color: #900;
-        }
-</style>
 # Oxford Common File Layout Specification
 {:.no_toc}
 
@@ -1357,4 +1350,3 @@ Proposed Standard. URL: <https://www.rfc-editor.org/rfc/rfc6068>
 
 <span id="ref-rfc8141"/>**\[RFC8141]** Uniform Resource Names (URNs). P. Saint-Andre; J. Klensin. IETF. April 2017.
 Proposed Standard. URL: <https://www.rfc-editor.org/rfc/rfc8141>
-

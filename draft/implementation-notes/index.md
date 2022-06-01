@@ -678,4 +678,3 @@ URL: <https://public.ccsds.org/pubs/650x0m2.pdf>
 
 <span id="ref-pairtree"/>**\[PairTree]** Pairtrees for Object Storage. J. Kunze; M. Haye; E. Hetzner; M. Reyes; C.
 Snavely. 12 August 2008\. URL: <https://confluence.ucop.edu/display/Curation/PairTree>
-
