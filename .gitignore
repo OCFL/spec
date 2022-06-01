@@ -1,4 +1,5 @@
 .idea/
+_site/
 .DS_Store
 /node_modules
 *~
