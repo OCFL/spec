@@ -17,13 +17,17 @@ Latest editor's draft: <https://ocfl.io/draft/spec/>
 * [Simeon Warner](https://orcid.org/0000-0002-7970-7855), [Cornell University](https://www.library.cornell.edu/)
 * [Andrew Woods](https://orcid.org/0000-0002-8318-4225), [Harvard University](https://library.harvard.edu/)
 
+**Former Editors:**
+
+* [Andrew Hankinson](https://orcid.org/0000-0003-2663-0003)
+
 **Additional Documents:**
 
 * [Implementation Notes](https://ocfl.io/draft/implementation-notes/)
 * [Validation Codes](https://ocfl.io/draft/spec/validation-codes.html)
 * [Extensions](https://github.com/OCFL/extensions/)
 
-**Previous version:**
+**Previous Version:**
 * <https://ocfl.io/1.0/spec/>
 
 **Repository:**
