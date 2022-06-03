@@ -631,8 +631,10 @@ Declaration](#root-conformance-declaration) identifying it as such.
 
 An OCFL Storage Root <span class="rfc2119">MAY</span> contain other files as direct children. These might include a
 human-readable copy of the OCFL specification to make the storage root self-documenting, or files used to [document
-local extensions](#documenting-local-extensions). An OCFL validator <span id="E087" class="rfc2119">MUST</span> ignore
-any files in the storage root it does not understand.
+local extensions](#documenting-local-extensions). The source file for this specification document is in
+Markdown (described in \[[RFC7764](#ref-rfc7764)\], which is designed to be readable as plain text as well as for
+rendering as HTML, and thus makes it suitable for sefl-documentation. An OCFL validator <span id="E087"
+class="rfc2119">MUST</span> ignore any files in the storage root it does not understand.
 
 An OCFL Storage Root <span id="E088" class="rfc2119">MUST NOT</span> contain directories or sub-directories other than
 as a directory hierarchy used to store OCFL Objects or for [storage root extensions](#storage-root-extensions). The
@@ -661,8 +663,8 @@ The following example OCFL Storage Root represents the minimal set of files and 
 ```
 [storage_root]
     ├── 0=ocfl_1.1
-    ├── ocfl_1.1.txt (human-readable text of the OCFL specification; optional)
-    └── ocfl_layout.json (description of storage hierarchy layout; optional)
+    ├── ocfl_1.1.md        (human-readable text of the OCFL specification; optional)
+    └── ocfl_layout.json   (description of storage hierarchy layout; optional)
 ```
 
 ### 4.2 Root Conformance Declaration
@@ -1347,6 +1349,9 @@ Snavely. 12 August 2008\. URL: <https://confluence.ucop.edu/display/Curation/Pai
 
 <span id="ref-rfc6068"/>**\[RFC6068]** The 'mailto' URI Scheme. M. Duerst; L. Masinter; J. Zawinski. IETF. October 2010.
 Proposed Standard. URL: <https://www.rfc-editor.org/rfc/rfc6068>
+
+<span id="ref-rfc7764"/>**\[RFC7764]** Guidance on Markdown: Design Philosophies, Stability Strategies, and Select
+Registrations. S. Leonard. IETF. March 2016. URL:  <https://www.rfc-editor.org/rfc/rfc7764>
 
 <span id="ref-rfc8141"/>**\[RFC8141]** Uniform Resource Names (URNs). P. Saint-Andre; J. Klensin. IETF. April 2017.
 Proposed Standard. URL: <https://www.rfc-editor.org/rfc/rfc8141>
