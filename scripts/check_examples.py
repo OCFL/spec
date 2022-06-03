@@ -1,5 +1,7 @@
 """Check validity of JSON examples in OCFL specification.
 
+FIXME - Only works with HTML/ReSpec specs, need to re-write for Markdown! 2022-06-01
+
 Intended to be used with Travis CI so has a zero exit code
 on success, non-zero otherwise.
 """
@@ -24,7 +26,12 @@ schema_file = os.path.join(args.spec_dir, 'inventory_schema.json')
 with open(schema_file, 'r') as fh:
     schema = json.load(fh)
 
-with open(os.path.join(args.spec_dir, 'index.html'), 'r') as fh:
+html_file = os.path.join(args.spec_dir, 'index.html')
+if not os.path.exists(html_file):
+    print("No spec file " + html_file + ", nothing to do!")
+    sys.exit(0)
+
+with open(html_file, 'r') as fh:
     spec_html = fh.read()
 
 spec = BeautifulSoup(spec_html, 'html.parser')
