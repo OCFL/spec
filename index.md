@@ -13,6 +13,7 @@ Specifically, the benefits of the OCFL include:
   * [Version 1.0 Release Announcement](/news/#version-10-of-the-oxford-common-file-layout-ocfl-released)
 
 ## Latest Release (1.0)
+
   * [OCFL Specification](1.0/spec/)
   * [OCFL Implementation Notes](1.0/implementation-notes/)
 
@@ -22,6 +23,8 @@ Specifically, the benefits of the OCFL include:
   * [OCFL Implementation Notes](draft/implementation-notes/)
   
 ## Tools
+
+  * [OCFL Implementations](https://github.com/OCFL/spec/wiki/Implementations)
   * [OCFL Community Extensions](https://github.com/OCFL/extensions)
   * [OCFL Fixture Objects](https://github.com/OCFL/fixtures)
   * [OCFL Validation Codes](https://ocfl.io/1.0/spec/validation-codes.html)
@@ -35,5 +38,3 @@ Specifically, the benefits of the OCFL include:
   * [OCFL Specification github](https://github.com/OCFL/spec)
   * [OCFL Specification Issues](https://github.com/OCFL/spec/issues)
   * [Validators (in the OCFL Wiki)](https://github.com/OCFL/spec/wiki/Implementations#validators)
-
-
