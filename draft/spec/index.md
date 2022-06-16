@@ -633,7 +633,7 @@ An OCFL Storage Root <span class="rfc2119">MAY</span> contain other files as dir
 human-readable copy of the OCFL specification to make the storage root self-documenting, or files used to [document
 local extensions](#documenting-local-extensions). The source file for this specification document is in
 Markdown (described in \[[RFC7764](#ref-rfc7764)\], which is designed to be readable as plain text as well as for
-rendering as HTML, and thus makes it suitable for sefl-documentation. An OCFL validator <span id="E087"
+rendering as HTML, and thus makes it suitable for self-documentation. An OCFL validator <span id="E087"
 class="rfc2119">MUST</span> ignore any files in the storage root it does not understand.
 
 An OCFL Storage Root <span id="E088" class="rfc2119">MUST NOT</span> contain directories or sub-directories other than
