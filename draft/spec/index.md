@@ -613,7 +613,7 @@ only store a log entry if an intervention was required.
 
 The base directory of an OCFL Object <span class="rfc2119">MAY</span> contain a directory named `extensions` for the
 purposes of extending the functionality of an OCFL Object. The `extensions` directory <span id="E067"
-class="rfc2119">MUST NOT</span> contain any files, and no sub-directories other than extension sub-directories.
+class="rfc2119">MUST NOT</span> contain any files or sub-directories other than extension sub-directories.
 Extension sub-directories <span id="W013" class="rfc2119">SHOULD</span> be named according to a [registered extension
 name](#dfn-registered-extension-name) in the [OCFL Extensions repository](https://ocfl.github.io/extensions/).
 
@@ -720,16 +720,16 @@ The base directory of an OCFL Storage Root <span class="rfc2119">MAY</span> cont
 the purposes of extending the functionality of an OCFL Storage Root. The guidelines and limitations for the storage
 root `extensions` directory are defined in alignment with those of the [object extensions](#object-extensions).
 
-The `extensions` directory <span id="E112" class="rfc2119">MUST NOT</span> contain any files, and no sub-directories
+The `extensions` directory <span id="E112" class="rfc2119">MUST NOT</span> contain any files or sub-directories
 other than extension sub-directories. Extension sub-directories <span id="W016" class="rfc2119">SHOULD</span> be named
 according to a <a>registered extension name</a>.
 
-> Non-normative note: Extension sub-directories should use the same name as a registered extension in order to both
+> Non-normative notes: Extension sub-directories should use the same name as a registered extension in order to both
 avoid the possiblity of an extension sub-directory colliding with the name of another registered extension as well as to
 facilitate the recognition of extensions by OCFL clients. See also [Documenting Local
 Extensions](#documenting-local-extensions).
-
-> Non-normative note: Storage extensions can be used to support additional features, such as providing the storage
+>
+> Storage extensions can be used to support additional features, such as providing the storage
 hierarchy disposition when pairtree is in use, or additional human-readable text about the nature of the storage root.
 
 ### 4.5 Documenting Local Extensions
