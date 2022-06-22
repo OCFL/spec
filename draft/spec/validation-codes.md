@@ -94,7 +94,6 @@
 | E083 | 'There MUST be a deterministic mapping from an object identifier to a unique storage path.' | https://ocfl.io/draft/spec/#E083
 | E084 | 'Storage hierarchies MUST NOT include files within intermediate directories.' | https://ocfl.io/draft/spec/#E084
 | E085 | 'Storage hierarchies MUST be terminated by OCFL Object Roots.' | https://ocfl.io/draft/spec/#E085
-| E086 | 'The storage root extensions directory MUST conform to the same guidelines and limitations as those defined for object extensions.' | https://ocfl.io/draft/spec/#E086
 | E087 | 'An OCFL validator MUST ignore any files in the storage root it does not understand.' | https://ocfl.io/draft/spec/#E087
 | E088 | 'An OCFL Storage Root MUST NOT contain directories or sub-directories other than as a directory hierarchy used to store OCFL Objects or for storage root extensions.' | https://ocfl.io/draft/spec/#E088
 | E089 | 'If the preservation of non-OCFL-compliant features is required then the content MUST be wrapped in a suitable disk or filesystem image format which OCFL can treat as a regular file.' | https://ocfl.io/draft/spec/#E089
@@ -119,6 +118,8 @@
 | E108 | 'The contentDirectory value MUST represent a direct child directory of the version directory in which it is found.' | https://ocfl.io/draft/spec/#E108
 | E110 | 'A unique identifier for the OCFL Object MUST NOT change between versions of the same object.' | https://ocfl.io/draft/spec/#E110
 | E111 | 'If present, [the value of the fixity key] MUST be a JSON object, which may be empty.' | https://ocfl.io/draft/spec/#E111
+| E112 | 'The extensions directory must not contain any files, and no sub-directories other than extension sub-directories.' | https://ocfl.io/draft/spec/#E112
+
 
 ## Warnings (corresponding with SHOULD in specification)
 
@@ -138,3 +139,4 @@
 | W013 | 'In an OCFL Object, extension sub-directories SHOULD be named according to a registered extension name.' | https://ocfl.io/draft/spec/#W013
 | W014 | 'Storage hierarchies within the same OCFL Storage Root SHOULD use just one layout pattern.' | https://ocfl.io/draft/spec/#W014
 | W015 | 'Storage hierarchies within the same OCFL Storage Root SHOULD consistently use either a directory hierarchy of OCFL Objects or top-level OCFL Objects.' | https://ocfl.io/draft/spec/#W015
+| W016 | 'In the Storage Root, extension sub-directories SHOULD be named according to a registered extension name.' | https://ocfl.io/draft/spec/#W016
