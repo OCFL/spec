@@ -45,13 +45,13 @@ Clarify that UTF-8 encoded JSON must be used for the `inventory.json` files. (Is
 
 Update wording to talk about version consistency for all versions of an object-at-rest, rather than in terms of the process for adding a version. (Issue [#541](https://github.com/OCFL/spec/issues/541))
 
-#### Clarify manifest requirements with additional MUSTs
+#### Clarify manifest block requirements
 
-Add language in [Manifest](https://ocfl.io/draft/spec/#manifest) section to clarify that the `manifest` block MUST be a JSON object (adding error code [E106](https://ocfl.io/draft/spec/#E106)) and that the each key MUST correspond to a digest value key found in one or more `state` blocks (adding error code [E107](https://ocfl.io/draft/spec/#E107)). (Issue [#537](https://github.com/OCFL/spec/issues/537))
+Add language in [Manifest](https://ocfl.io/draft/spec/#manifest) section to clarify that the `manifest` block must be a JSON object (adding error code [E106](https://ocfl.io/draft/spec/#E106)) and that the each key must correspond to a digest value key found in one or more `state` blocks (adding error code [E107](https://ocfl.io/draft/spec/#E107)). (Issue [#537](https://github.com/OCFL/spec/issues/537))
 
 #### Clarify manifest requirements in historic inventories
 
-[Content Directory](https://ocfl.io/draft/spec/#content-directory) wording improved to make it clear that for each historical inventory, the manifest section must reference every file in that version directory. (Issue [#538](https://github.com/OCFL/spec/issues/538))
+Wording of the [Content Directory](https://ocfl.io/draft/spec/#content-directory) section improved to make it clear that for each historical inventory, the manifest must reference every file in that version directory. (Issue [#538](https://github.com/OCFL/spec/issues/538))
 
 #### Fix examples to match the specification
 
@@ -67,7 +67,7 @@ Change [Content Directory](https://ocfl.io/draft/spec/#content-directory) sectio
 
 #### Clarify that `id` must be the same across all versions
 
-Change [Basic Structure](https://ocfl.io/draft/spec/#inventory-structure) section to make it clear that the `id` MUST NOT change between versions of the same object. Adds error code [E110](https://ocfl.io/draft/spec/#E110). (Issue [#542](https://github.com/OCFL/spec/issues/542))
+Change [Basic Structure](https://ocfl.io/draft/spec/#inventory-structure) section to make it clear that the `id` must not change between versions of the same object. Adds error code [E110](https://ocfl.io/draft/spec/#E110). (Issue [#542](https://github.com/OCFL/spec/issues/542))
 
 #### Use logical state consistently
 
@@ -77,9 +77,9 @@ Use the notion of "logical state" consistently in the [Version](https://ocfl.io/
 
 Change [Manifest](https://ocfl.io/draft/spec/#manifest) and [Fixity](https://ocfl.io/draft/spec/#fixity) sections to make it clear that the additional requirement for each digest value to appear only once in the manifest or fixity block applies only in the case of case-insensitive digest algorithms. (Issue [#573](https://github.com/OCFL/spec/issues/573))
 
-#### Clarify that fixity value MUST be a JSON object
+#### Clarify that fixity value must be a JSON object
 
-Change [Fixity](https://ocfl.io/draft/spec/#fixity) section to specify that the value of the `fixity` key MUST be a JSON object. An empty object (`{}`) is allowed, but a JSON `null` value is not. Added error code [E111](https://ocfl.io/draft/spec/#E111) and made [E055](https://ocfl.io/draft/spec/#E055) more specific. (Issue [E558](https://github.com/OCFL/spec/issues/558))
+Change [Fixity](https://ocfl.io/draft/spec/#fixity) section to specify that the value of the `fixity` key  be musta JSON object. An empty object (`{}`) is allowed, but a JSON `null` value is not. Added error code [E111](https://ocfl.io/draft/spec/#E111) and made [E055](https://ocfl.io/draft/spec/#E055) more specific. (Issue [E558](https://github.com/OCFL/spec/issues/558))
 
 #### Clarify use of registered and local extensions
 
