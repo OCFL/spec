@@ -55,7 +55,7 @@ Wording of the [Content Directory](https://ocfl.io/draft/spec/#content-directory
 
 #### Clarify language and error codes for version numbers
 
-Change [Version Directories](https://ocfl.io/draft/spec/#version-directories) section changed to be clearer. Adds error code [E104](https://ocfl.io/draft/spec/#E104) for the specific case of missing prefix `v`, and [E105](https://ocfl.io/draft/spec/#E105) for the specific case of using positive base-ten integers. (Issue [#532](https://github.com/OCFL/spec/issues/532))
+Change [Version Directories](https://ocfl.io/draft/spec/#version-directories) section changed to be more specific about version numbers. Adds error code [E104](https://ocfl.io/draft/spec/#E104) for the specific case of missing prefix `v`, and [E105](https://ocfl.io/draft/spec/#E105) for the specific case of using positive base-ten integers. (Issue [#532](https://github.com/OCFL/spec/issues/532))
 
 #### Clarify that the content directory must be a direct child of the version directory
 
@@ -63,7 +63,7 @@ Change [Content Directory](https://ocfl.io/draft/spec/#content-directory) sectio
 
 #### Clarify that `id` must be the same across all versions
 
-Change [Basic Structure](https://ocfl.io/draft/spec/#inventory-structure) section to make it clear that the `id` must not change between versions of the same object. Adds error code [E110](https://ocfl.io/draft/spec/#E110). (Issue [#542](https://github.com/OCFL/spec/issues/542))
+Update [Basic Structure](https://ocfl.io/draft/spec/#inventory-structure) section to make it clear that the `id` must not change between versions of the same object. Adds error code [E110](https://ocfl.io/draft/spec/#E110). (Issue [#542](https://github.com/OCFL/spec/issues/542))
 
 #### Use logical state consistently
 
@@ -75,15 +75,15 @@ Change [Manifest](https://ocfl.io/draft/spec/#manifest) and [Fixity](https://ocf
 
 #### Clarify that fixity value must be a JSON object
 
-Change [Fixity](https://ocfl.io/draft/spec/#fixity) section to specify that the value of the `fixity` key  be musta JSON object. An empty object (`{}`) is allowed, but a JSON `null` value is not. Added error code [E111](https://ocfl.io/draft/spec/#E111) and made [E055](https://ocfl.io/draft/spec/#E055) more specific. (Issue [E558](https://github.com/OCFL/spec/issues/558))
+Change [Fixity](https://ocfl.io/draft/spec/#fixity) section to specify that the value of the `fixity` key must be a JSON object. An empty object (`{}`) is allowed, but a JSON `null` value is not. Added error code [E111](https://ocfl.io/draft/spec/#E111) and made [E055](https://ocfl.io/draft/spec/#E055) more specific. (Issue [E558](https://github.com/OCFL/spec/issues/558))
 
 #### Clarify use of registered and local extensions
 
-Change [Object Extensions](https://ocfl.io/draft/spec/#object-extensions) and [Storage Root Extensions](https://ocfl.io/draft/spec/#storage-root-extensions) to define registered extensions in terms of the [OCFL Extensions Repository](https://ocfl.github.io/extensions/). Added [Documenting Local Extensions](https://ocfl.io/draft/spec/#documenting-local-extensions) to describe local extensions. Adds error codes [E112](https://ocfl.io/draft/spec/#E112) and [E113](https://ocfl.io/draft/spec/#E113), updates error code [E067](https://ocfl.io/draft/spec/#E067), and removes error codes `E068` and `E086` which were not being used within the community. Adds warning code [W016](https://ocfl.io/draft/spec/#W016). (Issues [#557](https://github.com/OCFL/spec/issues/557), [#565](https://github.com/OCFL/spec/issues/565))
+Change [Object Extensions](https://ocfl.io/draft/spec/#object-extensions) and [Storage Root Extensions](https://ocfl.io/draft/spec/#storage-root-extensions) to define registered extensions in terms of the [OCFL Extensions Repository](https://ocfl.github.io/extensions/). Added [Documenting Local Extensions](https://ocfl.io/draft/spec/#documenting-local-extensions) section to describe local extensions. Adds error codes [E112](https://ocfl.io/draft/spec/#E112) and [E113](https://ocfl.io/draft/spec/#E113), updates error code [E067](https://ocfl.io/draft/spec/#E067), and removes error codes `E068` and `E086` which were not being used within the community. Adds warning code [W016](https://ocfl.io/draft/spec/#W016). (Issues [#557](https://github.com/OCFL/spec/issues/557), [#565](https://github.com/OCFL/spec/issues/565))
 
 #### Improve guidance on inclusion of specification in storage root
 
-With the change from ReSpec to Markdown as the source format for the OCFL Specification it is now easy to store a complete copy of the specification in a storage root. This version suggests using the filename `ocfl_1.1.md` for a copy of the human-readable Markdown specification in the [Root Structure](https://ocfl.io/draft/spec/#root-structure) section. (Issues [#505](https://github.com/OCFL/spec/issues/505), [#554]()https://github.com/OCFL/spec/issues/554)
+With the change from ReSpec to Markdown as the source format for the OCFL Specification it is now easy to store a complete copy of the specification in a storage root. This version suggests using the filename `ocfl_1.1.md` for a copy of the human-readable Markdown specification in the [Root Structure](https://ocfl.io/draft/spec/#root-structure) section. (Issues [#505](https://github.com/OCFL/spec/issues/505), [#554](https://github.com/OCFL/spec/issues/554))
 
 #### Fix examples to match the specification
 
@@ -105,4 +105,4 @@ The E048 error description in `validation-codes.md` is corrected to remove menti
 
 #### Fix E070 description
 
-The E070 error description in `validation-codes.md` is corrected to refer to `extension` rather and `key` (from an earlier draft). (Issue [#573](https://github.com/OCFL/spec/issues/573))
+The E070 error description in `validation-codes.md` is corrected to refer to `extension` rather and `key` (which was left from an earlier draft). (Issue [#573](https://github.com/OCFL/spec/issues/573))
