@@ -39,11 +39,11 @@ Update the [Object Conformance Declaration](https://ocfl.io/draft/spec/#object-c
 
 #### Inventory uses UTF-8 encoding
 
-Clarify that UTF-8 encoded JSON must be used for the `inventory.json` files. (Issue [#514](https://github.com/OCFL/spec/issues/514))
+In [Inventory](https://ocfl.io/draft/spec/#inventory) section, clarify that UTF-8 encoded JSON must be used for the `inventory.json` files. (Issue [#514](https://github.com/OCFL/spec/issues/514))
 
 #### Version naming convention
 
-Update wording to talk about version consistency for all versions of an object-at-rest, rather than in terms of the process for adding a version. (Issue [#541](https://github.com/OCFL/spec/issues/541))
+Update wording in [Version Directories](https://ocfl.io/draft/spec/#version-directories) section to talk about version consistency for all versions of an object-at-rest, rather than in terms of the process for adding a version. (Issue [#541](https://github.com/OCFL/spec/issues/541))
 
 #### Clarify manifest block requirements
 
@@ -52,10 +52,6 @@ Add language in [Manifest](https://ocfl.io/draft/spec/#manifest) section to clar
 #### Clarify manifest requirements in historic inventories
 
 Wording of the [Content Directory](https://ocfl.io/draft/spec/#content-directory) section improved to make it clear that for each historical inventory, the manifest must reference every file in that version directory. (Issue [#538](https://github.com/OCFL/spec/issues/538))
-
-#### Fix examples to match the specification
-
-Several examples in the 1.0 specification did not fully comply with the specification. (Issue [#539](https://github.com/OCFL/spec/issues/539))
 
 #### Clarify language and error codes for version numbers
 
@@ -88,6 +84,10 @@ Change [Object Extensions](https://ocfl.io/draft/spec/#object-extensions) and [S
 #### Improve guidance on inclusion of specification in storage root
 
 With the change from ReSpec to Markdown as the source format for the OCFL Specification it is now easy to store a complete copy of the specification in a storage root. This version suggests using the filename `ocfl_1.1.md` for a copy of the human-readable Markdown specification in the [Root Structure](https://ocfl.io/draft/spec/#root-structure) section. (Issues [#505](https://github.com/OCFL/spec/issues/505), [#554]()https://github.com/OCFL/spec/issues/554)
+
+#### Fix examples to match the specification
+
+Correct several examples that in the 1.0 specification did not fully comply with the specification. (Issue [#539](https://github.com/OCFL/spec/issues/539))
 
 #### Reference RFC version of Bagit specification
 
