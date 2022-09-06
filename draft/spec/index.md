@@ -280,7 +280,7 @@ Version directories <span id="E016" class="rfc2119">MUST</span> contain a design
 version contains files to be preserved, and <span id="W003" class="rfc2119">SHOULD NOT</span> contain this sub-directory
 otherwise. The name of this designated sub-directory <span class="rfc2119">MAY</span> be defined in the [inventory
 file](#inventory) using the key `contentDirectory` with the value being the chosen sub-directory name as a string,
-relative to the version directory. The `contentDirectory` value <span id="E0108" class="rfc2119">MUST</span> represent a
+relative to the version directory. The `contentDirectory` value <span id="E108" class="rfc2119">MUST</span> represent a
 direct child directory of the version directory in which it is found. As such, the `contentDirectory` value <span
 id="E017" class="rfc2119">MUST NOT</span> contain the forward slash (`/`) path separator and <span id="E018"
 class="rfc2119">MUST NOT</span> be either one or two periods (`.` or `..`). If the key `contentDirectory` is set, it
