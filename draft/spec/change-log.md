@@ -27,9 +27,9 @@ licensed under [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/).
 
 ### Additions in v1.1
 
-#### Add requirements to version number sequence
+#### Add requirements to specification version number sequence
 
-Added [Conformance of prior versions](https://ocfl.io/draft/spec/#conformance-of-prior-versions) section to clarify that existing version directories are immutable and that the version number sequence must be monotonic. Adds error code [E103](https://ocfl.io/draft/spec/#E103). (Issue [#544](https://github.com/OCFL/spec/issues/544))
+Added [Conformance of prior versions](https://ocfl.io/draft/spec/#conformance-of-prior-versions) section to clarify that existing version directories in an object are immutable and that the specification version number sequence must be monotonic. Adds error code [E103](https://ocfl.io/draft/spec/#E103). (Issue [#544](https://github.com/OCFL/spec/issues/544))
 
 ### Clarifications in v1.1
 
