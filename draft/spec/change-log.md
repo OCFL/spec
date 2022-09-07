@@ -27,9 +27,9 @@ licensed under [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/).
 
 ### Additions in v1.1
 
-#### Add requirements version number sequence
+#### Add requirements to version number sequence
 
-Added [Conformance of prior versions](https://ocfl.io/draft/spec/#conformance-of-prior-versions) section to clarify that existing version directories are immutable and that the version number sequence must be monaotonic. Adds error code [E103](https://ocfl.io/draft/spec/#E103). (Issue [#544](https://github.com/OCFL/spec/issues/544))
+Added [Conformance of prior versions](https://ocfl.io/draft/spec/#conformance-of-prior-versions) section to clarify that existing version directories are immutable and that the version number sequence must be monotonic. Adds error code [E103](https://ocfl.io/draft/spec/#E103). (Issue [#544](https://github.com/OCFL/spec/issues/544))
 
 ### Clarifications in v1.1
 
@@ -55,7 +55,7 @@ Wording of the [Content Directory](https://ocfl.io/draft/spec/#content-directory
 
 #### Clarify language and error codes for version numbers
 
-Change [Version Directories](https://ocfl.io/draft/spec/#version-directories) section changed to be more specific about version numbers. Adds error code [E104](https://ocfl.io/draft/spec/#E104) for the specific case of missing prefix `v`, and [E105](https://ocfl.io/draft/spec/#E105) for the specific case of using positive base-ten integers. (Issue [#532](https://github.com/OCFL/spec/issues/532))
+Change [Version Directories](https://ocfl.io/draft/spec/#version-directories) section to be more specific about version numbers. Adds error code [E104](https://ocfl.io/draft/spec/#E104) for the specific case of missing prefix `v`, and [E105](https://ocfl.io/draft/spec/#E105) for the specific case of using positive base-ten integers. (Issue [#532](https://github.com/OCFL/spec/issues/532))
 
 #### Clarify that the content directory must be a direct child of the version directory
 
@@ -71,7 +71,7 @@ Use the notion of "logical state" consistently in the [Version](https://ocfl.io/
 
 #### Clarify digest value case sensitivity requirements
 
-Change [Manifest](https://ocfl.io/draft/spec/#manifest) and [Fixity](https://ocfl.io/draft/spec/#fixity) sections to make it clear that the additional requirement for each digest value to appear only once in the manifest or fixity block applies only in the case of case-insensitive digest algorithms. (Issue [#573](https://github.com/OCFL/spec/issues/573))
+Change [Manifest](https://ocfl.io/draft/spec/#manifest) and [Fixity](https://ocfl.io/draft/spec/#fixity) sections to make it clear that the additional requirement for each digest value to appear only once in the manifest or fixity block applies only to case-insensitive digest algorithms. (Issue [#573](https://github.com/OCFL/spec/issues/573))
 
 #### Clarify that fixity value must be a JSON object
 
@@ -105,4 +105,4 @@ The E048 error description in `validation-codes.md` is corrected to remove menti
 
 #### Fix E070 description
 
-The E070 error description in `validation-codes.md` is corrected to refer to `extension` rather and `key` (which was left from an earlier draft). (Issue [#573](https://github.com/OCFL/spec/issues/573))
+The E070 error description in `validation-codes.md` is corrected to refer to `extension` rather than `key` (which was left from an earlier draft). (Issue [#573](https://github.com/OCFL/spec/issues/573))
