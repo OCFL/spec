@@ -23,7 +23,7 @@ licensed under [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/).
 
 ## Changes from OCFL v1.0 to v1.1
 
-[Version 1.1 of the OCFL Specification](https://ocfl.io/draft/spec/) is a [minor version](https://semver.org/) update to the [OCFL Specification v1.0](https://ocfl.io/1.0/spec/). It is intended to add functionality in a backwards compatible manner, and to clarify certain aspects based on a community feedback.
+[Version 1.1 of the OCFL Specification](https://ocfl.io/draft/spec/) is a [minor version](https://semver.org/) update to the [OCFL Specification v1.0](https://ocfl.io/1.0/spec/). The focus is correction and clarification, plus the addition of backwards compatible rules for the specification conformance of prior object versions.
 
 ### Additions in v1.1
 
