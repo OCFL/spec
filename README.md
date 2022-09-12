@@ -1,6 +1,6 @@
 # The Oxford Common File Layout
 
-[![Build Status](https://travis-ci.com/OCFL/spec.png?branch=main)](https://travis-ci.com/OCFL/spec)
+[![Build Status](https://app.travis-ci.com/OCFL/spec.svg?branch=main)](https://app.travis-ci.com/github/OCFL/spec)
 
 ## Status of this document
 
