@@ -415,13 +415,13 @@ paths for a given digest if the content was not entirely de-duplicated when cons
 >
 > An example manifest object for three content paths, all in version 1, is shown below:
 >
-> ```
+> ```json
 "manifest": {
-    "7dcc35...c31": [ "v1/content/foo/bar.xml" ],
-    "cf83e1...a3e": [ "v1/content/empty.txt" ],
-    "ffccf6...62e": [ "v1/content/image.tiff" ]
-  }
-```
+  "7dcc35...c31": [ "v1/content/foo/bar.xml" ],
+  "cf83e1...a3e": [ "v1/content/empty.txt" ],
+  "ffccf6...62e": [ "v1/content/image.tiff" ]
+}
+> ```
 
 #### 3.5.3 Versions
 {: #versions}
@@ -471,12 +471,12 @@ digest in the manifest. See \[[OCFL-Implementation-Notes](#ref-ocfl-implementati
 >
 > An example `state` block is shown below:
 >
-> ```
+> ```json
 "state": {
-    "4d27c8...b53": [ "foo/bar.xml" ],
-    "cf83e1...a3e": [ "empty.txt", "empty2.txt" ]
-  }
-```
+  "4d27c8...b53": [ "foo/bar.xml" ],
+  "cf83e1...a3e": [ "empty.txt", "empty2.txt" ]
+}
+> ```
 >
 > This `state` block describes an object with 3 files, two of which have the same content (`empty.txt` and
 `empty2.txt`), and one of which is in a sub-directory (`bar.xml`). The [logical state](#dfn-logical-state) shown as a
@@ -487,7 +487,7 @@ tree is thus:
 ├── empty2.txt
 └── foo
     └── bar.xml
-```
+> ```
 
 The JSON object describing an [OCFL Version](#dfn-ocfl-version), <span id="W007" class="rfc2119">SHOULD</span> include
 the following keys:
@@ -526,21 +526,21 @@ in the `fixity` block, or that fixity values provided in one version are carried
 > An example `fixity` with `md5` and `sha1` digests is shown below. In this case the `md5` digest values are provided
 only for version 1 content paths.
 >
-> ```
+> ```json
 "fixity": {
-    "md5": {
-      "184f84e28cbe75e050e9c25ea7f2e939": [ "v1/content/foo/bar.xml" ],
-      "c289c8ccd4bab6e385f5afdd89b5bda2": [ "v1/content/image.tiff" ],
-      "d41d8cd98f00b204e9800998ecf8427e": [ "v1/content/empty.txt" ]
-    },
-    "sha1": {
-      "66709b068a2faead97113559db78ccd44712cbf2": [ "v1/content/foo/bar.xml" ],
-      "a6357c99ecc5752931e133227581e914968f3b9c": [ "v2/content/foo/bar.xml" ],
-      "b9c7ccc6154974288132b63c15db8d2750716b49": [ "v1/content/image.tiff" ],
-      "da39a3ee5e6b4b0d3255bfef95601890afd80709": [ "v1/content/empty.txt" ]
-    }
+  "md5": {
+    "184f84e28cbe75e050e9c25ea7f2e939": [ "v1/content/foo/bar.xml" ],
+    "c289c8ccd4bab6e385f5afdd89b5bda2": [ "v1/content/image.tiff" ],
+    "d41d8cd98f00b204e9800998ecf8427e": [ "v1/content/empty.txt" ]
+  },
+  "sha1": {
+    "66709b068a2faead97113559db78ccd44712cbf2": [ "v1/content/foo/bar.xml" ],
+    "a6357c99ecc5752931e133227581e914968f3b9c": [ "v2/content/foo/bar.xml" ],
+    "b9c7ccc6154974288132b63c15db8d2750716b49": [ "v1/content/image.tiff" ],
+    "da39a3ee5e6b4b0d3255bfef95601890afd80709": [ "v1/content/empty.txt" ]
   }
-```
+}
+> ```
 
 ### 3.6 Inventory Digest
 {: #inventory-digest}
@@ -787,7 +787,7 @@ The following example OCFL Object has content that is a single file (`file.txt`)
 
 The inventory for this OCFL Object, the same both at the top-level and in the `v1` directory, might be:
 
-```
+```json
 {
   "digestAlgorithm": "sha512",
   "head": "v1",
@@ -847,7 +847,7 @@ changed, `empty2.txt` is added with the same content as `empty.txt`, and `image.
 shows only new content added in each version. The inventory shown below details the other changes, includes additional
 fixity information using `md5` and `sha1` digest algorithms, and minimal metadata for each version.
 
-```
+```json
 {
   "digestAlgorithm": "sha512",
   "fixity": {
@@ -928,7 +928,7 @@ OCFL object. The choice might depend on particular limitations of, or optimizati
 on portability considerations. Any compliant implementation will be able to recover version state with the original
 logical paths.
 
-```
+```json
 {
   "digestAlgorithm": "sha512",
   "head": "v1",
@@ -1033,7 +1033,7 @@ myfirstbag
 
 The OCFL Inventory for this object would be as follows:
 
-```
+```json
 {
   "digestAlgorithm": "sha512",
   "head": "v2",
@@ -1172,7 +1172,7 @@ An OCFL inventory that tracks the `data` directory would include a manifest comp
 the `manifests` directory, as we are not encapsulating the Moab object in an OCFL object, and the presence of
 `contentDirectory` to specify `data` as the preserved content directory:
 
-```
+```json
 {
   "digestAlgorithm": "sha512",
   "head": "v3",
