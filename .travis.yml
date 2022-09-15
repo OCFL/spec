@@ -3,7 +3,7 @@ python:
   - "3.8"
 
 install:
- - pip install html5validator beautifulsoup4 jsonschema
+ - pip install html5validator marko jsonschema
 
 script:
  - html5validator --ignore "Section lacks heading" --blacklist _layouts
