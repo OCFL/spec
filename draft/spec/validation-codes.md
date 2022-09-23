@@ -97,7 +97,7 @@
 | E087 | 'An OCFL validator MUST ignore any files in the storage root it does not understand.' | https://ocfl.io/draft/spec/#E087
 | E088 | 'An OCFL Storage Root MUST NOT contain directories or sub-directories other than as a directory hierarchy used to store OCFL Objects or for storage root extensions.' | https://ocfl.io/draft/spec/#E088
 | E089 | 'If the preservation of non-OCFL-compliant features is required then the content MUST be wrapped in a suitable disk or filesystem image format which OCFL can treat as a regular file.' | https://ocfl.io/draft/spec/#E089
-| E090 | 'Hard and soft (symbolic) links are not portable and MUST NOT be used within OCFL Storage hierachies.' | https://ocfl.io/draft/spec/#E090
+| E090 | 'Hard and soft (symbolic) links are not portable and MUST NOT be used within OCFL Storage hierarchies.' | https://ocfl.io/draft/spec/#E090
 | E091 | 'Filesystems MUST preserve the case of OCFL filepaths and filenames.' | https://ocfl.io/draft/spec/#E091
 | E092 | 'The value for each key in the manifest must be an array containing the content paths of files in the OCFL Object that have content with the given digest.' | https://ocfl.io/draft/spec/#E092
 | E093 | 'Where included in the fixity block, the digest values given must match the digests of the files at the corresponding content paths.' | https://ocfl.io/draft/spec/#E093

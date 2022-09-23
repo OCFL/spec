@@ -754,7 +754,7 @@ preservable through file transfer operations. These attributes also cannot be va
 consistent manner. As such, the OCFL does not support the portability of these attributes.
 
 2. Hard and soft (symbolic) links are not portable and <span id="E090" class="rfc2119">MUST NOT</span> be used within
-OCFL Storage hierachies. A common use case for links is storage deduplication. OCFL inventories provide a portable
+OCFL Storage hierarchies. A common use case for links is storage deduplication. OCFL inventories provide a portable
 method of achieving the same effect by using digests to address content.
 
 3. File paths and filenames in the OCFL are case sensitive. Filesystems <span id="E091" class="rfc2119">MUST</span>
