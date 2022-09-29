@@ -10,24 +10,31 @@ Specifically, the benefits of the OCFL include:
   * __Storage diversity__, to ensure content can be stored on diverse storage infrastructures including conventional filesystems and cloud object stores
 
 ## News
-  * [Version 1.0 Release Announcement](/news/#version-10-of-the-oxford-common-file-layout-ocfl-released)
+  * 2022-10-07: [Version 1.1 Release Announcement](/news/#version-11-of-the-oxford-common-file-layout-ocfl-released)
+  * 2020-07-07: [Version 1.0 Release Announcement](/news/#version-10-of-the-oxford-common-file-layout-ocfl-released)
 
-## Latest Release (1.0)
+## Latest Release (1.1)
 
-  * [OCFL Specification](1.0/spec/)
-  * [OCFL Implementation Notes](1.0/implementation-notes/)
+* [OCFL Specification v1.1](1.1/spec/)
+* [OCFL Implementation Notes v1.1](1.1/implementation-notes/)
+* [OCFL Specification v1.1 Change Log](1.1/spec/change-log.html)
+* [OCFL Validation Codes v1.1](1.1/spec/validation-codes.html)
 
-## Latest drafts
-
-  * [OCFL Specification](draft/spec/)
-  * [OCFL Implementation Notes](draft/implementation-notes/)
-  
 ## Tools
 
   * [OCFL Implementations](https://github.com/OCFL/spec/wiki/Implementations)
   * [OCFL Community Extensions](https://github.com/OCFL/extensions)
   * [OCFL Fixture Objects](https://github.com/OCFL/fixtures)
-  * [OCFL Validation Codes](https://ocfl.io/1.0/spec/validation-codes.html)
+
+## Previous Releases
+
+* [OCFL Specification v1.0](1.0/spec/)
+* [OCFL Implementation Notes v1.0](1.0/implementation-notes/)
+
+## Unreleased Latest Editors' Drafts
+
+  * [OCFL Specification DRAFT](draft/spec/)
+  * [OCFL Implementation Notes DRAFT](draft/implementation-notes/)
 
 ## Participate
 
