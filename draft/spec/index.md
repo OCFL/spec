@@ -27,8 +27,9 @@ no_site_title: true
 
 **Additional Documents:**
 
-* [Implementation Notes](https://ocfl.io/1.1/implementation-notes/)
-* [Validation Codes](https://ocfl.io/1.1/spec/validation-codes.html)
+* [Implementation Notes](https://ocfl.io/draft/implementation-notes/)
+* [Specification Change Log](https://ocfl.io/draft/spec/change-log.html)
+* [Validation Codes](https://ocfl.io/draftf/spec/validation-codes.html)
 * [Extensions](https://github.com/OCFL/extensions/)
 
 **Previous Version:**
