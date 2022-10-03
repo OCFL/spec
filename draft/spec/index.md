@@ -1359,8 +1359,8 @@ A. Wright; H Andrews.20 September 2018. URL: <https://json-schema.org/latest/jso
 <span id="ref-oais"/>**\[OAIS]** Reference Model for an Open Archival Information System (OAIS), Issue 2. June 2012.
 URL: <https://public.ccsds.org/pubs/650x0m2.pdf>
 
-<span id="ref-ocfl-implementation-notes"/>**\[OCFL-Implementation-Notes]** OCFL Implementation Notes v1.1. URL:
-<https://ocfl.io/1.1/implementation-notes>
+<span id="ref-ocfl-implementation-notes"/>**\[OCFL-Implementation-Notes]** OCFL Implementation Notes. URL:
+<https://ocfl.io/draft/implementation-notes>
 
 <span id="ref-pairtree"/>**\[PairTree]** Pairtrees for Object Storage. J. Kunze; M. Haye; E. Hetzner; M. Reyes; C.
 Snavely. 12 August 2008\. URL: <https://confluence.ucop.edu/display/Curation/PairTree>
