@@ -1,0 +1,39 @@
+{
+    "license": "cc-by-4.0",
+
+    "title": "Oxford Common File Layout - Extensions",
+
+    "keywords": ["OCFL", "Specfication", "Preservation"],
+
+     "creators": [
+        {
+            "orcid": "0000-0003-3311-3741",
+            "affiliation": "Bodleian Libraries, University of Oxford",
+            "name": "Jefferies, Neil"
+        },
+        {
+            "orcid": "0000-0003-3526-2230",
+            "affiliation": "Emory University",
+            "name": "Metz, Rosalyn"
+        },
+        {
+            "orcid": "0000-0003-4176-1933",
+            "affiliation": "Stanford University",
+            "name": "Morley, Julian"
+        },
+        {
+            "orcid": "0000-0002-7970-7855",
+            "affiliation": "Cornell University",
+            "name": "Warner, Simeon"
+        },
+        {
+            "orcid": "0000-0002-8318-4225",
+            "affiliation": "[Harvard University",
+            "name": "Woods, Andrew"
+        }
+    ],
+    "communities": [
+        {"identifier": "ocfl"}
+    ]
+
+}
