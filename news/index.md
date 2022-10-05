@@ -10,24 +10,24 @@ compatible with version 1.0.
 
 ### What new information is available?
 
-The OCFL website at https://ocfl.io, includes the most up to date version of the specification and the implementation
-notes as well as the latest editors draft.
+The OCFL website at [https://ocfl.io](https://ocfl.io), includes the most up to date version of the specification and 
+the implementation notes as well as the latest editors draft.
 
 The [OCFL Specification v1.1](https://ocfl.io/1.1/spec/) defines both OCFL Objects, a simple structure for content and
 a JSON document (`inventory.json`) which provides a straightforward but comprehensive register for the object and
 versions of its content, and an OCFL Storage Root, an arrangement for how OCFL Objects are laid out on physical storage.
 It also contains examples illustrating the use of the OCFL, and explanations that ground decisions in prior experience.
 
-There is an accompanying [Change Log](https://ocfl.io/1.1/spec/change-log.html) that details the changes from version 1.0
-to version 1.1. It is designed to assist implementers with updates to their implementations.
-
 The companion [OCFL Implementation Notes v1.1](https://ocfl.io/1.1/implementation-notes/) contains advice for implementing
 the specification including recommendations for digital preservation, storage handling, client behaviors, and best
 practices for dealing with OCFL Objects in motion.
 
 The OCFL Editors are also releasing updated [validation rules](https://ocfl.io/1.1/spec/validation-codes.html) and
-additional [fixture objects](https://github.com/OCFL/fixtures) for testing OCFL implementations against the specification. We
-welcome your feedback, questions, use cases, and especially details of any implementations or experimentation with OCFL.
+additional [fixture objects](https://github.com/OCFL/fixtures) for testing OCFL implementations against the specification. 
+
+There is an accompanying [Change Log](https://ocfl.io/1.1/spec/change-log.html) that details the changes from version 1.0
+to version 1.1. It is designed to assist implementers with updates to their implementations. We welcome your feedback, 
+questions, use cases, and especially details of any implementations or experimentation with OCFL.
 
 ### The OCFL Editors
 
