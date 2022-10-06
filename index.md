@@ -39,7 +39,7 @@ Specifically, the benefits of the OCFL include:
 ## Participate
 
   * OCFL Community Group at [https://groups.google.com/forum/#!forum/ocfl-community](https://groups.google.com/forum/#!forum/ocfl-community)
-  * Slack: Self-register at [http://slack.fcrepo.org/](http://slack.fcrepo.org/) (channel `#ocfl`)
+  * Slack: Self-register at [https://code4lib.org/slack](https://code4lib.org/slack) (channel `#ocfl` in the `code4lib` workspace)
   * [OCFL Community Meetings](https://github.com/OCFL/spec/wiki/Community-Meetings)
   * [OCFL Use Cases](https://github.com/OCFL/Use-Cases/issues)
   * [OCFL Specification github](https://github.com/OCFL/spec)
