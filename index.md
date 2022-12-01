@@ -22,9 +22,9 @@ Specifically, the benefits of the OCFL include:
 
 ## Tools
 
-  * [OCFL Implementations](https://github.com/OCFL/spec/wiki/Implementations)
-  * [OCFL Community Extensions](https://github.com/OCFL/extensions)
-  * [OCFL Fixture Objects](https://github.com/OCFL/fixtures)
+* [OCFL Community Extensions](https://ocfl.github.io/extensions/)
+* [OCFL Implementations](https://github.com/OCFL/spec/wiki/Implementations)
+* [OCFL Fixture Objects](https://github.com/OCFL/fixtures)
 
 ## Previous Releases
 
