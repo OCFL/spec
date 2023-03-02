@@ -30,7 +30,7 @@
 
 ### Slack Channel
 
-There is an `#ocfl` Slack channel that you can join as part of the [Fedora Slack channel](http://slack.fcrepo.org).
+There is an `#ocfl` Slack channel that you can join as part of the [code4lib Slack channel](https://code4lib.org/irc/#slack).
 
 ### GitHub
 
