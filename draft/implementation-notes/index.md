@@ -680,4 +680,4 @@ URL: <https://public.ccsds.org/pubs/650x0m2.pdf>
 <span id="ref-ocfl-specification"/>**\[OCFL-Specification]** OCFL Specification. URL: <https://ocfl.io/draft/spec>
 
 <span id="ref-pairtree"/>**\[PairTree]** Pairtrees for Object Storage. J. Kunze; M. Haye; E. Hetzner; M. Reyes; C.
-Snavely. 12 August 2008\. URL: <https://confluence.ucop.edu/display/Curation/PairTree>
+Snavely. 12 August 2008\. URL: <https://datatracker.ietf.org/doc/html/draft-kunze-pairtree-01>
