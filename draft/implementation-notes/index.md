@@ -90,7 +90,7 @@ frequent target for cryptoanalytic attack.
 
 Consequently, it is sensible to allow additional or alternative fixity algorithms to be used. These may be made in a
 [fixity block](../spec/#fixity) which has the same layout as a manifest block but permits a broader range of algorithms.
-OCFL validation will consider a fixity block valid if all the files referenced in the block exist but the OCFL tools may not validate digests for all possible algorithms. The fixity block does not have to include all the files in an object in order to permit legacy fixity to be imported without requiring continued use of obsolete digest algorithms. Note that digest algorithms can generate identical digests for different file content and this more likely for simpler and older digests. Implementations must thus expect and handle cases where the fixity block correctly lists the same digest for different files.
+OCFL validation will consider a fixity block valid if all the files referenced in the block exist but the OCFL tools may not validate digests for all possible algorithms. The fixity block does not have to include all the files in an object in order to permit legacy fixity to be imported without requiring continued use of obsolete digest algorithms. Note that digest algorithms can generate identical digests for different file content and this is more likely for simpler and older digests. Implementations must thus expect and handle cases where the fixity block correctly lists the same digest for different files.
 
 ## 2. Storage
 {: #storage}
