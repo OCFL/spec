@@ -1,5 +1,34 @@
 # News
 
+## Community Listening Sessions for Version 2 of The Oxford Common File Layout
+
+**1 August 2023**
+
+In July of 2020, version 1.0 of the OCFL specification was released followed by version 1.1 in October of 2022. 
+We are now beginning to consider additional use cases and revisions that will lead to version 2.0 of the specification.
+
+In addition to gathering feedback via issues and use cases, we would also like to gather feedback and new use cases from 
+the community through conversation. To that end we will hold a series of listening sessions, we invite all individuals who 
+have implemented or are interested in The Oxford Common File Layout to attend.
+
+Below are the dates and times for the listening sessions:
+
+* [August OCFL Community Meeting](https://github.com/OCFL/spec/wiki/2023.08.09-Community-Meeting) - Wednesday August 9th 8pm
+ET / 5pm PT  |  Thursday August 10th 10am AEST
+* [September OCFL Community Meeting](https://github.com/OCFL/spec/wiki/2023.09.13-Community-Meeting) - Wednesday September
+13th 4pm GMT / 11am EST / 8am PST  |  Thursday September 14th 1am AEST
+* iPres Birds of a Feather session - Date and time TBD
+
+We look forward to hearing from you during these sessions and please reach out if you have any questions. 
+
+### The OCFL Editors
+
+Neil Jefferies (Bodleian Libraries, University of Oxford)\
+Rosalyn Metz (Emory University)\
+Julian Morley (Stanford University)\
+Simeon Warner (Cornell University)\
+Andrew Woods (Harvard University)
+
 ## Version 1.1 of the Oxford Common File Layout (OCFL) Released
 
 **7 October 2022**
