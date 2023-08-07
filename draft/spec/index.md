@@ -1,7 +1,8 @@
 ---
 no_site_title: true
 ---
-<img src="https://avatars0.githubusercontent.com/u/35607965" alt="OCFL Hand-drive logo" style="float:right;width:307px;height:307px;"/>
+<img src="https://avatars0.githubusercontent.com/u/35607965" alt="OCFL Hand-drive logo"
+  style="float:right;width:307px;height:307px;"/>
 # Oxford Common File Layout Specification
 {:.no_toc}
 
@@ -15,7 +16,8 @@ no_site_title: true
 
 **Editors:**
 
-* [Neil Jefferies](https://orcid.org/0000-0003-3311-3741), [Bodleian Libraries, University of Oxford](http://www.bodleian.ox.ac.uk/)
+* [Neil Jefferies](https://orcid.org/0000-0003-3311-3741), \
+[Bodleian Libraries, University of Oxford](http://www.bodleian.ox.ac.uk/)
 * [Rosalyn Metz](https://orcid.org/0000-0003-3526-2230), [Emory University](https://web.library.emory.edu/)
 * [Julian Morley](https://orcid.org/0000-0003-4176-1933), [Stanford University](https://library.stanford.edu/)
 * [Simeon Warner](https://orcid.org/0000-0002-7970-7855), [Cornell University](https://www.library.cornell.edu/)
@@ -61,8 +63,8 @@ management of digital objects within digital repositories.
 
 The OCFL initiative began as a discussion amongst digital repository practitioners to identify well-defined, common, and
 application-independent file management for a digital repository's persisted objects and represents a specification of
-the community’s collective recommendations addressing five primary requirements: completeness, parsability, versioning,
-robustness, and storage diversity.
+the community’s collective recommendations addressing five primary requirements: completeness, parsability,
+versioning, robustness, and storage diversity.
 
 #### Completeness
 {:.no_toc #completeness}
@@ -328,11 +330,24 @@ supported by a client <span id="E028" class="rfc2119">MUST</span> be ignored by 
 
 | Digest Algorithm Name | Note |
 | --- | --- |
-| `md5` | Insecure. Use only for legacy fixity values. MD5 algorithm and hex encoding defined by \[[RFC1321](#ref-rfc1321)\]. For example, the `md5` digest of a zero-length bitstream is `d41d8cd98f00b204e9800998ecf8427e`. |
-| `sha1` | Insecure. Use only for legacy fixity values. SHA-1 algorithm defined by \[[FIPS-180-4](#ref-fips-180-4)\] and <span id="E029" class="rfc2119">MUST</span> be encoded using hex (base16) encoding \[[RFC4648](#ref-rfc4648)\]. For example, the `sha1` digest of a zero-length bitstream is `da39a3ee5e6b4b0d3255bfef95601890afd80709`. |
-| `sha256` | Non-truncated form only; note performance implications. SHA-256 algorithm defined by \[[FIPS-180-4](#ref-fips-180-4)\] and <span id="E030" class="rfc2119">MUST</span> be encoded using hex (base16) encoding \[[RFC4648](#ref-rfc4648)\]. For example, the `sha256` digest of a zero-length bitstream starts `e3b0c44298fc1c149afbf4c8996fb92427ae41e4...` (64 hex digits long). |
-| `sha512` | Default choice. Non-truncated form only. SHA-512 algorithm defined by \[[FIPS-180-4](#ref-fips-180-4)\] and <span id="E031" class="rfc2119">MUST</span> be encoded using hex (base16) encoding \[[RFC4648](#ref-rfc4648)\]. For example, the `sha512` digest of a zero-length bitstream starts `cf83e1357eefb8bdf1542850d66d8007d620e405...` (128 hex digits long). |
-| `blake2b-512` | Full-length form only, using the 2B variant (64 bit) as defined by \[[RFC7693](#ref-rfc7693)\]. <span id="E032" class="rfc2119">MUST</span> be encoded using hex (base16) encoding \[[RFC4648](#ref-rfc4648)\]. For example, the `blake2b-512` digest of a zero-length bitstream starts `786a02f742015903c6c6fd852552d272912f4740...` (128 hex digits long). |
+| `md5` | Insecure. Use only for legacy fixity values. MD5 algorithm and hex encoding defined by
+\[[RFC1321](#ref-rfc1321)\].
+For example, the `md5` digest of a zero-length bitstream is `d41d8cd98f00b204e9800998ecf8427e`. |
+| `sha1` | Insecure. Use only for legacy fixity values. SHA-1 algorithm defined by \[[FIPS-180-4](#ref-fips-180-4)\] and
+<span id="E029" class="rfc2119">MUST</span> be encoded using hex (base16) encoding \[[RFC4648](#ref-rfc4648)\].
+For example, the `sha1` digest of a zero-length bitstream is `da39a3ee5e6b4b0d3255bfef95601890afd80709`. |
+| `sha256` | Non-truncated form only; note performance implications. SHA-256 algorithm defined by
+\[[FIPS-180-4](#ref-fips-180-4)\] and <span id="E030" class="rfc2119">MUST</span> be encoded using hex (base16) encoding
+\[[RFC4648](#ref-rfc4648)\]. For example, the `sha256` digest of a zero-length bitstream starts
+`e3b0c44298fc1c149afbf4c8996fb92427ae41e4...` (64 hex digits long). |
+| `sha512` | Default choice. Non-truncated form only. SHA-512 algorithm defined by \[[FIPS-180-4](#ref-fips-180-4)\] and
+<span id="E031" class="rfc2119">MUST</span> be encoded using hex (base16) encoding \[[RFC4648](#ref-rfc4648)\].
+For example, the `sha512` digest of a zero-length bitstream starts `cf83e1357eefb8bdf1542850d66d8007d620e405...`
+(128 hex digits long). |
+| `blake2b-512` | Full-length form only, using the 2B variant (64 bit) as defined by \[[RFC7693](#ref-rfc7693)\].
+<span id="E032" class="rfc2119">MUST</span> be encoded using hex (base16) encoding \[[RFC4648](#ref-rfc4648)\].
+For example, the `blake2b-512` digest of a zero-length bitstream starts `786a02f742015903c6c6fd852552d272912f4740...`
+(128 hex digits long). |
 
 An OCFL Inventory <span class="rfc2119">MAY</span> contain a fixity section that can store one or more blocks containing
 fixity values using multiple digest algorithms. See the [section on fixity](#fixity) below for further details.
@@ -666,7 +681,8 @@ defining the arrangement under the storage root.
 root.
 
 Although implementations may require multiple OCFL Storage Roots—that is, several logical or physical volumes, or
-multiple "buckets" in an object store—each OCFL Storage Root <span id="E074" class="rfc2119">MUST</span> be independent.
+multiple "buckets" in an object store—each OCFL Storage Root <span id="E074" class="rfc2119">MUST</span> be
+independent.
 
 The following example OCFL Storage Root represents the minimal set of files and folders:
 
