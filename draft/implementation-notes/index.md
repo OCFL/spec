@@ -1,7 +1,8 @@
 ---
 no_site_title: true
 ---
-<img src="https://avatars0.githubusercontent.com/u/35607965" alt="OCFL Hand-drive logo" style="float:right;width:307px;height:307px;"/>
+<img src="https://avatars0.githubusercontent.com/u/35607965" alt="OCFL Hand-drive logo"
+  style="float:right;width:307px;height:307px;"/>
 # Implementation Notes, Oxford Common File Layout Specification
 {:.no_toc}
 
@@ -15,7 +16,8 @@ no_site_title: true
 
 **Editors:**
 
-* [Neil Jefferies](https://orcid.org/0000-0003-3311-3741), [Bodleian Libraries, University of Oxford](http://www.bodleian.ox.ac.uk/)
+* [Neil Jefferies](https://orcid.org/0000-0003-3311-3741), \
+[Bodleian Libraries, University of Oxford](http://www.bodleian.ox.ac.uk/)
 * [Rosalyn Metz](https://orcid.org/0000-0003-3526-2230), [Emory University](https://web.library.emory.edu/)
 * [Julian Morley](https://orcid.org/0000-0003-4176-1933), [Stanford University](https://library.stanford.edu/)
 * [Simeon Warner](https://orcid.org/0000-0002-7970-7855), [Cornell University](https://www.library.cornell.edu/)
