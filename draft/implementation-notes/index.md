@@ -81,18 +81,23 @@ other digital preservation processes that might be implemented without requiring
 ### 1.2 Fixity
 {: #fixity}
 
-The digests in the manifest are used by the OCFL for content addressability rather than fixity but they are suitable for
-use as part of a fixity regime, and the manifest block usefully identifies all the files in an object. OCFL validation
-also requires that digests and files match. However, while the characteristics of digest algorithms that make them
-suitable for fixity checking and content addressing are closely related, they are not identical. In particular, fixity
-against malicious tampering requires that a digest computation is hard to reverse, which is not a requirement for
-content addressing. It is this aspect which is the most frequent target for cryptoanalytic attack.
+The digests in the [manifest block](../spec/#manifest) are used by the OCFL for content addressability rather than
+fixity, but they are also suitable for use as part of a fixity regime. The manifest block usefully identifies all
+the files in an object and OCFL validation requires that digests and files match.
+
+While the characteristics of digest algorithms that make them suitable for fixity checking and content addressing are
+closely related, they are not identical. In particular, fixity against malicious tampering requires that a digest
+computation is hard to reverse, which is not a requirement for content addressing. It is this aspect which is the most
+frequent target for cryptoanalytic attack.
 
 Consequently, it is sensible to allow additional or alternative fixity algorithms to be used. These may be made in a
 [fixity block](../spec/#fixity) which has the same layout as a manifest block but permits a broader range of algorithms.
-The OCFL will consider a fixity block valid if all the files referenced in the block exist but the OCFL does not
-validate digests for all possible algorithms. The fixity block does not have to include all the files in an object to
-permit legacy fixity to be imported without requiring continued use of obsolete digest algorithms.
+OCFL validation will consider a fixity block valid if all the files referenced in the block exist but the OCFL tools
+may not validate digests for all possible algorithms. The fixity block does not have to include all the files in an
+object in order to permit legacy fixity to be imported without requiring continued use of obsolete digest algorithms.
+Note that digest algorithms can generate identical digests for different file content and this is more likely for
+simpler and older digests. Implementations must thus expect and handle cases where the fixity block correctly lists
+the same digest for different files.
 
 ## 2. Storage
 {: #storage}
