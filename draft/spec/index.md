@@ -238,7 +238,7 @@ object validation. The structure for an object with one version is shown in the 
 ```
 
 The [OCFL Object Root](#dfn-ocfl-object-root) <span id="E001" class="rfc2119">MUST NOT</span> contain files or
-directories other than those specified in the following sections.
+directories other than those specified in the following sections (3.2 through 3.9).
 
 ### 3.2 Object Conformance Declaration
 {: #object-conformance-declaration}
