@@ -779,8 +779,8 @@ consistent manner. As such, the OCFL does not support the portability of these a
 OCFL Storage hierarchies. A common use case for links is storage deduplication. OCFL inventories provide a portable
 method of achieving the same effect by using digests to address content.
 
-3. File paths and filenames in the OCFL are case sensitive. Filesystems <span id="E091" class="rfc2119">MUST</span>
-preserve the case of OCFL filepaths and filenames.
+3. File paths and filenames in the OCFL are case sensitive. Implementations over filesystems that either do not preserve
+case or are not case sensitive require great care, including making appropriate choices for file paths and filenames.
 
 4. Transparent filesystem features such as compression and encryption should be effectively invisible to OCFL
 operations. Consequently, they should not be expected to be portable.
