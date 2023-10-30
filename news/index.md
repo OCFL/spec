@@ -1,5 +1,31 @@
 # News
 
+## Soliciting Feedback on Use Cases for Version 2 of OCFL
+
+**30 October 2023**
+Last month the OCFL Editors met in Chicago to review use cases related to the OCFL specification. During that meeting we refined and updated use cases and selected a list of potential use cases we might address in version 2.0 of the specification. Those use cases have been tagged as Proposed: In Scope in the OCFL use cases repository.  Below is a list of the use cases:
+
+- Issue #46 [Collapsing OCFL Object Versions](https://github.com/OCFL/Use-Cases/issues/46)
+- Issue #45 [OCFL as a formal standard](https://github.com/OCFL/Use-Cases/issues/45)
+- Issue #42 [Support physical file-level deletion](https://github.com/OCFL/Use-Cases/issues/42)
+- Issue #43 [Defining a repository from peer storage roots](https://github.com/OCFL/Use-Cases/issues/43)
+- Issue #39 [Distributed Storage of objects and components](https://github.com/OCFL/Use-Cases/issues/39)
+- Issue #44 [OCFL Object Forking](https://github.com/OCFL/Use-Cases/issues/44)
+- Issue #33 [Package per version storage](https://github.com/OCFL/Use-Cases/issues/33)
+- Issue #14 [Flagging file loss/corruption](https://github.com/OCFL/Use-Cases/issues/14)
+
+We are now soliciting feedback on these use cases.  You can provide feedback by reviewing each use case and its associated comment thread. We welcome continued feedback via the comments.  You can also provide feedback via the poll added to each use case (see this poll as an example).
+
+We will make space in the next two community meetings to discuss questions or feedback related to the use cases.
+
+### The OCFL Editors
+
+Neil Jefferies (Bodleian Libraries, University of Oxford)\
+Rosalyn Metz (Emory University)\
+Julian Morley (Stanford University)\
+Simeon Warner (Cornell University)\
+Andrew Woods (Harvard University)
+
 ## Community Listening Sessions for Version 2 of The Oxford Common File Layout
 
 **1 August 2023**
