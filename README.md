@@ -1,40 +1,25 @@
-# The Oxford Common File Layout
+# Oxford Common File Layout (OCFL)
 
-[![Build Status](https://app.travis-ci.com/OCFL/spec.svg?branch=main)](https://app.travis-ci.com/github/OCFL/spec)
+The Oxford Common File Layout (OCFL) initiative is motivated by the need for a preservation-centric, common approach to filesystem (or cloud / object storage) layout for digital repositories. The goal of this effort is to establish a specified recommendation for such a layout.
 
-## Status of this document
+This repositoty is the home of OCFL specification and implementation notes. It is published to https://ocfl.io . Key documents:
 
-**This version**: 1.0
+  * [This specification repository](https://github.com/OCFL/spec)
+    * [Current drafts on github](https://github.com/OCFL/spec/tree/main/draft)
+    * v1.1 [specification](https://ocfl.io/1.1/spec/) and [implementation notes](https://ocfl.io/1.1/implementation-notes/)
+    * v1.0 [specification](https://ocfl.io/1.0/spec/) and [implementation notes](https://ocfl.io/1.0/implementation-notes/)
+  * [Meeting notes and wiki](https://github.com/OCFL/spec/wiki)
 
-**Latest stable version**: 1.0
+Documentation in other repositories:
 
-**Editors**
+  * [Specification extensions](https://github.com/OCFL/extensions)
+  * [Test fixtures](https://github.com/OCFL/fixtures)
+  * [Use cases](https://github.com/OCFL/Use-Cases)
 
- - Andrew Hankinson, Bodleian Libraries, University of Oxford
- - Neil Jefferies, Bodleian Libraries, University of Oxford
- - Rosalyn Metz, Emory University
- - Julian Morley, Stanford University
- - Simeon Warner, Cornell University
- - Andrew Woods, DuraSpace
- 
-## Latest editors draft
+Additionally, in support of collaboration and discoverability, we encourage the inclusion of software tooling created by the OCFL community to be minimally linked from the [implementations documentation](https://github.com/OCFL/spec/wiki/Implementations) and potentially hosted in this GitHub organization, as appropriate. 
 
-[https://ocfl.io/](https://ocfl.io/draft/spec)
- 
-## Communication Channels
+See [the guidelines](https://docs.google.com/document/d/17CboNeHVv7DF0HsbLIJoracKAYa40hGV-gofpYK6XIg/edit?usp=sharing) regarding how to create and manage an OCFL-related project (i.e. "contributed project") on this GitHub organization.
 
-### Mailing Lists
+## Contact information
 
- - pasig-discuss@mail.asis.org: Broader communications, announcements, meeting notifications
- - ocfl-community@googlegroups.com: OCFL community discussions, announcements, support, software implementer discussions, spec interpretation, technical discussions
-
-### Slack Channel
-
-There is an `#ocfl` Slack channel that you can join as part of the [code4lib Slack channel](https://code4lib.org/irc/#slack).
-
-### GitHub
-
-We use GitHub to track use cases and discussions around specific issues of the specifications. These discussions can be found
-at https://github.com/ocfl/Use-Cases/issues.
-
-<small>This document is licensed under a [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by/4.0/).</small>
+Please feel free to contact the OCFL editors or user community via [these communication channels](https://github.com/OCFL/spec/wiki#communications).
