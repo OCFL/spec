@@ -1,9 +1,50 @@
 # News
 
+## OCFL Editors Workshop at iPres
+
+**16-20 September 2024**
+The OCFL Editors met during the iPres conference to review the use cases to be addressed in version 2.0 of the specification and come up with initial thoughts on how to proceed with each one. These thoughts have now been added to the [Confirmed: In-scope Issues](https://github.com/OCFL/Use-Cases/issues?q=is%3Aissue+is%3Aopen+label%3A%22Confirmed%3A+In-scope%22). The OCFL Editors now welcome further comments and feedback from the community before proceeding. 
+
+### The OCFL Editors
+
+Neil Jefferies (Bodleian Libraries, University of Oxford)\
+Rosalyn Metz (Emory University)\
+Julian Morley (Stanford University)\
+Simeon Warner (Cornell University)\
+Andrew Woods (Harvard University)
+
+## Results of Feedback on Use Cases for Version 2 of OCFL
+
+**14 March 2024**
+The OCFL Editors haved reviewed the community feedback on use cases related to the OCFL specification. This included some additional use cases added since the feedback process began:
+
+- Issue #47 [External identifiers in place of digests](https://github.com/OCFL/Use-Cases/issues/47)
+- Issue #48 [Large Inventory.json files](https://github.com/OCFL/Use-Cases/issues/48)
+- Issue #50 [Application Profiles](https://github.com/OCFL/Use-Cases/issues/50)
+
+Tallying up the community votes and responses, the following use cases will be addressed in version 2.0 of the specification. 
+
+- Issue #33 [Package per version storage](https://github.com/OCFL/Use-Cases/issues/33)
+- Issue #42 [Support physical file-level deletion](https://github.com/OCFL/Use-Cases/issues/42)
+- Issue #44 [OCFL Object Forking](https://github.com/OCFL/Use-Cases/issues/44)
+- Issue #50 [Application Profiles](https://github.com/OCFL/Use-Cases/issues/50)
+- Issue #14 [Flagging file loss/corruption](https://github.com/OCFL/Use-Cases/issues/14)
+- Issue #46 [Collapsing OCFL Object Versions](https://github.com/OCFL/Use-Cases/issues/46)
+
+These use cases have been tagged as [Confirmed: In-scope Issues](https://github.com/OCFL/Use-Cases/issues?q=is%3Aissue+is%3Aopen+label%3A%22Confirmed%3A+In-scope%22) in the OCFL use cases repository. The remainder have been tagged [Confirmed: Out-of-scope Issues](https://github.com/OCFL/Use-Cases/issues?q=is%3Aissue+is%3Aopen+label%3A%22Confirmed%3A+Out-of-scope%22).
+
+### The OCFL Editors
+
+Neil Jefferies (Bodleian Libraries, University of Oxford)\
+Rosalyn Metz (Emory University)\
+Julian Morley (Stanford University)\
+Simeon Warner (Cornell University)\
+Andrew Woods (Harvard University)
+
 ## Soliciting Feedback on Use Cases for Version 2 of OCFL
 
 **30 October 2023**
-Last month the OCFL Editors met in Chicago to review use cases related to the OCFL specification. During that meeting we refined and updated use cases and selected a list of potential use cases we might address in version 2.0 of the specification. Those use cases have been tagged as Proposed: In Scope in the OCFL use cases repository.  Below is a list of the use cases:
+Last month the OCFL Editors met in Chicago to review use cases related to the OCFL specification. During that meeting we refined and updated use cases and selected a list of potential use cases we might address in version 2.0 of the specification. Those use cases have been tagged as *Proposed: In Scope* in the OCFL use cases repository.  Below is a list of the use cases:
 
 - Issue #46 [Collapsing OCFL Object Versions](https://github.com/OCFL/Use-Cases/issues/46)
 - Issue #45 [OCFL as a formal standard](https://github.com/OCFL/Use-Cases/issues/45)
