@@ -2,8 +2,8 @@
 
 ## OCFL Editors Workshop at iPres
 
-**16-20 September 2024**
-The OCFL Editors met during the iPres conference to review the use cases to be addressed in version 2.0 of the specification and come up with initial thoughts on how to proceed with each one. These thoughts have now been added to the [Confirmed: In-scope Issues](https://github.com/OCFL/Use-Cases/issues?q=is%3Aissue+is%3Aopen+label%3A%22Confirmed%3A+In-scope%22). The OCFL Editors now welcome further comments and feedback from the community before proceeding. 
+**24 October 2024**
+The OCFL Editors met during the iPres conference 16-20 September 2024 to review the use cases to be addressed in version 2.0 of the specification and come up with initial thoughts on how to proceed with each one. These thoughts have now been added to the [Confirmed: In-scope Issues](https://github.com/OCFL/Use-Cases/issues?q=is%3Aissue+is%3Aopen+label%3A%22Confirmed%3A+In-scope%22). The OCFL Editors now welcome further comments and feedback from the community before proceeding.
 
 ### The OCFL Editors
 
@@ -22,7 +22,7 @@ The OCFL Editors haved reviewed the community feedback on use cases related to t
 - Issue #48 [Large Inventory.json files](https://github.com/OCFL/Use-Cases/issues/48)
 - Issue #50 [Application Profiles](https://github.com/OCFL/Use-Cases/issues/50)
 
-Tallying up the community votes and responses, the following use cases will be addressed in version 2.0 of the specification. 
+Tallying up the community votes and responses, the following use cases will be addressed in version 2.0 of the specification.
 
 - Issue #33 [Package per version storage](https://github.com/OCFL/Use-Cases/issues/33)
 - Issue #42 [Support physical file-level deletion](https://github.com/OCFL/Use-Cases/issues/42)
@@ -71,11 +71,11 @@ Andrew Woods (Harvard University)
 
 **1 August 2023**
 
-In July of 2020, version 1.0 of the OCFL specification was released followed by version 1.1 in October of 2022. 
+In July of 2020, version 1.0 of the OCFL specification was released followed by version 1.1 in October of 2022.
 We are now beginning to consider additional use cases and revisions that will lead to version 2.0 of the specification.
 
-In addition to gathering feedback via issues and use cases, we would also like to gather feedback and new use cases from 
-the community through conversation. To that end we will hold a series of listening sessions, we invite all individuals who 
+In addition to gathering feedback via issues and use cases, we would also like to gather feedback and new use cases from
+the community through conversation. To that end we will hold a series of listening sessions, we invite all individuals who
 have implemented or are interested in The Oxford Common File Layout to attend.
 
 Below are the dates and times for the listening sessions:
@@ -86,7 +86,7 @@ ET / 5pm PT  |  Thursday August 10th 10am AEST
 13th 4pm GMT / 11am EST / 8am PST  |  Thursday September 14th 1am AEST
 * iPres Birds of a Feather session - Date and time TBD
 
-We look forward to hearing from you during these sessions and please reach out if you have any questions. 
+We look forward to hearing from you during these sessions and please reach out if you have any questions.
 
 ### The OCFL Editors
 
@@ -106,7 +106,7 @@ compatible with version 1.0.
 
 ### What new information is available?
 
-The OCFL website at [https://ocfl.io](https://ocfl.io), includes the most up to date version of the specification and 
+The OCFL website at [https://ocfl.io](https://ocfl.io), includes the most up to date version of the specification and
 the implementation notes as well as the latest editors draft.
 
 The [OCFL Specification v1.1](https://ocfl.io/1.1/spec/) defines both OCFL Objects, a simple structure for content and
@@ -119,10 +119,10 @@ the specification including recommendations for digital preservation, storage ha
 practices for dealing with OCFL Objects in motion.
 
 The OCFL Editors are also releasing updated [validation rules](https://ocfl.io/1.1/spec/validation-codes.html) and
-additional [fixture objects](https://github.com/OCFL/fixtures) for testing OCFL implementations against the specification. 
+additional [fixture objects](https://github.com/OCFL/fixtures) for testing OCFL implementations against the specification.
 
 There is an accompanying [Change Log](https://ocfl.io/1.1/spec/change-log.html) that details the changes from version 1.0
-to version 1.1. It is designed to assist implementers with updates to their implementations. We welcome your feedback, 
+to version 1.1. It is designed to assist implementers with updates to their implementations. We welcome your feedback,
 questions, use cases, and especially details of any implementations or experimentation with OCFL.
 
 ### The OCFL Editors
