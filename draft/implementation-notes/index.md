@@ -679,8 +679,7 @@ checksums - considering some sort of failure has just occurred.
 {: #informative-references}
 
 <span id="ref-namaste"/>**\[NAMASTE]** Directory Description with Namaste Tags. J. Kunze. 9 November 2009. URL:
-<https://n2t.net/ark:/13030/c7g44hq41>, local copy:
-<https://ocfl.io/cache/NamasteSpec.pdf>
+<https://n2t.net/ark:/13030/c7g44hq41>, local copy: <https://ocfl.io/cache/NamasteSpec.pdf>
 
 <span id="ref-oais"/>**\[OAIS]** Reference Model for an Open Archival Information System (OAIS), Issue 2. June 2012.
 URL: <https://public.ccsds.org/pubs/650x0m2.pdf>
