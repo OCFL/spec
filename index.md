@@ -29,6 +29,11 @@ Specifically, the benefits of the OCFL include:
 * [OCFL Fixture Objects](https://github.com/OCFL/fixtures)
 * [OCFL Guidelines for Projects](/projects/)
 
+## Citation
+
+Citable copies of the specification, extensions and fixtures can be found on the 
+[Zenodo OCFL Community site](https://zenodo.org/communities/ocfl/records?q=&f=resource_type%3Asoftware&l=list&p=1&s=10&sort=newest). 
+
 ## Previous Releases
 
 * [OCFL Specification v1.0](1.0/spec/)
