@@ -123,7 +123,7 @@ The E070 error description in `validation-codes.md` is corrected to refer to `ex
 
 #### Reword filesystem case sensitivity comments
 
-Version 1.1.0 had an unenforceable MUST regarding filesystem case preservation. The [Filesystem Features](https://ocfl.io/1.1/spec/#filesystem-features) section was change to instead point out that implementation over filesystems that either do not preserve case or are not case sensitive require great care, including making appropriate choices for file paths and filenames. (Issue [#528](https://github.com/OCFL/spec/issues/528))
+Version 1.1.0 had an unenforceable MUST regarding filesystem case preservation. The [Filesystem Features](https://ocfl.io/1.1/spec/#filesystem-features) section was changed to instead point out that implementation over filesystems that either do not preserve case or are not case sensitive require great care, including making appropriate choices for file paths and filenames. (Issue [#528](https://github.com/OCFL/spec/issues/528))
 
 #### Add range of specification sections covering Object Structure
 
@@ -135,7 +135,7 @@ The [fixity](https://ocfl.io/1.1/implementation-notes/#fixity) section of the Im
 
 #### Update links to Pairtree and NAMASTE specifications
 
-Links to both the Pairtree and NAMASTE specifications have been updates in the [Specification references](https://ocfl.io/1.1/spec/#references) and the [Implementation Notes references](https://ocfl.io/1.1/implementation-notes/#references). (Issues [#627](https://github.com/OCFL/spec/issues/627) and [#629](https://github.com/OCFL/spec/issues/629#issuecomment-1623865455))
+Links to both the Pairtree and NAMASTE specifications have been updated in the [Specification references](https://ocfl.io/1.1/spec/#references) and the [Implementation Notes references](https://ocfl.io/1.1/implementation-notes/#references). (Issues [#627](https://github.com/OCFL/spec/issues/627) and [#629](https://github.com/OCFL/spec/issues/629#issuecomment-1623865455))
 
 ### Corrections to validation codes
 
