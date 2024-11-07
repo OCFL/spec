@@ -2,7 +2,7 @@
 
 ## Version 1.1.1 of the Oxford Common File Layout (OCFL) Released
 
-**25 October 2024**
+**8 November 2024**
 
 The OCFL Editors are pleased to announce version 1.1.1 of the Oxford Common File Layout specification. This
 revision provides minor clarifications based on implementation experience and community feedback. Version 1.1.1
@@ -41,7 +41,7 @@ Andrew Woods (Harvard University)
 ## Soliciting Feedback on Use Cases for Version 2 of OCFL
 
 **30 October 2023**
-Last month the OCFL Editors met in Chicago to review use cases related to the OCFL specification. During that meeting we refined and updated use cases and selected a list of potential use cases we might address in version 2.0 of the specification. Those use cases have been tagged as Proposed: In Scope in the OCFL use cases repository.  Below is a list of the use cases:
+Last month the OCFL Editors met in Chicago to review use cases related to the OCFL specification. During that meeting we refined and updated use cases and selected a list of potential use cases we might address in version 2.0 of the specification. Those use cases have been tagged as *Proposed: In Scope* in the OCFL use cases repository.  Below is a list of the use cases:
 
 - Issue #46 [Collapsing OCFL Object Versions](https://github.com/OCFL/Use-Cases/issues/46)
 - Issue #45 [OCFL as a formal standard](https://github.com/OCFL/Use-Cases/issues/45)
@@ -115,10 +115,17 @@ The companion [OCFL Implementation Notes v1.1](https://ocfl.io/1.1.0/implementat
 the specification including recommendations for digital preservation, storage handling, client behaviors, and best
 practices for dealing with OCFL Objects in motion.
 
+<<<<<<< HEAD
 The OCFL Editors are also releasing updated [validation rules](https://ocfl.io/1.1.0/spec/validation-codes.html) and
 additional [fixture objects](https://github.com/OCFL/fixtures) for testing OCFL implementations against the specification.
 
 There is an accompanying [Change Log](https://ocfl.io/1.1.0/spec/change-log.html) that details the changes from version 1.0
+=======
+The OCFL Editors are also releasing updated [validation rules](https://ocfl.io/1.1/spec/validation-codes.html) and
+additional [fixture objects](https://github.com/OCFL/fixtures) for testing OCFL implementations against the specification.
+
+There is an accompanying [Change Log](https://ocfl.io/1.1/spec/change-log.html) that details the changes from version 1.0
+>>>>>>> main
 to version 1.1. It is designed to assist implementers with updates to their implementations. We welcome your feedback,
 questions, use cases, and especially details of any implementations or experimentation with OCFL.
 

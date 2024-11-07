@@ -1333,8 +1333,8 @@ The following example OCFL Object has an extension containing custom content. Th
 <span id="ref-fips-180-4"/>**\[FIPS-180-4]** FIPS PUB 180-4 Secure Hash Standard. U.S. Department of Commerce/National
 Institute of Standards and Technology. URL: <https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf>
 
-<span id="ref-namaste"/>**\[NAMASTE]** Directory Description with Namaste Tags. J. Kunze.9 November 2009. URL:
-<https://n2t.net/ark:/13030/c7g44hq41>
+<span id="ref-namaste"/>**\[NAMASTE]** Directory Description with Namaste Tags. J. Kunze. 9 November 2009. URL:
+<https://n2t.net/ark:/13030/c7g44hq41>, local copy: <https://ocfl.io/cache/NamasteSpec.pdf>
 
 <span id="ref-rfc1321"/>**\[RFC1321]** The MD5 Message-Digest Algorithm. R. Rivest. IETF. April 1992. Informational.
 URL: <https://www.rfc-editor.org/rfc/rfc1321>
