@@ -5,7 +5,7 @@ no_site_title: true
 # Oxford Common File Layout Specification v1.1 Change Log
 {:.no_toc}
 
-7 October 2022, updated 8 November 2024
+7 October 2022 for v1.1.0, updated 8 November 2024 for v1.1.1
 
 **Editors:**
 
@@ -26,8 +26,8 @@ licensed under [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/).
 This change log combines logs of changes from [Version 1.0 of the OCFL Specification](https://ocfl.io/1.0/spec/) through
 [Version 1.1.1 of the OCFL Specification](https://ocfl.io/1.1/spec/):
 
-  * [Changes from OCFL v1.0 to v1.1.0](changes-from-ocfl-v10-to-v110)
-  * [Changes from OCFL v1.1.0 to v1.1.1](changes-from-ocfl-v110-to-v111)
+  * [Changes from OCFL v1.0 to v1.1.0](#changes-from-ocfl-v10-to-v110)
+  * [Changes from OCFL v1.1.0 to v1.1.1](#changes-from-ocfl-v110-to-v111)
 
 ## Changes from OCFL v1.0 to v1.1.0
 
@@ -123,7 +123,7 @@ The E070 error description in `validation-codes.md` is corrected to refer to `ex
 
 #### Reword filesystem case sensitivity comments
 
-Version 1.1.0 had an unenforceable MUST on filesystem case preservation. The [Filesystem Features](https://ocfl.io/1.1/spec/#filesystem-features) section was change to instead point out that implementation over filesystems that either do not preserve case or are not case sensitive require great care, including making appropriate choices for file paths and filenames. (Issue [#528](https://github.com/OCFL/spec/issues/528))
+Version 1.1.0 had an unenforceable MUST regarding filesystem case preservation. The [Filesystem Features](https://ocfl.io/1.1/spec/#filesystem-features) section was change to instead point out that implementation over filesystems that either do not preserve case or are not case sensitive require great care, including making appropriate choices for file paths and filenames. (Issue [#528](https://github.com/OCFL/spec/issues/528))
 
 #### A range of specification sections covering Object Structure
 
@@ -135,10 +135,10 @@ The [fixity](https://ocfl.io/1.1/implementation-notes/#fixity) section of the Im
 
 #### Update links to Pairtree and NAMASTE specifications
 
-Links to both the Pairtree and NAMASTE specifications have been updates in the [Specification references](https://ocfl.io/1.1/spec/#references) and the [Implementation Notes references](https://ocfl.io/1.1/implementation-notes/#references). (Issues [#627](https://github.com/OCFL/spec/issues/627) and [#629 comment](https://github.com/OCFL/spec/issues/629#issuecomment-1623865455))
+Links to both the Pairtree and NAMASTE specifications have been updates in the [Specification references](https://ocfl.io/1.1/spec/#references) and the [Implementation Notes references](https://ocfl.io/1.1/implementation-notes/#references). (Issues [#627](https://github.com/OCFL/spec/issues/627) and [#629](https://github.com/OCFL/spec/issues/629#issuecomment-1623865455))
 
 ### Corrections to validation codes
 
 #### Unenforceable code E091 removed
 
-The E091 code "Filesystems MUST preserve the case of OCFL filepaths and filenames" was unenforceable and was removed as part of rewording the case sensitivity requirement. (Issue [#528](https://github.com/OCFL/spec/issues/528))
+The E091 code "Filesystems MUST preserve the case of OCFL filepaths and filenames" was unenforceable and was removed as part of rewording the case sensitivity advice. (Issue [#528](https://github.com/OCFL/spec/issues/528))
