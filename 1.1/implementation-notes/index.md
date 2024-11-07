@@ -9,7 +9,7 @@ no_site_title: true
 7 October 2022, updated 7 November 2024
 
 **This Version:**
-* <https://ocfl.io/draft/implementation-notes/>
+* <https://ocfl.io/1.1/implementation-notes/>
 
 **Latest Published Version:**
 * <https://ocfl.io/latest/implementation-notes/>
