@@ -1,21 +1,23 @@
 ---
 no_site_title: true
 ---
-<img src="https://avatars0.githubusercontent.com/u/35607965" alt="OCFL Hand-drive logo" style="float:right;width:307px;height:307px;"/>
+<img src="https://avatars0.githubusercontent.com/u/35607965" alt="OCFL Hand-drive logo"
+  style="float:right;width:307px;height:307px;"/>
 # Implementation Notes, Oxford Common File Layout Specification
 {:.no_toc}
 
-7 October 2022
+**Unreleased Latest Editors' Draft**
 
 **This Version:**
-* <https://ocfl.io/1.1/implementation-notes/>
+* <https://ocfl.io/draft/implementation-notes/>
 
 **Latest Published Version:**
 * <https://ocfl.io/latest/implementation-notes/>
 
 **Editors:**
 
-* [Neil Jefferies](https://orcid.org/0000-0003-3311-3741), [Bodleian Libraries, University of Oxford](http://www.bodleian.ox.ac.uk/)
+* [Neil Jefferies](https://orcid.org/0000-0003-3311-3741), \
+[Bodleian Libraries, University of Oxford](http://www.bodleian.ox.ac.uk/)
 * [Rosalyn Metz](https://orcid.org/0000-0003-3526-2230), [Emory University](https://web.library.emory.edu/)
 * [Julian Morley](https://orcid.org/0000-0003-4176-1933), [Stanford University](https://library.stanford.edu/)
 * [Simeon Warner](https://orcid.org/0000-0002-7970-7855), [Cornell University](https://www.library.cornell.edu/)
@@ -23,12 +25,12 @@ no_site_title: true
 
 **Additional Documents:**
 
-* [Specification](https://ocfl.io/1.1/spec/)
-* [Validation Codes](https://ocfl.io/1.1/spec/validation-codes.html)
+* [Specification](https://ocfl.io/draft/spec/)
+* [Validation Codes](https://ocfl.io/draft/spec/validation-codes.html)
 * [Extensions](https://github.com/OCFL/extensions/)
 
 **Previous version:**
-* <https://ocfl.io/1.0/implementation-notes/>
+* <https://ocfl.io/1.1/implementation-notes/>
 
 **Repository:**
 * [Github](https://github.com/ocfl/spec)
@@ -79,18 +81,23 @@ other digital preservation processes that might be implemented without requiring
 ### 1.2 Fixity
 {: #fixity}
 
-The digests in the manifest are used by the OCFL for content addressability rather than fixity but they are suitable for
-use as part of a fixity regime, and the manifest block usefully identifies all the files in an object. OCFL validation
-also requires that digests and files match. However, while the characteristics of digest algorithms that make them
-suitable for fixity checking and content addressing are closely related, they are not identical. In particular, fixity
-against malicious tampering requires that a digest computation is hard to reverse, which is not a requirement for
-content addressing. It is this aspect which is the most frequent target for cryptoanalytic attack.
+The digests in the [manifest block](../spec/#manifest) are used by the OCFL for content addressability rather than
+fixity, but they are also suitable for use as part of a fixity regime. The manifest block usefully identifies all
+the files in an object and OCFL validation requires that digests and files match.
+
+While the characteristics of digest algorithms that make them suitable for fixity checking and content addressing are
+closely related, they are not identical. In particular, fixity against malicious tampering requires that a digest
+computation is hard to reverse, which is not a requirement for content addressing. It is this aspect which is the most
+frequent target for cryptoanalytic attack.
 
 Consequently, it is sensible to allow additional or alternative fixity algorithms to be used. These may be made in a
 [fixity block](../spec/#fixity) which has the same layout as a manifest block but permits a broader range of algorithms.
-The OCFL will consider a fixity block valid if all the files referenced in the block exist but the OCFL does not
-validate digests for all possible algorithms. The fixity block does not have to include all the files in an object to
-permit legacy fixity to be imported without requiring continued use of obsolete digest algorithms.
+OCFL validation will consider a fixity block valid if all the files referenced in the block exist but the OCFL tools
+may not validate digests for all possible algorithms. The fixity block does not have to include all the files in an
+object in order to permit legacy fixity to be imported without requiring continued use of obsolete digest algorithms.
+Note that digest algorithms can generate identical digests for different file content and this is more likely for
+simpler and older digests. Implementations must thus expect and handle cases where the fixity block correctly lists
+the same digest for different files.
 
 ## 2. Storage
 {: #storage}
@@ -671,13 +678,20 @@ checksums - considering some sort of failure has just occurred.
 ### 4.1 Informative References
 {: #informative-references}
 
-<span id="ref-namaste"/>**\[NAMASTE]** Directory Description with Namaste Tags. J. Kunze.9 November 2009. URL:
-<https://confluence.ucop.edu/download/attachments/14254149/NamasteSpec.pdf>
+<span id="ref-namaste"/>**\[NAMASTE]** Directory Description with Namaste Tags. J. Kunze. 9 November 2009. URL:
+<https://n2t.net/ark:/13030/c7g44hq41>, local copy: <https://ocfl.io/cache/NamasteSpec.pdf>
 
 <span id="ref-oais"/>**\[OAIS]** Reference Model for an Open Archival Information System (OAIS), Issue 2. June 2012.
 URL: <https://public.ccsds.org/pubs/650x0m2.pdf>
 
-<span id="ref-ocfl-specification"/>**\[OCFL-Specification]** OCFL Specification v1.1. URL: <https://ocfl.io/1.1/spec>
+<span id="ref-ocfl-specification"/>**\[OCFL-Specification]** OCFL Specification. URL: <https://ocfl.io/draft/spec>
 
 <span id="ref-pairtree"/>**\[PairTree]** Pairtrees for Object Storage. J. Kunze; M. Haye; E. Hetzner; M. Reyes; C.
-Snavely. 12 August 2008\. URL: <https://confluence.ucop.edu/display/Curation/PairTree>
+Snavely. 12 August 2008\. URL: <https://datatracker.ietf.org/doc/html/draft-kunze-pairtree-01>
+
+## Revision history
+
+| Version | Date | Description |
+| --- | --- | --- |
+| [v1.1.0](https://ocfl.io/1.1.0/implementation_notes/) | 7 October 2022 | First v1.1, [release notes](https://ocfl.io/news/#version-11-of-the-oxford-common-file-layout-ocfl-released), [change log](https://ocfl.io/1.1.0/spec/change-log.html) |
+| [v1.1.1](https://ocfl.io/1.1/implementation_notes/) | 7 November 2024 | Clarified [Fixity](#fixity) section, updated links to NAMASTE and Pairtree specifications [release notes](https://ocfl.io/news/#version-111-of-the-oxford-common-file-layout-ocfl-released), [change log](https://ocfl.io/1.1/spec/change-log.html) |

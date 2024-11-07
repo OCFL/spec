@@ -1,5 +1,34 @@
 # News
 
+## Version 1.1.1 of the Oxford Common File Layout (OCFL) Released
+
+**7 November 2024**
+
+The OCFL Editors are pleased to announce version 1.1.1, a patch update to version 1.1 of the Oxford Common File Layout
+specification. This revision provides minor clarifications based on implementation experience and community feedback. OCFL
+Storage Root or OCFL Object version designations do not reflect patch version and thus remain v1.1.
+
+### What new information is available?
+
+The [OCFL Specification v1.1](https://ocfl.io/1.1/spec/) and
+[OCFL Implementation Notes v1.1](https://ocfl.io/1.1/implementation-notes/) have both been updated. The accompanying
+[Change Log](https://ocfl.io/1.1/spec/change-log.html) details the changes both from version 1.0 to version 1.1.0 and
+also to version 1.1.1. It is designed to assist implementers with updates to their implementations. We welcome
+your feedback, questions, use cases, and especially details of any implementations or experimentation with OCFL.
+
+The previous OCFL version 1.1 documents, now designated version 1.1.0, remain available:
+[OCFL Specification v1.1.0](https://ocfl.io/1.1.0/spec/),
+[OCFL Implementation Notes v1.1.0](https://ocfl.io/1.1.0/implementation-notes/), and
+[Change Log for v1.1.0](https://ocfl.io/1.1.0/spec/change-log.html).
+
+### The OCFL Editors
+
+Neil Jefferies (Bodleian Libraries, University of Oxford)\
+Rosalyn Metz (Emory University)\
+Julian Morley (Stanford University)\
+Simeon Warner (Cornell University)\
+Andrew Woods (Harvard University)
+
 ## OCFL Editors Workshop at iPres
 
 **24 October 2024**
@@ -109,19 +138,19 @@ compatible with version 1.0.
 The OCFL website at [https://ocfl.io](https://ocfl.io), includes the most up to date version of the specification and
 the implementation notes as well as the latest editors draft.
 
-The [OCFL Specification v1.1](https://ocfl.io/1.1/spec/) defines both OCFL Objects, a simple structure for content and
+The [OCFL Specification v1.1](https://ocfl.io/1.1.0/spec/) defines both OCFL Objects, a simple structure for content and
 a JSON document (`inventory.json`) which provides a straightforward but comprehensive register for the object and
 versions of its content, and an OCFL Storage Root, an arrangement for how OCFL Objects are laid out on physical storage.
 It also contains examples illustrating the use of the OCFL, and explanations that ground decisions in prior experience.
 
-The companion [OCFL Implementation Notes v1.1](https://ocfl.io/1.1/implementation-notes/) contains advice for implementing
+The companion [OCFL Implementation Notes v1.1](https://ocfl.io/1.1.0/implementation-notes/) contains advice for implementing
 the specification including recommendations for digital preservation, storage handling, client behaviors, and best
 practices for dealing with OCFL Objects in motion.
 
-The OCFL Editors are also releasing updated [validation rules](https://ocfl.io/1.1/spec/validation-codes.html) and
+The OCFL Editors are also releasing updated [validation rules](https://ocfl.io/1.1.0/spec/validation-codes.html) and
 additional [fixture objects](https://github.com/OCFL/fixtures) for testing OCFL implementations against the specification.
 
-There is an accompanying [Change Log](https://ocfl.io/1.1/spec/change-log.html) that details the changes from version 1.0
+There is an accompanying [Change Log](https://ocfl.io/1.1.0/spec/change-log.html) that details the changes from version 1.0
 to version 1.1. It is designed to assist implementers with updates to their implementations. We welcome your feedback,
 questions, use cases, and especially details of any implementations or experimentation with OCFL.
 

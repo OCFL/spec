@@ -5,7 +5,7 @@ no_site_title: true
 # Oxford Common File Layout Specification v1.1 Change Log
 {:.no_toc}
 
-7 October 2022 for v1.1.0, updated 7 November 2024 for v1.1.1
+7 October 2022
 
 **Editors:**
 
@@ -21,25 +21,17 @@ License](https://creativecommons.org/licenses/by/4.0/). [OCFL logo:
 [Patrick Hochstenbach](http://orcid.org/0000-0001-8390-6171) is
 licensed under [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/).
 
-## Contents
+## Changes from OCFL v1.0 to v1.1
 
-This change log combines logs of changes from [Version 1.0 of the OCFL Specification](https://ocfl.io/1.0/spec/) through
-[Version 1.1.1 of the OCFL Specification](https://ocfl.io/1.1/spec/):
+[Version 1.1 of the OCFL Specification](https://ocfl.io/1.1/spec/) is a [minor version](https://semver.org/) update to the [OCFL Specification v1.0](https://ocfl.io/1.0/spec/). The focus is correction and clarification, plus the addition of backwards compatible rules for the specification conformance of prior object versions.
 
-  * [Changes from OCFL v1.0 to v1.1.0](#changes-from-ocfl-v10-to-v110)
-  * [Changes from OCFL v1.1.0 to v1.1.1](#changes-from-ocfl-v110-to-v111)
-
-## Changes from OCFL v1.0 to v1.1.0
-
-[Version 1.1.0 of the OCFL Specification](https://ocfl.io/1.1.0/spec/) is a [minor version](https://semver.org/) update to the [OCFL Specification v1.0](https://ocfl.io/1.0/spec/). The focus is correction and clarification, plus the addition of backwards compatible rules for the specification conformance of prior object versions.
-
-### Additions in v1.1.0
+### Additions in v1.1
 
 #### Add requirements to specification version number sequence
 
 Added [Conformance of prior versions](https://ocfl.io/1.1/spec/#conformance-of-prior-versions) section to clarify that existing version directories in an object are immutable and that the specification version number sequence must be monotonic. Adds error code [E103](https://ocfl.io/1.1/spec/#E103). (Issue [#544](https://github.com/OCFL/spec/issues/544))
 
-### Clarifications in v1.1.0
+### Clarifications in v1.1
 
 #### One conformance declaration per object and storage root
 
@@ -105,7 +97,7 @@ Update the reference to the Bagit specification from the draft <https://tools.ie
 
 #### Per-version validation codes
 
-Even for minor releases the validations codes may be updated. We have thus moved the `validation-codes.md` file into each version directory so that will be versioned along with the specification. The version of this file for the v1.1 specification is rendered as <https://ocfl.io/1.1/spec/validation-codes.html>. (Issue [#553](https://github.com/OCFL/spec/issues/553))
+Even for minor releases the validations codes may be updated. We have thus moved the `validation-codes.md` file into each version directory so that will be versioned along with the specification. The version of this file for the v1.1 specification is rendered as <https://ocfl.io//spec/validation-codes.html>. (Issue [#553](https://github.com/OCFL/spec/issues/553))
 
 #### Fix E048 description
 
@@ -114,31 +106,3 @@ The E048 error description in `validation-codes.md` is corrected to remove menti
 #### Fix E070 description
 
 The E070 error description in `validation-codes.md` is corrected to refer to `extension` rather than `key` (which was left from an earlier draft). (Issue [#573](https://github.com/OCFL/spec/issues/573))
-
-## Changes from OCFL v1.1.0 to v1.1.1
-
-[Version 1.1.1 of the OCFL Specification](https://ocfl.io/1.1/spec/) is a [patch version](https://semver.org/) update to the [OCFL Specification v1.1.0](https://ocfl.io/1.1.0/spec/). There are only clarifications.
-
-### Clarifications in v1.1.1
-
-#### Reword filesystem case sensitivity comments
-
-Version 1.1.0 had an unenforceable MUST regarding filesystem case preservation. The [Filesystem Features](https://ocfl.io/1.1/spec/#filesystem-features) section was changed to instead point out that implementation over filesystems that either do not preserve case or are not case sensitive require great care, including making appropriate choices for file paths and filenames. (Issue [#528](https://github.com/OCFL/spec/issues/528))
-
-#### Add range of specification sections covering Object Structure
-
-The range of specification sections (3.2 through 3.9) specifying the (Object Structure)[#object-structure] was added to make that explicit. (Issue [#637](https://github.com/OCFL/spec/issues/637))
-
-#### Clarify description of fixity in Implementation Notes
-
-The [fixity](https://ocfl.io/1.1/implementation-notes/#fixity) section of the Implementation Notes has been updated to point out differences in requirements for digests used for content addressing (the manifest and state blocks) and fixity (the fixity block). The section also notes that fixity algorithms may generate the same value for different file content. (Issue [#629](https://github.com/OCFL/spec/issues/629))
-
-#### Update links to Pairtree and NAMASTE specifications
-
-Links to both the Pairtree and NAMASTE specifications have been updated in the [Specification references](https://ocfl.io/1.1/spec/#references) and the [Implementation Notes references](https://ocfl.io/1.1/implementation-notes/#references). (Issues [#627](https://github.com/OCFL/spec/issues/627) and [#629](https://github.com/OCFL/spec/issues/629#issuecomment-1623865455))
-
-### Corrections to validation codes
-
-#### Unenforceable code E091 removed
-
-The E091 code "Filesystems MUST preserve the case of OCFL filepaths and filenames" was unenforceable and was removed as part of rewording the case sensitivity advice. (Issue [#528](https://github.com/OCFL/spec/issues/528))

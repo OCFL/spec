@@ -1,11 +1,12 @@
 ---
 no_site_title: true
 ---
-<img src="https://avatars0.githubusercontent.com/u/35607965" alt="OCFL Hand-drive logo" style="float:right;width:307px;height:307px;"/>
+<img src="https://avatars0.githubusercontent.com/u/35607965" alt="OCFL Hand-drive logo"
+  style="float:right;width:307px;height:307px;"/>
 # Oxford Common File Layout Specification
 {:.no_toc}
 
-7 October 2022
+7 October 2022, updated 7 November 2024
 
 **This Version:**
 * <https://ocfl.io/1.1/spec/>
@@ -15,7 +16,8 @@ no_site_title: true
 
 **Editors:**
 
-* [Neil Jefferies](https://orcid.org/0000-0003-3311-3741), [Bodleian Libraries, University of Oxford](http://www.bodleian.ox.ac.uk/)
+* [Neil Jefferies](https://orcid.org/0000-0003-3311-3741), \
+[Bodleian Libraries, University of Oxford](http://www.bodleian.ox.ac.uk/)
 * [Rosalyn Metz](https://orcid.org/0000-0003-3526-2230), [Emory University](https://web.library.emory.edu/)
 * [Julian Morley](https://orcid.org/0000-0003-4176-1933), [Stanford University](https://library.stanford.edu/)
 * [Simeon Warner](https://orcid.org/0000-0002-7970-7855), [Cornell University](https://www.library.cornell.edu/)
@@ -27,13 +29,13 @@ no_site_title: true
 
 **Additional Documents:**
 
-* [Implementation Notes](https://ocfl.io/1.1/implementation-notes/)
-* [Specification Change Log](https://ocfl.io/1.1/spec/change-log.html)
-* [Validation Codes](https://ocfl.io/1.1/spec/validation-codes.html)
+* [Implementation Notes](https://ocfl.io/draft/implementation-notes/)
+* [Specification Change Log](https://ocfl.io/draft/spec/change-log.html)
+* [Validation Codes](https://ocfl.io/draftf/spec/validation-codes.html)
 * [Extensions](https://github.com/OCFL/extensions/)
 
 **Previous Version:**
-* <https://ocfl.io/1.0/spec/>
+* <https://ocfl.io/1.1/spec/>
 
 **Repository:**
 * [Github](https://github.com/ocfl/spec)
@@ -61,8 +63,8 @@ management of digital objects within digital repositories.
 
 The OCFL initiative began as a discussion amongst digital repository practitioners to identify well-defined, common, and
 application-independent file management for a digital repository's persisted objects and represents a specification of
-the community’s collective recommendations addressing five primary requirements: completeness, parsability, versioning,
-robustness, and storage diversity.
+the community’s collective recommendations addressing five primary requirements: completeness, parsability,
+versioning, robustness, and storage diversity.
 
 #### Completeness
 {:.no_toc #completeness}
@@ -236,7 +238,7 @@ object validation. The structure for an object with one version is shown in the 
 ```
 
 The [OCFL Object Root](#dfn-ocfl-object-root) <span id="E001" class="rfc2119">MUST NOT</span> contain files or
-directories other than those specified in the following sections.
+directories other than those specified in the following sections (3.2 through 3.9).
 
 ### 3.2 Object Conformance Declaration
 {: #object-conformance-declaration}
@@ -328,11 +330,24 @@ supported by a client <span id="E028" class="rfc2119">MUST</span> be ignored by 
 
 | Digest Algorithm Name | Note |
 | --- | --- |
-| `md5` | Insecure. Use only for legacy fixity values. MD5 algorithm and hex encoding defined by \[[RFC1321](#ref-rfc1321)\]. For example, the `md5` digest of a zero-length bitstream is `d41d8cd98f00b204e9800998ecf8427e`. |
-| `sha1` | Insecure. Use only for legacy fixity values. SHA-1 algorithm defined by \[[FIPS-180-4](#ref-fips-180-4)\] and <span id="E029" class="rfc2119">MUST</span> be encoded using hex (base16) encoding \[[RFC4648](#ref-rfc4648)\]. For example, the `sha1` digest of a zero-length bitstream is `da39a3ee5e6b4b0d3255bfef95601890afd80709`. |
-| `sha256` | Non-truncated form only; note performance implications. SHA-256 algorithm defined by \[[FIPS-180-4](#ref-fips-180-4)\] and <span id="E030" class="rfc2119">MUST</span> be encoded using hex (base16) encoding \[[RFC4648](#ref-rfc4648)\]. For example, the `sha256` digest of a zero-length bitstream starts `e3b0c44298fc1c149afbf4c8996fb92427ae41e4...` (64 hex digits long). |
-| `sha512` | Default choice. Non-truncated form only. SHA-512 algorithm defined by \[[FIPS-180-4](#ref-fips-180-4)\] and <span id="E031" class="rfc2119">MUST</span> be encoded using hex (base16) encoding \[[RFC4648](#ref-rfc4648)\]. For example, the `sha512` digest of a zero-length bitstream starts `cf83e1357eefb8bdf1542850d66d8007d620e405...` (128 hex digits long). |
-| `blake2b-512` | Full-length form only, using the 2B variant (64 bit) as defined by \[[RFC7693](#ref-rfc7693)\]. <span id="E032" class="rfc2119">MUST</span> be encoded using hex (base16) encoding \[[RFC4648](#ref-rfc4648)\]. For example, the `blake2b-512` digest of a zero-length bitstream starts `786a02f742015903c6c6fd852552d272912f4740...` (128 hex digits long). |
+| `md5` | Insecure. Use only for legacy fixity values. MD5 algorithm and hex encoding defined by
+\[[RFC1321](#ref-rfc1321)\].
+For example, the `md5` digest of a zero-length bitstream is `d41d8cd98f00b204e9800998ecf8427e`. |
+| `sha1` | Insecure. Use only for legacy fixity values. SHA-1 algorithm defined by \[[FIPS-180-4](#ref-fips-180-4)\] and
+<span id="E029" class="rfc2119">MUST</span> be encoded using hex (base16) encoding \[[RFC4648](#ref-rfc4648)\].
+For example, the `sha1` digest of a zero-length bitstream is `da39a3ee5e6b4b0d3255bfef95601890afd80709`. |
+| `sha256` | Non-truncated form only; note performance implications. SHA-256 algorithm defined by
+\[[FIPS-180-4](#ref-fips-180-4)\] and <span id="E030" class="rfc2119">MUST</span> be encoded using hex (base16) encoding
+\[[RFC4648](#ref-rfc4648)\]. For example, the `sha256` digest of a zero-length bitstream starts
+`e3b0c44298fc1c149afbf4c8996fb92427ae41e4...` (64 hex digits long). |
+| `sha512` | Default choice. Non-truncated form only. SHA-512 algorithm defined by \[[FIPS-180-4](#ref-fips-180-4)\] and
+<span id="E031" class="rfc2119">MUST</span> be encoded using hex (base16) encoding \[[RFC4648](#ref-rfc4648)\].
+For example, the `sha512` digest of a zero-length bitstream starts `cf83e1357eefb8bdf1542850d66d8007d620e405...`
+(128 hex digits long). |
+| `blake2b-512` | Full-length form only, using the 2B variant (64 bit) as defined by \[[RFC7693](#ref-rfc7693)\].
+<span id="E032" class="rfc2119">MUST</span> be encoded using hex (base16) encoding \[[RFC4648](#ref-rfc4648)\].
+For example, the `blake2b-512` digest of a zero-length bitstream starts `786a02f742015903c6c6fd852552d272912f4740...`
+(128 hex digits long). |
 
 An OCFL Inventory <span class="rfc2119">MAY</span> contain a fixity section that can store one or more blocks containing
 fixity values using multiple digest algorithms. See the [section on fixity](#fixity) below for further details.
@@ -666,7 +681,8 @@ defining the arrangement under the storage root.
 root.
 
 Although implementations may require multiple OCFL Storage Roots—that is, several logical or physical volumes, or
-multiple "buckets" in an object store—each OCFL Storage Root <span id="E074" class="rfc2119">MUST</span> be independent.
+multiple "buckets" in an object store—each OCFL Storage Root <span id="E074" class="rfc2119">MUST</span> be
+independent.
 
 The following example OCFL Storage Root represents the minimal set of files and folders:
 
@@ -763,8 +779,8 @@ consistent manner. As such, the OCFL does not support the portability of these a
 OCFL Storage hierarchies. A common use case for links is storage deduplication. OCFL inventories provide a portable
 method of achieving the same effect by using digests to address content.
 
-3. File paths and filenames in the OCFL are case sensitive. Filesystems <span id="E091" class="rfc2119">MUST</span>
-preserve the case of OCFL filepaths and filenames.
+3. File paths and filenames in the OCFL are case sensitive. Implementations over filesystems that either do not preserve
+case or are not case sensitive require great care, including making appropriate choices for file paths and filenames.
 
 4. Transparent filesystem features such as compression and encryption should be effectively invisible to OCFL
 operations. Consequently, they should not be expected to be portable.
@@ -1317,8 +1333,8 @@ The following example OCFL Object has an extension containing custom content. Th
 <span id="ref-fips-180-4"/>**\[FIPS-180-4]** FIPS PUB 180-4 Secure Hash Standard. U.S. Department of Commerce/National
 Institute of Standards and Technology. URL: <https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf>
 
-<span id="ref-namaste"/>**\[NAMASTE]** Directory Description with Namaste Tags. J. Kunze.9 November 2009. URL:
-<https://confluence.ucop.edu/download/attachments/14254149/NamasteSpec.pdf>
+<span id="ref-namaste"/>**\[NAMASTE]** Directory Description with Namaste Tags. J. Kunze. 9 November 2009. URL:
+<https://n2t.net/ark:/13030/c7g44hq41>, local copy: <https://ocfl.io/cache/NamasteSpec.pdf>
 
 <span id="ref-rfc1321"/>**\[RFC1321]** The MD5 Message-Digest Algorithm. R. Rivest. IETF. April 1992. Informational.
 URL: <https://www.rfc-editor.org/rfc/rfc1321>
@@ -1359,11 +1375,11 @@ A. Wright; H Andrews.20 September 2018. URL: <https://json-schema.org/latest/jso
 <span id="ref-oais"/>**\[OAIS]** Reference Model for an Open Archival Information System (OAIS), Issue 2. June 2012.
 URL: <https://public.ccsds.org/pubs/650x0m2.pdf>
 
-<span id="ref-ocfl-implementation-notes"/>**\[OCFL-Implementation-Notes]** OCFL Implementation Notes v1.1. URL:
-<https://ocfl.io/1.1/implementation-notes>
+<span id="ref-ocfl-implementation-notes"/>**\[OCFL-Implementation-Notes]** OCFL Implementation Notes. URL:
+<https://ocfl.io/draft/implementation-notes>
 
 <span id="ref-pairtree"/>**\[PairTree]** Pairtrees for Object Storage. J. Kunze; M. Haye; E. Hetzner; M. Reyes; C.
-Snavely. 12 August 2008\. URL: <https://confluence.ucop.edu/display/Curation/PairTree>
+Snavely. 12 August 2008\. URL: <https://datatracker.ietf.org/doc/html/draft-kunze-pairtree-01>
 
 <span id="ref-rfc6068"/>**\[RFC6068]** The 'mailto' URI Scheme. M. Duerst; L. Masinter; J. Zawinski. IETF. October 2010.
 Proposed Standard. URL: <https://www.rfc-editor.org/rfc/rfc6068>
@@ -1373,3 +1389,10 @@ Registrations. S. Leonard. IETF. March 2016. URL:  <https://www.rfc-editor.org/r
 
 <span id="ref-rfc8141"/>**\[RFC8141]** Uniform Resource Names (URNs). P. Saint-Andre; J. Klensin. IETF. April 2017.
 Proposed Standard. URL: <https://www.rfc-editor.org/rfc/rfc8141>
+
+## Revision history
+
+| Version | Date | Description |
+| --- | --- | --- |
+| [v1.1.0](https://ocfl.io/1.1.0/spec/) | 7 October 2022 | First v1.1, [release notes](https://ocfl.io/news/#version-11-of-the-oxford-common-file-layout-ocfl-released), [change log](https://ocfl.io/1.1.0/spec/change-log.html) |
+| [v1.1.1](https://ocfl.io/1.1.1/spec/) | 7 November 2024 | Clarifications, [release notes](https://ocfl.io/news/#version-111-of-the-oxford-common-file-layout-ocfl-released), [change log](https://ocfl.io/1.1.1/spec/change-log.html) |
