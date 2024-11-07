@@ -125,7 +125,7 @@ The E070 error description in `validation-codes.md` is corrected to refer to `ex
 
 Version 1.1.0 had an unenforceable MUST regarding filesystem case preservation. The [Filesystem Features](https://ocfl.io/1.1/spec/#filesystem-features) section was change to instead point out that implementation over filesystems that either do not preserve case or are not case sensitive require great care, including making appropriate choices for file paths and filenames. (Issue [#528](https://github.com/OCFL/spec/issues/528))
 
-#### A range of specification sections covering Object Structure
+#### Add range of specification sections covering Object Structure
 
 The range of specification sections (3.2 through 3.9) specifying the (Object Structure)[#object-structure] was added to make that explicit. (Issue [#637](https://github.com/OCFL/spec/issues/637))
 
