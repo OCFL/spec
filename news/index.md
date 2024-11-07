@@ -106,17 +106,10 @@ The companion [OCFL Implementation Notes v1.1](https://ocfl.io/1.1.0/implementat
 the specification including recommendations for digital preservation, storage handling, client behaviors, and best
 practices for dealing with OCFL Objects in motion.
 
-<<<<<<< HEAD
 The OCFL Editors are also releasing updated [validation rules](https://ocfl.io/1.1.0/spec/validation-codes.html) and
 additional [fixture objects](https://github.com/OCFL/fixtures) for testing OCFL implementations against the specification.
 
 There is an accompanying [Change Log](https://ocfl.io/1.1.0/spec/change-log.html) that details the changes from version 1.0
-=======
-The OCFL Editors are also releasing updated [validation rules](https://ocfl.io/1.1/spec/validation-codes.html) and
-additional [fixture objects](https://github.com/OCFL/fixtures) for testing OCFL implementations against the specification.
-
-There is an accompanying [Change Log](https://ocfl.io/1.1/spec/change-log.html) that details the changes from version 1.0
->>>>>>> main
 to version 1.1. It is designed to assist implementers with updates to their implementations. We welcome your feedback,
 questions, use cases, and especially details of any implementations or experimentation with OCFL.
 
