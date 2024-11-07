@@ -31,7 +31,7 @@ no_site_title: true
 
 * [Implementation Notes](https://ocfl.io/1.1/implementation-notes/)
 * [Specification Change Log](https://ocfl.io/1.1/spec/change-log.html)
-* [Validation Codes](https://ocfl.io/1.1f/spec/validation-codes.html)
+* [Validation Codes](https://ocfl.io/1.1/spec/validation-codes.html)
 * [Extensions](https://github.com/OCFL/extensions/)
 
 **Previous Version:**
