@@ -694,4 +694,4 @@ Snavely. 12 August 2008\. URL: <https://datatracker.ietf.org/doc/html/draft-kunz
 | Version | Date | Description |
 | --- | --- | --- |
 | [v1.1.0](https://ocfl.io/1.1.0/implementation_notes/) | 7 October 2022 | First v1.1, [release notes](https://ocfl.io/news/#version-11-of-the-oxford-common-file-layout-ocfl-released), [change log](https://ocfl.io/1.1.0/spec/change-log.html) |
-| [v1.1.1](https://ocfl.io/1.1/implementation_notes/) | 8 November 2024 | Clarified [Fixity](#fixity) section, updated links to NAMASTE and Pairtree specifications [release notes](https://ocfl.io/news/#version-111-of-the-oxford-common-file-layout-ocfl-released), [change log](https://ocfl.io/1.1/spec/change-log.html) |
+| [v1.1.1](https://ocfl.io/1.1/implementation_notes/) | 7 November 2024 | Clarified [Fixity](#fixity) section, updated links to NAMASTE and Pairtree specifications [release notes](https://ocfl.io/news/#version-111-of-the-oxford-common-file-layout-ocfl-released), [change log](https://ocfl.io/1.1/spec/change-log.html) |

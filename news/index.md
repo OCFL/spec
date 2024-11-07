@@ -2,7 +2,7 @@
 
 ## Version 1.1.1 of the Oxford Common File Layout (OCFL) Released
 
-**8 November 2024**
+**7 November 2024**
 
 The OCFL Editors are pleased to announce version 1.1.1, a patch update to version 1.1 of the Oxford Common File Layout
 specification. This revision provides minor clarifications based on implementation experience and community feedback. OCFL

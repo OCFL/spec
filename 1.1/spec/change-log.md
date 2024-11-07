@@ -5,7 +5,7 @@ no_site_title: true
 # Oxford Common File Layout Specification v1.1 Change Log
 {:.no_toc}
 
-7 October 2022 for v1.1.0, updated 8 November 2024 for v1.1.1
+7 October 2022 for v1.1.0, updated 7 November 2024 for v1.1.1
 
 **Editors:**
 

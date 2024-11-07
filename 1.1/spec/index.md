@@ -6,7 +6,7 @@ no_site_title: true
 # Oxford Common File Layout Specification
 {:.no_toc}
 
-7 October 2022, updated 8 November 2024
+7 October 2022, updated 7 November 2024
 
 **This Version:**
 * <https://ocfl.io/1.1/spec/>
@@ -1395,4 +1395,4 @@ Proposed Standard. URL: <https://www.rfc-editor.org/rfc/rfc8141>
 | Version | Date | Description |
 | --- | --- | --- |
 | [v1.1.0](https://ocfl.io/1.1.0/spec/) | 7 October 2022 | First v1.1, [release notes](https://ocfl.io/news/#version-11-of-the-oxford-common-file-layout-ocfl-released), [change log](https://ocfl.io/1.1.0/spec/change-log.html) |
-| [v1.1.1](https://ocfl.io/1.1.1/spec/) | 8 November 2024 | Clarifications, [release notes](https://ocfl.io/news/#version-111-of-the-oxford-common-file-layout-ocfl-released), [change log](https://ocfl.io/1.1.1/spec/change-log.html) |
+| [v1.1.1](https://ocfl.io/1.1.1/spec/) | 7 November 2024 | Clarifications, [release notes](https://ocfl.io/news/#version-111-of-the-oxford-common-file-layout-ocfl-released), [change log](https://ocfl.io/1.1.1/spec/change-log.html) |
