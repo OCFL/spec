@@ -9,7 +9,7 @@ no_site_title: true
 7 October 2022, updated 7 November 2024
 
 **This Version:**
-* <https://ocfl.io/draft/implementation-notes/>
+* <https://ocfl.io/1.1/implementation-notes/>
 
 **Latest Published Version:**
 * <https://ocfl.io/latest/implementation-notes/>
@@ -25,8 +25,8 @@ no_site_title: true
 
 **Additional Documents:**
 
-* [Specification](https://ocfl.io/draft/spec/)
-* [Validation Codes](https://ocfl.io/draft/spec/validation-codes.html)
+* [Specification](https://ocfl.io/1.1/spec/)
+* [Validation Codes](https://ocfl.io/1.1/spec/validation-codes.html)
 * [Extensions](https://github.com/OCFL/extensions/)
 
 **Previous version:**
@@ -684,7 +684,7 @@ checksums - considering some sort of failure has just occurred.
 <span id="ref-oais"/>**\[OAIS]** Reference Model for an Open Archival Information System (OAIS), Issue 2. June 2012.
 URL: <https://public.ccsds.org/pubs/650x0m2.pdf>
 
-<span id="ref-ocfl-specification"/>**\[OCFL-Specification]** OCFL Specification. URL: <https://ocfl.io/draft/spec>
+<span id="ref-ocfl-specification"/>**\[OCFL-Specification]** OCFL Specification. URL: <https://ocfl.io/1.1/spec>
 
 <span id="ref-pairtree"/>**\[PairTree]** Pairtrees for Object Storage. J. Kunze; M. Haye; E. Hetzner; M. Reyes; C.
 Snavely. 12 August 2008\. URL: <https://datatracker.ietf.org/doc/html/draft-kunze-pairtree-01>
@@ -693,5 +693,5 @@ Snavely. 12 August 2008\. URL: <https://datatracker.ietf.org/doc/html/draft-kunz
 
 | Version | Date | Description |
 | --- | --- | --- |
-| [v1.1.0](https://ocfl.io/1.1.0/implementation_notes/) | 7 October 2022 | First v1.1, [release notes](https://ocfl.io/news/#version-11-of-the-oxford-common-file-layout-ocfl-released), [change log](https://ocfl.io/1.1.0/spec/change-log.html) |
-| [v1.1.1](https://ocfl.io/1.1/implementation_notes/) | 7 November 2024 | Clarified [Fixity](#fixity) section, updated links to NAMASTE and Pairtree specifications [release notes](https://ocfl.io/news/#version-111-of-the-oxford-common-file-layout-ocfl-released), [change log](https://ocfl.io/1.1/spec/change-log.html) |
+| [v1.1.0](https://ocfl.io/1.1.0/implementation-notes/) | 7 October 2022 | First v1.1, [release notes](https://ocfl.io/news/#version-11-of-the-oxford-common-file-layout-ocfl-released), [change log](https://ocfl.io/1.1.0/spec/change-log.html) |
+| [v1.1.1](https://ocfl.io/1.1/implementation-notes/) | 7 November 2024 | Clarified [Fixity](#fixity) section, updated links to NAMASTE and Pairtree specifications [release notes](https://ocfl.io/news/#version-111-of-the-oxford-common-file-layout-ocfl-released), [change log](https://ocfl.io/1.1/spec/change-log.html) |

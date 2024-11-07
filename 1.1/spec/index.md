@@ -29,9 +29,9 @@ no_site_title: true
 
 **Additional Documents:**
 
-* [Implementation Notes](https://ocfl.io/draft/implementation-notes/)
-* [Specification Change Log](https://ocfl.io/draft/spec/change-log.html)
-* [Validation Codes](https://ocfl.io/draftf/spec/validation-codes.html)
+* [Implementation Notes](https://ocfl.io/1.1/implementation-notes/)
+* [Specification Change Log](https://ocfl.io/1.1/spec/change-log.html)
+* [Validation Codes](https://ocfl.io/1.1/spec/validation-codes.html)
 * [Extensions](https://github.com/OCFL/extensions/)
 
 **Previous Version:**
@@ -1376,7 +1376,7 @@ A. Wright; H Andrews.20 September 2018. URL: <https://json-schema.org/latest/jso
 URL: <https://public.ccsds.org/pubs/650x0m2.pdf>
 
 <span id="ref-ocfl-implementation-notes"/>**\[OCFL-Implementation-Notes]** OCFL Implementation Notes. URL:
-<https://ocfl.io/draft/implementation-notes>
+<https://ocfl.io/1.1/implementation-notes>
 
 <span id="ref-pairtree"/>**\[PairTree]** Pairtrees for Object Storage. J. Kunze; M. Haye; E. Hetzner; M. Reyes; C.
 Snavely. 12 August 2008\. URL: <https://datatracker.ietf.org/doc/html/draft-kunze-pairtree-01>
