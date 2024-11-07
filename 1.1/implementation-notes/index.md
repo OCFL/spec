@@ -6,7 +6,7 @@ no_site_title: true
 # Implementation Notes, Oxford Common File Layout Specification
 {:.no_toc}
 
-**Unreleased Latest Editors' Draft**
+7 October 2022, updated 7 November 2024
 
 **This Version:**
 * <https://ocfl.io/draft/implementation-notes/>
