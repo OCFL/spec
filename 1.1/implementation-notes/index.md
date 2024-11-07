@@ -6,7 +6,7 @@ no_site_title: true
 # Implementation Notes, Oxford Common File Layout Specification
 {:.no_toc}
 
-7 October 2022, updated 25 October 2024
+**Unreleased Latest Editors' Draft**
 
 **This Version:**
 * <https://ocfl.io/draft/implementation-notes/>
@@ -678,8 +678,8 @@ checksums - considering some sort of failure has just occurred.
 ### 4.1 Informative References
 {: #informative-references}
 
-<span id="ref-namaste"/>**\[NAMASTE]** Directory Description with Namaste Tags. J. Kunze.9 November 2009. URL:
-<https://confluence.ucop.edu/download/attachments/14254149/NamasteSpec.pdf>
+<span id="ref-namaste"/>**\[NAMASTE]** Directory Description with Namaste Tags. J. Kunze. 9 November 2009. URL:
+<https://n2t.net/ark:/13030/c7g44hq41>, local copy: <https://ocfl.io/cache/NamasteSpec.pdf>
 
 <span id="ref-oais"/>**\[OAIS]** Reference Model for an Open Archival Information System (OAIS), Issue 2. June 2012.
 URL: <https://public.ccsds.org/pubs/650x0m2.pdf>
@@ -693,5 +693,5 @@ Snavely. 12 August 2008\. URL: <https://datatracker.ietf.org/doc/html/draft-kunz
 
 | Version | Date | Description |
 | --- | --- | --- |
-| [v1.1.0](https://ocfl.io/1.1.0/implementation_notes/) | 7 October 2022 | First v1.1, [release notes](https://ocfl.io/news/#version-11-of-the-oxford-common-file-layout-ocfl-released), [change log](https://ocfl.io/1.1.0/spec/change) |
-| [v1.1.1](https://ocfl.io/1.1/implementation_notes/) | 24 October 2024 |  Bunch of fixes for X & Y & Z, [release notes](https://ocfl.io/news/#version-111-of-the-oxford-common-file-layout-ocfl-released), [change log](https://ocfl.io/1.1.0/spec/change), [diff](FIXME) |
+| [v1.1.0](https://ocfl.io/1.1.0/implementation_notes/) | 7 October 2022 | First v1.1, [release notes](https://ocfl.io/news/#version-11-of-the-oxford-common-file-layout-ocfl-released) |
+| [v1.1.1](https://ocfl.io/1.1/implementation_notes/) | 8 November 2024 | Clarified [Fixity](#fixity) section, updated links to NAMASTE and Pairtree specifications [release notes](https://ocfl.io/news/#version-111-of-the-oxford-common-file-layout-ocfl-released) |

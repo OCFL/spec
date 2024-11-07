@@ -6,7 +6,7 @@ no_site_title: true
 # Oxford Common File Layout Specification
 {:.no_toc}
 
-7 October 2022, updated 25 October 2024
+7 October 2022, updated 8 November 2024
 
 **This Version:**
 * <https://ocfl.io/1.1/spec/>
@@ -1333,8 +1333,8 @@ The following example OCFL Object has an extension containing custom content. Th
 <span id="ref-fips-180-4"/>**\[FIPS-180-4]** FIPS PUB 180-4 Secure Hash Standard. U.S. Department of Commerce/National
 Institute of Standards and Technology. URL: <https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf>
 
-<span id="ref-namaste"/>**\[NAMASTE]** Directory Description with Namaste Tags. J. Kunze.9 November 2009. URL:
-<https://n2t.net/ark:/13030/c7g44hq41>
+<span id="ref-namaste"/>**\[NAMASTE]** Directory Description with Namaste Tags. J. Kunze. 9 November 2009. URL:
+<https://n2t.net/ark:/13030/c7g44hq41>, local copy: <https://ocfl.io/cache/NamasteSpec.pdf>
 
 <span id="ref-rfc1321"/>**\[RFC1321]** The MD5 Message-Digest Algorithm. R. Rivest. IETF. April 1992. Informational.
 URL: <https://www.rfc-editor.org/rfc/rfc1321>
@@ -1395,4 +1395,4 @@ Proposed Standard. URL: <https://www.rfc-editor.org/rfc/rfc8141>
 | Version | Date | Description |
 | --- | --- | --- |
 | [v1.1.0](https://ocfl.io/1.1.0/spec/) | 7 October 2022 | First v1.1, [release notes](https://ocfl.io/news/#version-11-of-the-oxford-common-file-layout-ocfl-released), [change log](https://ocfl.io/1.1.0/spec/change) |
-| [v1.1.1](http://example.org/link/v1.1.1) | 99 September 2024 |  Bunch of fixes for X & Y & Z, [release notes](https://ocfl.io/news/#version-111-of-the-oxford-common-file-layout-ocfl-released), [diff](https://github.com/OCFL/spec/compare/1.1...main#diff-e7ec5397fdcc259e6a37f8918048c189b755143063257dd519f6402090c68867) |
+| [v1.1.1](https://ocfl.io/1.1.1/spec/) | 8 November 2024 |  Bunch of fixes for X & Y & Z, [release notes](https://ocfl.io/news/#version-111-of-the-oxford-common-file-layout-ocfl-released), [diff](https://github.com/OCFL/spec/compare/1.1...main#diff-e7ec5397fdcc259e6a37f8918048c189b755143063257dd519f6402090c68867) |

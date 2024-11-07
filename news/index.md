@@ -23,7 +23,8 @@ The OCFL Editors are also releasing updated [validation rules](https://ocfl.io/1
 additional [fixture objects](https://github.com/OCFL/fixtures) for testing OCFL implementations against the specification.
 
 There is an accompanying [Change Log](https://ocfl.io/1.1/spec/change-log.html) that details the changes from version 1.0
-to version 1.1.0 and version 1.1.1. It is designed to assist implementers with updates to their implementations. We welcome your feedback, questions, use cases, and especially details of any implementations or experimentation with OCFL.
+to version 1.1.0 and version 1.1.1. It is designed to assist implementers with updates to their implementations. We welcome
+your feedback, questions, use cases, and especially details of any implementations or experimentation with OCFL.
 
 The previous OCFL version 1.1, now 1.1.0, documents remain available:
 [OCFL Specification v1.1.0](https://ocfl.io/1.1.0/spec/),
