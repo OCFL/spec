@@ -16,7 +16,7 @@ jobs:
           pip install marko jsonschema
     - name: Checks line length
       run: |
-        test `cut -c121- draft/spec/index.md | grep -vx "^$" | wc -l` -eq 0
-        test `cut -c121- draft/implementation-notes/index.md | grep -vx "^$" | wc -l` -eq 0
+        test `grep -v "^|" draft/spec/index.md | cut -c121- | grep -vx "^$" | wc -l` -eq 0
+        test `grep -v "^|" draft/implementation-notes/index.md | cut -c121- | grep -vx "^$" | wc -l` -eq 0
     - name: Checks Examples
       run: python scripts/check_examples.py
