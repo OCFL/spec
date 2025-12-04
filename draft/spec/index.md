@@ -69,11 +69,12 @@ versioning, robustness, and storage diversity.
 #### Completeness
 {:.no_toc #completeness}
 
-The OCFL recommends storing metadata and the content it describes together so the OCFL object can be fully understood in
-the absence of original software. The OCFL does not make recommendations about what constitutes an object, nor does it
-assume what type of metadata is needed to fully understand the object, recognizing those decisions may differ from one
-repository to another. However, it is recommended that when making this decision, implementers consider what is
-necessary to rebuild the objects from the files stored.
+The OCFL recommends storing metadata (this includes all types of metadata; e.g., technical, structural, descriptive,
+etc.) and the content (e.g., images, text files, etc.) it describes together so the OCFL object can be fully 
+understood in the absence of original software. The OCFL does not make recommendations about what constitutes an 
+object, nor does it assume what type of metadata is needed to fully understand the object, recognizing those 
+decisions may differ from one repository to another. However, it is recommended that when making this decision, 
+implementers consider what is necessary to rebuild the objects from the files stored.
 
 #### Parsability
 {:.no_toc #parsability}
