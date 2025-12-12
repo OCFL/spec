@@ -1,4 +1,4 @@
----
+1.1/spec/#examples1.1/spec/#examples---
 no_site_title: true
 ---
 <img src="https://avatars0.githubusercontent.com/u/35607965" alt="OCFL Hand-drive logo"
@@ -321,7 +321,7 @@ Object, obviously, inherits no content and is populated by file additions.
 * Addition: Adds a new file path and corresponding content to an OCFL Object. The path cannot exist in the previous
 version of the object, and the content cannot have existed in any earlier versions of the object.
 
-* Updating: Changes the content pointed to by an content path. The path must exist in the previous version of the OCFL
+* Updating: Changes the content pointed to by a content path. The path must exist in the previous version of the OCFL
 Object, and the content cannot have existed in any earlier versions of the object.
 
 * Renaming: Changes the file path of existing content. The path cannot exist in the previous version of the OCFL Object,
@@ -510,9 +510,9 @@ and the corresponding `v2` inventory is:
 {: #log-information}
 
 There may be the need to record some actions on objects that do not result in changes to the object content. For
-example, copying the object to new storage or validating fixity and finding nothing amiss. The `log` directory is the
+example, copying the object to new storage or validating fixity and finding nothing amiss. The `logs` directory is the
 location in an OCFL object where such events can be recorded. The OCFL does not make any assumptions about the contents
-of this directory but, if it exists, then its contents will not be subject any validation processes.
+of this directory but, if it exists, then its contents will not be subject to any validation processes.
 
 ### 3.6 Forward Delta
 {: #forward-delta}
@@ -586,7 +586,7 @@ layout to an OCFL Storage Root.
 the Workspace that is the same as its eventual storage path in the OCFL Storage Root. This means that it is easy for
 clients to determine if an object is being updated and also provides a mechanism to implement objects with mutable
 current versions without violating OCFL assumptions. When updating an OCFL Object, it is useful to make a copy of the
-inventory of most recent stable version of the object in this directory when it is created at the start of the update
+inventory of the most recent stable version of the object in this directory when it is created at the start of the update
 operation.
 
 * Version Assembly Directory: In this case, one version assembly directory should exist per OCFL Object at any time and
