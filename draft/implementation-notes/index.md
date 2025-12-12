@@ -1,4 +1,4 @@
-1.1/spec/#examples1.1/spec/#examples---
+---
 no_site_title: true
 ---
 <img src="https://avatars0.githubusercontent.com/u/35607965" alt="OCFL Hand-drive logo"
