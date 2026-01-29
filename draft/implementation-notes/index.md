@@ -586,8 +586,8 @@ layout to an OCFL Storage Root.
 the Workspace that is the same as its eventual storage path in the OCFL Storage Root. This means that it is easy for
 clients to determine if an object is being updated and also provides a mechanism to implement objects with mutable
 current versions without violating OCFL assumptions. When updating an OCFL Object, it is useful to make a copy of the
-inventory of the most recent stable version of the object in this directory when it is created at the start of the update
-operation.
+inventory of the most recent stable version of the object in this directory when it is created at the start of the
+update operation.
 
 * Version Assembly Directory: In this case, one version assembly directory should exist per OCFL Object at any time and
 updates to it should be managed by a single controlling process to avoid conflicts. If updates to multiple objects, or
