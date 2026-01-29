@@ -70,10 +70,10 @@ versioning, robustness, and storage diversity.
 {:.no_toc #completeness}
 
 The OCFL recommends storing metadata (this includes all types of metadata; e.g., technical, structural, descriptive,
-etc.) and the content (e.g., images, text files, etc.) it describes together so the OCFL object can be fully 
-understood in the absence of original software. The OCFL does not make recommendations about what constitutes an 
-object, nor does it assume what type of metadata is needed to fully understand the object, recognizing those 
-decisions may differ from one repository to another. However, it is recommended that when making this decision, 
+etc.) and the content (e.g., images, text files, etc.) it describes together so the OCFL object can be fully
+understood in the absence of original software. The OCFL does not make recommendations about what constitutes an
+object, nor does it assume what type of metadata is needed to fully understand the object, recognizing those
+decisions may differ from one repository to another. However, it is recommended that when making this decision,
 implementers consider what is necessary to rebuild the objects from the files stored.
 
 #### Parsability
@@ -450,8 +450,8 @@ include the following keys:
 
 * `created`: The value of this key is the datetime of creation of this version. It <span id="E049"
 class="rfc2119">MUST</span> be expressed in the Internet Date/Time Format defined by \[[RFC3339](#ref-rfc3339)\]. This
-format requires the inclusion of a timezone value or `Z` for UTC, and that the time component be granular to the second
-level (with optional fractional seconds).
+format requires a time component granular to the second level (with optional fractional seconds) and the inclusion of
+either Z as an option to indicate UTC, or a timezone value.
 
 * `state`: The value of this key is a JSON object, containing a list of keys and values corresponding to the [logical
 state](#dfn-logical-state) of the object at that version. The keys of this JSON object are digest values, each of which
