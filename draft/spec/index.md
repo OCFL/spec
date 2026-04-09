@@ -315,7 +315,7 @@ reference to files within the OCFL Object. That is, the connection between a fil
 physical storage and its [logical path](#dfn-logical-path) in a version of the object's content is made with a digest of
 its contents, rather than its filename. This use of the content digest facilitates de-duplication of files with the same
 content within an object, such as files that are unchanged from one version to the next. The second role that digests
-play is provide for fixity checks to determine whether a file has become corrupt, through hardware degradation or
+play is to provide for fixity checks to determine whether a file has become corrupt, through hardware degradation or
 accident for example.
 
 For content-addressing, OCFL Objects <span id="E025" class="rfc2119">MUST</span> use either `sha512` or `sha256`, and
@@ -359,8 +359,8 @@ inventory files has no significance. An OCFL Object Inventory <span id="E102" cl
 any keys not described in this specification.
 
 The forward slash (/) path separator <span id="E035" class="rfc2119">MUST</span> be used in content paths in the
-[manifest](#manifest) and [fixity](#fixity) blocks within the inventory. Implementations that target systems using other
-separators will need to translate paths appropriately.
+[manifest](#manifest) and [fixity](#fixity) blocks within the inventory. Implementations that target storage systems
+using other separators will need to translate paths appropriately.
 
 > Non-normative note: A \[[JSON-Schema](#ref-json-schema)\] for validating OCFL Object Inventory files is provided at
 [inventory_schema.json](inventory_schema.json).
@@ -382,7 +382,7 @@ specification version the value is `https://ocfl.io/1.1/spec/#inventory`.
 
 * `digestAlgorithm`: The digest algorithm used for calculating digests for content-addressing within the OCFL Object and
 for the [Inventory Digest](#inventory-digest). This <span id="E039" class="rfc2119">MUST</span> be the algorithm used in
-the `manifest` and `state` blocks, see the [section on Digests](#digests) for more information about algorithms.
+the `manifest` and `state` blocks. See the [section on Digests](#digests) for more information about algorithms.
 
 * `head`: The version directory name of the most recent version of the object. This <span id="E040"
 class="rfc2119">MUST</span> be the version directory name with the highest version number.
@@ -459,8 +459,8 @@ state](#dfn-logical-state) of the object at that version. The keys of this JSON 
 inventory](#manifest). The value for each key is an array containing [logical path](#dfn-logical-path) names of files in
 the OCFL Object's logical state that have content with the given digest.
 
-[Logical paths](#logical-path) present the structure of an OCFL Object at a given version. This is given as an array of
-values, with the following restrictions to provide for path safety in the common case of the logical path value
+[Logical paths](#logical-path) present the structure of an object's content at a given version. This is given as an
+array of values, with the following restrictions to provide for path safety in the common case of the logical path value
 representing a file path.
 
 * The logical path <span id="E051" class="rfc2119">MUST</span> be interpreted as a set of one or more path elements
@@ -523,7 +523,7 @@ class="rfc2119">MAY</span> be empty.
 The keys within the `fixity` block <span id="E056" class="rfc2119">MUST</span> correspond to the controlled vocabulary
 of [digest algorithm names](#digest-algorithms) listed in the [Digests](#digests) section, or in a table given in an
 [Extension](#dfn-extension). The value of the fixity block for a particular digest algorithm <span id="E057"
-class="rfc2119">MUST</span> follow the structure of the [3.5.2 Manifest](#manifest) block; that is, a key corresponding
+class="rfc2119">MUST</span> follow the structure of the [Manifest](#manifest) block; that is, a key corresponding
 to the digest value, and an array of [content path](#dfn-content-path)s. The `fixity` block for any digest algorithm
 <span class="rfc2119">MAY</span> include digest values for any subset of content paths in the object. Where included,
 the digest values given <span id="E093" class="rfc2119">MUST</span> match the digests of the files at the corresponding
