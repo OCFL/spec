@@ -104,7 +104,7 @@ content addressable storage allows implementers to identify file corruption that
 interactions. The OCFL eases content migrations by providing a technology agnostic method for verifying OCFL objects
 have remained fixed.
 
-#### Storage diversity
+#### Storage Diversity
 {:.no_toc #storage-diversity}
 
 Finally, the community expressed a need to store content on a wide variety of storage technologies. With that in mind,
@@ -751,7 +751,7 @@ repository](https://ocfl.github.io/extensions/). However, local extensions <span
 documented by including a plain text document directly in the storage root, thus making the storage root
 self-documenting.
 
-### 4.6 Filesystem features
+### 4.6 Filesystem Features
 {: #filesystem-features}
 
 In order to maximize the compatibility of the OCFL with different filesystems, and thus improve the portability of OCFL
