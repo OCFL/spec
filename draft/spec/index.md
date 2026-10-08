@@ -104,7 +104,7 @@ content addressable storage allows implementers to identify file corruption that
 interactions. The OCFL eases content migrations by providing a technology agnostic method for verifying OCFL objects
 have remained fixed.
 
-#### Storage diversity
+#### Storage Diversity
 {:.no_toc #storage-diversity}
 
 Finally, the community expressed a need to store content on a wide variety of storage technologies. With that in mind,
@@ -592,7 +592,7 @@ corresponding keys in the corresponding `version` block in the current inventory
 > Non-normative note: Storing an inventory for every version provides redundancy for this critical information in a way
 that is compatible with storage strategies that have immutable version directories.
 
-#### 3.7.1 Conformance of prior versions
+#### 3.7.1 Conformance of Prior Versions
 {: #conformance-of-prior-versions}
 
 Version directories in OCFL are intended to be immutable in that existing version directories do not change when a new
@@ -751,7 +751,7 @@ repository](https://ocfl.github.io/extensions/). However, local extensions <span
 documented by including a plain text document directly in the storage root, thus making the storage root
 self-documenting.
 
-### 4.6 Filesystem features
+### 4.6 Filesystem Features
 {: #filesystem-features}
 
 In order to maximize the compatibility of the OCFL with different filesystems, and thus improve the portability of OCFL
