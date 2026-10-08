@@ -631,6 +631,14 @@ avoid the possiblity of an extension sub-directory colliding with the name of an
 facilitate the recognition of extensions by OCFL clients. See also [Documenting Local
 Extensions](#documenting-local-extensions).
 
+### 3.10 Object Validation
+{: #object-validation}
+
+An OCFL Object may exist within an [OCFL Storage Root](#storage-root) or independent of one. Validation of an OCFL
+Object relies only on the files and directory structure within the object. An OCFL Object is valid if it
+[conforms](#conformance) to the requirements of this [OCFL Object specification](#object-spec) and the requirements of
+any [Object Extensions](#object-extensions).
+
 ## 4. OCFL Storage Root
 {: #storage-root}
 
@@ -700,9 +708,9 @@ specification.
 ### 4.3 Storage Hierarchies
 {: #root-hierarchies}
 
-[OCFL Object Root](#dfn-ocfl-object-root)s <span id="E082" class="rfc2119">MUST</span> be stored either as the terminal
-resource at the end of a directory storage hierarchy or as direct children of a containing [OCFL Storage
-Root](#dfn-ocfl-storage-root).
+Within an OCFL Storage Root, [OCFL Object Root](#dfn-ocfl-object-root)s <span id="E082" class="rfc2119">MUST</span>
+be stored either as direct children of the [OCFL Storage Root](#dfn-ocfl-storage-root), or as the terminal resource at
+the end of a directory storage hierarchy.
 
 A common practice is to use a unique identifier scheme to compose this storage hierarchy, typically arranged according
 to some form of the \[[PairTree](#ref-pairtree)\] specification. Irrespective of the pattern chosen for the storage
@@ -772,6 +780,15 @@ case or are not case sensitive require great care, including making appropriate 
 
 4. Transparent filesystem features such as compression and encryption should be effectively invisible to OCFL
 operations. Consequently, they should not be expected to be portable.
+
+### 4.7 Storage Root Validation
+{: #root-validation}
+
+Validation of an OCFL Storage Root relies only on the files, directory structure and OCFL Objects within the storage
+root. An OCFL Storage Root is valid if it [conforms](#conformance) to the requirements of this
+[Storage Root specification](#storage-root), the requirements of any
+[Storage Root Extensions](#storage-root-extensions), and all the [OCLF Objects](#object-spec) it contains are
+themselves valid.
 
 ## 5. Examples
 {: #examples}
