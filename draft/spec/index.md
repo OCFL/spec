@@ -592,7 +592,7 @@ corresponding keys in the corresponding `version` block in the current inventory
 > Non-normative note: Storing an inventory for every version provides redundancy for this critical information in a way
 that is compatible with storage strategies that have immutable version directories.
 
-#### 3.7.1 Conformance of prior versions
+#### 3.7.1 Conformance of Prior Versions
 {: #conformance-of-prior-versions}
 
 Version directories in OCFL are intended to be immutable in that existing version directories do not change when a new
