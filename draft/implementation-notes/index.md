@@ -145,7 +145,7 @@ If deduplication is carried out within an object then, for consistency, it is ex
 will also be used between object versions so subsequent references to duplicated content should also refer back to the
 original manifest entry rather than updating it to include additional references.
 
-#### 2.1.3 Filesystem metadata
+#### 2.1.3 Filesystem Metadata
 {: #filesystem-metadata}
 
 Filesystem metadata (e.g. permissions, access, and creation times) are not considered portable between filesystems or
@@ -660,7 +660,7 @@ the only time when read-only clients cannot access the object because the invent
 
 9. Clean up the Workspace to remove stale Object and version assembly directories
 
-##### 3.7.2.4 Clean up after failure
+##### 3.7.2.4 Clean Up After Failure
 {: #clean-up-after-failure}
 
 1. Delete version assembly directories and temporary inventory files - this automatically reverts objects to last known
