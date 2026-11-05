@@ -787,7 +787,7 @@ operations. Consequently, they should not be expected to be portable.
 Validation of an OCFL Storage Root relies only on the files, directory structure and OCFL Objects within the storage
 root. An OCFL Storage Root is valid if it [conforms](#conformance) to the requirements of this
 [Storage Root specification](#storage-root), the requirements of any
-[Storage Root Extensions](#storage-root-extensions), and all the [OCLF Objects](#object-spec) it contains are
+[Storage Root Extensions](#storage-root-extensions), and all the [OCFL Objects](#object-spec) it contains are
 themselves valid.
 
 ## 5. Examples
