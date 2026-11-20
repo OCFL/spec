@@ -127,7 +127,7 @@ Version 1.1.0 had an unenforceable MUST regarding filesystem case preservation. 
 
 #### Add range of specification sections covering Object Structure
 
-The range of specification sections (3.2 through 3.9) specifying the (Object Structure)[#object-structure] was added to make that explicit. (Issue [#637](https://github.com/OCFL/spec/issues/637))
+The range of specification sections (3.2 through 3.9) specifying the [Object Structure](#object-structure) was added to make that explicit. (Issue [#637](https://github.com/OCFL/spec/issues/637))
 
 #### Clarify description of fixity in Implementation Notes
 
